@@ -34,11 +34,8 @@ export default function Carrousel() {
 
     }, 1000);
 
-    console.log(house);
-
     return () => {
       clearInterval(interval);
-      console.log('Cleanup: Component is unmounting or effect is re-running');
     };
 
   }, );
