@@ -3,7 +3,7 @@ import './home.css';
 
 export default function Home() {
 
-  const [backendData, setBackendData] = useState([{}])
+  const [backendData, setBackendData] = useState({"users": []})
 
   useEffect(() => {
     fetch('http://localhost:5000/api')
@@ -16,7 +16,9 @@ export default function Home() {
 
   return (
     <div className='home'>
-      hola
+      {backendData.users.map((x, i) => {
+        return <div key={i}>{x}</div>
+        })}
     </div>
   )
 }
