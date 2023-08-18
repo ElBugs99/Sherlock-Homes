@@ -1,7 +1,11 @@
 //cheerio: pick out html elements, jQuery like
+//axios: make HTTP request easier, perform CRUD operations
 const express = require('express');
-const app = express();
 const cors = require('cors');
+const axios = require('axios');
+const cheerio = require("cheerio");
+
+const app = express();
 
 app.use(cors()); // This allows all origins, you can configure it more specifically
 
