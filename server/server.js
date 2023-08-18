@@ -1,3 +1,4 @@
+//cheerio: pick out html elements, jQuery like
 const express = require('express');
 const app = express();
 const cors = require('cors');
