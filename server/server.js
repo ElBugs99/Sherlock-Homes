@@ -6,7 +6,7 @@ app.use(cors()); // This allows all origins, you can configure it more specifica
 
 //set up api route
 app.get("/api", (req, res) => {
-    res.json({"users": ["userOne","userTwo","userThree"]})
+    res.json({"users": ["userOne","userTwo","userThree","userFour"]})
 })
 
 app.listen(5000, () => {console.log("Server started at port 5000")})
