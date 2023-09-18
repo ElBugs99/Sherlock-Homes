@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './login.css'
 import LeftSection from './LeftSection/LeftSection'
 import RightSection from './RightSection/RightSection'
+import { LoginContext } from './LoginContext'
 
 export default function Login() {
-  return (
+
+  const [loginUser, setLoginUser] = useState({
+    email: 'test@gmail.com',
+    password: 'passTest'
+  })
+
+  return (    
     <div className='login'>
-      <LeftSection />
-      <RightSection />
+      <LoginContext.Provider value={loginUser}>
+        <LeftSection />
+        <RightSection />
+      </LoginContext.Provider>
     </div>
   )
 }

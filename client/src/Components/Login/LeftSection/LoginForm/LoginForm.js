@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './loginForm.css'
+import { LoginContext } from '../../LoginContext'
 
 export default function LoginForm() {
+
+  const user = useContext(LoginContext);
+
   return (
     <div className='login-form'>
       <form className='form'>
