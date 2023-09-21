@@ -4,25 +4,20 @@ import { LoginContext } from '../../LoginContext'
 
 export default function LoginForm() {
 
-  const [user, setUser] = useState({
-    'email': 'test',
-    'password': 'passTest'
-  })
-
-  //const user = useContext(LoginContext);
+  const user = useContext(LoginContext);
 
   const handleOnChange = (e) => {
     const {name, value} = e.target;
 
-    setUser((prev) => ({
+    user.setLoginUser((prev) => ({
       ...prev,
       [name]: value,
     }))
   }
 
   useEffect(() => {
-    console.log(user)
-  },[user])
+    console.log(user.loginUser)
+  },[user.loginUser])
 
   return (
     <div className='login-form'>
@@ -40,7 +35,7 @@ export default function LoginForm() {
 
         <input className='submit' type='submit' value='Iniciar Sesión'/>
         <button onClick={(e) => {
-          e.preventDefault(); console.log(user)}}>state</button>
+          e.preventDefault(); console.log(user.loginUser)}}>state</button>
 
       </form>
     </div>
