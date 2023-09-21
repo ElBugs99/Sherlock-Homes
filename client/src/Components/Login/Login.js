@@ -6,7 +6,10 @@ import { LoginContext } from './LoginContext'
 
 export default function Login() {
 
-  const [loginUser, setLoginUser] = useState(null)
+  const [loginUser, setLoginUser] = useState({
+    "email": "",
+    "password": ""
+  })
 
   return (    
     <div className='login'>

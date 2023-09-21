@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './loginForm.css'
 import { LoginContext } from '../../LoginContext'
 
@@ -34,8 +34,6 @@ export default function LoginForm() {
         </div>
 
         <input className='submit' type='submit' value='Iniciar Sesión'/>
-        <button onClick={(e) => {
-          e.preventDefault(); console.log(user.loginUser)}}>state</button>
 
       </form>
     </div>
