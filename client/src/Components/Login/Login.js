@@ -6,14 +6,11 @@ import { LoginContext } from './LoginContext'
 
 export default function Login() {
 
-  const [loginUser, setLoginUser] = useState({
-    email: 'test@gmail.com',
-    password: 'passTest'
-  })
+  const [loginUser, setLoginUser] = useState(null)
 
   return (    
     <div className='login'>
-      <LoginContext.Provider value={loginUser}>
+      <LoginContext.Provider value={{loginUser, setLoginUser}}>
         <LeftSection />
         <RightSection />
       </LoginContext.Provider>
