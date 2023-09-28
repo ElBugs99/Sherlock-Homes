@@ -3,6 +3,9 @@ import './home.css';
 import { useNavigate } from 'react-router-dom';
 import TopSection from './TopSection/TopSection';
 import NavBar from '../UI/NavBar/NavBar';
+import PromoSection from './PromoSection/PromoSection';
+import InfoSection from './InfoSection/InfoSection';
+import Footer from '../UI/Footer/Footer';
 
 export default function Home() {
 
@@ -27,6 +30,9 @@ export default function Home() {
         <NavBar />
         <div>home</div>
         <TopSection />
+        <PromoSection />
+        <InfoSection />
+        <Footer />
         <button onClick={() => navigate('/login')}>Iniciar Sesión</button>
     </div>
   )
