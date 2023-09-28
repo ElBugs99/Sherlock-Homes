@@ -1,8 +1,9 @@
 import React from 'react'
+import './topSection.css'
 
 export default function TopSection() {
   return (
-    <div>
+    <div className='topSection'>
       TopSection
     </div>
   )

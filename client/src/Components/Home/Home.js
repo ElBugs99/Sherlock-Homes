@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './home.css';
 import { useNavigate } from 'react-router-dom';
+import TopSection from './TopSection/TopSection';
 
 export default function Home() {
 
@@ -23,6 +24,7 @@ export default function Home() {
         return <div key={i}>{x}</div>
         })}
         <div>home</div>
+        <TopSection />
         <button onClick={() => navigate('/login')}>Iniciar Sesión</button>
     </div>
   )
