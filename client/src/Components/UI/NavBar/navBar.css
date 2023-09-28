@@ -1,0 +1,6 @@
+.navBar {
+    height: 10vh;
+    background-color: blueviolet;
+    display: flex;
+    width: 100%;
+}
