@@ -3,3 +3,17 @@
     width: 100%;
     height: 50vh;
 }
+
+.top-img-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+}
+
+.top-img {
+    height: 100%;
+    width: 100%;
+    opacity: 0.7;
+}
