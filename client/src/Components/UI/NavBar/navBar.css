@@ -1,6 +1,8 @@
 .navBar {
     height: 10vh;
-    background-color: blueviolet;
+    background-color: #264653;
+    color: white;
     display: flex;
+    align-items: center;
     width: 100%;
 }

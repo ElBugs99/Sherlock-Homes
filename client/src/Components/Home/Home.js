@@ -28,7 +28,6 @@ export default function Home() {
         return <div key={i}>{x}</div>
         })}
         <NavBar />
-        <div>home</div>
         <TopSection />
         <PromoSection />
         <InfoSection />
