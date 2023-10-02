@@ -10,6 +10,7 @@
 
 .cities-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -17,9 +18,19 @@
 }
 
 .cities-title {
-
+    display: flex;
+    background-color: blanchedalmond;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+    width: 90%;
 }
 
-.exlpore-cities {
-    
+.explore-cities {
+    background-color: burlywood;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+    width: 90%;
 }
