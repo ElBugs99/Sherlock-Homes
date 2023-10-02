@@ -1,5 +1,8 @@
 .Explore-city-card {
+    cursor: pointer;
     height: 90%;
     width: 300px;
-    background-color: rgb(170, 170, 170);
+    background-color: rgb(199, 199, 199);
+    margin: 10px;
+    border-radius: 20px;
 }
