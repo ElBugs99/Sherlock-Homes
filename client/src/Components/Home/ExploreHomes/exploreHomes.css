@@ -18,6 +18,8 @@
 }
 
 .cities-title {
+    font-weight: bolder;
+    font-size: large;
     display: flex;
     background-color: blanchedalmond;
     align-items: center;

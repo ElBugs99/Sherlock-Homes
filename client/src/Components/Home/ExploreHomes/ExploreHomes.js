@@ -6,7 +6,7 @@ export default function ExploreHomes() {
     <div className='explore-homes'>
       <div className='cities-container'>
         <div className='cities-title'>
-            TITLE
+            Explora en tu ciudad
         </div>
         <div className='explore-cities'>
             CITIES

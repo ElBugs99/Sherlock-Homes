@@ -38,3 +38,5 @@ export default function Home() {
     </div>
   )
 }
+
+//agregar valor promedio de vivienda en cada area
