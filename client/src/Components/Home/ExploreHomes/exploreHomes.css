@@ -1,0 +1,25 @@
+.explore-homes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 50vh;
+    background-color: beige;
+    width: 100%;
+}
+
+.cities-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.cities-title {
+
+}
+
+.exlpore-cities {
+    
+}

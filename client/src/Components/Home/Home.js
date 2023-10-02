@@ -6,6 +6,7 @@ import NavBar from '../UI/NavBar/NavBar';
 import PromoSection from './PromoSection/PromoSection';
 import InfoSection from './InfoSection/InfoSection';
 import Footer from '../UI/Footer/Footer';
+import ExploreHomes from './ExploreHomes/ExploreHomes';
 
 export default function Home() {
 
@@ -29,6 +30,7 @@ export default function Home() {
         })}
         <NavBar />
         <TopSection />
+        <ExploreHomes />
         <PromoSection />
         <InfoSection />
         <Footer />
