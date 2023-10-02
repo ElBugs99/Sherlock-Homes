@@ -1,5 +1,6 @@
 import React from 'react'
 import './exploreHomes.css'
+import ExploreCityCard from '../../UI/ExploreCityCard/ExploreCityCard'
 
 export default function ExploreHomes() {
   return (
@@ -9,7 +10,10 @@ export default function ExploreHomes() {
             Explora en tu ciudad
         </div>
         <div className='explore-cities'>
-            CITIES
+            <ExploreCityCard />
+            <ExploreCityCard />
+            <ExploreCityCard />
+            <ExploreCityCard />
         </div>
       </div>
     </div>
