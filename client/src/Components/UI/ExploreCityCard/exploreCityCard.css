@@ -20,12 +20,13 @@
     color: white;
     padding: 20px;
     position: absolute;
-    top: 2%;
+    top: 10%;
 }
 
 .city-card-info {
+    font-weight: 600;
     color: white;
-    top: 15%;
+    top: 25%;
     padding: 20px;
     position: absolute;
 }
