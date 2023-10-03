@@ -7,6 +7,7 @@ export default function TopSection() {
     <div className='topSection'>
       <div className='top-img-container'>
         <img className='top-img' src={img} alt='promo' />
+        <div className='top-img-text'>HOla</div>
       </div>
     </div>
   )

@@ -8,6 +8,7 @@
 }
 
 .top-img-container {
+    position: relative;
     display: flex;
     border-radius: 10px;
     flex-direction: column;
@@ -21,4 +22,11 @@
     height: 100%;
     width: 100%;
     opacity: 0.7;
+}
+
+.top-img-text {
+    position: absolute;
+    top: 25%;
+    color: white;
+    padding: 20px;
 }
