@@ -1,6 +1,8 @@
 import React from 'react'
 import './exploreHomes.css'
 import ExploreCityCard from '../../UI/ExploreCityCard/ExploreCityCard'
+import vina from '../../../assets/images/vina.jpg'
+import santiago from '../../../assets/images/santiago.jpg'
 
 export default function ExploreHomes() {
   return (
@@ -10,10 +12,10 @@ export default function ExploreHomes() {
             Explora en tu ciudad
         </div>
         <div className='explore-cities'>
-            <ExploreCityCard cityName={'Viña del Mar'} listings={50} />
-            <ExploreCityCard cityName={'Viña del Mar'} listings={50} />
-            <ExploreCityCard cityName={'Viña del Mar'} listings={50} />
-            <ExploreCityCard cityName={'Viña del Mar'} listings={50} />
+            <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={vina} />
+            <ExploreCityCard cityName={'Santiago'} listings={50} image={santiago}/>
+            <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={vina}/>
+            <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={vina}/>
         </div>
       </div>
     </div>

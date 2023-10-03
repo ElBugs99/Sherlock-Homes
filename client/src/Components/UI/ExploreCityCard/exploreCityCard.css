@@ -1,8 +1,30 @@
 .Explore-city-card {
+    position: relative;
     cursor: pointer;
     height: 90%;
     width: 300px;
     background-color: rgb(199, 199, 199);
     margin: 10px;
     border-radius: 20px;
+}
+
+.city-card-img {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.city-card-title {
+    font-weight: bold;
+    color: white;
+    padding: 20px;
+    position: absolute;
+    top: 25%;
+}
+
+.city-card-info {
+    color: white;
+    top: 35%;
+    padding: 20px;
+    position: absolute;
 }
