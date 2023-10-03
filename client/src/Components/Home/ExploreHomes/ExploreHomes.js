@@ -10,10 +10,10 @@ export default function ExploreHomes() {
             Explora en tu ciudad
         </div>
         <div className='explore-cities'>
-            <ExploreCityCard />
-            <ExploreCityCard />
-            <ExploreCityCard />
-            <ExploreCityCard />
+            <ExploreCityCard cityName={'Viña del Mar'} listings={50} />
+            <ExploreCityCard cityName={'Viña del Mar'} listings={50} />
+            <ExploreCityCard cityName={'Viña del Mar'} listings={50} />
+            <ExploreCityCard cityName={'Viña del Mar'} listings={50} />
         </div>
       </div>
     </div>
