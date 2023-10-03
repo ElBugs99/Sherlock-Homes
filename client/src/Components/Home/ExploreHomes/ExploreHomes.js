@@ -4,6 +4,7 @@ import ExploreCityCard from '../../UI/ExploreCityCard/ExploreCityCard'
 import vina from '../../../assets/images/vina.jpg'
 import santiago from '../../../assets/images/santiago.jpg'
 import serena from '../../../assets/images/la-serena.jpg'
+import valdivia from '../../../assets/images/valdivia.jpg'
 
 export default function ExploreHomes() {
   return (
@@ -16,7 +17,7 @@ export default function ExploreHomes() {
             <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={vina} />
             <ExploreCityCard cityName={'Santiago'} listings={50} image={santiago}/>
             <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={serena}/>
-            <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={vina}/>
+            <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={valdivia}/>
         </div>
       </div>
     </div>
