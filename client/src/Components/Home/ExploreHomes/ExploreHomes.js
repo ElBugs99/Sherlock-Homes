@@ -3,7 +3,7 @@ import './exploreHomes.css'
 import ExploreCityCard from '../../UI/ExploreCityCard/ExploreCityCard'
 import vina from '../../../assets/images/vina.jpg'
 import santiago from '../../../assets/images/santiago.jpg'
-import serena from '../../../assets/images/la-serena.jpg'
+import serena from '../../../assets/images/Faro_La_Serena_451.jpg'
 import valdivia from '../../../assets/images/valdivia.jpg'
 
 export default function ExploreHomes() {
