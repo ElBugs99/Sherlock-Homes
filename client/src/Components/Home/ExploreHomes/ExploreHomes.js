@@ -16,8 +16,8 @@ export default function ExploreHomes() {
         <div className='explore-cities'>
             <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={vina} />
             <ExploreCityCard cityName={'Santiago'} listings={50} image={santiago}/>
-            <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={serena}/>
-            <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={valdivia}/>
+            <ExploreCityCard cityName={'La Serena'} listings={50} image={serena}/>
+            <ExploreCityCard cityName={'Valdivia'} listings={50} image={valdivia}/>
         </div>
       </div>
     </div>

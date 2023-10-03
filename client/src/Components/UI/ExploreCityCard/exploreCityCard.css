@@ -16,15 +16,16 @@
 
 .city-card-title {
     font-weight: bold;
+    font-size: x-large;
     color: white;
     padding: 20px;
     position: absolute;
-    top: 25%;
+    top: 2%;
 }
 
 .city-card-info {
     color: white;
-    top: 35%;
+    top: 15%;
     padding: 20px;
     position: absolute;
 }
