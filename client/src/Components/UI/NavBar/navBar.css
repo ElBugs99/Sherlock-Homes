@@ -33,6 +33,10 @@
     justify-content: center;
 }
 
+.nav-option:hover {
+    color: #38ba8c;
+}
+
 .nav-logo-container {
     height: 100%;
     display: flex;
