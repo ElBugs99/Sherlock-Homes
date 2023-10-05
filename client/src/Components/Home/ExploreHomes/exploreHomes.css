@@ -1,10 +1,12 @@
 .explore-homes {
+    z-index: 5;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 50vh;
     width: 100%;
+    background-color: #ebf1ec;
 }
 
 .cities-container {
