@@ -32,6 +32,20 @@
     z-index: 2;
 }
 
+.top-form {
+    z-index: 2;
+    width: 40%;
+    top: 50%;
+    left: 30%;
+    position: absolute;
+}
+
+.top-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+}
+
 .top-overlay {
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.5);
