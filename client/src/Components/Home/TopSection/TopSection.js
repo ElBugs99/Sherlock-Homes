@@ -6,7 +6,7 @@ import homeVideo from '../../../assets/videos/home-video.mp4';
 export default function TopSection() {
   return (
     <div className='topSection'>
-      <div className='top-overlay'>a</div>
+      <div className='top-overlay'></div>
       <div className='top-img-container'>
         <video className='top-img' autoPlay loop muted>
           <source src={homeVideo} type="video/mp4" />
