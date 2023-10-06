@@ -1,6 +1,5 @@
 import React from 'react'
 import './topSection.css'
-import img from '../../../assets/images/longApartmen.jpg';
 import homeVideo from '../../../assets/videos/home-video.mp4';
 
 export default function TopSection() {
