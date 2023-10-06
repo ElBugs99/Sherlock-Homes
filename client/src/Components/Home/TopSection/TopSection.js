@@ -13,6 +13,9 @@ export default function TopSection() {
           Your browser does not support the video tag.
         </video>
         {/* <img className='top-img' src={img} alt='promo' /> */}
+        <form className='top-form'>
+          <input className='top-input' />
+        </form>
         <div className='top-img-text'>Test text</div>
       </div>
     </div>
