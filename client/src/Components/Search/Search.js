@@ -6,6 +6,7 @@ export default function Search() {
   return (
     <div className='search'>
         <div className='search-info'>
+            <div>Results: 50</div>
             <SideBar />
         </div>
         <div className='search-results'>search</div>
