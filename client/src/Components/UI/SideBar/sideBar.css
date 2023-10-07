@@ -1,12 +1,4 @@
 .side-bar {
     background-color: burlywood;
-}
-
-.search-info {
-    width: 30%;
-}
-
-.search-results {
-    background-color: cadetblue;
-    width: 70%;
+    width: 90%;
 }

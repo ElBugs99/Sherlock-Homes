@@ -5,3 +5,16 @@
     background-color: #ebf1ec;
     height: 100vh;
 }
+
+.search-info {
+    width: 30%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-results {
+    background-color: cadetblue;
+    width: 70%;
+    height: 100%;
+}
