@@ -31,3 +31,8 @@
     font-weight: 600;
     font-size: large;
 }
+
+.search-container {
+    width: 100%;
+    display: flex;
+}
