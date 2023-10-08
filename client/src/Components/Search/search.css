@@ -18,9 +18,12 @@
 }
 
 .search-results {
+    display: flex;
+    flex-direction: column;
     background-color: cadetblue;
     width: 70%;
     height: 100%;
+    align-items: center;
 }
 
 .search-info-title {
