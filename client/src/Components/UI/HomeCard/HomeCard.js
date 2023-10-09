@@ -1,10 +1,12 @@
 import React from 'react'
 import './homeCard.css'
 
-export default function HomeCard() {
+export default function HomeCard({image, price,}) {
   return (
-    <div>
-      HomeCard
+    <div className='home-card'>
+      <div className='home-card-container'>
+        homeCard
+      </div>
     </div>
   )
 }
