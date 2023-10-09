@@ -1,0 +1,11 @@
+.home-card {
+    height: 500px;
+    width: 500px;
+    background-color: burlywood;
+}
+
+.home-card-container {
+    width: 90%;
+    height: 90%;
+    background-color: blanchedalmond;
+}
