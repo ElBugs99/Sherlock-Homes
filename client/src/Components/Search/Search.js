@@ -2,6 +2,7 @@ import React from "react";
 import "./search.css";
 import SideBar from "../UI/SideBar/SideBar";
 import NavBar from "../UI/NavBar/NavBar";
+import HomeCard from "../UI/HomeCard/HomeCard";
 
 export default function Search() {
   return (
@@ -13,7 +14,9 @@ export default function Search() {
           <SideBar />
         </div>
         <div className="search-results">
-          <div className="search-results-container">results</div>
+          <div className="search-results-container">
+            <HomeCard />
+          </div>
         </div>
       </div>
     </div>
