@@ -12,7 +12,9 @@ export default function Search() {
           <div className="search-info-title">Results: 50</div>
           <SideBar />
         </div>
-        <div className="search-results">search</div>
+        <div className="search-results">
+          <div className="search-results-container">results</div>
+        </div>
       </div>
     </div>
   );

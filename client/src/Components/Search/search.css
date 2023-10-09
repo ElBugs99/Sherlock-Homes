@@ -37,3 +37,12 @@
     width: 100%;
     display: flex;
 }
+
+.search-results-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    flex-direction: column;
+    background-color: antiquewhite;
+    width: 90%;
+}
