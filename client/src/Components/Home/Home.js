@@ -35,6 +35,7 @@ export default function Home() {
         <InfoSection />
         <Footer />
         <button onClick={() => navigate('/login')}>Iniciar Sesión</button>
+        <button onClick={() => navigate('/search')}>search page</button>
     </div>
   )
 }
