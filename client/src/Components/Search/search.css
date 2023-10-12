@@ -3,7 +3,8 @@
 .search {
     font-family: 'Roboto', sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-color: #ebf1ec;
 }
 
@@ -18,6 +19,7 @@
 
 .search-results {
     display: flex;
+    margin-bottom: 60px;
     flex-direction: column;
     background-color: cadetblue;
     width: 80%;

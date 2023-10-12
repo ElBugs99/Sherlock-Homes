@@ -3,6 +3,7 @@ import "./search.css";
 import SideBar from "../UI/SideBar/SideBar";
 import NavBar from "../UI/NavBar/NavBar";
 import HomeCard from "../UI/HomeCard/HomeCard";
+import Footer from "../UI/Footer/Footer"
 
 export default function Search() {
   return (
@@ -25,6 +26,7 @@ export default function Search() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
