@@ -40,9 +40,9 @@
 
 .search-results-container {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     padding: 10px;
-    flex-direction: column;
     background-color: antiquewhite;
     width: 90%;
 }
