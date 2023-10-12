@@ -23,6 +23,12 @@ export default function Search() {
             <HomeCard />
             <HomeCard />
             <HomeCard />
+            <HomeCard />
+            <HomeCard />
+            <HomeCard />
+            <HomeCard />
+            <HomeCard />
+            <HomeCard />
           </div>
         </div>
       </div>
