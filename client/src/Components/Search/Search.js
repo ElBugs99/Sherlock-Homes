@@ -16,6 +16,7 @@ export default function Search() {
         <div className="search-results">
           <div className="search-results-container">
             <HomeCard />
+            <HomeCard />
           </div>
         </div>
       </div>
