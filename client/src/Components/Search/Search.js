@@ -17,6 +17,11 @@ export default function Search() {
           <div className="search-results-container">
             <HomeCard />
             <HomeCard />
+            <HomeCard />
+            <HomeCard />
+            <HomeCard />
+            <HomeCard />
+            <HomeCard />
           </div>
         </div>
       </div>
