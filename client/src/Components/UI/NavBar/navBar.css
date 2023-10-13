@@ -32,6 +32,12 @@
     align-items: center;
     justify-content: center;
     font-weight: 600;
+    text-decoration: none;
+    color: white;
+}
+
+.active {
+    color: #38ba8c;
 }
 
 .nav-option:hover {
