@@ -11,9 +11,9 @@ export default function HomeCard({ image, price }) {
         </div>
         <div className="home-card-info">
           <div className="">description</div>
-          <div className="">price</div>
-          <div className="">4 dormitorios</div>
-          <div className="">3 baños</div>
+          <div className="home-card-price">5.700 UF</div>
+          <div className="">4 dormitorios | 3 baños</div>
+          <div className="">354 m² útiles</div>
           <div className="">Sector</div>
         </div>
       </div>

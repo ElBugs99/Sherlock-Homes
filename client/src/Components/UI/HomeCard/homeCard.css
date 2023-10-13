@@ -43,5 +43,15 @@
 }
 
 .home-card-info {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
     height: 50%;
+}
+
+.home-card-price {
+    font-size: larger;
+    font-weight: 600;
 }
