@@ -9,7 +9,13 @@ export default function HomeCard({ image, price }) {
         <div className="home-card-img-container">
           <img className="home-card-img" src={img} alt="home" />
         </div>
-        <div className="home-card-info">info</div>
+        <div className="home-card-info">
+          <div className="">description</div>
+          <div className="">price</div>
+          <div className="">4 dormitorios</div>
+          <div className="">3 baños</div>
+          <div className="">Sector</div>
+        </div>
       </div>
     </div>
   );
