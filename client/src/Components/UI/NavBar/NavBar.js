@@ -1,6 +1,7 @@
 import React from 'react'
 import './navBar.css';
 import svgImage from '../../../assets/images/greenicon.svg';
+import { NavLink } from 'react-router-dom';
 
 export default function NavBar() {
   return (
@@ -11,10 +12,10 @@ export default function NavBar() {
           <img className='nav-icon' src={svgImage} alt="SVG" />
         </div>
         <div className='nav-options'>
-          <div className='nav-option'>option1</div>
-          <div className='nav-option'>option2</div>
-          <div className='nav-option'>option3</div>
-          <div className='nav-option'>option4</div>
+          <NavLink to='/' className='nav-option'>Home</NavLink >
+          <NavLink to='/search' className='nav-option'>Search</NavLink>
+          <NavLink className='nav-option'>option3</NavLink>
+          <NavLink className='nav-option'>option4</NavLink>
         </div>
       </div>
     </div>
