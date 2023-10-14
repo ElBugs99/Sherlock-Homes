@@ -10,3 +10,13 @@
     align-items: center;
     justify-content: center;
 }
+
+.not-found-svg-container {
+    height: 400px;
+    width: 400px;
+}
+
+.not-found-svg {
+    height: 100%;
+    width: 100%;
+}
