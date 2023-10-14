@@ -1,6 +1,6 @@
 import React from "react";
 import "./homeCard.css";
-import img from "../../../assets/images/la-serena.jpg";
+import img from "../../../assets/images/Faro_La_Serena_451.jpg";
 
 export default function HomeCard({ image, price }) {
   return (
