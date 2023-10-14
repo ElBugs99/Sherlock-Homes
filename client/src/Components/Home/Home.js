@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './home.css';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import TopSection from './TopSection/TopSection';
 import NavBar from '../UI/NavBar/NavBar';
 import PromoSection from './PromoSection/PromoSection';
@@ -10,7 +10,9 @@ import ExploreHomes from './ExploreHomes/ExploreHomes';
 
 export default function Home() {
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
+  //<button onClick={() => navigate('/login')}>Iniciar Sesión</button>
+  //<button onClick={() => navigate('/search')}>search page</button>
 
   const [backendData, setBackendData] = useState({"users": []})
 
@@ -34,8 +36,6 @@ export default function Home() {
         <PromoSection />
         <InfoSection />
         <Footer />
-        <button onClick={() => navigate('/login')}>Iniciar Sesión</button>
-        <button onClick={() => navigate('/search')}>search page</button>
     </div>
   )
 }

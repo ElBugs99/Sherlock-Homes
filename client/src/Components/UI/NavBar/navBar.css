@@ -38,6 +38,7 @@
 
 .active {
     color: #38ba8c;
+    font-weight: 600;
 }
 
 .nav-option:hover {
