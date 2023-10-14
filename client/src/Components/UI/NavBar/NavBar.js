@@ -14,8 +14,8 @@ export default function NavBar() {
         <div className='nav-options'>
           <NavLink to='/' className='nav-option'>Home</NavLink >
           <NavLink to='/search' className='nav-option'>Search</NavLink>
-          <NavLink to='/hola' className='nav-option'>option3</NavLink>
-          <NavLink to='/jajajaj' className='nav-option'>option4</NavLink>
+          <NavLink to='/lol' className='nav-option'>option3</NavLink>
+          <NavLink to='/login' className='nav-option'>Ingresar</NavLink>
         </div>
       </div>
     </nav>
