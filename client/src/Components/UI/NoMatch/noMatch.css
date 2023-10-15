@@ -33,5 +33,20 @@
 }
 
 .not-found-home {
-    
+    width: 200px;
+    font-size: medium;
+    font-weight: 900;
+    color: white;
+    border-radius: 25px;
+    background-color: #38ba8c;
+    padding: 20px;
+    border: none;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.not-found-home:hover {
+    transform: 1s;
+    background-color: #264653;
 }
