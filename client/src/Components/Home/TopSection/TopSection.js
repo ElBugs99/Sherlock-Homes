@@ -17,7 +17,7 @@ export default function TopSection() {
           <input className='top-input' />
           <button className='search-btn'>hola</button>
         </form>
-        <div className='top-img-text'>Test text</div>
+        <div className='top-img-text'>Encuentra tu nuevo hogar</div>
       </div>
     </div>
   )
