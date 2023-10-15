@@ -15,6 +15,7 @@ export default function TopSection() {
         {/* <img className='top-img' src={img} alt='promo' /> */}
         <form className='top-form'>
           <input className='top-input' />
+          <button className='search-btn'>hola</button>
         </form>
         <div className='top-img-text'>Test text</div>
       </div>
