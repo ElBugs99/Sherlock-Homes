@@ -14,7 +14,7 @@ export default function NoMatch() {
         <img className='not-found-svg' src={img} alt='ufo' />
       </div>
       <div className='not-found-info'>Página no encontrada</div>
-      <button onClick={() => navigate('/')}>Inicio</button>
+      <button className='not-found-home' onClick={() => navigate('/')}>Inicio</button>
     </div>
   )
 }
