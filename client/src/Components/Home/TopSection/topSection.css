@@ -53,8 +53,15 @@
 
 .search-btn {
     position: absolute;
-    top: 30%;
-    left: 95%;
+    top: 6%;
+    left: 96%;
+    color: white;
+    border-radius: 50px;
+    background-color: #38ba8c;
+    padding: 13px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .top-overlay {
