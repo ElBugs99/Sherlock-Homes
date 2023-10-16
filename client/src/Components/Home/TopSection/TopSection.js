@@ -15,7 +15,7 @@ export default function TopSection() {
         </video>
         {/* <img className='top-img' src={img} alt='promo' /> */}
         <form className='top-form'>
-          <input className='top-input' />
+          <input className='top-input' spellCheck='false' />
           <button className='search-btn'><img src={search} className='search-icon' alt='search' /></button>
         </form>
         <div className='top-img-text'>Encuentra tu nuevo hogar</div>
