@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './topSection.css'
 import homeVideo from '../../../assets/videos/home-video.mp4';
 import search from '../../../assets/images/white-search-icon.svg';
 
 export default function TopSection() {
+
+  useEffect(() => {
+    console.log('component mounted')
+  },[])
+
   return (
     <div className='topSection'>
       <div className='top-overlay'></div>
