@@ -1,13 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './topSection.css'
 import homeVideo from '../../../assets/videos/home-video.mp4';
 import search from '../../../assets/images/white-search-icon.svg';
 
 export default function TopSection() {
 
+  const [title, setTitle] = useState()
+
   useEffect(() => {
-    console.log('component mounted')
-  },[])
+    
+    setInterval(() => {
+      console.log('hola')
+    } ,1000)
+
+  })
 
   return (
     <div className='topSection'>
