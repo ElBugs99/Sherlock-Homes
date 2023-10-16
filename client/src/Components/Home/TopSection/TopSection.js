@@ -5,13 +5,25 @@ import search from '../../../assets/images/white-search-icon.svg';
 
 export default function TopSection() {
 
-  const [title, setTitle] = useState()
+  const styles = {
+    data: {
+      1: {title: 'Duplex', style: {color: 'blue'} },
+      2: {title: 'Casa', style: {color: 'red'}},
+      3: {title: 'Departamento', style: {color: 'brown'}},
+    },
+  }
+
+  const [title, setTitle] = useState(1)
 
   useEffect(() => {
     
-    setInterval(() => {
+    const interval = setInterval(() => {
       console.log('hola')
-    } ,1000)
+    } ,2000)
+
+    return () => {
+      clearInterval(interval);
+  }
 
   })
 
@@ -29,7 +41,7 @@ export default function TopSection() {
           <input className='top-input' spellCheck='false' />
           <button className='search-btn'><img src={search} className='search-icon' alt='search' /></button>
         </form>
-        <div className='top-img-text'>Encuentra tu nuevo hogar.</div>
+        <div className='top-img-text' style={styles.data[1].style}>Encuentra tu nuevo hogar {styles.data[1].title}.</div>
       </div>
     </div>
   )
