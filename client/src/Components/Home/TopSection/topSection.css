@@ -52,16 +52,27 @@
 }
 
 .search-btn {
+    height: 40px;
     position: absolute;
-    top: 6%;
-    left: 96%;
+    top: 10%;
+    left: 97%;
     color: white;
     border-radius: 50px;
     background-color: #38ba8c;
-    padding: 13px;
+    padding: 10px;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    transform: 1s;
+    background-color: #264653;
+}
+
+.search-icon {
+    width: 20px; /* Adjust the width as needed to make the SVG fit the button */
+    height: 20px;
 }
 
 .top-overlay {

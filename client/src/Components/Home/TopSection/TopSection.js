@@ -1,6 +1,7 @@
 import React from 'react'
 import './topSection.css'
 import homeVideo from '../../../assets/videos/home-video.mp4';
+import search from '../../../assets/images/white-search-icon.svg';
 
 export default function TopSection() {
   return (
@@ -15,7 +16,7 @@ export default function TopSection() {
         {/* <img className='top-img' src={img} alt='promo' /> */}
         <form className='top-form'>
           <input className='top-input' />
-          <button className='search-btn'>hola</button>
+          <button className='search-btn'><img src={search} className='search-icon' alt='search' /></button>
         </form>
         <div className='top-img-text'>Encuentra tu nuevo hogar</div>
       </div>
