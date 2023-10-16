@@ -8,7 +8,7 @@ export default function TopSection() {
     data: {
       1: { title: "Hogar", style: { color: "#38ba8c" } },
       2: { title: "Duplex", style: { color: "#baa938" } },
-      3: { title: "Departamento", style: { color: "#ba383c" } },
+      3: { title: "Depto", style: { color: "#ba383c" } },
       4: { title: "Estudio", style: { color: "#38baba" } },
     },
   };
@@ -27,7 +27,6 @@ export default function TopSection() {
         // Handle the error
         console.error(error);
       }
-
     }, 2000);
 
     return () => {
@@ -51,8 +50,13 @@ export default function TopSection() {
             <img src={search} className="search-icon" alt="search" />
           </button>
         </form>
-        <div className="top-img-text">
-          Encuentra tu nuevo <div style={styles.data[title].style} className="top-letters">{styles.data[title].title}.</div>
+        <div className="top-img-text-container">
+          <div className="top-img-text">
+            Encuentra tu nuevo{" "}
+            <div style={styles.data[title].style} className="top-letters">
+              {styles.data[title].title}.
+            </div>
+          </div>
         </div>
       </div>
     </div>
