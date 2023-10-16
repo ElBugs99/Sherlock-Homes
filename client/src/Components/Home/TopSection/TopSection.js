@@ -18,7 +18,7 @@ export default function TopSection() {
           <input className='top-input' spellCheck='false' />
           <button className='search-btn'><img src={search} className='search-icon' alt='search' /></button>
         </form>
-        <div className='top-img-text'>Encuentra tu nuevo hogar</div>
+        <div className='top-img-text'>Encuentra tu nuevo hogar.</div>
       </div>
     </div>
   )
