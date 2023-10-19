@@ -5,6 +5,8 @@ export default function SideBar() {
   return (
     <div className='side-bar'>
       SideBar
+      <input type='checkbox' />
+      <input type='checkbox' />
     </div>
   )
 }
