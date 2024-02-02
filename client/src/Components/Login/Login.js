@@ -23,8 +23,6 @@ export default function Login() {
   //hacer un paginador, poner el numero del elemento, paginar de 2 en 2
   //ordenar nombres que tienen numeros romanos en base al numero
   //ordernar las tallas, de mayor a menor, ordenar las tallas que se entregen, pueden no ser todas
-  console.log('hola');
-
 
   const ordenarTallas = ( arrayDeTallas ) => {
 
@@ -39,11 +37,15 @@ export default function Login() {
 
       for (let talla in tallas) {
 
+          //console.log(tallas[talla]);
+
           for (let value of arrayDeTallas) {
-              
+
+              console.log(value);
+
           }
 
-          console.log(talla + ' '+ tallas[talla]);
+          //console.log(talla + ' '+ tallas[talla]);
 
       }
 
