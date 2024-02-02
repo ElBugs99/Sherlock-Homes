@@ -35,13 +35,16 @@ export default function Login() {
           XXL: 5
       };
 
-      for (let talla in tallas) {
+      for (let value of arrayDeTallas) {
 
-          //console.log(tallas[talla]);
+          console.log('comparando talla: ' + value.toUpperCase());
+          if (value.toUpperCase() in tallas) {
+              console.log(value + ' existe en el objeto tallas')
+          };
 
-          for (let value of arrayDeTallas) {
+          for (let talla in tallas) {
 
-              console.log(value);
+              console.log('con: ' + talla);
 
           }
 
