@@ -35,6 +35,10 @@ export default function Login() {
           XXL: 5
       };
 
+      const tallasOrdenadas = [];
+
+      let lower = 6;
+
       const a = [];
 
       for (let value of arrayDeTallas) {
@@ -44,16 +48,27 @@ export default function Login() {
           if (value.toUpperCase() in tallas) {
 
              // console.log(value + ' existe en el objeto tallas');
-              a.push(value);
-              console.log(a);
+              a.push(value.toUpperCase());
+              
+              //console.log(a);
 
           };
           //console.log(talla + ' '+ tallas[talla]);
       }
-      /*
-      for (let value of a) {
-        console.log(value);
-      } */
+      while ( a.length() > 0) {
+        let talla;
+        for (let value of a) {
+        
+          if (tallas[value] < lower){
+            lower = tallas[value]
+            talla = value
+          }
+          console.log(value);
+        }
+        tallasOrdenadas.push(talla)
+        
+      }
+      
       //console.log(tallas["S"]);
 
   };
