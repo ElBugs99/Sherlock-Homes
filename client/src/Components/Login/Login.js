@@ -35,23 +35,25 @@ export default function Login() {
           XXL: 5
       };
 
+      const a = [];
+
       for (let value of arrayDeTallas) {
 
-          console.log('comparando talla: ' + value.toUpperCase());
+          //console.log('comparando talla: ' + value.toUpperCase());
+
           if (value.toUpperCase() in tallas) {
-              console.log(value + ' existe en el objeto tallas')
+
+             // console.log(value + ' existe en el objeto tallas');
+              a.push(value);
+              console.log(a);
+
           };
-
-          for (let talla in tallas) {
-
-              console.log('con: ' + talla);
-
-          }
-
           //console.log(talla + ' '+ tallas[talla]);
-
       }
-
+      /*
+      for (let value of a) {
+        console.log(value);
+      } */
       //console.log(tallas["S"]);
 
   };
