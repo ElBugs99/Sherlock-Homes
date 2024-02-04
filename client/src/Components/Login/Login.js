@@ -36,6 +36,8 @@ export default function Login() {
           XXL: 5
       };
 
+      const upperCaseTallas = arrayDeTallas.map(x => x.toUpperCase())
+
       const ordenadas = [];
 
       for ( let key in tallas) {
