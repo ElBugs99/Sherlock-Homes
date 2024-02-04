@@ -26,6 +26,7 @@ export default function Login() {
 
   const ordenarTallas = ( arrayDeTallas ) => {
 
+      //Orden de las tallas
       const tallas =
       {
           S: 1,
