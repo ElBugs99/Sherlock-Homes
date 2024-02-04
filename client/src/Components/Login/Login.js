@@ -37,40 +37,17 @@ export default function Login() {
 
       const tallasOrdenadas = [];
 
-      let lower = 6;
 
       const a = [];
 
-      for (let value of arrayDeTallas) {
+      for ( let key in tallas) {
 
-          //console.log('comparando talla: ' + value.toUpperCase());
-
-          if (value.toUpperCase() in tallas) {
-
-             // console.log(value + ' existe en el objeto tallas');
-              a.push(value.toUpperCase());
-              
-              //console.log(a);
-
-          };
-          //console.log(talla + ' '+ tallas[talla]);
-      }
-      while ( a.length() > 0) {
-        let talla;
-        for (let value of a) {
-        
-          if (tallas[value] < lower){
-            lower = tallas[value]
-            talla = value
-          }
-          console.log(value);
+        if ( key in arrayDeTallas){
+          console.log(key + ' existe en array');
         }
-        tallasOrdenadas.push(talla)
-        
       }
       
-      //console.log(tallas["S"]);
-
+      console.log(a);
   };
 
 
