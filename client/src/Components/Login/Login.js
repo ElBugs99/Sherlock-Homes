@@ -73,6 +73,14 @@ export default function Login() {
 
   };
 
+
+  const array = ['a', 'b', 'c'];
+
+  array.splice()
+
+
+
+
   const [loginUser, setLoginUser] = useState({
     "email": "",
     "password": ""
