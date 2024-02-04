@@ -35,19 +35,18 @@ export default function Login() {
           XXL: 5
       };
 
-      const tallasOrdenadas = [];
-
-
-      const a = [];
+      const ordenadas = [];
 
       for ( let key in tallas) {
 
-        if ( key in arrayDeTallas){
+        console.log(key);
+
+        if ( arrayDeTallas.includes(key) || arrayDeTallas.includes(key.toLowerCase())){
+          ordenadas.push(key.toUpperCase());
           console.log(key + ' existe en array');
         }
       }
-      
-      console.log(a);
+      return ordenadas;
   };
 
 
