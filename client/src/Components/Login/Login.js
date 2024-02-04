@@ -42,7 +42,6 @@ export default function Login() {
 
       for ( let key in tallas) {
 
-
         if ( upperCaseTallas.includes(key) ){
           ordenadas.push(key);
         }
