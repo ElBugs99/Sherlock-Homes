@@ -42,11 +42,9 @@ export default function Login() {
 
       for ( let key in tallas) {
 
-        console.log(key);
 
-        if ( arrayDeTallas.includes(key) || arrayDeTallas.includes(key.toLowerCase())){
-          ordenadas.push(key.toUpperCase());
-          console.log(key + ' existe en array');
+        if ( upperCaseTallas.includes(key) ){
+          ordenadas.push(key);
         }
       }
       return ordenadas;
