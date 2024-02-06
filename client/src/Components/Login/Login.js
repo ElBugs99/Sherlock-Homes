@@ -49,14 +49,6 @@ export default function Login() {
       return ordenadas.reverse();
   };
 
-
-  const array = ['a', 'b', 'c'];
-
-  array.splice()
-
-
-
-
   const [loginUser, setLoginUser] = useState({
     "email": "",
     "password": ""
