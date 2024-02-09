@@ -11,9 +11,26 @@ const getHouseData = async () => {
     const search = document.querySelector('.ui-search-results').innerText
     const houseData = document.querySelectorAll('.ui-search-layout__item');
     const data = [...houseData].map(house => {
+      const title = house.querySelector('.ui-search-item__title-label-grid').innerText;
+      const priceString = house.querySelector('.ui-search-price__second-line--decimal').innerText;
+      const priceNumber = house.querySelector('.andes-money-amount__fraction').innerText;
+      const atributes = house.querySelector('.ui-search-item__group--attributes').innerText;
+      const location = house.querySelector('.ui-search-item__group--location').innerText;
+
+      //const imageElement = house.querySelector('img');
+      const imageUrl = house.querySelector('img').src;
+      const url = house.querySelector('.ui-search-item__group--location').innerText;
       
+      return {
+        title,
+        priceString,
+        priceNumber,
+        atributes,
+        location,
+        imageUrl
+      };
     })
-    return houseData;
+    return data;
   })
   console.log(result);
   browser.close();
