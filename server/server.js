@@ -4,12 +4,19 @@ console.log('hola');
 const getHouseData = async () => {
 
   const browser = await puppeteer.launch();
-  console.log(browser)
   const page = await browser.newPage();
-  console.log(page)
-  await page.goto('https://quotes.toscrape.com');
-  browser.close();
+  await page.goto('https://www.portalinmobiliario.com/venta/casa/vina-del-mar-valparaiso#unapplied_filter_id%3Dneighborhood%26unapplied_filter_name%3DBarrios%26unapplied_value_id%3DTVhYUmXDsWFjYVRVeERRMVpKMFdRM1pHVTQ%26unapplied_value_name%3DRe%C3%B1aca%26unapplied_autoselect%3Dfalse');
 
+  const result = await page.evaluate(() => {
+    const search = document.querySelector('.ui-search-results').innerText
+    const houseData = document.querySelectorAll('.ui-search-layout__item');
+    const data = [...houseData].map(house => {
+      
+    })
+    return houseData;
+  })
+  console.log(result);
+  browser.close();
 }
 
 getHouseData();
