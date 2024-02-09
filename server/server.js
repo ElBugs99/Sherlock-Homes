@@ -1,6 +1,10 @@
+
+console.log('hola');
+
+
 //cheerio: pick out html elements, jQuery like
 //axios: make HTTP request easier, perform CRUD operations
-const express = require('express');
+/* const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const cheerio = require("cheerio");
@@ -50,6 +54,6 @@ app.use(cors()); // This allows all origins, you can configure it more specifica
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
+ */
 /* const url = 'https://www.portalinmobiliario.com/venta/casa/vina-del-mar-valparaiso#unapplied_filter_id%3Dneighborhood%26unapplied_filter_name%3DBarrios%26unapplied_value_id%3DTVhYUmXDsWFjYVRVeERRMVpKMFdRM1pHVTQ%26unapplied_value_name%3DRe%C3%B1aca%26unapplied_autoselect%3Dfalse';
  */
