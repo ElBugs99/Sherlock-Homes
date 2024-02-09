@@ -1,8 +1,16 @@
 import puppeteer from "puppeteer";
 console.log('hola');
 
-const browser = puppeteer.launch();
-console.log(browser)
+const getHouseData = async () => {
+
+  const browser = await puppeteer.launch();
+  console.log(browser)
+
+  browser.close();
+
+}
+
+getHouseData();
 
 //cheerio: pick out html elements, jQuery like
 //axios: make HTTP request easier, perform CRUD operations
