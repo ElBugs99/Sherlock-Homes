@@ -1,6 +1,8 @@
-
+import puppeteer from "puppeteer";
 console.log('hola');
 
+const browser = puppeteer.launch();
+console.log(browser)
 
 //cheerio: pick out html elements, jQuery like
 //axios: make HTTP request easier, perform CRUD operations
