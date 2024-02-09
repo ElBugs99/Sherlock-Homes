@@ -5,7 +5,9 @@ const getHouseData = async () => {
 
   const browser = await puppeteer.launch();
   console.log(browser)
-
+  const page = await browser.newPage();
+  console.log(page)
+  await page.goto('https://quotes.toscrape.com');
   browser.close();
 
 }
