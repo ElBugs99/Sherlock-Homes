@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer";
-console.log('hola');
+import fs from 'fs/promises';
 
 const getHouseData = async () => {
 
@@ -33,7 +33,8 @@ const getHouseData = async () => {
     return data;
   })
   console.log(result);
-  browser.close();
+  await fs.writeFile('houseData.json', JSON.stringify(result, null, 2))
+  await browser.close();
 }
 
 getHouseData();
