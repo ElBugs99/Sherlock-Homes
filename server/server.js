@@ -8,7 +8,6 @@ const getHouseData = async () => {
   await page.goto('https://www.portalinmobiliario.com/venta/casa/vina-del-mar-valparaiso#unapplied_filter_id%3Dneighborhood%26unapplied_filter_name%3DBarrios%26unapplied_value_id%3DTVhYUmXDsWFjYVRVeERRMVpKMFdRM1pHVTQ%26unapplied_value_name%3DRe%C3%B1aca%26unapplied_autoselect%3Dfalse');
 
   const result = await page.evaluate(() => {
-    const search = document.querySelector('.ui-search-results').innerText
     const houseData = document.querySelectorAll('.ui-search-layout__item');
     const data = [...houseData].map(house => {
       const title = house.querySelector('.ui-search-item__title-label-grid').innerText;
@@ -18,7 +17,7 @@ const getHouseData = async () => {
       const location = house.querySelector('.ui-search-item__group--location').innerText;
 
       //const imageElement = house.querySelector('img');
-      const imageUrl = house.querySelector('img').getAttribute('src');
+      const imageUrl = house.querySelector('img').getAttribute('data-src');
       const url = house.querySelector('.ui-search-item__group--location').innerText;
       
       return {
