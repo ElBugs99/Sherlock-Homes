@@ -18,7 +18,7 @@ const getHouseData = async () => {
       const location = house.querySelector('.ui-search-item__group--location').innerText;
 
       //const imageElement = house.querySelector('img');
-      const imageUrl = house.querySelector('img').src;
+      const imageUrl = house.querySelector('img').getAttribute('src');
       const url = house.querySelector('.ui-search-item__group--location').innerText;
       
       return {
