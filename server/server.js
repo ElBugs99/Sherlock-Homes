@@ -18,7 +18,7 @@ const getHouseData = async () => {
 
       //const imageElement = house.querySelector('img');
       const imageUrl = house.querySelector('img').getAttribute('data-src');
-      const url = house.querySelector('.ui-search-item__group--location').innerText;
+      const url = house.querySelector('a').getAttribute('href');
       
       return {
         title,
@@ -26,7 +26,8 @@ const getHouseData = async () => {
         priceNumber,
         atributes,
         location,
-        imageUrl
+        imageUrl,
+        url
       };
     })
     return data;
