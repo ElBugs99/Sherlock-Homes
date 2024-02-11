@@ -31,3 +31,8 @@ const getHouseData = async () => {
       };
     })
     return data;
+})
+console.log(result);
+await fs.writeFile('houseData.json', JSON.stringify(result, null, 2))
+await browser.close();
+}
