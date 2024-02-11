@@ -15,3 +15,7 @@ const getHouseData = async () => {
       const priceNumber = house.querySelector('.andes-money-amount__fraction').innerText;
       const atributes = house.querySelector('.ui-search-item__group--attributes').innerText;
       const location = house.querySelector('.ui-search-item__group--location').innerText;
+      
+      //const imageElement = house.querySelector('img');
+      const imageUrl = house.querySelector('img').getAttribute('data-src');
+      const url = house.querySelector('a').getAttribute('href');
