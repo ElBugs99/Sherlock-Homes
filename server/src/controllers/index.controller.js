@@ -1,7 +1,12 @@
 //aca van las operaciones (callbacks, db, etc)
 //import { Pool } from 'pg';
 import pkg from 'pg';
-const { Pool } = pkg;
+const { Pool } = pkg;//conjunto de conexiones
+
+//configuraciones
+new Pool({
+    
+})
 
 export const getHouses = (req, res) => {
     res.send('houses');
