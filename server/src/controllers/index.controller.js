@@ -12,8 +12,10 @@ const pool = new Pool({
     port: 5432
 })
 
-export const getHouses = (req, res) => {
-    res.send('houses');
+export const getHouses = async(req, res) => {
+    const response = await pool.query('select * from houses');
+    console.log(response.rows);
+    res.send(response.rows)
 }
 
 /* export default {
