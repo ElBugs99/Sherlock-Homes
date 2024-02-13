@@ -4,8 +4,12 @@ import pkg from 'pg';
 const { Pool } = pkg;//conjunto de conexiones
 
 //configuraciones
-new Pool({
-    
+const pool = new Pool({
+    host: 'localhost',
+    user: 'postgres',
+    password: 'Holaholahola2020+',
+    database: 'sherlockHomes',
+    port: 5432
 })
 
 export const getHouses = (req, res) => {
