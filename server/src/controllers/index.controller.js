@@ -19,7 +19,12 @@ export const getHouses = async(req, res) => {
 
 }
 
+export const getHouseById = async(req, res) => {
+
+}
+
 //callback de post user (crear usuario)
+/* 
 export const createUser = async (req, res) => {
     const { name, email } = req.body;
 
@@ -27,7 +32,7 @@ export const createUser = async (req, res) => {
     console.log(response);
     res.send('user created');
 }
-
+ */
 /* export default {
     getHouses
 }; */
