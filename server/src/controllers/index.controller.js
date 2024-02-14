@@ -20,7 +20,11 @@ export const getHouses = async(req, res) => {
 }
 
 export const getHouseById = async(req, res) => {
-    res.send('house ID: ' + req.params.id);
+    //res.send('house ID: ' + req.params.id);
+    const id = req.params.id;
+    const response = await pool.query('SELECT * FROM houses WHERE id = $1', [id]);
+    console.log(response.rows)
+    res.json(response.rows)
 }
 
 //callback de post user (crear usuario)
