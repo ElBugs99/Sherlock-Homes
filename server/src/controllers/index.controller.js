@@ -34,9 +34,7 @@ export const deleteHouse = async(req, res) => {
 }
 
 export const updateHouse = async(req, res) => {
-    const id = req.params.id;
-    const response = await pool.query('DELETE * FROM houses WHERE id = $1', [id]);
-    console.log(response);
+    
 }
 
 
