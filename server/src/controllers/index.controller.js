@@ -4,7 +4,7 @@ import pkg from 'pg';
 const { Pool } = pkg;//conjunto de conexiones
 
 //configuraciones
-const pool = new Pool({
+export const pool = new Pool({
     host: 'localhost',
     user: 'postgres',
     password: 'Holaholahola2020+',
