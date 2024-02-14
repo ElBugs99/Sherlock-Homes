@@ -19,4 +19,6 @@ async function insertData(filePath) {
   }
 }
 
+insertData()
+
 export default insertData;
