@@ -19,12 +19,6 @@ export const getHouses = async(req, res) => {
 
 }
 
-export const deleteHouse = async(req, res) => {
-    const id = req.params.id;
-    const response = await pool.query('DELETE * FROM houses WHERE id = $1', [id]);
-    console.log(response);
-}
-
 export const getHouseById = async(req, res) => {
     //res.send('house ID: ' + req.params.id);
     const id = req.params.id;
@@ -32,6 +26,20 @@ export const getHouseById = async(req, res) => {
     console.log(response.rows)
     res.json(response.rows)
 }
+
+export const deleteHouse = async(req, res) => {
+    const id = req.params.id;
+    const response = await pool.query('DELETE * FROM houses WHERE id = $1', [id]);
+    console.log(response);
+}
+
+export const updateHouse = async(req, res) => {
+    const id = req.params.id;
+    const response = await pool.query('DELETE * FROM houses WHERE id = $1', [id]);
+    console.log(response);
+}
+
+
 
 //callback de post user (crear usuario)
 /* 
