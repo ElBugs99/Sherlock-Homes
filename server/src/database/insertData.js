@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import { pool } from '../controllers/index.controller.js';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 
 const filePath = path.join(__dirname, '..', '..', 'data', 'houseData.json');
