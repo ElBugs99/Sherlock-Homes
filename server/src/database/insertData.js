@@ -19,6 +19,6 @@ async function insertData(filePath) {
   }
 }
 
-insertData()
+insertData('../../data')
 
 export default insertData;
