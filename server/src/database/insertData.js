@@ -3,8 +3,9 @@ import { pool } from '../controllers/index.controller.js';
 import path from 'path';
 //const filePath = path.join(__dirname, '..', '..', 'data', 'houseData.json');
 const hola = JSON.parse(await fs.readFile('../../data/houseData.json', 'utf8'));
+console.log(hola)
 
-
+/* 
 async function insertData() {
   const data = JSON.parse(await fs.readFile('../../data/houseData.json', 'utf8'));
   //const client = await pool.connect();
@@ -23,6 +24,6 @@ async function insertData() {
   }
 }
 
-insertData();
+insertData(); */
 
-export default insertData;
+//export default insertData;
