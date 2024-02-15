@@ -1,8 +1,9 @@
 import fs from 'fs/promises';
 import { pool } from '../controllers/index.controller.js';
 import path from 'path';
+
+
 const filePath = path.join(__dirname, '..', '..', 'data', 'houseData.json');
-console.log('hola')
 const hola = JSON.parse(await fs.readFile(filePath, 'utf8'));
 console.log(hola)
 
