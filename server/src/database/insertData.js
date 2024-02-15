@@ -1,8 +1,11 @@
 import fs from 'fs/promises';
 import { pool } from '../controllers/index.controller.js';
+import path from 'path';
+//const filePath = path.join(__dirname, '..', '..', 'data', 'houseData.json');
 
-async function insertData(filePath) {
-  const data = JSON.parse(await fs.readFile(filePath, 'utf8'));
+
+async function insertData() {
+  const data = JSON.parse(await fs.readFile('../../data/houseData.json', 'utf8'));
   //const client = await pool.connect();
   try {
     //await client.query('BEGIN');
@@ -19,6 +22,6 @@ async function insertData(filePath) {
   }
 }
 
-insertData('../../data')
+insertData();
 
 export default insertData;
