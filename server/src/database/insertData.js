@@ -26,16 +26,27 @@ async function insertData(filePath) {
       const location = item.location;
       const imageUrl = item.imageUrl;
       const url = item.url;
-      console.log(title);
-      //const response = await pool.query('insert into houses (name, email) values ($1, 2$)', [name, email])
+      //insert
+      await pool.query('insert into houses (title, priceString, priceNumber, atributes, location, imageUrl, url) values ($1, 2$, $3, $4, $5, $6, $7)', 
+        [
+            title,
+            priceString,
+            priceNumber,
+            atributes,
+            location,
+            imageUrl,
+            url
+        ])
     }
-    //await client.query('COMMIT');
+    //finaliza proceso y hace commit
+    await client.query('COMMIT');
   } catch (e) {
-    console.log('fallo la wea')
-    //await client.query('ROLLBACK');
+    //en caso de error no se inserta ningun dato en la bd
+    await client.query('ROLLBACK');
     throw e;
   } finally {
-    //client.release();
+    //liberar la conexion para que vuelva a estar disponible en el pool de conexiones
+    client.release();
   }
 }
 
