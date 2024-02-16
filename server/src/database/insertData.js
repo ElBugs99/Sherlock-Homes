@@ -19,8 +19,15 @@ async function insertData(filePath) {
   try {
     //await client.query('BEGIN');
     for (const item of data) {
-        console.log('objeto: ')
-      console.log(item);
+      const title = item.title;
+      const priceString = item.priceString;
+      const priceNumber = item.priceNumber;
+      const atributes = item.atributes;
+      const location = item.location;
+      const imageUrl = item.imageUrl;
+      const url = item.url;
+      console.log(title);
+      //const response = await pool.query('insert into houses (name, email) values ($1, 2$)', [name, email])
     }
     //await client.query('COMMIT');
   } catch (e) {
