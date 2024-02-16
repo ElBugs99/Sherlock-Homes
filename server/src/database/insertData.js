@@ -18,7 +18,7 @@ async function insertData(filePath) {
   //crea una conexion unica (cliente)
   const client = await pool.connect();
   try {
-    //await client.query('BEGIN');
+    await client.query('BEGIN');
     for (const item of data) {
       const title = item.title;
       const priceString = item.priceString;
