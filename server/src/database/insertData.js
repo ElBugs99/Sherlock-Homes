@@ -15,7 +15,8 @@ const filePath = path.join(__dirname, '..', '..', 'data', 'houseData.json');
 
 async function insertData(filePath) {
   const data = JSON.parse(await fs.readFile(filePath, 'utf8'));
-  //const client = await pool.connect();
+  //crea una conexion unica (cliente)
+  const client = await pool.connect();
   try {
     //await client.query('BEGIN');
     for (const item of data) {
@@ -27,7 +28,7 @@ async function insertData(filePath) {
       const imageUrl = item.imageUrl;
       const url = item.url;
       //insert
-      await pool.query('insert into houses (title, priceString, priceNumber, atributes, location, imageUrl, url) values ($1, 2$, $3, $4, $5, $6, $7)', 
+      await pool.query('insert into houses (title, priceString, priceNumber, atributes, location, imageUrl, url) values ($1, $2, $3, $4, $5, $6, $7)', 
         [
             title,
             priceString,
