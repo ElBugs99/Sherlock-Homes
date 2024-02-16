@@ -53,4 +53,4 @@ async function insertData(filePath) {
 
 insertData(filePath);
 
-//export default insertData;
+export default insertData;
