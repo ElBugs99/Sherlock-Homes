@@ -3,6 +3,14 @@ import HomeCard from '../../UI/HomeCard/HomeCard'
 
 export default function SearchResults() {
 
+    const fetchHouses = async() => {
+        try {
+
+        } catch {
+            
+        }
+    }
+
     const flag = false;
 
     if (flag) return <div>error</div>;
