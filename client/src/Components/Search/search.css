@@ -49,5 +49,12 @@
 }
 
 .loading {
-    color: rgb(225, 83, 83);
+    color: #44dfa9;
+    font-weight: 900;
+}
+
+.errormsj {
+    color: #df4444;
+    font-weight: 900;
+    font-size: 20px;
 }
