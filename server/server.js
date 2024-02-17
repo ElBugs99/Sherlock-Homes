@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import fs from 'fs/promises';
+import cors from 'cors'
 
 const getHouseData = async () => {
 

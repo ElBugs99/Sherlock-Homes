@@ -9,11 +9,14 @@ export default function SearchResults() {
 
     const fetchHouses = async() => {
         try {
-
-        } catch {
+            const response = await fetch('http://localhost:3000/houses')
+            console.log(response);
+        } catch (error){
 
         }
     }
+
+    fetchHouses();
 
     const flag = false;
 
