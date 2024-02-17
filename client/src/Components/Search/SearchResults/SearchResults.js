@@ -28,8 +28,8 @@ export default function SearchResults() {
     const flag = false;
 
     if (flag) return <div>error</div>;
-    if (loading) return <div className='loading'>Cargando...</div>;
-    if (error) return <div className='errormsj'>Ha ocurrido un error</div>;
+    if (loading) return <div className="search-results-container"><div className='loading'>Cargando...</div></div>;
+    if (error) return <div className="search-results-container"><div className='errormsj'>Ha ocurrido un error</div></div>;
 
 
   return (
