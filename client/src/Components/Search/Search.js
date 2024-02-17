@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./search.css";
 import SideBar from "../UI/SideBar/SideBar";
 import NavBar from "../UI/NavBar/NavBar";
 import HomeCard from "../UI/HomeCard/HomeCard";
 import Footer from "../UI/Footer/Footer"
+import SearchResults from "./SearchResults/SearchResults";
 
 export default function Search() {
+
+  const flag = true;
+  
+
   return (
     <div className="search">
       <NavBar />
@@ -15,21 +20,7 @@ export default function Search() {
           <SideBar />
         </div>
         <div className="search-results">
-          <div className="search-results-container">
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-            <HomeCard />
-          </div>
+          <SearchResults />
         </div>
       </div>
       <Footer />
