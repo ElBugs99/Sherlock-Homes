@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./search.css";
 import SideBar from "../UI/SideBar/SideBar";
 import NavBar from "../UI/NavBar/NavBar";
-import HomeCard from "../UI/HomeCard/HomeCard";
 import Footer from "../UI/Footer/Footer"
 import SearchResults from "./SearchResults/SearchResults";
 
