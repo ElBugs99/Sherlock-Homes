@@ -3,7 +3,7 @@ import HomeCard from '../../UI/HomeCard/HomeCard'
 
 export default function SearchResults() {
 
-    const [houses , setHouses] = useState();
+    const [houses , setHouses] = useState([]);
     const [loading , setLoading] = useState(true);
     const [error , setError] = useState(false);
 
@@ -11,15 +11,16 @@ export default function SearchResults() {
         try {
             const response = await fetch('http://localhost:3000/houses');
             const data = await response.json();
-            console.log(data)
+            setHouses(data);
         } catch (error){
-            
+            console.log(error);
         }
     }
 
     useEffect(() => {
         fetchHouses();
     }, [])
+
 
     const flag = false;
 
