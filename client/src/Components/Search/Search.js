@@ -8,9 +8,6 @@ import SearchResults from "./SearchResults/SearchResults";
 
 export default function Search() {
 
-  const flag = true;
-  
-
   return (
     <div className="search">
       <NavBar />
