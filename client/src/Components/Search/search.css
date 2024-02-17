@@ -50,6 +50,7 @@
 .loading {
     color: #44dfa9;
     font-weight: 900;
+    font-size: 20px;
 }
 
 .errormsj {
