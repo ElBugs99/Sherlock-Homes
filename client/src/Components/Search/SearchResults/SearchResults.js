@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HomeCard from '../../UI/HomeCard/HomeCard'
 
 export default function SearchResults() {
+
+    const [houses , setHouses] = useState();
+    const [loading , setLoading] = useState(true);
+    const [errro , setError] = useState(false);
 
     const fetchHouses = async() => {
         try {
 
         } catch {
-            
+
         }
     }
 
