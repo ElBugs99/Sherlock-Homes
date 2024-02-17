@@ -24,7 +24,6 @@ export default function SearchResults() {
         fetchHouses();
     }, [])
 
-    console.log(houses)
     const flag = false;
 
     if (flag) return <div>error</div>;
@@ -34,12 +33,11 @@ export default function SearchResults() {
 
   return (
     <div className="search-results-container">
-      <HomeCard />
-      <HomeCard />
-      <HomeCard />
-      <HomeCard />
-      <HomeCard />
-      <HomeCard />
+      {houses.map(x => {
+        console.log(x.imageUrl);
+        console.log(x);
+        return <HomeCard title={x.title} priceString={x.priceString} atributes={x.atributes} location={x.location} imageUrl={x.imageurl}/>;
+      })}
       <HomeCard />
     </div>
   )
