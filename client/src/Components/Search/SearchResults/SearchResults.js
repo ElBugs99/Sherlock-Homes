@@ -12,8 +12,10 @@ export default function SearchResults() {
             const response = await fetch('http://localhost:3000/houses');
             const data = await response.json();
             setHouses(data);
+            setLoading(false);
         } catch (error){
             console.log(error);
+            setLoading(false);
         }
     }
 
