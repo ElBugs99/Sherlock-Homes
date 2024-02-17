@@ -23,10 +23,11 @@ export default function SearchResults() {
         fetchHouses();
     }, [])
 
-
+    console.log(houses)
     const flag = false;
 
     if (flag) return <div>error</div>;
+    if (loading) return <div className='loading'>Cargando...</div>;
 
   return (
     <div className="search-results-container">
