@@ -8,8 +8,8 @@ export default function SearchResults() {
     const [error , setError] = useState(false);
 
     //paginador
-    const [postsPerPage , setPostsPerPage] = useEffect(10);
-    const [currentPage , setCurrentPage] = useEffect(1);
+    const [postsPerPage , setPostsPerPage] = useState(10);
+    const [currentPage , setCurrentPage] = useState(1);
 
     const fetchHouses = async() => {
         try {
