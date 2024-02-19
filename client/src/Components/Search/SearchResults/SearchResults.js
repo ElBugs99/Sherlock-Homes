@@ -9,7 +9,7 @@ export default function SearchResults() {
 
     const fetchHouses = async() => {
         try {
-            const response = await fetch('http://localhost:3000/houses');
+            const response = await fetch('http://localhost:3001/houses');
             const data = await response.json();
             setHouses(data);
             setLoading(false);
