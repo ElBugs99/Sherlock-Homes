@@ -9,6 +9,7 @@ export default function SearchResults() {
 
     //paginador
     const [postsPerPage , setPostsPerPage] = useEffect(10);
+    const [currentPage , setCurrentPage] = useEffect(1);
 
     const fetchHouses = async() => {
         try {
