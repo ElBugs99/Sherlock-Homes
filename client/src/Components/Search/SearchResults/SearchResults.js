@@ -7,6 +7,9 @@ export default function SearchResults() {
     const [loading , setLoading] = useState(true);
     const [error , setError] = useState(false);
 
+    //paginador
+    const [postsPerPage , setPostsPerPage] = useEffect(10);
+
     const fetchHouses = async() => {
         try {
             const response = await fetch('http://localhost:3001/houses');
