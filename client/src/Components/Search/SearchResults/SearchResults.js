@@ -44,8 +44,6 @@ export default function SearchResults() {
   return (
     <div className="search-results-container">
       {houses.map(x => {
-        console.log(x.pricestring);
-        console.log(x);
         return <HomeCard title={x.title} priceString={x.pricestring} atributes={x.atributes} location={x.location} imageUrl={x.imageurl}/>;
       })}
       <HomeCard />
