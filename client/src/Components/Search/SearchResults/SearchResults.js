@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import HomeCard from '../../UI/HomeCard/HomeCard'
+import Pagination from '../../UI/Pagination/Pagination';
 
 export default function SearchResults() {
 
@@ -9,7 +10,7 @@ export default function SearchResults() {
 
     //paginador
     const [postsPerPage , setPostsPerPage] = useState(9);
-    const [currentPage , setCurrentPage] = useState(2);
+    const [currentPage , setCurrentPage] = useState(1);
     //const [currentPosts , setCurrentPosts] = useState([]);
 
     const fetchHouses = async() => {
@@ -25,7 +26,7 @@ export default function SearchResults() {
         }
     }
 
-    const lastPostIndex = currentPage * postsPerPage;
+    const lastPostIndex = (currentPage * postsPerPage);
     const firstPostIndex = lastPostIndex - postsPerPage;
     const currentPosts = houses.slice(firstPostIndex, lastPostIndex);
     console.log(currentPosts)
@@ -42,12 +43,15 @@ export default function SearchResults() {
 
 
   return (
+    <>
     <div className="search-results-container">
-      {houses.map(x => {
+      {currentPosts.map(x => {
         return <HomeCard title={x.title} priceString={x.pricestring} atributes={x.atributes} location={x.location} imageUrl={x.imageurl}/>;
       })}
-      <HomeCard />
+      
     </div>
+    <Pagination />
+    </>
   )
 }
 
