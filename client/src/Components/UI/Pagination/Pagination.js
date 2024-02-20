@@ -9,9 +9,11 @@ export default function Pagination({postsPerPage, setCurrentPage, postsLen}) {
         pages.push(i)
     }
 
+    if (pages.length === 1) return null;
+
     console.log(pages);
   return (
-    <div>
+    <div className='paginatorButton'>
       {pages.map(page => <button onClick={() => setCurrentPage(page)}>{page}</button>)}
     </div>
   )
