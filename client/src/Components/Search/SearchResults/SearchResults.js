@@ -9,7 +9,7 @@ export default function SearchResults() {
 
     //paginador
     const [postsPerPage , setPostsPerPage] = useState(9);
-    const [currentPage , setCurrentPage] = useState(1);
+    const [currentPage , setCurrentPage] = useState(2);
     //const [currentPosts , setCurrentPosts] = useState([]);
 
     const fetchHouses = async() => {
