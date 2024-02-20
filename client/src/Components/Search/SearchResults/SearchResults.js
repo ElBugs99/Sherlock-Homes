@@ -4,11 +4,12 @@ import Pagination from '../../UI/Pagination/Pagination';
 
 export default function SearchResults() {
 
+    //traer data
     const [houses , setHouses] = useState([]);
     const [loading , setLoading] = useState(true);
     const [error , setError] = useState(false);
 
-    //paginador
+    //paginador de la data
     const [postsPerPage , setPostsPerPage] = useState(9);
     const [currentPage , setCurrentPage] = useState(1);
     //const [currentPosts , setCurrentPosts] = useState([]);
@@ -50,7 +51,7 @@ export default function SearchResults() {
       })}
       
     </div>
-    <Pagination postsPerPage={postsPerPage} currentPage={currentPage} postsLen={houses.length}/>
+    <Pagination postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} postsLen={houses.length}/>
     </>
   )
 }

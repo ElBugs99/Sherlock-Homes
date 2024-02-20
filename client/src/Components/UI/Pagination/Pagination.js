@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Pagination({postsPerPage, currentPage, postsLen}) {
+export default function Pagination({postsPerPage, setCurrentPage, postsLen}) {
 
     //cantidad de paginas = totalDePosts / postsPorPagina
     const pages = [];
@@ -12,7 +12,7 @@ export default function Pagination({postsPerPage, currentPage, postsLen}) {
     console.log(pages);
   return (
     <div>
-      {pages.map(page => <button >{page}</button>)}
+      {pages.map(page => <button onClick={() => setCurrentPage(page)}>{page}</button>)}
     </div>
   )
 }
