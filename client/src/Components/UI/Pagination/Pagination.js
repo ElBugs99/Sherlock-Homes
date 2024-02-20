@@ -8,11 +8,11 @@ export default function Pagination({postsPerPage, currentPage, postsLen}) {
     for (let i = 1; i <= Math.ceil(postsLen/postsPerPage); i++) {
         pages.push(i)
     }
-    
+
     console.log(pages);
   return (
     <div>
-      {Math.ceil(postsLen/postsPerPage)}
+      {pages.map(page => <button >{page}</button>)}
     </div>
   )
 }
