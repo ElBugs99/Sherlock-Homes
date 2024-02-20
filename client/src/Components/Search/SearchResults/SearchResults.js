@@ -46,8 +46,8 @@ export default function SearchResults() {
   return (
     <>
     <div className="search-results-container">
-      {currentPosts.map(x => {
-        return <HomeCard title={x.title} priceString={x.pricestring} atributes={x.atributes} location={x.location} imageUrl={x.imageurl}/>;
+      {currentPosts.map((x, index) => {
+        return <HomeCard key={index} title={x.title} priceString={x.pricestring} atributes={x.atributes} location={x.location} imageUrl={x.imageurl}/>;
       })}
       
     </div>
