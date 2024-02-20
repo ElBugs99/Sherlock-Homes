@@ -19,17 +19,19 @@ export default function Pagination({
   console.log(pages);
   return (
     <div className="paginator">
+        <button className="paginatorButton">{"<"}</button>
       {pages.map((page, index) => (
         <button
           key={index}
           className={`paginatorButton ${
-            page === currentPage ? "pageActive" : ""
+            page === currentPage ? "active" : ""
           }`}
           onClick={() => setCurrentPage(page)}
         >
           {page}
         </button>
       ))}
+      <button className="paginatorButton">{">"}</button>
     </div>
   );
 }
