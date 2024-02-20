@@ -14,8 +14,8 @@ export default function Pagination({postsPerPage, setCurrentPage, postsLen}) {
 
     console.log(pages);
   return (
-    <div className='paginatorButton'>
-      {pages.map(page => <button onClick={() => setCurrentPage(page)}>{page}</button>)}
+    <div className='paginator'>
+      {pages.map(page => <button className='paginatorButton' onClick={() => setCurrentPage(page)}>{page}</button>)}
     </div>
   )
 }
