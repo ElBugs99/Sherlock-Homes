@@ -51,7 +51,7 @@ export default function SearchResults() {
       })}
       
     </div>
-    <Pagination postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} postsLen={houses.length}/>
+    <Pagination postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} postsLen={houses.length} currentPage={currentPage}/>
     </>
   )
 }
