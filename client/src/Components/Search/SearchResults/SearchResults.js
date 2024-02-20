@@ -10,7 +10,7 @@ export default function SearchResults() {
     //paginador
     const [postsPerPage , setPostsPerPage] = useState(9);
     const [currentPage , setCurrentPage] = useState(1);
-    const [currentPosts , setCurrentPosts] = useState([]);
+    //const [currentPosts , setCurrentPosts] = useState([]);
 
     const fetchHouses = async() => {
         try {
@@ -24,6 +24,11 @@ export default function SearchResults() {
             setError(true);
         }
     }
+
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = houses.slice(firstPostIndex, lastPostIndex);
+    console.log(currentPosts)
 
     useEffect(() => {
         fetchHouses();
