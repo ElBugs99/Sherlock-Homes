@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HomeCard from "../../UI/HomeCard/HomeCard";
 import Pagination from "../../UI/Pagination/Pagination";
-import defaultImage from "../../../assets/images/defaulthome.jpg";
+import defaultImage from "../../../assets/images/defaulthome2.jpg";
 
 export default function SearchResults() {
   //traer data
@@ -63,7 +63,7 @@ export default function SearchResults() {
               priceString={x.pricestring}
               atributes={x.atributes}
               location={x.location}
-              imageUrl={x.imageurl}
+              imageUrl={x.imageurl === null ? defaultImage : x.imageurl}
             />
           );
         })}
