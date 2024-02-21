@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HomeCard from "../../UI/HomeCard/HomeCard";
 import Pagination from "../../UI/Pagination/Pagination";
+import defaultImage from "../../../assets/images/defaulthome.jpg";
 
 export default function SearchResults() {
   //traer data
