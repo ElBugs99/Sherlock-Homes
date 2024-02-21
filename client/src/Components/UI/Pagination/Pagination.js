@@ -15,11 +15,6 @@ export default function Pagination({
     pages.push(i);
   }
 
-  const nextPage = () => {
-    if (currentPage === pagesNumber) return;
-    setCurrentPage((prev) => prev + 1);
-  };
-
   if (pages.length === 1) return null;
 
   return (
