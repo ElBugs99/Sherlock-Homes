@@ -10,7 +10,8 @@ export default function SearchResults() {
   const [error, setError] = useState(false);
 
   //paginador de la data
-  const [postsPerPage, setPostsPerPage] = useState(9);
+  const postsPerPage = 9;
+  //const [postsPerPage, setPostsPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(1);
   //const [currentPosts , setCurrentPosts] = useState([]);
 
