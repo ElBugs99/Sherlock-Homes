@@ -31,7 +31,7 @@ export default function Pagination({
           {page}
         </button>
       ))}
-      <button className="paginatorButton">{">"}</button>
+      <button onClick={() => setCurrentPage(prev => prev + 1)} className="paginatorButton">{">"}</button>
     </div>
   );
 }
