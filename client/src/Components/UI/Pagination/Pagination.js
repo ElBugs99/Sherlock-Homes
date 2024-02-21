@@ -24,12 +24,16 @@ export default function Pagination({
 
   return (
     <div className="paginator">
-      <button
+      {
+        currentPage > 1 && (
+        <button
       onClick={() => {
         if (currentPage > 1) setCurrentPage((prev) => prev - 1);
       }}
        className="paginatorButton"
       >{"<"}</button>
+        )
+      }
       {pages.map((page, index) => (
         <button
           key={index}
@@ -39,14 +43,18 @@ export default function Pagination({
           {page}
         </button>
       ))}
-      <button
+      
+      {
+        currentPage < pagesNumber && (
+        <button
         onClick={() => {
           if (currentPage < pagesNumber) setCurrentPage((prev) => prev + 1);
         }}
         className="paginatorButton"
       >
         {">"}
-      </button>
+      </button>)
+    }
     </div>
   );
 }
