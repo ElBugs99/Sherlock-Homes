@@ -10,8 +10,6 @@ const filePath = path.join(__dirname, '..', '..', 'data', 'houseData.json');
 
 
 //const hola = JSON.parse(await fs.readFile(filePath, 'utf8'));
-//console.log(hola)
-
 
 async function insertData(filePath) {
   const data = JSON.parse(await fs.readFile(filePath, 'utf8'));
