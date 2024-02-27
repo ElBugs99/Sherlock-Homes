@@ -9,8 +9,6 @@ const __dirname = path.dirname(__filename);
 const filePath = path.join(__dirname, '..', '..', 'data', 'houseData.json');
 
 
-//const hola = JSON.parse(await fs.readFile(filePath, 'utf8'));
-
 async function insertData(filePath) {
   const data = JSON.parse(await fs.readFile(filePath, 'utf8'));
   //crea una conexion unica (cliente)
