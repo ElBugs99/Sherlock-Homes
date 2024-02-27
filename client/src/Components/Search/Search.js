@@ -2,11 +2,10 @@ import React from "react";
 import "./search.css";
 import SideBar from "../UI/SideBar/SideBar";
 import NavBar from "../UI/NavBar/NavBar";
-import Footer from "../UI/Footer/Footer"
+import Footer from "../UI/Footer/Footer";
 import SearchResults from "./SearchResults/SearchResults";
 
 export default function Search() {
-
   return (
     <div className="search">
       <NavBar />
