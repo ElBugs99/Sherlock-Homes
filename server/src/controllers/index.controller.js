@@ -38,9 +38,6 @@ export const updateHouse = async(req, res) => {
 }
 
 
-
-//callback de post user (crear usuario)
-
 /* export default {
     getHouses
 }; */
