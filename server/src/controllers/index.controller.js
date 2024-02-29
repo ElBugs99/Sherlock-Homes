@@ -36,6 +36,3 @@ export const deleteHouse = async(req, res) => {
 export const updateHouse = async(req, res) => {
     
 }
-
-//Base de datos
-//pg es tan solo un modulo de conexion
