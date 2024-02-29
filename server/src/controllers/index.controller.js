@@ -37,10 +37,5 @@ export const updateHouse = async(req, res) => {
     
 }
 
-
-/* export default {
-    getHouses
-}; */
-
 //Base de datos
 //pg es tan solo un modulo de conexion
