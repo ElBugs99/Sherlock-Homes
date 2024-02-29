@@ -40,15 +40,7 @@ export const updateHouse = async(req, res) => {
 
 
 //callback de post user (crear usuario)
-/* 
-export const createUser = async (req, res) => {
-    const { name, email } = req.body;
 
-    const response = await pool.query('insert into users (name, email) values ($1, 2$)', [name, email])
-    console.log(response);
-    res.send('user created');
-}
- */
 /* export default {
     getHouses
 }; */
