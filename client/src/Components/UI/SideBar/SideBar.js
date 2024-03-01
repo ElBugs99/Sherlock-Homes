@@ -18,6 +18,7 @@ export default function SideBar() {
         max="500000"
         step="100"
         value="250000" />
+        <input type="datetime-local" name="datetime" id="datetime" />
     </div>
   )
 }
