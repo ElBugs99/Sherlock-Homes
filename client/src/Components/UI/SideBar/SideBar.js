@@ -20,6 +20,13 @@ export default function SideBar() {
         value="250000" />
         <input type="datetime-local" name="datetime" id="datetime" />
         <input type="month" name="month" id="month" />
+        <input
+          type="date"
+          name="myDate"
+          min="2013-06-01"
+          max="2013-08-31"
+          step="7"
+          id="myDate" />
     </div>
   )
 }
