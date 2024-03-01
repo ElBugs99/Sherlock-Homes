@@ -19,6 +19,7 @@ export default function SideBar() {
         step="100"
         value="250000" />
         <input type="datetime-local" name="datetime" id="datetime" />
+        <input type="month" name="month" id="month" />
     </div>
   )
 }
