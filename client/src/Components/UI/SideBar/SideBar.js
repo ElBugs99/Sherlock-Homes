@@ -10,6 +10,14 @@ export default function SideBar() {
       <input type='checkbox' />
       <input type='radio' value="Python"/>
       <input type="radio" id="javascript" name="fav_language" value="JavaScript"></input>
+      <input
+        type="range"
+        name="price"
+        id="price"
+        min="50000"
+        max="500000"
+        step="100"
+        value="250000" />
     </div>
   )
 }
