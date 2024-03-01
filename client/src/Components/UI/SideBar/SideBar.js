@@ -8,6 +8,7 @@ export default function SideBar() {
       <input type='checkbox' />
       <input type='checkbox' />
       <input type='checkbox' />
+      <input type='radio' />
     </div>
   )
 }
