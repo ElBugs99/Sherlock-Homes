@@ -55,6 +55,7 @@ export default function SearchResults() {
 
   return (
     <>
+    <div></div>
       <div className="search-results-container">
         {currentPosts.map((x, index) => {
           return (
