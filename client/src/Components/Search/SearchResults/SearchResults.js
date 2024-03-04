@@ -55,7 +55,7 @@ export default function SearchResults() {
 
   return (
     <>
-    <div></div>
+    <div>Results: {houses.length}</div>
       <div className="search-results-container">
         {currentPosts.map((x, index) => {
           return (
