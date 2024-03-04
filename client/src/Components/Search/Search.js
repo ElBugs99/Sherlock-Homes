@@ -11,7 +11,7 @@ export default function Search() {
       <NavBar />
       <div className="search-container">
         <div className="search-info">
-          <div className="search-info-title">Results: 50</div>
+          <div className="search-info-title"></div>
           <SideBar />
         </div>
         <div className="search-results">
