@@ -30,7 +30,7 @@ export default function Home() {
       {backendData.users.map((x, i) => {
         return <div key={i}>{x}</div>
         })}
-        <NavBar />
+        <NavBar searchHidden={true}/>
         <TopSection />
         <ExploreHomes />
         <PromoSection />
