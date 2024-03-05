@@ -31,7 +31,6 @@ export default function SearchResults() {
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = houses.slice(firstPostIndex, lastPostIndex);
-  console.log(currentPosts);
 
   useEffect(() => {
     fetchHouses();
