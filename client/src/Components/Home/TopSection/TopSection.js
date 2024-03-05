@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./topSection.css";
 import homeVideo from "../../../assets/videos/home-video.mp4";
 import search from "../../../assets/images/white-search-icon.svg";
+import SearchBar from "../../UI/SearchBar/SearchBar";
 
 export default function TopSection() {
   const styles = {
@@ -44,12 +45,7 @@ export default function TopSection() {
           Your browser does not support the video tag.
         </video>
         {/* <img className='top-img' src={img} alt='promo' /> */}
-        <form className="top-form">
-          <input className="top-input" spellCheck="false" />
-          <button className="search-btn">
-            <img src={search} className="search-icon" alt="search" />
-          </button>
-        </form>
+        <SearchBar />
         <div className="top-img-text-container">
           <div className="top-img-text">
             Encuentra tu nuevo{" "}
