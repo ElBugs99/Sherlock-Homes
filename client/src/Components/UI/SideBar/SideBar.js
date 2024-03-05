@@ -24,7 +24,6 @@ export default function SideBar() {
         step="100"
         value="250000"
       />
-      <input type="month" name="month" id="month" />
       <input
         type="date"
         name="myDate"
