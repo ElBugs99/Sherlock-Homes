@@ -45,7 +45,9 @@ export default function TopSection() {
           Your browser does not support the video tag.
         </video>
         {/* <img className='top-img' src={img} alt='promo' /> */}
-        <SearchBar />
+        <div className="top-form">
+          <SearchBar />
+        </div>
         <div className="top-img-text-container">
           <div className="top-img-text">
             Encuentra tu nuevo{" "}
