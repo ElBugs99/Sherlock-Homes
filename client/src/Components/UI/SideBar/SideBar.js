@@ -24,14 +24,6 @@ export default function SideBar() {
         step="100"
         value="250000"
       />
-      <input
-        type="date"
-        name="myDate"
-        min="2013-06-01"
-        max="2013-08-31"
-        step="7"
-        id="myDate"
-      />
     </div>
   );
 }
