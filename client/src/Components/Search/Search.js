@@ -8,7 +8,7 @@ import SearchResults from "./SearchResults/SearchResults";
 export default function Search() {
   return (
     <div className="search">
-      <NavBar />
+      <NavBar searchHidden={true}/>
       <div className="search-container">
         <div className="search-info">
           <div className="search-info-title"></div>
