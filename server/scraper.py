@@ -20,3 +20,10 @@ def scrape_data(url):
     else:
         print('Failed to fetch page:', response.status_code)
         return None
+    
+def main():
+# URL of the website you want to scrape
+url = 'https://example.com'
+
+# Call the scrape_data function with the URL
+scraped_data = scrape_data(url)
