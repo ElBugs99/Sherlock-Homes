@@ -23,7 +23,13 @@ def scrape_data(url):
     
 def main():
 # URL of the website you want to scrape
-url = 'https://example.com'
+    url = 'https://example.com'
 
-# Call the scrape_data function with the URL
-scraped_data = scrape_data(url)
+    # Call the scrape_data function with the URL
+    scraped_data = scrape_data(url)
+    if scraped_data:
+            # Do something with the scraped data
+            for item in scraped_data:
+                print(item)
+    else:
+        print('Scraping failed.')
