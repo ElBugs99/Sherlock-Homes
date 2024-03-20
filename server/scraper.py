@@ -33,3 +33,6 @@ def main():
                 print(item)
     else:
         print('Scraping failed.')
+
+if __name__ == "__main__":
+    main()
