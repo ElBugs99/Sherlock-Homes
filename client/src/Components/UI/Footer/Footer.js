@@ -6,6 +6,7 @@ export default function Footer() {
     <div className='pageFooter'>
       ® 2023, SherlockHomes SpA.
       <div>Todos los derechos reservados.</div>
+      <div className='footer__links'>link</div>
     </div>
   )
 }
