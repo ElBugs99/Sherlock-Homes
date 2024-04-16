@@ -35,8 +35,9 @@ export default function useApp() {
 
 
   return (
-    <>
-      
-    </>
+    {
+        houses,
+        postsPerPage,
+    }
   );
 }
