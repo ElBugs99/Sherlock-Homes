@@ -38,7 +38,9 @@ export default function useApp() {
   return (
     {
         houses,
-        postsPerPage
+        postsPerPage,
+        loading,
+        error
     }
   );
 }

@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
 import HomeCard from "../../UI/HomeCard/HomeCard";
 import Pagination from "../../UI/Pagination/Pagination";
 import defaultImage from "../../../assets/images/defaulthome2.jpg";
+import { appContext } from "../../../appContext";
 
 export default function SearchResults() {
+
+  const { houses, loading, error } = useContext(appContext);
+
   //traer data
-  const [houses, setHouses] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
 
   //paginador de la data
   const postsPerPage = 9;
@@ -15,26 +16,10 @@ export default function SearchResults() {
   const [currentPage, setCurrentPage] = useState(1);
   //const [currentPosts , setCurrentPosts] = useState([]);
 
-  const fetchHouses = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/houses");
-      const data = await response.json();
-      setHouses(data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-      setError(true);
-    }
-  };
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = houses.slice(firstPostIndex, lastPostIndex);
-
-  useEffect(() => {
-    fetchHouses();
-  }, []);
 
   const flag = false;
 
