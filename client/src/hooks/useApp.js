@@ -38,6 +38,7 @@ export default function useApp() {
     {
         houses,
         postsPerPage,
+        currentPage
     }
   );
 }
