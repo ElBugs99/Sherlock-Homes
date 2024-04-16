@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useApp() {
   //traer data
@@ -6,11 +6,8 @@ export default function useApp() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  //paginador de la data
+
   const postsPerPage = 9;
-  //const [postsPerPage, setPostsPerPage] = useState(9);
-  const [currentPage, setCurrentPage] = useState(1);
-  //const [currentPosts , setCurrentPosts] = useState([]);
 
   const fetchHouses = async () => {
     try {
@@ -25,10 +22,6 @@ export default function useApp() {
       setError(true);
     }
   };
-
-  const lastPostIndex = currentPage * postsPerPage;
-  const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = houses.slice(firstPostIndex, lastPostIndex);
 
   useEffect(() => {
     fetchHouses();
