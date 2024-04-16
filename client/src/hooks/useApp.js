@@ -18,6 +18,7 @@ export default function useApp() {
       const data = await response.json();
       setHouses(data);
       setLoading(false);
+      console.log('pasando por useEffect')
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -37,8 +38,7 @@ export default function useApp() {
   return (
     {
         houses,
-        postsPerPage,
-        currentPage
+        postsPerPage
     }
   );
 }
