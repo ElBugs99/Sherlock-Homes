@@ -5,6 +5,7 @@ import NoMatch from "./Components/UI/NoMatch/NoMatch";
 import Search from "./Components/Search/Search";
 import { appContext } from "./appContext";
 import useApp from "./hooks/useApp";
+import InfoPage from "./Components/InfoPage/InfoPage";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/Info" element={<InfoPage />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </Router>
