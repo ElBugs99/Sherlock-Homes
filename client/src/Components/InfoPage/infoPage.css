@@ -7,19 +7,19 @@
     font-family: 'Roboto', sans-serif;
     background-color: #ebf1ec;
     align-items: center;
-    justify-content: center;
 }
 
 .info-page-row {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     width: 100%;
-    padding: 50px 0;
+    padding: 50px 0px;
+    margin: 0 50px;
 
 }
 
 .info-page-img {
-    height: 100px;
+    height: 300px;
     border-radius: 10px;
 }
 
