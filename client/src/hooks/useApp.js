@@ -27,6 +27,7 @@ export default function useApp() {
     fetchHouses();
   }, []);
 
+  console.log('houses', houses)
 
   return (
     {
