@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import useFilter from "./useFilter";
 
 export default function useApp() {
+  /* const {} = useFilter() */
   //traer data
   const [houses, setHouses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,7 +19,6 @@ export default function useApp() {
       setLoading(false);
       console.log('pasando por useEffect')
     } catch (error) {
-      console.log(error);
       setLoading(false);
       setError(true);
     }
@@ -27,6 +28,7 @@ export default function useApp() {
     fetchHouses();
   }, []);
 
+  console.log('houses', houses)
 
   return (
     {

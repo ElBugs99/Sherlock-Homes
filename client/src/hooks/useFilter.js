@@ -5,13 +5,25 @@ export default function useFilter() {
 
   const { houses, loading, error } = useContext(appContext);
   const [ SelectedFilters, setSelectedFilters ] = useState([]);
-  const [ filteredItems, setFilteredItems ] = useState()
-  const filters = ["a", "b", "c", "d", "f", "g", "h", "i", "j", "k", "l", "m"];
+  const [ filteredItems, setFilteredItems ] = useState([])
+  const filters = ["a", "b", "c"];
 
+  // ------input filter------
+  const setSearchFilteredData = (value) => {
+    const filteredList = houses.filter((item) => {
+      return item.location.toLowerCase().includes(value.toLowerCase());
+    });
+    setFilteredItems(filteredList);
+    console.log('useFilter Searchfunction filteredList', filteredList);
+  };
 
-  return (
-    {
-       
-    }
-  );
+  useEffect(() => {
+    console.log('useFilter filteredItems', filteredItems);
+  }, [filteredItems]);
+  // ------radio filters------
+
+  return {
+    setSearchFilteredData,
+    filteredItems
+  }
 }
