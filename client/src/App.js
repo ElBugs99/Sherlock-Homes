@@ -6,11 +6,13 @@ import Search from "./Components/Search/Search";
 import { appContext } from "./appContext";
 import useApp from "./hooks/useApp";
 import InfoPage from "./Components/InfoPage/InfoPage";
+import useFilter from "./hooks/useFilter";
 
 function App() {
 
   const { houses } = useApp();
-
+/*   const { filteredItems } = useFilter() */
+{/* <Route path="/search/:location" element={<Search />} /> */}
   return (
     <appContext.Provider value={{ houses }}>
       <div className="App">
@@ -25,6 +27,7 @@ function App() {
         </Router>
       </div>
     </appContext.Provider>
+    
   );
 }
 

@@ -12,8 +12,15 @@ export default function SideBar() {
 
   return (
     <div className="side-bar">
+      
       <h2 className="sidebar-title">Categoría</h2>
       <form>
+        <Input
+          value="Todas"
+          title="Todas"
+          name="Todas"
+          handleChange={handleChange}
+        />
         <Input
           value="Casa"
           title="Casa"
@@ -24,18 +31,6 @@ export default function SideBar() {
           value="Departamento"
           title="Departamento"
           name="Departamento"
-          handleChange={handleChange}
-        />
-        <Input
-          value="sandals"
-          title="Sandals"
-          name="sandals"
-          handleChange={handleChange}
-        />
-        <Input
-          value="heels"
-          title="Heels"
-          name="heels"
           handleChange={handleChange}
         />
       </form>
@@ -43,6 +38,12 @@ export default function SideBar() {
       <h2 className="sidebar-title">Precio</h2>
       <form>
         <Input
+          value="Todas"
+          title="Todas"
+          name="Todas"
+          handleChange={handleChange}
+        />
+        <Input
           value="Casa"
           title="Casa"
           name="Casa"
@@ -52,18 +53,6 @@ export default function SideBar() {
           value="Departamento"
           title="Departamento"
           name="Departamento"
-          handleChange={handleChange}
-        />
-        <Input
-          value="sandals"
-          title="Sandals"
-          name="sandals"
-          handleChange={handleChange}
-        />
-        <Input
-          value="heels"
-          title="Heels"
-          name="heels"
           handleChange={handleChange}
         />
       </form>
@@ -71,6 +60,12 @@ export default function SideBar() {
       <h2 className="sidebar-title">habitaciones</h2>
       <form>
         <Input
+          value="Todas"
+          title="Todas"
+          name="Todas"
+          handleChange={handleChange}
+        />
+        <Input
           value="Casa"
           title="Casa"
           name="Casa"
@@ -82,19 +77,8 @@ export default function SideBar() {
           name="Departamento"
           handleChange={handleChange}
         />
-        <Input
-          value="sandals"
-          title="Sandals"
-          name="sandals"
-          handleChange={handleChange}
-        />
-        <Input
-          value="heels"
-          title="Heels"
-          name="heels"
-          handleChange={handleChange}
-        />
       </form>
+
     </div>
   );
 }
