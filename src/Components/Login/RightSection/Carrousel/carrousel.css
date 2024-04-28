@@ -1,0 +1,38 @@
+.carrousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 95%;
+    width: 95%;
+    background-color: #38ba8c;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.4)
+}
+
+.carrousel-img {
+    height: 90%;
+    width: 90%;
+    border-radius: 10px;
+}
+
+.inner-carrousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #2f9c75;
+    height: 95%;
+    width: 95%;
+    border-radius: 10px;
+}
+
+.carrousel-title {
+    font-weight: 900;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+@media screen {
+    
+}
