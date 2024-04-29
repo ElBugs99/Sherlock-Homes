@@ -1,30 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-.info-page {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    font-family: 'Roboto', sans-serif;
-    background-color: #ebf1ec;
-    align-items: center;
+.logo{
+    margin-top: 100px;
 }
 
+.info-page {
+    scrollbar-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    font-family: 'Lilita One', sans-serif;
+    align-items: center;
+
+}
+
+h1{
+    text-align: center;
+    color: white;
+    align-items: center;
+    font-size: 90px;
+}
 .info-page-row {
     display: flex;
-    justify-content: space-around;
-    width: 100%;
-    padding: 120px 0px 50px 0;
-    margin: 0 50px;
-
+    width: 100vw;
+    height: 90vw;
+    margin-top:  10px;
+    margin-bottom: 5px;
 }
 
 .info-page-img {
-    height: 300px;
-    border-radius: 10px;
+    margin-left: auto;
+    margin-right: 5px;
+    margin-top: 50px;
+    width: 50vw;
+    height: 30vw;
+    border-radius: 20px;
 }
 
 .info-page p {
+    color: #ffffff;
+    font-size: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 5px;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; 
+    background-position: center; 
+    z-index: -1; 
+}
+
+.enunciado{
+    height: 50%;
+    margin-right: auto;
+    margin-left: 5px;
+    margin-top: 50px;
+    width: 50vw;
+    border-radius: 20px;
 }
