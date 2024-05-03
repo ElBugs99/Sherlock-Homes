@@ -16,6 +16,9 @@ export default function LeftSection() {
             </div>
         </div>
       <LoginForm />
+      <div> 
+        <a href='registro'>Registrarse</a>
+      </div>
       <div className='footer'>
             <div></div>
         </div>
