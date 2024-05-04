@@ -7,6 +7,8 @@ import { appContext } from "./appContext";
 import useApp from "./hooks/useApp";
 import InfoPage from "./Components/InfoPage/InfoPage";
 import useFilter from "./hooks/useFilter";
+import Registro from "./Components/Registro/registro";
+
 
 function App() {
 
@@ -20,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/registro" element={<Registro />} />
             <Route path="/search" element={<Search />} />
             <Route path="/Info" element={<InfoPage />} />
             <Route path="*" element={<NoMatch />} />
