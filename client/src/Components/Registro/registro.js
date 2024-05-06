@@ -36,8 +36,18 @@ return(
                 <h4 className="Titulo">Datos de Usuario</h4>
                 
                 <input className="form-input-rg" placeholder="Nombre Usuario" type="text" {...register('usuario', {
-                    required: true
+                    required: true,
+                    maxLength: 10,
+                    minLength: 4,
+                    pattern:/^(?=.*[0-9])[a-zA-Z0-9]{4,}$/
                 })}/>
+                <div className="validacion">
+                {errors.usuario?.type === 'required' && <p>Este campo no puede estar vacio</p>}
+                {errors.usuario?.type === 'maxLength' && <p>El maximo de caracteres es 10</p>}
+                {errors.usuario?.type === 'minLength' && <p>El minimo de caracteres es 4</p>}
+                {errors.usuario?.type === 'pattern' && <p>Debe contener por lo menos un numero</p>}
+                </div>
+                 
             </div>
             <div>
                 
@@ -47,19 +57,33 @@ return(
             </div>
             <div>
                 
-                <input className="form-input-rg" placeholder="Contraseña" type="text" {...register('password',{
-                    required: true
+                <input className="form-input-rg" placeholder="Contraseña" type="password" {...register('password',{
+                    required: true,
+                    pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/,
+                    maxLength: 8,
+                    minLength:5
                 })}/>
+                <div className="validacion">
+                {errors.password?.type === 'required' && <p>Este campo no puede estar vacio</p>}
+                {errors.password?.type === 'maxLength' && <p>El maximo de caracteres es 8</p>}
+                {errors.password?.type === 'minLength' && <p>El minimo de caracteres es 5</p>}
+                {errors.password?.type === 'pattern' && <p>Debe contener por lo menos un numero, una mayuscula y un caracter especial</p>}
+                </div>
             </div>
             <div>
                 
-                <input className="form-input-rg" placeholder="Repite la contraseña" type="text" {...register('password2', {
-                    required: true
+                <input className="form-input-rg" placeholder="Repite la contraseña" type="password" {...register('password2', {
+                    required: true,
+                    validate: (value) => value === register.password
+                    
                 })}/>
+                <div className="validacion">
+                {errors.password2?.type && <p> La contraseña no coincide</p>}
+                </div>
             </div>
             <div>
                 <label className="Titulo" > Acepta los Terminos y Condiciones</label>
-                <input  type="checkbox" {...register('terminosYcondiciones',{
+                <input className="caja"  type="checkbox" {...register('terminosYcondiciones',{
                     required: true
                 })}></input>
             </div>
