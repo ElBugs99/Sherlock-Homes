@@ -1,9 +1,6 @@
-//const puppeteer = require('puppeteer');
-
-console.log('Begining scraping...');
-
 import puppeteer from "puppeteer";
 
+console.log('Begining scraping...');
 
 (async () => {
 
@@ -48,7 +45,7 @@ import puppeteer from "puppeteer";
     await page.waitForSelector('adview-map');
     await page.click('adview-map');
 
-    // Wait for the thumbnails to load (adjust the wait time as needed)
+    // Wait for the thumbnails to load
     const time = Math.random() * 2000 + 1000;
     await new Promise(resolve => setTimeout(resolve, time));
 
@@ -144,8 +141,6 @@ import puppeteer from "puppeteer";
       return parseFloat(numericStr);
     }
 
-
-
     const listing_url = url
     const media = pmedia;
     const title = document.querySelector('h1').innerText;
@@ -179,11 +174,6 @@ import puppeteer from "puppeteer";
     });
 
 
-
-    /* const p = document.querySelector('adview-map').innerHTML;
-    console.log('map:', p);
-    console.log('lolololol') */
-
     const bedrooms = info.Dormitorios ? extractNumericValue(info.Dormitorios) : null;
     const bathrooms = info['Baños'] ? extractNumericValue(info['Baños']) : null;
     const sqft = info['Superficie total'] ? extractNumericValue(info['Superficie total']) : null;
@@ -211,15 +201,10 @@ import puppeteer from "puppeteer";
     };
   }, url, pmedia, lat);
 
-  /* console.log('Listing Info:', listingInfo, divsWithBackgroundImage); */
-  // Add a delay between each listing visit to avoid bot detection
   const delay = Math.random() * 2000 + 1000;
   await new Promise(resolve => setTimeout(resolve, delay));
   console.log("all info: ", listingInfo)
 }
-
-  /* console.log('All Listing URLs:', allListingUrls.length);
-  console.log('Last Page Number:', lastPageNumber); */
 
   await browser.close();
 }) ();
