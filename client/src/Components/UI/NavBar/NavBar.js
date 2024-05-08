@@ -17,9 +17,9 @@ export default function NavBar({searchHidden}) {
           <SearchBar />
         </div>
         <div className='nav-options'>
-          <NavLink to='/' className='nav-option'>Home</NavLink >
-          <NavLink to='/search' className='nav-option'>Search</NavLink>
-          <NavLink to='/Info' className='nav-option'>Info</NavLink>
+          <NavLink to='/' className='nav-option'>Inicio</NavLink >
+          <NavLink to='/search' className='nav-option'>Búsqueda</NavLink>
+          <NavLink to='/Info' className='nav-option'>Nosotros</NavLink>
           <NavLink to='/login' className='nav-option'>Ingresar</NavLink>
         </div>
       </div>

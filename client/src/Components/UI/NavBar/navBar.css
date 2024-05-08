@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 .navBar {
+    font-family: 'Roboto', sans-serif;
     height: 10vh;
     background-color: #264653;
     color: white;
