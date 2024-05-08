@@ -13,7 +13,7 @@ console.log('Begining scraping...');
 
   const allListingUrls = [];
 
-  let pageNumber = null; // Declare pageNumber here
+  let pageNumber = null;
 
   const lastPageLink = await page.$('a[rel="nofollow"][queryparamshandling="merge"][aria-label="Ir a última página"].ng-star-inserted');
   if (lastPageLink) {
@@ -36,6 +36,8 @@ console.log('Begining scraping...');
 
   const lastpage = pageNumber;
   console.log('Total pages: ', lastpage)
+
+  const allListingInfo = [];
 
   for (let pageNumber = 1; pageNumber <= lastpage; pageNumber++) {
     await page.goto(`https://www.yapo.cl/paginas/valparaiso/vina-del-mar/comprar/casa?pagina=${pageNumber}`);
@@ -235,7 +237,8 @@ console.log('Begining scraping...');
       };
     }, url, pmedia, lat);
 
-    await fs.writeFile('houseData.json', JSON.stringify(listingInfo, null, 2));
+    allListingInfo.push(listingInfo);
+    await fs.writeFile('houseData.json', JSON.stringify(allListingInfo, null, 2));
 
     const delay = Math.random() * 2000 + 1000;
     await new Promise(resolve => setTimeout(resolve, delay));
