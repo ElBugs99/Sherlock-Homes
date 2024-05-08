@@ -1,0 +1,59 @@
+
+  
+  
+  .article{
+    border:2px solid transparent;
+    max-width:60%;
+    mask-image: linear-gradient(to right,
+      transparent 0%,
+      white 30%,
+      white 70%,
+      transparent 100%
+    );
+  }
+  
+  section {
+    min-width:fit-content;
+    display:flex;
+    gap:16px;
+    animation: scroll_left 20s linear infinite;
+    padding:0 8px;
+  }
+  
+  section:hover{
+    animation-play-state: paused;
+  }
+  
+  span{
+    color:#bfbfbf;
+    font-family:sans-serif;
+    padding: 6px 22px;
+    border-radius:50px;
+    background:#0e0e11;
+    border:1px solid #323232;
+    display:grid;
+    place-items:center;
+    transition:all .3s;
+  }
+  
+  span:hover{
+    background:rgba(255,255,255,0.2);
+  }
+  
+  @keyframes scroll_left{
+    to{
+      transform: translateX(-50%);
+    }
+  }
+  
+  
+  @keyframes scroll_right{
+    from{
+      transform:translatex(-50%);
+    }
+    to{
+      transform: translateX(0%);
+    }
+  }
+  
+  
