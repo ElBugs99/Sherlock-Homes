@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import fs from 'fs/promises';
 
 console.log('Begining scraping...');
 
@@ -12,7 +13,31 @@ console.log('Begining scraping...');
 
   const allListingUrls = [];
 
-  for (let pageNumber = 1; pageNumber <= 2; pageNumber++) {
+  let pageNumber = null; // Declare pageNumber here
+
+  const lastPageLink = await page.$('a[rel="nofollow"][queryparamshandling="merge"][aria-label="Ir a última página"].ng-star-inserted');
+  if (lastPageLink) {
+    const href = await page.evaluate(element => element.getAttribute('href'), lastPageLink);
+    console.log('Last page link:', href);
+
+    pageNumber = extractPageNumber(href); // Update pageNumber here
+  } else {
+    console.log('Last page link not found.');
+  }
+
+  function extractPageNumber(url) {
+    const pageNumberRegex = /pagina=(\d+)/;
+    const match = url.match(pageNumberRegex);
+    if (match && match[1]) {
+      return parseInt(match[1], 10);
+    }
+    return null;
+  }
+
+  const lastpage = pageNumber;
+  console.log('Total pages: ', lastpage)
+
+  for (let pageNumber = 1; pageNumber <= lastpage; pageNumber++) {
     await page.goto(`https://www.yapo.cl/paginas/valparaiso/vina-del-mar/comprar/casa?pagina=${pageNumber}`);
     await page.waitForSelector('listing-result-ad');
     const listingUrls = await page.evaluate(() => {
@@ -42,8 +67,43 @@ console.log('Begining scraping...');
 
     await page.click('.main-image');
 
-    await page.waitForSelector('adview-map');
-    await page.click('adview-map');
+    let lat = { latitude: null, longitude: null }; // Declare and initialize lat
+
+    try {
+      await page.waitForSelector('adview-map');
+      await page.click('adview-map');
+
+      const divInsideAdviewMapHTML = await page.evaluate(() => {
+        const divInsideAdviewMapElement = document.querySelector('adview-map > div.static-image');
+        return divInsideAdviewMapElement ? divInsideAdviewMapElement.outerHTML : null;
+      });
+
+      function extractLatLon(fragment) {
+        // Define the regular expression to match the latitude and longitude values
+        const regex = /lat=(-?\d+(\.\d+)?)(?=&amp;lon=)(.*?)lon=(-?\d+(\.\d+)?)/;
+
+        // Use match to find the latitude and longitude values in the fragment
+        const matches = fragment.match(regex);
+
+        // If matches are found, extract the latitude and longitude values
+        if (matches && matches.length >= 6) {
+          const latitude = parseFloat(matches[1]);
+          const longitude = parseFloat(matches[4]);
+          return { latitude, longitude };
+        }
+
+        // If no matches are found, return null
+        return null;
+      }
+
+      // Update lat if latitude and longitude are successfully extracted
+      const latFromHTML = extractLatLon(divInsideAdviewMapHTML);
+      if (latFromHTML) {
+        lat = latFromHTML;
+      }
+    } catch (error) {
+      console.error('Error waiting for map selector:');
+    }
 
     // Wait for the thumbnails to load
     const time = Math.random() * 2000 + 1000;
@@ -93,118 +153,96 @@ console.log('Begining scraping...');
     });
 
 
+    const pmedia = divsWithBackgroundImage;
 
-    const divInsideAdviewMapHTML = await page.evaluate(() => {
-      const divInsideAdviewMapElement = document.querySelector('adview-map > div.static-image');
-      return divInsideAdviewMapElement ? divInsideAdviewMapElement.outerHTML : null;
-    });
+    // Extract specific information from the listing page
+    const listingInfo = await page.evaluate((url, pmedia, lat) => {
 
-    function extractLatLon(fragment) {
-      // Define the regular expression to match the latitude and longitude values
-      const regex = /lat=(-?\d+(\.\d+)?)(?=&amp;lon=)(.*?)lon=(-?\d+(\.\d+)?)/;
-    
-      // Use match to find the latitude and longitude values in the fragment
-      const matches = fragment.match(regex);
-    
-      // If matches are found, extract the latitude and longitude values
-      if (matches && matches.length >= 6) {
-        const latitude = parseFloat(matches[1]);
-        const longitude = parseFloat(matches[4]);
-        return { latitude, longitude };
+      function extractNumericValue(str) {
+        const regex = /\d+/;
+        const match = str.match(regex);
+
+        return match ? match[0] : null;
       }
-    
-      // If no matches are found, return null
-      return null;
-    }
 
+      function extractPriceValue(str) {
+        // Remove all non-numeric characters
+        const numericStr = str.replace(/\D/g, '');
 
-
-  const lat = extractLatLon(divInsideAdviewMapHTML);
-
-  const pmedia = divsWithBackgroundImage;
-
-  // Extract specific information from the listing page
-  const listingInfo = await page.evaluate((url, pmedia, lat) => {
-
-    function extractNumericValue(str) {
-      const regex = /\d+/;
-      const match = str.match(regex);
-
-      return match ? match[0] : null;
-    }
-
-    function extractPriceValue(str) {
-      // Remove all non-numeric characters
-      const numericStr = str.replace(/\D/g, '');
-
-      // Parse the string as a float
-      return parseFloat(numericStr);
-    }
-
-    const listing_url = url
-    const media = pmedia;
-    const title = document.querySelector('h1').innerText;
-    const price = extractPriceValue(document.querySelector('.price').innerText);
-    const uf = document.querySelector('.currency-price').innerText;
-
-
-    //const lat = document.querySelector('div.static-image[style*="background-image"]').outerHTML;
-    const region = 'V';
-    const city = 'Viña';
-    const transaction = 'sale'; // sale/rent
-
-    /* const seller = document.querySelector('.seller-name[_ngcontent-ng-c1692132960]').innerText; */
-    const description = document.querySelector('.description').innerText;
-
-    // Extract information from adview-features section
-    const featuresContainer = document.querySelector('adview-features');
-    const divs = featuresContainer.querySelectorAll('div');
-
-    const info = {};
-
-    // Iterate through each div containing the title and right <p> elements
-    divs.forEach(div => {
-      const titleElement = div.querySelector('p.title');
-      const rightElement = div.querySelector('p.right');
-      if (titleElement && rightElement) {
-        const titleText = titleElement.textContent.trim();
-        const rightText = rightElement.textContent.trim();
-        info[titleText] = rightText;
+        // Parse the string as a float
+        return parseFloat(numericStr);
       }
-    });
 
 
-    const bedrooms = info.Dormitorios ? extractNumericValue(info.Dormitorios) : null;
-    const bathrooms = info['Baños'] ? extractNumericValue(info['Baños']) : null;
-    const sqft = info['Superficie total'] ? extractNumericValue(info['Superficie total']) : null;
-    const property_type = info['Tipo de inmueble'] ? info['Tipo de inmueble'] : null;
-    const address = info['Dirección'] ? info['Dirección'] : null;
-    const { latitude, longitude } = lat;
 
-    return {
-      title,
-      price,
-      uf,
-      property_type,
-      bedrooms,
-      bathrooms,
-      sqft,
-      address,
-      description,
-      region,
-      city,
-      listing_url,
-      transaction,
-      latitude,
-      longitude,
-      media
-    };
-  }, url, pmedia, lat);
+      const listing_url = url
+      const media = pmedia;
+      const title = document.querySelector('h1').innerText;
+      const price = extractPriceValue(document.querySelector('.price').innerText);
+      const uf = document.querySelector('.currency-price').innerText;
 
-  const delay = Math.random() * 2000 + 1000;
-  await new Promise(resolve => setTimeout(resolve, delay));
-  console.log("all info: ", listingInfo)
-}
+
+      //const lat = document.querySelector('div.static-image[style*="background-image"]').outerHTML;
+      const region = 'V';
+      const city = 'Viña';
+      const transaction = 'sale'; // sale/rent
+
+      /* const seller = document.querySelector('.seller-name[_ngcontent-ng-c1692132960]').innerText; */
+      const description = document.querySelector('.description').innerText;
+
+      // Extract information from adview-features section
+      const featuresContainer = document.querySelector('adview-features');
+      const divs = featuresContainer.querySelectorAll('div');
+
+      const info = {};
+
+      // Iterate through each div containing the title and right <p> elements
+      divs.forEach(div => {
+        const titleElement = div.querySelector('p.title');
+        const rightElement = div.querySelector('p.right');
+        if (titleElement && rightElement) {
+          const titleText = titleElement.textContent.trim();
+          const rightText = rightElement.textContent.trim();
+          info[titleText] = rightText;
+        }
+      });
+
+
+      const bedrooms = info.Dormitorios ? extractNumericValue(info.Dormitorios) : null;
+      const bathrooms = info['Baños'] ? extractNumericValue(info['Baños']) : null;
+      const sqft = info['Superficie total'] ? extractNumericValue(info['Superficie total']) : null;
+      const property_type = info['Tipo de inmueble'] ? info['Tipo de inmueble'] : null;
+      const address = info['Dirección'] ? info['Dirección'] : null;
+      const { latitude, longitude } = lat;
+
+      return {
+        title,
+        price,
+        uf,
+        property_type,
+        bedrooms,
+        bathrooms,
+        sqft,
+        address,
+        description,
+        region,
+        city,
+        listing_url,
+        transaction,
+        latitude,
+        longitude,
+        media
+      };
+    }, url, pmedia, lat);
+
+    await fs.writeFile('houseData.json', JSON.stringify(listingInfo, null, 2));
+
+    const delay = Math.random() * 2000 + 1000;
+    await new Promise(resolve => setTimeout(resolve, delay));
+    console.log("all info: ", listingInfo)
+  }
+
+  console.log('scraping finished.')
 
   await browser.close();
-}) ();
+})();
