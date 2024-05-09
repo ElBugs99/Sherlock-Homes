@@ -27,7 +27,7 @@ export default function NavBar({ searchHidden }) {
           <NavLink to='/search' className='nav-option'>Búsqueda</NavLink>
 
           <div className="dropdown">
-            <button onClick={handleOpen}>Dropdown</button>
+            <button onClick={handleOpen}>Aprende</button>
             {open ? (
               <ul className="menu">
                 <li className="menu-item">
