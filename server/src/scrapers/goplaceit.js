@@ -13,8 +13,6 @@ import puppeteer from "puppeteer";
 
   const allListingUrls = [];
 
-
-
   let pageNumber = null; // Declare pageNumber here
 
   const lastPageLink = await page.$('a[rel="nofollow"][queryparamshandling="merge"][aria-label="Ir a última página"].ng-star-inserted');

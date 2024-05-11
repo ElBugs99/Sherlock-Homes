@@ -1,18 +1,20 @@
 import fs from 'fs/promises';
 import { pool } from '../controllers/index.controller.js';
 import path from 'path';
-// global __dirname not available with ES modules, needs to be imported
 import { fileURLToPath } from 'url';
+import pkg from 'pg';
+const { array } = pkg;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const filePath = path.join(__dirname, '..', '..', 'data', 'houseData.json');
 
 async function insertData(filePath) {
+  let client;
   try {
     const data = JSON.parse(await fs.readFile(filePath, 'utf8'));
     // Create a unique connection (client)
-    const client = await pool.connect();
+    client = await pool.connect();
 
     for (const item of data) {
       const {
@@ -34,9 +36,18 @@ async function insertData(filePath) {
         media
       } = item;
 
+      /* const media1 = media */
+      console.log('item', item)
+
+      // Format the media array as a PostgreSQL array string
+      const mediaArrayString = JSON.stringify(media);
+
+      // Replace square brackets with curly braces to match PostgreSQL array format
+      const formattedMediaArrayString = mediaArrayString.replace('[', '{').replace(']', '}');
+
       // Insert data into the database
-      await pool.query(
-        'INSERT INTO houses (title, price, uf, property_type, bedrooms, bathrooms, sqft, address, description, region, city, listing_url, transaction, latitude, longitude, media) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)',
+      await client.query(
+        'INSERT INTO house (id, title, price, uf, property_type, bedrooms, bathrooms, sqft, address, description, region, city, listing_url, transaction, latitude, longitude, media) VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)',
         [
           title,
           price,
@@ -53,7 +64,7 @@ async function insertData(filePath) {
           transaction,
           latitude,
           longitude,
-          media.join(',') // Join media array into a single string
+          formattedMediaArrayString // Insert media array as a string
         ]
       );
     }
@@ -63,11 +74,15 @@ async function insertData(filePath) {
     console.log('Data inserted successfully.');
   } catch (error) {
     // Rollback the transaction in case of an error
-    await client.query('ROLLBACK');
+    if (client) {
+      await client.query('ROLLBACK');
+    }
     console.error('Error inserting data:', error);
   } finally {
     // Release the connection to make it available again in the connection pool
-    client.release();
+    if (client) {
+      client.release();
+    }
   }
 }
 
