@@ -8,7 +8,7 @@ console.log('Begining scraping...');
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  await page.goto('https://www.yapo.cl/paginas/valparaiso/vina-del-mar/comprar/casa?pagina=1');
+  await page.goto('https://www.yapo.cl/paginas/valparaiso/vina-del-mar/comprar/casa?pagina=1', { timeout: 60000 });
   await page.waitForSelector('app-paginator', { visible: true });
 
   const allListingUrls = [];
@@ -238,7 +238,12 @@ console.log('Begining scraping...');
     }, url, pmedia, lat);
 
     allListingInfo.push(listingInfo);
-    await fs.writeFile('houseData.json', JSON.stringify(allListingInfo, null, 2));
+    try {
+      await fs.writeFile('houseData.json', JSON.stringify(allListingInfo, null, 2));
+      console.log("Listing info saved to JSON file:", listingInfo);
+    } catch (error) {
+      console.error('Error writing to JSON file:', error);
+    }
 
     const delay = Math.random() * 2000 + 1000;
     await new Promise(resolve => setTimeout(resolve, delay));
