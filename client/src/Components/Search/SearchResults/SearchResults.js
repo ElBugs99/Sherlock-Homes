@@ -3,15 +3,16 @@ import HomeCard from "../../UI/HomeCard/HomeCard";
 import Pagination from "../../UI/Pagination/Pagination";
 import defaultImage from "../../../assets/images/defaulthome2.jpg";
 import { appContext } from "../../../appContext";
+import HouseModal from "../../UI/HouseModal/HouseModal";
 /* import useFilter from "../../../hooks/useFilter"; */
 
-export default function SearchResults({ data}) {
+export default function SearchResults({ data }) {
 
   const { error } = useContext(appContext);
-  const [ filteredItems, setFilteredItems ] = useState([])
-  const [ houses, setHouses ] = useState([])
-  const [ isLoading, setIsLoading ] = useState(true);
-
+  const [filteredItems, setFilteredItems] = useState([])
+  const [houses, setHouses] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectedProperty, setSelectedProperty] = useState(null);
 
   //traer data
 
@@ -50,7 +51,7 @@ export default function SearchResults({ data}) {
   };
 
 
-  const [ searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleOnChangeSearch = (e) => {
     setSearchQuery(e.target.value);
@@ -63,9 +64,13 @@ export default function SearchResults({ data}) {
     }
   };
 
-  useEffect(() =>{
+  const handleOpenModal = (property) => {
+    setSelectedProperty(property);
+  };
+
+  useEffect(() => {
     console.log('searchQuery', searchQuery)
-  },[searchQuery])
+  }, [searchQuery])
 
 
   /* const information = ( filteredItems.length )
@@ -88,8 +93,8 @@ export default function SearchResults({ data}) {
 
   if (!houses.length && isLoading) return (
     <div className="search-results-container">
-        <div className="errormsj">{`No hay resultados para "${searchQuery}"`}</div>
-      </div>
+      <div className="errormsj">{`No hay resultados para "${searchQuery}"`}</div>
+    </div>
   )
 
   if (error)
@@ -101,27 +106,32 @@ export default function SearchResults({ data}) {
 
   return (
     <>
-      {/* <div>Resultados: {information.length}</div> */}
-      <input 
-          className=""
-          spellCheck="false"
-          value={searchQuery}
-          onChange={handleOnChangeSearch}
-        />
-        <button className="" onClick={handleSubmit}>
-          Buscar
-        </button>
+      <div>Resultados: {houses.meta.totalCount}&times;</div>
+      <input
+        className=""
+        spellCheck="false"
+        value={searchQuery}
+        onChange={handleOnChangeSearch}
+      />
+      <button className="" onClick={handleSubmit}>
+        Buscar
+      </button>
       <div className="search-results-container">
         {houses.data.map((x, index) => {
           return (
-            <HomeCard
-              key={index}
-              title={x.title}
-              /* priceString={x.pricestring}
-              atributes={x.atributes}
-              location={x.location} */
-              imageUrl={x.media[0] === null || undefined ? defaultImage : x.media[0]}
-            />
+            <>
+              <HomeCard
+                key={index}
+                title={x.title}
+                price={x.price}
+                bedrooms={x.bedrooms}
+                bathrooms={x.bathrooms}
+                sqft={x.sqft}
+                location={x.location}
+                media={x.media[0] === null || undefined ? defaultImage : x.media[0]}
+                onClick={() => setSelectedProperty(x)}
+              />
+            </>
           );
         })}
       </div>
@@ -131,6 +141,7 @@ export default function SearchResults({ data}) {
         postsLen={filteredItems.length}
         currentPage={currentPage}
       />
+      {selectedProperty && <HouseModal property={selectedProperty} onClose={() => setSelectedProperty(null)} />}
     </>
   );
 }

@@ -3,28 +3,37 @@ import "./homeCard.css";
 
 export default function HomeCard({
   title,
-  priceString,
-  atributes,
-  location,
-  imageUrl,
+  price,
+  uf,
+  bedrooms,
+  bathrooms,
+  sqft,
+  property_type,
+  media,
+  city,
   url,
+  onClick
 }) {
-  //falta descripcion y metros cuadrados
-  console.log('title', title);
-  console.log('image', imageUrl);
+
+  console.log('bedrooms', bedrooms)
   return (
-    <div className="home-card">
+    <div 
+      className="home-card"
+      onClick={onClick}
+      >
       <div className="home-card-container">
         <div className="home-card-img-container">
-          <img className="home-card-img" src={imageUrl} alt="home" />
+          <img className="home-card-img" src={media} alt="home" />
         </div>
         <div className="home-card-info">
           <div className="">{title}</div>
 
-          <div className="home-card-price">{priceString}</div>
-          <div className="">{atributes}</div>
+          <div className="home-card-price">{price}</div>
+          <div className="">Dormitorios: {bedrooms}</div>
+          <div className="">Baños: {bathrooms}</div>
+          { sqft ? <div className="">Metros cuadrados: {sqft}</div> : ""}
 
-          <div className="">{location}</div>
+          <div className="">{city}</div>
         </div>
       </div>
     </div>
