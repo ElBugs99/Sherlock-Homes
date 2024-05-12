@@ -10,6 +10,8 @@ export default function HomeCard({
   url,
 }) {
   //falta descripcion y metros cuadrados
+  console.log('title', title);
+  console.log('image', imageUrl);
   return (
     <div className="home-card">
       <div className="home-card-container">

@@ -14,12 +14,9 @@ export default function useFilter() {
       return item.location.toLowerCase().includes(value.toLowerCase());
     });
     setFilteredItems(filteredList);
-    console.log('useFilter Searchfunction filteredList', filteredList);
+    /* console.log('useFilter Searchfunction filteredList', filteredList); */
   };
 
-  useEffect(() => {
-    console.log('useFilter filteredItems', filteredItems);
-  }, [filteredItems]);
   // ------radio filters------
 
   return {

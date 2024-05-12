@@ -3,19 +3,41 @@ import HomeCard from "../../UI/HomeCard/HomeCard";
 import Pagination from "../../UI/Pagination/Pagination";
 import defaultImage from "../../../assets/images/defaulthome2.jpg";
 import { appContext } from "../../../appContext";
-import useFilter from "../../../hooks/useFilter";
+/* import useFilter from "../../../hooks/useFilter"; */
 
 export default function SearchResults({ data}) {
 
-  const { houses, loading, error } = useContext(appContext);
+  const { error } = useContext(appContext);
   const [ filteredItems, setFilteredItems ] = useState([])
-  /* const { filteredItems } = useFilter(); */
+  const [ houses, setHouses ] = useState([])
+  const [ isLoading, setIsLoading ] = useState(true);
+
+
   //traer data
+
+  const fetchHouses = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/houses?page=2&limit=21");
+      const data = await response.json();
+      setHouses(data);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      /* setError(true); */
+    }
+  };
+
+  useEffect(() => {
+    fetchHouses();
+  }, []);
+
+  console.log('houses', houses);
+
+
   //paginador de la data
   const postsPerPage = 9;
   //const [postsPerPage, setPostsPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentPosts , setCurrentPosts] = useState([]);
 
   //input test
 
@@ -29,7 +51,6 @@ export default function SearchResults({ data}) {
 
 
   const [ searchQuery, setSearchQuery] = useState('');
-
 
   const handleOnChangeSearch = (e) => {
     setSearchQuery(e.target.value);
@@ -46,57 +67,31 @@ export default function SearchResults({ data}) {
     console.log('searchQuery', searchQuery)
   },[searchQuery])
 
-  useEffect(() =>{
-    setFilteredItems(houses)
-  },[])
 
-
-  //test
-  const testObj = {
-    atributes: "3 baños, 5 dorms",
-    id: 2,
-    imageurl: "https://elcomercio.pe/resizer/HNec1mVtOB2Wc3wHGTBU1FVEObM=/980x0/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/LR2Z6HNJBZGLDFS65BHD7SJZQU.jpg",
-    location: "viña",
-    pricenumber: "7.000",
-    pricestring: "UF 7000",
-    title: "CASA BONITA",
-    url: "urlfalsa"}
-
-  console.log('searchResults filteredItems', filteredItems)
-
-
-
-  const information = ( filteredItems.length )
+  /* const information = ( filteredItems.length )
     ? filteredItems
-    : houses;
-
-  console.log('filteredItems.length', filteredItems.length);
-  console.log('search info', information);
+    : houses; */
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
-  /* const currentPosts = filteredItems.slice(firstPostIndex, lastPostIndex); */
-
-  useEffect(() =>{
-     setCurrentPosts(filteredItems.slice(firstPostIndex, lastPostIndex))
-  },[filteredItems, firstPostIndex, lastPostIndex])
 
   const flag = false;
-  
-  if (!filteredItems.length) return (
-    <div className="search-results-container">
-        <div className="errormsj">{`No hay resultados para "${searchQuery}"`}</div>
-      </div>
-  )
 
   if (flag) return <div>error</div>;
 
-  if (loading)
+  if (isLoading)
     return (
       <div className="search- results-container">
         <div className="loading">Cargando...</div>
       </div>
     );
+
+  if (!houses.length && isLoading) return (
+    <div className="search-results-container">
+        <div className="errormsj">{`No hay resultados para "${searchQuery}"`}</div>
+      </div>
+  )
+
   if (error)
     return (
       <div className="search-results-container">
@@ -106,7 +101,7 @@ export default function SearchResults({ data}) {
 
   return (
     <>
-      <div>Resultados: {information.length}</div>
+      {/* <div>Resultados: {information.length}</div> */}
       <input 
           className=""
           spellCheck="false"
@@ -117,15 +112,15 @@ export default function SearchResults({ data}) {
           Buscar
         </button>
       <div className="search-results-container">
-        {currentPosts.map((x, index) => {
+        {houses.data.map((x, index) => {
           return (
             <HomeCard
               key={index}
               title={x.title}
-              priceString={x.pricestring}
+              /* priceString={x.pricestring}
               atributes={x.atributes}
-              location={x.location}
-              imageUrl={x.imageurl === null ? defaultImage : x.imageurl}
+              location={x.location} */
+              imageUrl={x.media[0] === null || undefined ? defaultImage : x.media[0]}
             />
           );
         })}

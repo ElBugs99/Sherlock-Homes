@@ -11,13 +11,13 @@ export default function useApp() {
 
   const postsPerPage = 9;
 
-  const fetchHouses = async () => {
+  /* const fetchHouses = async () => {
     try {
       const response = await fetch("http://localhost:3001/houses");
       const data = await response.json();
       setHouses(data);
       setLoading(false);
-      console.log('pasando por useEffect')
+      console.log('useEffect', data)
     } catch (error) {
       setLoading(false);
       setError(true);
@@ -28,7 +28,7 @@ export default function useApp() {
     fetchHouses();
   }, []);
 
-  console.log('houses', houses)
+  console.log('houses', houses) */
 
   return (
     {
