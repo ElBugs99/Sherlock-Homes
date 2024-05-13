@@ -57,7 +57,7 @@ export default function SideBar() {
         />
       </form>
 
-      <h2 className="sidebar-title">habitaciones</h2>
+      <h2 className="sidebar-title">Habitaciones</h2>
       <form>
         <Input
           value="Todas"
