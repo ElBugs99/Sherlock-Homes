@@ -1,0 +1,46 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    height: 35vw;
+    width: 100%;
+    margin-top: 167px; /* Ajusta el padding según tus necesidades */
+  }
+  
+  .left-section {
+    flex: 1; /* El texto a la izquierda ocupará todo el espacio disponible */
+  }
+  
+  .right-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .right-section img {
+    width: 45vw; /* Ajusta el ancho de la imagen según tus necesidades */
+    margin-right: 10px; /* Espacio entre la imagen y el botón */
+  }
+  
+
+
+  
+  .image-with-button {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* Espacio entre el párrafo y la imagen con el botón */
+  }
+  
+  .image-with-button img {
+    width: 100px; /* Ajusta el ancho de la imagen según tus necesidades */
+    margin-right: 10px; /* Espacio entre la imagen y el botón */
+  }
+  
+  .green-button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

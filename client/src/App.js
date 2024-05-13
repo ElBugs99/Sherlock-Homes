@@ -1,5 +1,7 @@
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
+import Finan from "./Components/Finan/finan";
+import MundoInmob from "./Components/MundoInmob/mundoinmob";
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import NoMatch from "./Components/UI/NoMatch/NoMatch";
 import Search from "./Components/Search/Search";
@@ -27,6 +29,8 @@ function App() {
             <Route path="/registro" element={<Registro />} />
             <Route path="/search" element={<Search />} />
             <Route path="/Info" element={<InfoPage />} />
+            <Route path="/financiamiento" element={<Finan />} />
+            <Route path="/mundoinmob" element={<MundoInmob />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </Router>
