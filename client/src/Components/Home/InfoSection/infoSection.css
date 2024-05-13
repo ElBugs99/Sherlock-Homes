@@ -53,3 +53,28 @@
 .cantidad{
     font-size: small;
 }
+
+
+@media screen and (max-width: 950px) {
+    .infoSection{
+      display: inline-block;
+      padding: 5px;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      margin: auto;
+      justify-self: center;
+    }
+    .Ehlogo{
+      height: 50px;;
+      width: auto;
+    }
+  .imgCard{
+      height: 50px;;
+    }
+    .card{
+      margin-bottom: 10px;
+      font-size: small;
+    }
+    .promoSection{
+      margin-bottom: 300px;
+    }
+  }
