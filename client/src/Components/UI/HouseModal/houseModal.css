@@ -1,6 +1,7 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 .house-modal {
+    font-family: 'Roboto', sans-serif;
     position: fixed;
     left: 0;
     top: 0;
@@ -44,9 +45,10 @@
     height: 50%;
 }
 
-.home-modal-price {
+.house-modal-price {
     font-size: larger;
     font-weight: 600;
+    color: #38ba8c;
 }
 
 .modal-lower-section {

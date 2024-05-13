@@ -18,7 +18,7 @@ export default function SearchResults({ data }) {
 
   const fetchHouses = async () => {
     try {
-      const response = await fetch("http://localhost:3001/houses?page=2&limit=21");
+      const response = await fetch("http://localhost:3001/houses?page=2&limit=42");
       const data = await response.json();
       setHouses(data);
       setIsLoading(false);
@@ -106,7 +106,7 @@ export default function SearchResults({ data }) {
 
   return (
     <>
-      <div>Resultados: {houses.meta.totalCount}&times;</div>
+      <div>Resultados: {houses.meta.totalCount}</div>
       <input
         className=""
         spellCheck="false"

@@ -1,5 +1,8 @@
 import React from "react";
 import "./houseModal.css";
+import { PiToiletLight } from "react-icons/pi";
+import { IoBedOutline } from "react-icons/io5";
+import { TbMeterSquare } from "react-icons/tb";
 
 export default function HouseModal({ property, onClose }) {
 
@@ -22,10 +25,11 @@ export default function HouseModal({ property, onClose }) {
 
                         <div className="">{property.title}</div>
                         <div className="house-modal-price">${property.price}</div>
-                        <div className="">Dormitorios: {property.bedrooms}</div>
-                        <div className="">Baños: {property.bathrooms}</div>
-                        {property.sqft ? <div className="">Metros cuadrados: {property.sqft}</div> : ""}
+                        <div className=""><IoBedOutline /> Dormitorios: {property.bedrooms}</div>
+                        <div className=""><PiToiletLight /> Baños: {property.bathrooms}</div>
+                        {property.sqft ? <div className=""><TbMeterSquare /> Metros cuadrados: {property.sqft}</div> : ""}
                         <div className="">{property.city}</div>
+                        <div>Url original:</div>
                         <a href={property.listing_url} target="_blank" rel="noopener noreferrer">{property.listing_url}</a>
 
                     </div>
