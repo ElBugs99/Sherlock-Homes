@@ -70,3 +70,30 @@
     width: 100%;
     position: absolute;
 }
+
+
+@media screen and (max-width: 950px) {
+    .top-img{
+        display: none;
+        
+    }
+    .topSection{
+        background-color:aqua;
+        margin-top: 0;
+    }
+    .top-form{
+        display: block;
+        padding-bottom: 500px;
+    }
+    .top-letters{
+        display:none;
+    }
+    .top-img-text{
+        text-align: center;
+        margin-top: 2%;
+        display: none;
+    }
+    .top-img-container{
+        padding-right: 700px;
+    }
+}

@@ -47,3 +47,17 @@
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width:950px) {
+    .header-title{
+        font-size: 30px;
+    }
+    .sherlock{
+        font-size: 50px;
+        margin-left: 60px;
+    }
+    .link-registro{
+        margin-left: 180px;
+        margin-bottom: 50p;
+    }
+}

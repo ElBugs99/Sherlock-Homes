@@ -31,7 +31,7 @@ return(
             </div>
         </div>
 
-           
+           <div className="registro-form-datos">
             <div>
                 <h4 className="Titulo">Datos de Usuario</h4>
                 
@@ -82,15 +82,17 @@ return(
                 </div>
             </div>
             <div>
-                <label className="Titulo" > Acepta los Terminos y Condiciones</label>
+                <label className="Titulo" > Acepta los Terminos y Condiciones
                 <input className="caja"  type="checkbox" {...register('terminosYcondiciones',{
                     required: true
                 })}></input>
+                </label>
             </div>
-           
+            </div>
             <input className="submit-rg" type="submit" value="Enviar"/>
-            <a href="/login">Ya tengo una cuenta</a>
+            <a className="yatengoCuenta" href="/login">Ya tengo una cuenta</a>
         </form>
+
 
         <div className='right-section-rg'>
         <Carrousel />

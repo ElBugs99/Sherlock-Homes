@@ -37,3 +37,9 @@
     position: absolute;
 }
 
+@media screen and (max-width:950px) {
+    .city-card-title,.city-card-info{
+        font-size: smaller;
+    }
+    
+}

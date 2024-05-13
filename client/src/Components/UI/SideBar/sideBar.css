@@ -311,3 +311,17 @@ code {
   background-color: #9AA3AC;
   padding: 0 8px;
 }
+
+@media screen and (max-width: 950px) {
+  
+  .sidebar-title{
+    font-size: smaller;
+    text-align: start;
+    font-weight: bold;
+  }
+  form{
+    font-size:smaller;
+    text-align: start;
+  }
+  
+}

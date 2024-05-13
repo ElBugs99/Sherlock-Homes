@@ -48,8 +48,10 @@ export default function TopSection() {
         <div className="top-form">
           <SearchBar />
         </div>
+        
         <div className="top-img-text-container">
           <div className="top-img-text">
+            
             Encuentra tu nuevo{" "}
             <div style={styles.data[title].style} className="top-letters">
               {styles.data[title].title}.

@@ -12,21 +12,7 @@
     z-index: 99;
 }
 
-@media screen and (max-width: 768px) {
-    .navBar {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    
-    .nav-options {
-      margin-top: 20px;
-    }
-  
-    .nav-option {
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
-  }
+
 
 .nav-options-container {
     display: flex;
@@ -138,3 +124,33 @@
     font: inherit;
     cursor: pointer;
   }
+@media screen and (max-width: 950px) {
+    .nav-logo{
+        font-size: small;
+        
+    }
+    .nav-icon {
+        height: 30px;
+        margin-left: 5px;
+    }
+    .navBar {
+        font-family: 'Roboto', sans-serif;
+        height: auto;
+        background-color: #264653;
+        color: white;
+        display: flex;
+        align-items: center;
+        width: 67%;
+        position: grid;
+        z-index: 99;
+        font-size: small;
+        padding-left: 50px;
+        padding-right: 90px;
+
+    }
+    .nav-option {
+        margin-right: 0;
+        margin-bottom: 0px;
+        padding: 7px;
+      }
+}

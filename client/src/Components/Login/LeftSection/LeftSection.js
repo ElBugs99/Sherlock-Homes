@@ -16,7 +16,7 @@ export default function LeftSection() {
         </div>
       </div>
       <LoginForm />
-      <div>
+      <div className='link-registro'>
         <a href='registro'>Registrarse</a>
       </div>
     </div>

@@ -24,6 +24,7 @@ export default function SearchBar() {
     <div>
       <form className="search-form">
         <input 
+        placeholder='Encuentra tu nuevo Hogar'
           className="top-input"
           spellCheck="false"
           value={searchQuery}

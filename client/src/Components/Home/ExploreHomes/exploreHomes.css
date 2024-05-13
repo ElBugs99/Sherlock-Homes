@@ -36,3 +36,12 @@
     width: 90%;
 }
 
+@media screen and (max-width: 950px) {
+    .explore-cities{
+        display: inline-block;
+        margin-top: 1%;
+        margin-left: 10%;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    }
+    
+}

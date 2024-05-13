@@ -19,7 +19,8 @@ export default function NavBar({ searchHidden }) {
           <div className='nav-logo'>Sherlock Homes</div>
           <img className='nav-icon' src={svgImage} alt="SVG" />
         </div>
-        <div className={searchHidden ? 'hidden' : ''}>
+        
+        <div className={searchHidden? 'hidden' : ''}>
           <SearchBar />
         </div>
         <div className='nav-options'>

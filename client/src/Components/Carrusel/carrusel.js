@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 
 import './carrusel.css'
 import scroller from "react-scroll";
@@ -76,4 +76,4 @@ duplicate(2)
 
 
 
-}
+} */

@@ -149,3 +149,18 @@
   .caja{
     display: inline-block;
   }
+
+  @media screen and (max-width:950px) {
+
+    .header,.back-button,.registro-form-datos{
+        margin-left: 98px;
+        
+    }
+    .submit-rg{
+        margin-left: 100px;
+    }
+    .yatengoCuenta{
+        margin-left: 98px;
+
+    }
+  }
