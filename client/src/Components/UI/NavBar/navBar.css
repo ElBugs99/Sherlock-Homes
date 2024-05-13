@@ -79,30 +79,40 @@
   }
 
   button {
-    background-color: #2a5565;
+    background-color: #264653;
     color: white;
-    font-weight: 600;
+    font-weight: 650;
     height: 100%;
     padding: 10px;
     border-radius: 10px;
     border: none;
     outline: none;
   }
+
+  .nav-option img{
+    width: 5%;
+    margin-left: 5px;
+  }
+
+  .nav-option a:hover {
+    color: #38ba8c;
+}
+
   
   .menu {
     position: absolute;
-  
+    color:white;
     list-style-type: none;
-    margin: 5px 0;
+    margin: 5px 100px;
     padding: 0;
-    width: 150px;
+    width: 200px;
     border-radius: 50px;
   }
   
   .menu > li {
     margin: 0;
   
-    background-color: white;
+    background-color: #ffffff;
   }
   
   .menu > li:hover {
