@@ -53,6 +53,14 @@
     height: 75%;
 }
 
+.house-modal-header {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 30%;
+    width: 100%;
+}
+
 .house-modal-img-container {
     display: flex;
     justify-content: center;
@@ -64,7 +72,7 @@
     height: 100%;
     width: 80%;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .house-modal-row {
@@ -101,7 +109,7 @@
 }
 
 .house-modal-price {
-    font-size: larger;
+    font-size: 30px;
     font-weight: 600;
     color: #38ba8c;
 }
@@ -109,6 +117,7 @@
 .modal-lower-section {
     display: flex;
     padding: 20px 0 ;
+    height: 70%;
 }
 
 .house-modal-icon {
@@ -126,6 +135,11 @@
     color: #264653;
     font-weight: 900;
     font-size: 30px;
+}
+
+.house-modal-desc {
+    height: 100%;
+    font-weight: 600;
 }
 
 .house-modal-label {

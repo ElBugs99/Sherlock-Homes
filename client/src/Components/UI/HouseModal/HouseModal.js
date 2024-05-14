@@ -99,10 +99,12 @@ export default function HouseModal({ property, onClose }) {
 
                 <div className="house-modal-right">
                     <div className="house-modal-info">
-                        <div className="house-modal-atribute house-modal-title">{property.title}</div>
-                        <div className="house-modal-price">$ {property.price}</div>
+                        <div className="house-modal-header">
+                            <div className="house-modal-atribute house-modal-title">{property.title}</div>
+                            <div className="house-modal-price">$ {property.price}</div>
+                        </div>
                         <div className="modal-lower-section">
-                            <div className="">
+                            <div className="house-modal-desc">
                                 <div>{property.description}</div>
                             </div>
                         </div>
