@@ -7,7 +7,8 @@
     width: 100%;
     padding-top: 1%;
     margin-bottom: 3%;
-    margin-top: 3%;
+    margin-top: 5%;
+    
 }
 
 .card{
@@ -54,6 +55,22 @@
 .cantidad{
     font-size: small;
 }
+
+.botonOferta{
+  display: flex;
+}
+.btn-oferta:hover{
+  background-color: #7fbf65; /* Color del botón cuando se pasa por encima */
+  transition: background-color 0.3s;
+}
+.btn-comparar:hover{
+  background-color: #42868f; /* Color del botón cuando se pasa por encima */
+  transition: background-color 0.3s;
+}
+.btn-oferta{
+  margin-right: 10px;
+}
+
 
 
 @media screen and (max-width: 950px) {

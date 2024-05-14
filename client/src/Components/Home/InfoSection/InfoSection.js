@@ -43,7 +43,12 @@ export default function InfoSection() {
             <TbMeterSquare/> 1680 m2
             </p>
 
-           
+            <div className='botonOferta'>
+            <a href='*'>
+            <button className='btn-oferta'>Ir a la oferta</button>
+            </a>
+            <button className='btn-comparar'>Comparar</button>
+          </div>  
             
       </div>
       <div className='card'> 
@@ -70,7 +75,13 @@ export default function InfoSection() {
             <p className='cantidad'>
             <TbMeterSquare/> 1680 m2
             </p>
-
+            <div className='botonOferta'>
+            <a href='*'>
+            <button className='btn-oferta'>Ir a la oferta</button>
+            </a>
+            <button className='btn-comparar'>Comparar</button>
+          </div>  
+    
            
             
       </div>
@@ -82,7 +93,7 @@ export default function InfoSection() {
       <FaShare className='Compartir'/>
       </div>
       
-      
+        <div className='info-casa'>
           <center>
           <img className='casas' src={casa1} alt='Los Alemendros' />
           </center>
@@ -98,12 +109,17 @@ export default function InfoSection() {
             <p className='cantidad'>
             <TbMeterSquare/> 1680 m2
             </p>
-
-           
-            
-      </div>
+        </div>
+        
+          <div className='botonOferta'>
+            <a href='*'>
+            <button className='btn-oferta'>Ir a la oferta</button>
+            </a>
+            <button className='btn-comparar'>Comparar</button>
+          </div>  
+        </div>
       
-      <div className='card'> 
+      {/* <div className='card'> 
       <h3 className='Venta'>Oferta Destacada</h3>
 
       <div className='iconos'>
@@ -130,9 +146,9 @@ export default function InfoSection() {
 
            
             
-      </div>
+      </div> */}
 
-      <div className='card'> 
+      {/* <div className='card'> 
       <h3 className='Venta'>Oferta Destacada</h3>
       <div className='iconos'>
       <FaHeart className='like'  />
@@ -154,9 +170,9 @@ export default function InfoSection() {
             <TbMeterSquare/> 1680 m2
             </p>
 
-      </div>
+      </div> */}
 
-      <div className='card'> 
+      {/* <div className='card'> 
       <h3 className='Venta'>Oferta Destacada</h3>
 
       <div className='iconos'>
@@ -178,7 +194,7 @@ export default function InfoSection() {
             <p className='cantidad'>
             <TbMeterSquare/> 1680 m2
             </p>
-      </div>
+      </div> */}
       
       
     </div>

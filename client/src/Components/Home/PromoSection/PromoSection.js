@@ -42,7 +42,7 @@ export default function PromoSection() {
         </div>
 
       </div>
-      <a  href="Asociados"  >Todos Nuestros Asociados</a>
+      <a  href="*"  >Todos Nuestros Asociados</a>
     </div>
   )
 }
