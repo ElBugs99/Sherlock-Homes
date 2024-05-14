@@ -4,6 +4,7 @@ import { PiToiletLight } from "react-icons/pi";
 import { IoBedOutline } from "react-icons/io5";
 import { TbMeterSquare } from "react-icons/tb";
 import { TiLocation } from "react-icons/ti";
+import { addDotsToNumber } from "../../../utils/numberUtils.js"
 
 export default function HouseModal({ property, onClose }) {
 
@@ -90,9 +91,6 @@ export default function HouseModal({ property, onClose }) {
                                 </div>
                             </div>
                         </div>
-
-                        <div className="house-modal-atribute">Url original:</div>
-                        <a href={property.listing_url} target="_blank" rel="noopener noreferrer" className="house-modal-url">{property.listing_url}</a>
                     </div>
 
                 </div>
@@ -101,7 +99,11 @@ export default function HouseModal({ property, onClose }) {
                     <div className="house-modal-info">
                         <div className="house-modal-header">
                             <div className="house-modal-atribute house-modal-title">{property.title}</div>
-                            <div className="house-modal-price">$ {property.price}</div>
+                            <div className="house-modal-price">$ {addDotsToNumber(property.price)}</div>
+                            <div>
+                                <div className="house-modal-atribute">Url original:</div>
+                                <a href={property.listing_url} target="_blank" rel="noopener noreferrer" className="house-modal-url">{property.listing_url}</a>
+                            </div>
                         </div>
                         <div className="modal-lower-section">
                             <div className="house-modal-desc">

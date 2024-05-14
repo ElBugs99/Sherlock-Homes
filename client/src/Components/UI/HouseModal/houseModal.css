@@ -138,6 +138,8 @@
 }
 
 .house-modal-desc {
+    display: flex;
+    align-items: center;
     height: 100%;
     font-weight: 600;
 }
@@ -150,6 +152,7 @@
 }
 
 .house-modal-url {
+    font-size: 13px;
     text-decoration: none;
     color: rgb(56, 186, 186);
     font-weight: 600;
