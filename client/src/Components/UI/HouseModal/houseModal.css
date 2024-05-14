@@ -13,8 +13,38 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.house-modal-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+}
+
+.house-modal-right {
+    width: 50%;
+}
+
+.modal-left-top-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 100%;
+}
+
+.modal-left-bottom-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 40%;
+    width: 100%;
+}
+
 .house-modal-container {
     position: absolute;
+    display: flex;
     top: 11vh;
     background-color: white;
     border-radius: 5px;
@@ -24,15 +54,40 @@
 }
 
 .house-modal-img-container {
+    display: flex;
+    justify-content: center;
     width: 100%;
-    height: 50%;
+    height: 100%;
 }
 
 .house-modal-img {
     height: 100%;
-    width: 50%;
+    width: 80%;
     object-fit: cover;
     border-radius: 20px;
+}
+
+.house-modal-row {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 30px;
+}
+
+.house-modal-box-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+.house-modal-value {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.house-modal-box {
+    display: flex;
+    justify-content: center;
 }
 
 .house-modal-info {
@@ -42,7 +97,7 @@
     align-items: flex-start;
     padding: 0px 20px;
     width: 100%;
-    height: 50%;
+    height: 100%;
 }
 
 .house-modal-price {
@@ -54,4 +109,34 @@
 .modal-lower-section {
     display: flex;
     padding: 20px 0 ;
+}
+
+.house-modal-icon {
+    font-size: 40px;
+    color: #264653;
+    margin-right: 10px;
+}
+
+.house-modal-atribute {
+    display: flex;
+    align-items: center;
+}
+
+.house-modal-title {
+    color: #264653;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.house-modal-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+}
+
+.house-modal-url {
+    text-decoration: none;
+    color: rgb(56, 186, 186);
+    font-weight: 600;
 }
