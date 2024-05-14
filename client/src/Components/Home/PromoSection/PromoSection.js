@@ -14,7 +14,7 @@ export default function PromoSection() {
        <h4>Nuestros Asociados</h4>
       </div>
       
-      <div className='inmobiliarias'>
+      <div className='inmobiliarias apareciendo'>
 
         <div className='card'>
           <a href='https://www.melej.cl/' target='blank'>

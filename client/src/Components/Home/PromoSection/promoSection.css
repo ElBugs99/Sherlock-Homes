@@ -9,6 +9,25 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
+    animation: aparecer 1s ease-out;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s, transform 10s;
+}
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inmobiliarias.apareciendo {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card {

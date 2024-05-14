@@ -34,6 +34,10 @@
     justify-content: center;
     height: 70%;
     width: 90%;
+    animation: aparecer 1s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s, transform 0.9s;
 }
 
 @media screen and (max-width: 950px) {
@@ -45,3 +49,22 @@
     }
     
 }
+@keyframes aparecer {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .explore-cities.apareciendo {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  
+
+  
