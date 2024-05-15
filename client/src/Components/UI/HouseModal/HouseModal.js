@@ -25,8 +25,8 @@ export default function HouseModal({ property, onClose }) {
 
                     <div className="modal-left-top-section">
                         <div className="house-modal-img-container">
-                            <img className="house-modal-img" src={property.media[0]} alt="home" />
-                            {/* <ImageCarousel /> */}
+                            {/* <img className="house-modal-img" src={property.media[0]} alt="home" /> */}
+                            <ImageCarousel imageArray={property.media}/>
                         </div>
                     </div>
 
