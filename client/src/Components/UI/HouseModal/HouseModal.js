@@ -101,7 +101,7 @@ export default function HouseModal({ property, onClose }) {
                 <div className="house-modal-right">
                     <div className="house-modal-info">
                         <div className="house-modal-header">
-                            <div className="modal-cross">
+                            <div onClick={() => onClose()} className="modal-cross">
                                 <ImCross />
                             </div>
                             <div className="house-modal-atribute house-modal-title">{property.title}</div>

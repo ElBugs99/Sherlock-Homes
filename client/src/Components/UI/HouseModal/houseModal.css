@@ -161,9 +161,8 @@
 .modal-cross {
     cursor: pointer;
     padding: 15px;
- 
-    top: 8px;
-    right: 8px;
+    top: 2px;
+    right: 2px;
     color: #656565;
     position: absolute;
     display: flex;
