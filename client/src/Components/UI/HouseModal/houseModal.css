@@ -55,7 +55,7 @@
 
 .house-modal-header {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-direction: column;
     height: 30%;
     width: 100%;
@@ -156,4 +156,26 @@
     text-decoration: none;
     color: rgb(56, 186, 186);
     font-weight: 600;
+}
+
+.modal-cross {
+    cursor: pointer;
+    padding: 15px;
+ 
+    top: 8px;
+    right: 8px;
+    color: #656565;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-cross:hover > * {
+    animation: squish 200ms ease-in-out;
+}
+
+@keyframes squish {
+    50% {
+        scale: 2.4 0.6;
+    }
 }

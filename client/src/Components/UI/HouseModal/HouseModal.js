@@ -5,6 +5,7 @@ import { IoBedOutline } from "react-icons/io5";
 import { TbMeterSquare } from "react-icons/tb";
 import { TiLocation } from "react-icons/ti";
 import { addDotsToNumber } from "../../../utils/numberUtils.js"
+import { ImCross } from "react-icons/im";
 import ImageCarousel from "../ImageCarousel/ImageCarousel.js";
 
 export default function HouseModal({ property, onClose }) {
@@ -100,6 +101,9 @@ export default function HouseModal({ property, onClose }) {
                 <div className="house-modal-right">
                     <div className="house-modal-info">
                         <div className="house-modal-header">
+                            <div className="modal-cross">
+                                <ImCross />
+                            </div>
                             <div className="house-modal-atribute house-modal-title">{property.title}</div>
                             <div className="house-modal-price">$ {addDotsToNumber(property.price)}</div>
                             <div>
