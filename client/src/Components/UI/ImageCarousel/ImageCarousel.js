@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function ImageCarousel() {
+export default function ImageCarousel({ imageArray}) {
+
   return (
-    <div>
-      
-    </div>
+    <>
+      hola
+    </>
   )
 }

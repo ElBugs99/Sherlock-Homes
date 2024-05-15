@@ -5,6 +5,7 @@ import { IoBedOutline } from "react-icons/io5";
 import { TbMeterSquare } from "react-icons/tb";
 import { TiLocation } from "react-icons/ti";
 import { addDotsToNumber } from "../../../utils/numberUtils.js"
+import ImageCarousel from "../ImageCarousel/ImageCarousel.js";
 
 export default function HouseModal({ property, onClose }) {
 
@@ -25,6 +26,7 @@ export default function HouseModal({ property, onClose }) {
                     <div className="modal-left-top-section">
                         <div className="house-modal-img-container">
                             <img className="house-modal-img" src={property.media[0]} alt="home" />
+                            {/* <ImageCarousel /> */}
                         </div>
                     </div>
 
