@@ -16,7 +16,7 @@ export default function ImageCarousel({ imageArray }) {
 
   const nextImage = () => {
     setImageIndex( index => {
-      if ( index === imageArray.left -1 ) return 0;
+      if ( index === imageArray.length -1 ) return 0;
       return index + 1;
     })
   }
@@ -24,13 +24,21 @@ export default function ImageCarousel({ imageArray }) {
   return (
     <div className='img-carousel-container'>
 
+      <div className='img-array'>
+        {imageArray.map(url => (
+          <img key={url} src={url} alt='propiedad' className='slider-img' style={{
+            translate: ` ${-100 * imageIndex}% `
+          }}/>
+        ))}
+      </div>
+
       <div className='img-carousel'>
-        <img src={imageArray[imageIndex]} alt='propiedad' className='slider-img' />
+        
         <button onClick={prevImage} className='img-slider-btn' style={{left: 0}}>
-        <GrPrevious />
+          <GrPrevious />
         </button>
         <button onClick={nextImage} className='img-slider-btn' style={{right: 0}}>
-        <GrNext />
+          <GrNext />
         </button>
       </div>
       
