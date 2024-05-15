@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
+import { FaRegCircle } from "react-icons/fa";
+import { FaCircle } from "react-icons/fa6";
 import './imageCarousel.css';
 
 export default function ImageCarousel({ imageArray }) {
@@ -41,6 +43,16 @@ export default function ImageCarousel({ imageArray }) {
           <GrNext />
         </button>
       </div>
+
+      
+      <div className='slider-btns'>
+        {imageArray.map((url, index) => (
+          <button key={index} className='dot-btn' onClick={() => setImageIndex(index)}>
+            {index === imageIndex ? <FaCircle /> : <FaRegCircle />}
+          </button>
+        ))}
+      </div>
+
       
     </div>
   )
