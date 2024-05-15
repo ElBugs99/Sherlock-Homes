@@ -37,7 +37,7 @@ export default function NavBar({ searchHidden }) {
                   <NavLink to='/Info' className=''>Nosotros</NavLink>
                 </li>
                 <li className="menu-item">
-                  <NavLink to='#' className=''>Financiamiento</NavLink>
+                  <NavLink to='financiamiento' className=''>Financiamiento</NavLink>
                 </li>
                 <li className="menu-item">
                   <NavLink to='#' className=''>Mercado inmobiliario</NavLink>

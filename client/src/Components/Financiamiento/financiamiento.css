@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.financiamiento {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aliceblue;
+    
+    
+}
+
+.financiamineto-info{
+    margin-top: 10%;
+    display: block;
+    margin-bottom: 1%;
+    
+
+}
+
+.info{
+    margin-left: 3%;
+    margin-right: 30%;
+    text-align: justify;
+}
+.imgFinanciemaiento{
+    height: 190px;
+    width: 516px;
+    border-style:groove;
+    border-radius: 12px;
+    margin-right: 60%;
+    
+}
+
+.video{
+    margin-bottom: 3%;
+}

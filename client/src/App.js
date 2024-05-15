@@ -8,7 +8,9 @@ import useApp from "./hooks/useApp";
 import InfoPage from "./Components/InfoPage/InfoPage";
 import useFilter from "./hooks/useFilter";
 import Registro from "./Components/Registro/registro";
-import Carrusel from "./Components/Carrusel/carrusel"
+import Carrusel from "./Components/Carrusel/carrusel";
+import Financiamiento from "./Components/Financiamiento/financiamiento";
+
 
 function App() {
 
@@ -23,7 +25,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/carrusel" element={<Carrusel />} />
-
+            <Route path="/financiamiento" element={<Financiamiento />} />
+            
             <Route path="/registro" element={<Registro />} />
             <Route path="/search" element={<Search />} />
             <Route path="/Info" element={<InfoPage />} />
