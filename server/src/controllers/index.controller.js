@@ -50,12 +50,16 @@ export const getHouses = async (req, res) => {
 };
 
 export const getHouseById = async (req, res) => {
-  //res.send('house ID: ' + req.params.id);
   try {
     const id = req.params.id;
     const response = await pool.query('SELECT * FROM house WHERE id = $1', [id]);
-    console.log(response.rows)
-    res.json(response.rows)
+    
+    // Check if response is empty (no house found)
+    if (response.rows.length === 0) {
+      return res.status(404).json({ message: 'House not found' });
+    }
+    
+    res.json(response.rows[0]); // Return the first row (should be the only one)
   } catch (error) {
     console.error('Error fetching house:', error);
     res.status(500).json({ message: 'Internal server error' });

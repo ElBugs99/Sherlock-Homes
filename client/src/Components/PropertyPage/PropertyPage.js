@@ -10,15 +10,20 @@ export default function PropertyPage() {
 
     const fetchHouses = async () => {
         try {
-          const response = await fetch(`http://localhost:3001/houses/${id}`);
-          const data = await response.json();
-          setProperty(data);
-          setIsLoading(false);
+            const response = await fetch(`http://localhost:3001/houses/${id}`);
+            
+            if (!response.ok) {
+                throw new Error('House not found');
+            }
+            
+            const data = await response.json();
+            setProperty(data);
+            setIsLoading(false);
         } catch (error) {
-          setIsLoading(false);
-          /* setError(true); */
+            setIsLoading(false);
+            setError(true);
         }
-      };
+    };
     
       useEffect(() => {
         fetchHouses();
