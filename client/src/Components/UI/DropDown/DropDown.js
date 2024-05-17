@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './dropdown.css';
 
-export default function DropDown({ options, callback }) {
-    const [selected, setSelected] = useState('hola');
+export default function DropDown({ options, callback, placeholder }) {
+    const [selected, setSelected] = useState(placeholder);
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => {

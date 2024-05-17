@@ -35,7 +35,7 @@
 }
 
 .top-form {
-    z-index: 2;
+    z-index: 50;
     width: 100%;
     top: 50%;
     left: 30%;
@@ -69,6 +69,17 @@
     height: 100%;
     width: 100%;
     position: absolute;
+}
+
+.dropdowns {
+    position: absolute;
+    display: flex;
+    width: 100%;
+}
+
+.dropdown-element {
+    width: 35%;
+    padding: 10px;
 }
 
 

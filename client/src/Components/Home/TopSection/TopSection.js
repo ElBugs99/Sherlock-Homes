@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./topSection.css";
 import homeVideo from "../../../assets/videos/home-video.mp4";
 import search from "../../../assets/images/white-search-icon.svg";
+import DropDown from '../../UI/DropDown/DropDown';
 import SearchBar from "../../UI/SearchBar/SearchBar";
 
 export default function TopSection() {
@@ -47,8 +48,16 @@ export default function TopSection() {
         {/* <img className='top-img' src={img} alt='promo' /> */}
         <div className="top-form">
           <SearchBar />
+          <div className="dropdowns">
+            <div className="dropdown-element">
+              <DropDown options={[ 'Quinta región' ]} placeholder={'Quinta región'} />
+            </div>
+            <div className="dropdown-element">
+              <DropDown options={[ 'Ninguna', 'Viña', 'Valparaíso' ]} placeholder={'Comuna'} />
+            </div>
+          </div>
         </div>
-        
+
         <div className="top-img-text-container">
           <div className="top-img-text">
             Encuentra tu nuevo{" "}

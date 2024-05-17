@@ -9,25 +9,26 @@
 }
 
 .select {
-    background: #2a2f3b;
-    color: #fff;
+    background: #ffffff;
+    font-weight: 600;
+    color: #757575;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px #2a2f3b solid;
-    border-radius: 0.5em;
+    border: 2px #269a6c solid;
+    border-radius: 1.5em;
     padding: 1em;
     cursor: pointer;
     transition: 0.2s;
 }
 
 .select-clicked {
-    border: 2px #26489a solid;
-    box-shadow: 0 0 0.8em #26489a;
+    border: 2px #269a6c solid;
+    box-shadow: 0 0 0.8em #269a6c;
 }
 
 .select:hover {
-    background: #323741;
+    background: #eaf7f1;
 }
 
 .caret {
@@ -35,7 +36,7 @@
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 6px solid #fff;
+    border-top: 6px solid #757575;
     transition: 0.3s;
 }
 
@@ -46,11 +47,12 @@
 .drop-menu {
     list-style: none;
     padding: 0.2em 0.5em;
-    background: #323741;
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0.2);
+    background: #ffffff;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.5);
     border-radius: 0.5em;
-    color: #9fa5b5;
+    color: #757575;
     position: absolute;
+    font-weight: 600;
     top: 3em;
     left: 50%;
     width: 100%;
@@ -58,7 +60,7 @@
     opacity: 0;
     display: none;
     transition: 0.2s;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .drop-menu li {
@@ -69,12 +71,12 @@
 }
 
 .drop-menu li:hover {
-    background: #2a2d35;
+    background: #bfeed9;
     transition: 0.2s;
 }
 
 .active-option {
-    background: #23242a;
+    background: #bfeed9;
 }
 
 .menu-open {
