@@ -5,7 +5,7 @@ import { FaRegCircle } from "react-icons/fa";
 import { FaCircle } from "react-icons/fa6";
 import './imageCarousel.css';
 
-export default function ImageCarousel({ imageArray }) {
+export default function ImageCarousel({ imageArray, height }) {
 
   const [ imageIndex, setImageIndex ] = useState(0);
 
@@ -26,7 +26,7 @@ export default function ImageCarousel({ imageArray }) {
   return (
     <div className='img-carousel-container'>
 
-      <div className='img-array'>
+      <div className='img-array' style={{height: height}}>
         {imageArray.map(url => (
           <img key={url} src={url} alt='propiedad' className='slider-img' style={{
             translate: ` ${-100 * imageIndex}% `
