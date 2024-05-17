@@ -5,66 +5,71 @@ const { Pool } = pkg;//conjunto de conexiones
 
 //configuraciones
 export const pool = new Pool({
-    connectionString: 'postgres://root:YT0ZoNGfRB2dptn5QKUlCFMXRYbYkzqg@dpg-cp0kkcvjbltc73dv8uhg-a.oregon-postgres.render.com/sherlock',
-    ssl: true
+  connectionString: 'postgres://root:YT0ZoNGfRB2dptn5QKUlCFMXRYbYkzqg@dpg-cp0kkcvjbltc73dv8uhg-a.oregon-postgres.render.com/sherlock',
+  ssl: true
 })
 
 export const getHouses = async (req, res) => {
-    try {
-      const { page = 1, limit = 10 } = req.query; // Default page is 1, default limit is 10
-      const offset = (page - 1) * limit;
-  
-      // Query to fetch paginated data
-      const query = {
-        text: 'SELECT * FROM house LIMIT $1 OFFSET $2',
-        values: [limit, offset],
-      };
-  
-      // Query to count total number of elements
-      const countQuery = 'SELECT COUNT(*) FROM house';
-  
-      // Execute both queries concurrently using Promise.all
-      const [dataResponse, countResponse] = await Promise.all([
-        pool.query(query),
-        pool.query(countQuery),
-      ]);
-  
-      const data = dataResponse.rows;
-      const totalCount = parseInt(countResponse.rows[0].count);
-  
-      // Construct response object with paginated data and total count
-      const responseObject = {
-        data,
-        meta: {
-          totalCount,
-          page: parseInt(page),
-          limit: parseInt(limit),
-        },
-      };
-  
-      res.json(responseObject);
-    } catch (error) {
-      console.error('Error fetching houses:', error);
-      res.status(500).json({ message: 'Internal server error' });
-    }
-  };
+  try {
+    const { page = 1, limit = 10 } = req.query; // Default page is 1, default limit is 10
+    const offset = (page - 1) * limit;
 
-export const getHouseById = async(req, res) => {
-    //res.send('house ID: ' + req.params.id);
+    // Query to fetch paginated data
+    const query = {
+      text: 'SELECT * FROM house LIMIT $1 OFFSET $2',
+      values: [limit, offset],
+    };
+
+    // Query to count total number of elements
+    const countQuery = 'SELECT COUNT(*) FROM house';
+
+    // Execute both queries concurrently using Promise.all
+    const [dataResponse, countResponse] = await Promise.all([
+      pool.query(query),
+      pool.query(countQuery),
+    ]);
+
+    const data = dataResponse.rows;
+    const totalCount = parseInt(countResponse.rows[0].count);
+
+    // Construct response object with paginated data and total count
+    const responseObject = {
+      data,
+      meta: {
+        totalCount,
+        page: parseInt(page),
+        limit: parseInt(limit),
+      },
+    };
+
+    res.json(responseObject);
+  } catch (error) {
+    console.error('Error fetching houses:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+export const getHouseById = async (req, res) => {
+  //res.send('house ID: ' + req.params.id);
+  try {
     const id = req.params.id;
     const response = await pool.query('SELECT * FROM house WHERE id = $1', [id]);
     console.log(response.rows)
     res.json(response.rows)
+  } catch (error) {
+    console.error('Error fetching house:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 }
 
-export const deleteHouse = async(req, res) => {
-    const id = req.params.id;
-    const response = await pool.query('DELETE * FROM house WHERE id = $1', [id]);
-    console.log(response);
+export const deleteHouse = async (req, res) => {
+  const id = req.params.id;
+  const response = await pool.query('DELETE * FROM house WHERE id = $1', [id]);
+  console.log(response);
 }
 
-export const updateHouse = async(req, res) => {
-    
+export const updateHouse = async (req, res) => {
+
 }
 
 /* 

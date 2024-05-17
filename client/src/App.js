@@ -10,6 +10,7 @@ import useFilter from "./hooks/useFilter";
 import Registro from "./Components/Registro/registro";
 import Carrusel from "./Components/Carrusel/carrusel";
 import Financiamiento from "./Components/Financiamiento/financiamiento";
+import PropertyPage from "./Components/PropertyPage/PropertyPage";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/registro" element={<Registro />} />
             <Route path="/search" element={<Search />} />
             <Route path="/Info" element={<InfoPage />} />
+            <Route path="Property/:id" element={<PropertyPage />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </Router>
