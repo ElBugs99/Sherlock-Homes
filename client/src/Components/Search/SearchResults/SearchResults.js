@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import HomeCard from "../../UI/HomeCard/HomeCard";
 import Pagination from "../../UI/Pagination/Pagination";
 import defaultImage from "../../../assets/images/defaulthome2.jpg";
@@ -13,6 +14,8 @@ export default function SearchResults({ data }) {
   const [houses, setHouses] = useState([])
   const [isLoading, setIsLoading] = useState(true);
   const [selectedProperty, setSelectedProperty] = useState(null);
+
+  const navigate = useNavigate();
 
   //traer data
 
@@ -86,7 +89,7 @@ export default function SearchResults({ data }) {
 
   if (isLoading)
     return (
-      <div className="search- results-container">
+      <div className="search-results-container">
         <div className="loading">Cargando...</div>
       </div>
     );
@@ -129,7 +132,7 @@ export default function SearchResults({ data }) {
                 sqft={x.sqft}
                 location={x.location}
                 media={x.media[0] === null || undefined ? defaultImage : x.media[0]}
-                onClick={() => setSelectedProperty(x)}
+                onClick={() => window.open(`/Property/${x.id}`, '_blank')}
               />
             </>
           );
