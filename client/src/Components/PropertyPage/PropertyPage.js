@@ -10,6 +10,7 @@ import ImageCarousel from '../UI/ImageCarousel/ImageCarousel';
 import NavBar from '../UI/NavBar/NavBar';
 import Footer from '../UI/Footer/Footer';
 import './propertyPage.css';
+import Spinner from '../UI/Spinner/Spinner';
 
 
 export default function PropertyPage() {
@@ -42,8 +43,28 @@ export default function PropertyPage() {
 
     console.log("casa", property)
 
-    if (isLoading) return <div>cargando...</div>;
-    if (error) return <div>Oops, ha ocurrido un error...</div>
+    if (isLoading) return (
+        <div className="property-modal-container">
+            <NavBar searchHidden={true} />
+            <div className='property-modal'>
+                <div className='property-loader'>
+                    <Spinner />
+                </div>
+            </div>
+            <Footer />
+        </div>
+        )
+    if (error) return (
+        <div className="property-modal-container">
+            <NavBar searchHidden={true} />
+            <div className='property-modal'>
+                <div className='property-loader'>
+                    Ha ocurrido un error...
+                </div>
+            </div>
+            <Footer />
+        </div>
+        )
 
     return (
 
