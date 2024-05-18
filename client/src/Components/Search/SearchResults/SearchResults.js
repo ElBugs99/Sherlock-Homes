@@ -5,6 +5,7 @@ import Pagination from "../../UI/Pagination/Pagination";
 import defaultImage from "../../../assets/images/defaulthome2.jpg";
 import { appContext } from "../../../appContext";
 import HouseModal from "../../UI/HouseModal/HouseModal";
+import Spinner from "../../UI/Spinner/Spinner";
 /* import useFilter from "../../../hooks/useFilter"; */
 
 export default function SearchResults({ data }) {
@@ -89,7 +90,8 @@ export default function SearchResults({ data }) {
 
   if (isLoading)
     return (
-      <div className="search-results-container">
+      <div className="preload-container">
+        <Spinner />
         <div className="loading">Cargando...</div>
       </div>
     );
