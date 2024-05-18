@@ -22,7 +22,7 @@ export default function InfoSection() {
         <div className='feature-element'>
           <FeaturedCard />
         </div>
-
+        
       </div>
     </section>
   )
