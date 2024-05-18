@@ -1,0 +1,63 @@
+.featured-card{
+    position: relative;
+    transition: transform 0.3s;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.featured-card:hover{
+    transform: scale(1.01);
+}
+.casas{
+    width: 300px;
+    height: 250px;
+    float: lefts;
+    
+}
+.Venta{
+    text-align: center;
+}
+
+.descripcion{
+   font-size:small;
+}
+ 
+.like{
+    position: absolute;
+  top: 15px;
+  right: 33px;
+}
+
+.Compartir{
+    position: absolute;
+    top: 14px;
+    right: 10px;
+}
+
+.destacado {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+
+.cantidad{
+    font-size: small;
+}
+
+.botonOferta{
+  display: flex;
+}
+.btn-oferta:hover{
+  background-color: #7fbf65; /* Color del botón cuando se pasa por encima */
+  transition: background-color 0.3s;
+}
+.btn-comparar:hover{
+  background-color: #42868f; /* Color del botón cuando se pasa por encima */
+  transition: background-color 0.3s;
+}
+.btn-oferta{
+  margin-right: 10px;
+}
