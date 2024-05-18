@@ -1,16 +1,16 @@
 import React from 'react'
-import casa1 from '../../../assets/images/Ehcasa1.jpeg'
 import { FaHeart } from 'react-icons/fa';
 import { FaShare } from "react-icons/fa";
 import { PiToiletLight } from "react-icons/pi";
 import { IoBedOutline } from "react-icons/io5";
 import { TbMeterSquare } from "react-icons/tb";
+import { addDotsToNumber } from '../../../utils/numberUtils';
 import './featuredCard.css'
 
-export default function FeaturedCard() {
+export default function FeaturedCard({ title, price, bathrooms, bedrooms, sqft, img, onClick }) {
   return (
     <div>
-      <div className='featured-card'>
+      <div className='featured-card' onClick={ onClick }>
           <h3 className='Venta'>Oferta Destacada</h3>
 
           <div className='iconos'>
@@ -20,19 +20,19 @@ export default function FeaturedCard() {
 
 
           <center>
-            <img className='casas' src={casa1} alt='Los Alemendros' />
+            <img className='casas' src={ img } alt='Los Alemendros' />
           </center>
-          <p className='descripcion'>Los Almendros. Reñaca. Propiedad con 1680 m2 de terreno.</p>
-          <h3>UF 19.990</h3>
+          <p className='descripcion'>{ title }</p>
+          <h3>$ { addDotsToNumber(price) }</h3>
 
           <p className='cantidad'>
-            <PiToiletLight /> 3 Baños
+            <PiToiletLight /> { bathrooms } Baños
           </p>
           <p className='cantidad'>
-            <IoBedOutline /> 4 Dormitorios
+            <IoBedOutline /> { bedrooms } Dormitorios
           </p>
           <p className='cantidad'>
-            <TbMeterSquare /> 1680 m2
+            <TbMeterSquare /> { sqft } m2
           </p>
 
           <div className='botonOferta'>

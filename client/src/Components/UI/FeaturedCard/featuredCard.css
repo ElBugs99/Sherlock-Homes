@@ -5,15 +5,17 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 .featured-card:hover{
     transform: scale(1.01);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 .casas{
     width: 300px;
     height: 250px;
     float: lefts;
-    
+    object-fit: cover;
 }
 .Venta{
     text-align: center;

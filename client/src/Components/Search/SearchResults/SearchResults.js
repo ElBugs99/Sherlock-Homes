@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
 import HomeCard from "../../UI/HomeCard/HomeCard";
 import Pagination from "../../UI/Pagination/Pagination";
 import defaultImage from "../../../assets/images/defaulthome2.jpg";
@@ -15,8 +14,6 @@ export default function SearchResults({ data }) {
   const [houses, setHouses] = useState([])
   const [isLoading, setIsLoading] = useState(true);
   const [selectedProperty, setSelectedProperty] = useState(null);
-
-  const navigate = useNavigate();
 
   //traer data
 
