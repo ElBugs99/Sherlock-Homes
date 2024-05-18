@@ -9,11 +9,12 @@ import Spinner from "../../UI/Spinner/Spinner";
 
 export default function SearchResults({ data }) {
 
-  const { error } = useContext(appContext);
+  /* const { error } = useContext(appContext); */
   const [filteredItems, setFilteredItems] = useState([])
   const [houses, setHouses] = useState([])
   const [isLoading, setIsLoading] = useState(true);
   const [selectedProperty, setSelectedProperty] = useState(null);
+  const [ error, setError ] = useState(false);
 
   //traer data
 
@@ -25,7 +26,7 @@ export default function SearchResults({ data }) {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      /* setError(true); */
+      setError(true);
     }
   };
 
@@ -101,14 +102,14 @@ export default function SearchResults({ data }) {
 
   if (error)
     return (
-      <div className="search-results-container">
+      <div className="preload-container">
         <div className="errormsj">Ha ocurrido un error</div>
       </div>
     );
 
   return (
     <>
-      <div>Resultados: {houses.meta.totalCount}</div>
+      <div>Resultados: {houses?.meta?.totalCount}</div>
       <input
         className=""
         spellCheck="false"
@@ -119,7 +120,7 @@ export default function SearchResults({ data }) {
         Buscar
       </button>
       <div className="search-results-container">
-        {houses.data.map((x, index) => {
+        {houses?.data?.map((x, index) => {
           return (
             <>
               <HomeCard
