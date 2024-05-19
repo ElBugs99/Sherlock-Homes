@@ -91,13 +91,10 @@ export const updateHouse = async (req, res) => {
 
 export const getAllUsers = async (req, res) => {
   try {
-    // Query to select all users
     const query = 'SELECT * FROM "users"';
     
-    // Execute the query
     const result = await pool.query(query);
 
-    // Send the result as JSON
     res.status(200).json(result.rows);
   } catch (error) {
     console.error('Error fetching all users:', error);
