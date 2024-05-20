@@ -165,12 +165,6 @@ export default function PropertyPage() {
                     </div>
                 </div>
             </div>
-            <div className='property-calculations-title'>Calculos</div>
-            <div className='property-calculations'>
-                <div className='property-left-info'>INFO</div>
-                <div className='property-right-info'>Graficos</div>
-            </div>
-
             <Footer />
         </div>
     )
