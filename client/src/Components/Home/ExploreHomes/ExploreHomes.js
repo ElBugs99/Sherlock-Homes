@@ -1,30 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './exploreHomes.css';
+import { appContext } from "../../../appContext";
 import ExploreCityCard from '../../UI/ExploreCityCard/ExploreCityCard';
 import vina from '../../../assets/images/vina-noche.jpg';
 import santiago from '../../../assets/images/santiago.jpg';
 import serena from '../../../assets/images/Faro_La_Serena_451.jpg';
 import valdivia from '../../../assets/images/valdivia.jpg';
-import { jwtDecode } from 'jwt-decode';
 
 export default function ExploreHomes() {
 
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-        console.log('there is a token')
-        const decodedToken = jwtDecode(token);
-        setUser(decodedToken);
-    }
-}, []);
+  const { user } = useContext(appContext);
 
   return (
     <div className='explore-homes'>
       <div className='cities-container'>
         <div className='cities-title'>
-            {user ? <div>Bienvenido, {user.username}</div> : 'Explora en tu ciudad'}
+            {user ? <div>Bienvenid@, {user.username}</div> : 'Explora en tu ciudad'}
         </div>
         <div className='explore-cities apareciendo'>
             <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={vina} />

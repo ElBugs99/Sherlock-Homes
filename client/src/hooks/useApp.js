@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useFilter from "./useFilter";
+import { jwtDecode } from 'jwt-decode';
 
 export default function useApp() {
   /* const {} = useFilter() */
@@ -7,35 +8,23 @@ export default function useApp() {
   const [houses, setHouses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [isLogged, setIsLogged] = useState(null);
 
-
-  const postsPerPage = 9;
-
-  /* const fetchHouses = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/houses");
-      const data = await response.json();
-      setHouses(data);
-      setLoading(false);
-      console.log('useEffect', data)
-    } catch (error) {
-      setLoading(false);
-      setError(true);
-    }
-  };
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetchHouses();
+    const token = localStorage.getItem('token');
+    if (token) {
+      console.log('there is a token')
+      const decodedToken = jwtDecode(token);
+      setUser(decodedToken);
+    }
   }, []);
 
-  console.log('houses', houses) */
-
+  console.log('useApp user', user);
   return (
     {
-        houses,
-        postsPerPage,
-        loading,
-        error
+      user
     }
   );
 }

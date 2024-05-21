@@ -15,11 +15,11 @@ import PropertyPage from "./Components/PropertyPage/PropertyPage";
 
 function App() {
 
-  const { houses } = useApp();
+  const { user } = useApp();
 /*   const { filteredItems } = useFilter() */
 {/* <Route path="/search/:location" element={<Search />} /> */}
   return (
-    <appContext.Provider value={{ houses }}>
+    <appContext.Provider value={{ user }}>
       <div className="App">
         <Router>
           <Routes>

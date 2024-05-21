@@ -15,7 +15,6 @@ export default function HomeCard({
   onClick
 }) {
 
-  console.log('bedrooms', bedrooms)
   return (
     <div 
       className="home-card"

@@ -10,6 +10,8 @@ const generateSecretKey = () => {
 const secretKey = generateSecretKey();
 console.log('Generated Secret Key:', secretKey);
 
+//TODO add option to close session from another device, change token validity
+
 export const login = async (req, res) => {
     const { email, password } = req.body;
     
