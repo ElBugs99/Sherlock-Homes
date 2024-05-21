@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './dropdown.css';
 
 export default function DropDown({ options, callback, placeholder, background, color, width }) {
-    const [selected, setSelected] = useState(placeholder);
+    const [selected, setSelected] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -26,7 +26,7 @@ export default function DropDown({ options, callback, placeholder, background, c
                 }}
                 onClick={toggleDropdown}
             >
-                <span className='selected'>{selected}</span>
+                <span className='selected'>{selected || placeholder}</span>
                 <div
                     className={`caret ${isOpen ? 'caret-rotate' : ''}`}
                     style={{

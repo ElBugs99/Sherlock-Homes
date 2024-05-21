@@ -19,11 +19,12 @@ export default function useApp() {
       const decodedToken = jwtDecode(token);
       setUser(decodedToken);
     }
-  }, []);
+  }, [localStorage]);
 
   console.log('useApp user', user);
   return (
     {
+      setUser,
       user
     }
   );

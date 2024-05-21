@@ -5,6 +5,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+//TODO include id uploaded by user
+
 async function createTable() {
   try {
     const client = await pool.connect();

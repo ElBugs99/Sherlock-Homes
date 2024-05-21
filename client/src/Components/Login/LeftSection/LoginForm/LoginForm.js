@@ -20,7 +20,7 @@ export default function LoginForm() {
 
   const redirect = () => {
     setTimeout(() => {
-      navigate('/');
+      window.location.href = '/';
     }, 3000);
   };
 
