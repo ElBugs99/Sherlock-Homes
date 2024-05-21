@@ -32,14 +32,6 @@ export default function LoginForm() {
     }));
   };
 
-  const logLocalStorage = () => {
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      const value = localStorage.getItem(key);
-      console.log(`${key}: ${value}`);
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setServerSuccess(null);
@@ -87,8 +79,6 @@ export default function LoginForm() {
 
         localStorage.setItem('user', JSON.stringify(data.user));
 
-        console.log('JWT token:', data.token);
-        console.log('User data:', data.user);
         setServerSuccess(data.message);
         setShowModal(true);
         redirect();
