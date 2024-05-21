@@ -1,26 +1,32 @@
-import React from 'react'
+import React from 'react';
 import './navBar.css';
 import svgImage from '../../../assets/images/greenicon.svg';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 import DropDown from '../DropDown/DropDown';
 
-
 export default function NavBar({ searchHidden }) {
-
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleOpen = () => {
     setOpen(!open);
   };
-  
+
+  const handleDropDownOptionClick = (option) => {
+    if (option === 'Ingresar') {
+      navigate('/login');
+    } else if (option === 'Registrarse') {
+      navigate('/registro');
+    }
+  };
+
   //TODO make dropdown close when clicking outside
 
   return (
     <nav className='navBar'>
       <div className='nav-options-container'>
         <div className='nav-logo-container'>
-
           <div className='nav-logo'>Sherlock Homes</div>
           <img className='nav-icon' src={svgImage} alt="SVG" />
         </div>
@@ -31,14 +37,15 @@ export default function NavBar({ searchHidden }) {
         <div className='nav-options'>
           <div className='nav-drop'>
             <DropDown
-              options={['hola', 'chao']}
+              options={['Ingresar', 'Registrarse']}
               placeholder={'Ingresa'}
               background='#264653'
               color='white'
               width='80px'
+              callback={handleDropDownOptionClick}
             />
           </div>
-          <NavLink to='/' className='nav-option '>Inicio</NavLink >
+          <NavLink to='/' className='nav-option'>Inicio</NavLink >
           <NavLink to='/search' className='nav-option'>Búsqueda</NavLink>
 
           <div className="dropdown">
@@ -49,7 +56,7 @@ export default function NavBar({ searchHidden }) {
                   <NavLink to='/Info' className=''>Nosotros</NavLink>
                 </li>
                 <li className="menu-item">
-                  <NavLink to='financiamiento' className=''>Financiamiento</NavLink>
+                  <NavLink to='/financiamiento' className=''>Financiamiento</NavLink>
                 </li>
                 <li className="menu-item">
                   <NavLink to='#' className=''>Mercado inmobiliario</NavLink>
@@ -58,10 +65,8 @@ export default function NavBar({ searchHidden }) {
             ) : null}
           </div>
 
-          <NavLink to='/login' className='nav-option'>Ingresar</NavLink>
-
         </div>
       </div>
     </nav>
-  )
+  );
 }
