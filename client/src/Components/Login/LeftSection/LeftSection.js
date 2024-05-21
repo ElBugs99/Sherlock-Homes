@@ -2,6 +2,7 @@ import React from 'react'
 import './leftSection.css'
 import LoginForm from './LoginForm/LoginForm';
 import svgImage from '../../../assets/images/greenicon.svg';
+import { FaArrowRightLong } from "react-icons/fa6";
 
 export default function LeftSection() {
   return (
@@ -17,7 +18,7 @@ export default function LeftSection() {
       </div>
       <LoginForm />
       <div className='link-registro'>
-        <a href='registro'>Registrarse</a>
+        <a className='link-a' href='registro'>Registrarse <FaArrowRightLong /></a>
       </div>
     </div>
   )

@@ -95,7 +95,7 @@ export default function LoginForm() {
 
   return (
     <div className='login-form'>
-      <form className='form' onSubmit={handleSubmit}>
+      <form className='form-1' onSubmit={handleSubmit}>
         {showModal && <MessageModal message={'Has iniciado sesión correctamente'} isButtonVisible={false} />}
         <div className='form-group'>
           <div className='msg-container'>

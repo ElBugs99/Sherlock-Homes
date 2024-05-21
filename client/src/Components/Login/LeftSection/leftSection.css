@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     height: 200px;
     width: 60%;
     font-weight: 900;
@@ -29,12 +29,10 @@
     color: #38ba8c;
 }
 
-.footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.link-registro {
     height: 100px;
-    width: 60%;
+    font-weight: 600;
+    padding: 30px;
 }
 
 .icon {
@@ -48,6 +46,20 @@
     justify-content: center;
 }
 
+.link-a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #38ba8c;
+    cursor: pointer;
+    width: 100px;
+    justify-content: space-between;
+}
+
+.link-a .icon {
+    margin-left: 30px;
+}
+
 @media screen and (max-width:950px) {
     .header-title{
         font-size: 30px;
@@ -56,7 +68,7 @@
         font-size: 50px;
         margin-left: 60px;
     }
-    .link-registro{
+    .link-registro {
         margin-left: 180px;
         margin-bottom: 50p;
     }

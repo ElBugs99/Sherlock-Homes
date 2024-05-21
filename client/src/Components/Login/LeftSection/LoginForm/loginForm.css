@@ -6,7 +6,7 @@
     width: 50%;
 }
 
-.form {
+.form-1 {
     display: flex;
     flex-direction: column;
 }
