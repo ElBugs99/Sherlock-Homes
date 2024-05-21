@@ -16,7 +16,6 @@ export default function LoginForm() {
   const [passError, setPassError] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  const navigate = useNavigate();
 
   const redirect = () => {
     setTimeout(() => {
