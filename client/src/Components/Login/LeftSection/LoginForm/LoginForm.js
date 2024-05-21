@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './loginForm.css';
+import MessageModal from '../../../UI/MessageModal/MessageModal';
 
 export default function LoginForm() {
   const [loginUser, setLoginUser] = useState({
@@ -96,6 +97,7 @@ export default function LoginForm() {
     <div className='login-form'>
       <form className='form' onSubmit={handleSubmit}>
       <button onClick={() => logLocalStorage()}>local</button>
+      <MessageModal message={'Has iniciado sesión correctamente'} isButtonVisible={false}/>
         <div className='form-group'>
         <div className='msg-container'>
           {serverSuccess && <div className='error-msg'>{serverSuccess}</div>}
