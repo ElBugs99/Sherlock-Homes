@@ -18,7 +18,7 @@ export default function LeftSection() {
       </div>
       <LoginForm />
       <div className='link-registro'>
-        <a className='link-a' href='registro'>Registrarse <FaArrowRightLong /></a>
+        <a className='link-a' href='registro'>Registrarse <FaArrowRightLong className='' /></a>
       </div>
     </div>
   )

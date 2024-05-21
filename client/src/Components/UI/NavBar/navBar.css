@@ -12,7 +12,10 @@
     z-index: 99;
 }
 
-
+/* .nav-drop {
+    width: 100%;
+}
+ */
 
 .nav-options-container {
     display: flex;
