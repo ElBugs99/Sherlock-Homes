@@ -12,10 +12,6 @@
     z-index: 99;
 }
 
-/* .nav-drop {
-    width: 100%;
-}
- */
 
 .nav-options-container {
     display: flex;
@@ -30,6 +26,7 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+    padding-right: 20px;
 }
 
 .nav-option {
@@ -59,6 +56,7 @@
     align-items: center;
     justify-content: center;
     padding: 0 40px 0 40px;
+    cursor: pointer;
 }
 
 .nav-logo {
@@ -77,6 +75,10 @@
 }
 
 /* dropdown */
+
+.nav-drop {
+    padding: 0 20px;
+}
 
 .dropdown {
     font-family: 'Roboto', sans-serif;

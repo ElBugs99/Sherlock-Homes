@@ -9,24 +9,34 @@ export default function NavBar({ searchHidden }) {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
-  const handleOpen = () => {
-    setOpen(!open);
-  };
 
   const handleDropDownOptionClick = (option) => {
     if (option === 'Ingresar') {
       navigate('/login');
-    } else if (option === 'Registrarse') {
+    }
+    
+    if (option === 'Registrarse') {
       navigate('/registro');
     }
   };
+
+  const handleDropDownOptionClick2 = (option) => {
+    if (option === 'Nosotros') {
+      navigate('/Info');
+    }
+    
+    if (option === 'Financiar') {
+      navigate('/financiamiento');
+    }
+  };
+
 
   //TODO make dropdown close when clicking outside
 
   return (
     <nav className='navBar'>
       <div className='nav-options-container'>
-        <div className='nav-logo-container'>
+        <div className='nav-logo-container' onClick={() => navigate('/')}>
           <div className='nav-logo'>Sherlock Homes</div>
           <img className='nav-icon' src={svgImage} alt="SVG" />
         </div>
@@ -35,6 +45,9 @@ export default function NavBar({ searchHidden }) {
           <SearchBar />
         </div>
         <div className='nav-options'>
+
+          <NavLink to='/search' className='nav-option'>Búsqueda</NavLink>
+
           <div className='nav-drop'>
             <DropDown
               options={['Ingresar', 'Registrarse']}
@@ -45,25 +58,17 @@ export default function NavBar({ searchHidden }) {
               callback={handleDropDownOptionClick}
             />
           </div>
-          <NavLink to='/' className='nav-option'>Inicio</NavLink >
-          <NavLink to='/search' className='nav-option'>Búsqueda</NavLink>
+          
+          {/* <NavLink to='/' className='nav-option'>Inicio</NavLink > */}
 
-          <div className="dropdown">
-            <button onClick={handleOpen}>Aprende</button>
-            {open ? (
-              <ul className="menu">
-                <li className="menu-item">
-                  <NavLink to='/Info' className=''>Nosotros</NavLink>
-                </li>
-                <li className="menu-item">
-                  <NavLink to='/financiamiento' className=''>Financiamiento</NavLink>
-                </li>
-                <li className="menu-item">
-                  <NavLink to='#' className=''>Mercado inmobiliario</NavLink>
-                </li>
-              </ul>
-            ) : null}
-          </div>
+          <DropDown
+              options={['Nosotros', 'Financiar', ]} //TODO agregar Mercado inmobiliario
+              placeholder={'Aprende'}
+              background='#264653'
+              color='white'
+              width='80px'
+              callback={handleDropDownOptionClick2}
+            />
 
         </div>
       </div>
