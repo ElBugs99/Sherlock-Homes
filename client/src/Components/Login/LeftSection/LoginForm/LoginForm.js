@@ -13,6 +13,7 @@ export default function LoginForm() {
   const [ emailError, setEmailError ] = useState(null);
   const [ isValidEmail, setIsValidEmail ] = useState(null);
   const [ passError, setPassError ] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -80,6 +81,7 @@ export default function LoginForm() {
             console.log('JWT token:', data.token);
             console.log('User data:', data.user);
             setServerSuccess(data.message);
+            setShowModal(true);
         } else {
             const data = await response.json();
             console.log('Server message:', data.message);
@@ -97,7 +99,7 @@ export default function LoginForm() {
     <div className='login-form'>
       <form className='form' onSubmit={handleSubmit}>
       <button onClick={() => logLocalStorage()}>local</button>
-      <MessageModal message={'Has iniciado sesión correctamente'} isButtonVisible={false}/>
+        { showModal && <MessageModal message={'Has iniciado sesión correctamente'} isButtonVisible={false}/> }
         <div className='form-group'>
         <div className='msg-container'>
           {serverSuccess && <div className='error-msg'>{serverSuccess}</div>}
