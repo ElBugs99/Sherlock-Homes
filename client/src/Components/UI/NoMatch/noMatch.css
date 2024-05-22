@@ -8,13 +8,18 @@
     background-color: #ebf1ec;
     font-weight: bold;
     align-items: center;
+}
 
+.notFound-content {
+    display: flex;
+    flex-direction: column;
+    padding: 11vh 0;
+    align-items: center;
 }
 
 .not-found-svg-container {
     height: 500px;
     width: 500px;
-    padding-top: 11vh;
 }
 
 

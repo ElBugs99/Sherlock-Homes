@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import animationData from '../../../assets/animation/Animation - 1716334461163.json';
 import NavBar from '../NavBar/NavBar';
 import './noMatch.css';
+import Footer from '../Footer/Footer';
 
 export default function NoMatch() {
 
@@ -20,16 +21,19 @@ export default function NoMatch() {
 
   return (
     <div className='notFound'>
-      <NavBar searchHidden={true}/>
-      <div className='not-found-svg-container'>
-        <Lottie
-          options={defaultOptions}
-          height={500}
-          width={500}
-        />
+      <NavBar searchHidden={true} />
+      <div className='notFound-content'>
+        <div className='not-found-svg-container'>
+          <Lottie
+            options={defaultOptions}
+            height={500}
+            width={500}
+          />
+        </div>
+        <div className='not-found-info'>Página no encontrada</div>
+        <button className='not-found-home' onClick={() => navigate('/')}>Inicio</button>
       </div>
-      <div className='not-found-info'>Página no encontrada</div>
-      <button className='not-found-home' onClick={() => navigate('/')}>Inicio</button>
+      <Footer />
     </div>
   )
 }
