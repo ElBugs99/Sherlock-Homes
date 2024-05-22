@@ -11,7 +11,7 @@ export default function Footer() {
       <div className='grupo-1'>
         <div className='box'>
           <figure>
-            <a href="#">
+            <a href="/">
             <img className='logoimg' src={logo} alt="Sherlock Homes" />     
             </a>
           </figure>
@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
       </div>
       <div className='grupo-2'>
-        <b>® 2023, SherlockHomes SpA.</b>
+        <b>® 2024, SherlockHomes SpA.</b>
         <div>Todos los derechos reservados.</div>
       </div>
     </div>
