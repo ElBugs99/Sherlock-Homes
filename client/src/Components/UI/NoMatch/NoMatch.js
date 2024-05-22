@@ -1,17 +1,32 @@
-import React from 'react'
-import './noMatch.css'
-import img from '../../../assets/images/alien-obduction-svgrepo-com.svg'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import Lottie from 'react-lottie';
+import { useNavigate } from 'react-router-dom';
+import animationData from '../../../assets/animation/Animation - 1716334461163.json';
+import NavBar from '../NavBar/NavBar';
+import './noMatch.css';
 
 export default function NoMatch() {
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
 
   const navigate = useNavigate();
 
   return (
     <div className='notFound'>
-      <div className='numbers'>404</div>
+      <NavBar searchHidden={true}/>
       <div className='not-found-svg-container'>
-        <img className='not-found-svg' src={img} alt='ufo' />
+        <Lottie
+          options={defaultOptions}
+          height={500}
+          width={500}
+        />
       </div>
       <div className='not-found-info'>Página no encontrada</div>
       <button className='not-found-home' onClick={() => navigate('/')}>Inicio</button>

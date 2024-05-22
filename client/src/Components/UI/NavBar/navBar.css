@@ -85,7 +85,7 @@
     position: relative;
   }
 
-  button {
+    .navBar  button {
     background-color: #2a5565;
     color: white;
     font-weight: 600;
