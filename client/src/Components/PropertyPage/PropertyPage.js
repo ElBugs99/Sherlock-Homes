@@ -11,6 +11,9 @@ import NavBar from '../UI/NavBar/NavBar';
 import Footer from '../UI/Footer/Footer';
 import './propertyPage.css';
 import Spinner from '../UI/Spinner/Spinner';
+import Calculator from '../UI/Calculator/Calculator';
+import Map from '../UI/Map/Map';
+import { FaLink } from "react-icons/fa6";
 
 
 export default function PropertyPage() {
@@ -152,19 +155,46 @@ export default function PropertyPage() {
                         <div className="property-modal-header">
                             <div className="property-modal-atribute property-modal-title">{property.title}</div>
                             <div className="property-modal-price">$ {addDotsToNumber(property.price)}</div>
-                            <div>
-                                <div className="property-modal-atribute">Url original:</div>
-                                <a href={property.listing_url} target="_blank" rel="noopener noreferrer" className="property-modal-url">{property.listing_url}</a>
+                            <div className="property-modal-atribute">
+                                
+                                <button className='button-PP'>
+                                    
+                                <a 
+                                href={property.listing_url} target="_blank" rel="noopener noreferrer" className="property-modal-url">
+                                    <FaLink></FaLink> Ir a la Publicacion
+                                </a>
+                                
+                                </button>
+                                
                             </div>
+                            
+                            
                         </div>
+                            <div className='mapa'>
+                                    <Map lat={property.latitude} lng={property.longitude} />
+                                    <div className='msg-error-mapa'> {property.latitude ? "" : "Esta publicacion tiene oculta su direccion"} </div>
+                                    
+
+                            </div>
                         <div className="modal-lower-section">
                             <div className="property-modal-desc">
                                 <div>{property.description}</div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
+            {/* <div className='property-calculations-title'>Calculos</div> */}
+            
+            <div className='property-calculations'>
+                <div className='property-left-info'>
+                <Calculator valor={property.price}/>
+                </div>
+
+                <div className='property-right-info'>Graficos</div>
+            </div>
+
             <Footer />
         </div>
     )

@@ -193,6 +193,7 @@
     justify-content: center;;
     width: 100%;
     min-height: 100vh;
+    background-color:#38ba8c;
 }
 
 .property-calculations-title {
@@ -220,4 +221,27 @@
     50% {
         scale: 2.4 0.6;
     }
+}
+
+.mapa{
+    height: 650px;
+    width: 650px;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+.button-PP{
+    background-color: #ebf1ec;
+
+}
+
+.button-PP:hover{
+    border-radius: 5px;
+    background-color:#264653;
+    
+}
+
+.msg-error-mapa{
+    font-style: italic;
+    color: #df4444;
+    font-size: small;
 }
