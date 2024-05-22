@@ -11,7 +11,7 @@ export default function FeaturedCard({ title, price, bathrooms, bedrooms, sqft, 
   return (
     <div>
       <div className='featured-card' onClick={ onClick }>
-          <h3 className='Venta'>Oferta Destacada</h3>
+          <h3 className='Venta'>Publicación Destacada</h3>
 
           <div className='iconos'>
             <FaHeart className='like' />
@@ -36,10 +36,7 @@ export default function FeaturedCard({ title, price, bathrooms, bedrooms, sqft, 
           </p>
 
           <div className='botonOferta'>
-            <a href='*'>
-              <button className='btn-oferta'>Ir a la oferta</button>
-            </a>
-            <button className='btn-comparar'>Comparar</button>
+            
           </div>
 
         </div>
