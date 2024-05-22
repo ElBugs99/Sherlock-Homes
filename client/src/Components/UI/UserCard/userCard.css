@@ -1,4 +1,7 @@
 .user-card-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
     height: 500px;
     position: relative;
     transition: transform 0.3s;

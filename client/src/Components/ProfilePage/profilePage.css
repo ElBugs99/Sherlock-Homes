@@ -11,19 +11,53 @@
     display: flex;
     margin-top: 10vh;
     width: 100%;
+    min-height: 100vh;
 }
 
 .profile-page-left {
+    display: flex;
+    justify-content: center;
     width: 20%;
     padding: 30px;
 }
 
 .profile-page-center {
-    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
     padding: 30px;
 }
 
 .profile-page-right {
-    width: 40%;
+    display: flex;
+    justify-content: center;
+    width: 20%;
     padding: 30px;
+}
+
+.profile-center-top {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px 20px 20px;
+}
+
+.profile-info-box {
+    display: flex;
+    width: 25%;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.profile-options {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
