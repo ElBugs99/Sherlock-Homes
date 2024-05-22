@@ -6,11 +6,11 @@ import Search from "./Components/Search/Search";
 import { appContext } from "./appContext";
 import useApp from "./hooks/useApp";
 import InfoPage from "./Components/InfoPage/InfoPage";
-import useFilter from "./hooks/useFilter";
 import Registro from "./Components/Registro/registro";
 import Carrusel from "./Components/Carrusel/carrusel";
 import Financiamiento from "./Components/Financiamiento/financiamiento";
 import PropertyPage from "./Components/PropertyPage/PropertyPage";
+import ProfilePage from "./Components/ProfilePage/ProfilePage";
 
 
 function App() {
@@ -27,12 +27,13 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/carrusel" element={<Carrusel />} />
             <Route path="/financiamiento" element={<Financiamiento />} />
-            
             <Route path="/registro" element={<Registro />} />
             <Route path="/search" element={<Search />} />
             <Route path="/Info" element={<InfoPage />} />
             <Route path="Property/:id" element={<PropertyPage />} />
             <Route path="*" element={<NoMatch />} />
+
+            <Route path="perfil" element={<ProfilePage />} />
           </Routes>
         </Router>
       </div>

@@ -52,9 +52,9 @@ export default function NavBar({ searchHidden }) {
       window.location.href = '/';
     } 
     
-    /* if (option === 'Ver perfil') {
-      navigate('/perfil');
-    } */
+    if (option === 'Ver perfil') {
+      window.location.href = '/perfil';
+    }
   };
 
   // TODO make dropdown close when clicking outside

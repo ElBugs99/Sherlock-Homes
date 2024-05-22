@@ -1,0 +1,29 @@
+.profile-page-container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    align-items: flex-start;
+    background-color: #ebf1ec;
+}
+
+.profile-page {
+    display: flex;
+    margin-top: 10vh;
+    width: 100%;
+}
+
+.profile-page-left {
+    width: 20%;
+    padding: 30px;
+}
+
+.profile-page-center {
+    width: 40%;
+    padding: 30px;
+}
+
+.profile-page-right {
+    width: 40%;
+    padding: 30px;
+}
