@@ -221,3 +221,9 @@
         scale: 2.4 0.6;
     }
 }
+
+.mapa{
+    height: 650px;
+    width: 650px;
+    margin-bottom: 3%;
+}

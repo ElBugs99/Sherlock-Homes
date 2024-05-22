@@ -11,6 +11,8 @@ import NavBar from '../UI/NavBar/NavBar';
 import Footer from '../UI/Footer/Footer';
 import './propertyPage.css';
 import Spinner from '../UI/Spinner/Spinner';
+import Calculator from '../UI/Calculator/Calculator';
+import Map from '../UI/Map/Map';
 
 
 export default function PropertyPage() {
@@ -156,15 +158,31 @@ export default function PropertyPage() {
                                 <div className="property-modal-atribute">Url original:</div>
                                 <a href={property.listing_url} target="_blank" rel="noopener noreferrer" className="property-modal-url">{property.listing_url}</a>
                             </div>
+                            
+                            
                         </div>
+                        <div className='mapa'>
+                                <Map/>
+                            </div>
                         <div className="modal-lower-section">
                             <div className="property-modal-desc">
                                 <div>{property.description}</div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
+            <div className='property-calculations-title'>Calculos</div>
+            
+            <div className='property-calculations'>
+                <div className='property-left-info'>
+                <Calculator/>
+                </div>
+
+                <div className='property-right-info'>Graficos</div>
+            </div>
+
             <Footer />
         </div>
     )
