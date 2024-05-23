@@ -7,7 +7,7 @@
     padding-left: 30px;
   }
   
-  h3 {
+ .titulo-calc{
     color: #333;
   }
   
@@ -22,7 +22,7 @@
     color: #333;
   }
   
-  input {
+  .boton-Calc {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;

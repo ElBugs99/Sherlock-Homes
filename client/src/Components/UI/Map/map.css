@@ -1,4 +1,10 @@
 .map{
     height: 650px;
     width: 650px;
+    margin-right: 3%;
+    margin-left: 3%;
+}
+
+.marker-map{
+    height: 23px;
 }
