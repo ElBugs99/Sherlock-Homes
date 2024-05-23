@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-//TODO add if user is premium
+//TODO add if user is premium, add cellphone
 
 async function createTable() {
   try {

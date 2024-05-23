@@ -24,7 +24,6 @@ export default function ProfilePage() {
                             Publicaciones
                         </div>
                     </div>
-
                     center
                 </div>
                 <div className='profile-page-right'>
