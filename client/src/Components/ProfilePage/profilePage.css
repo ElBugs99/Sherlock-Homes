@@ -101,6 +101,24 @@
     background-color: rgb(251, 238, 150);
 }
 
+.comments {
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out; /* Ensure smooth transition */
+}
+
+.comments:hover {
+    background-color: rgb(177, 150, 251);
+}
+
+.publications {
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out; /* Ensure smooth transition */
+}
+
+.publications:hover {
+    background-color: rgb(251, 150, 150);
+}
+
 .profile-icon {
     margin-left: 10px;
 }

@@ -24,10 +24,10 @@ export default function ProfilePage() {
                         <div className='profile-info-box favorites'>
                             Favoritos <MdFavorite className='profile-icon' />
                         </div>
-                        <div className='profile-info-box'>
+                        <div className='profile-info-box comments'>
                             Comentarios <FaComment  className='profile-icon' />
                         </div>
-                        <div className='profile-info-box'>
+                        <div className='profile-info-box publications'>
                             Publicaciones <FaHouse className='profile-icon' />
                         </div>
                     </div>
