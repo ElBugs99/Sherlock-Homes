@@ -11,6 +11,7 @@ import Carrusel from "./Components/Carrusel/carrusel";
 import Financiamiento from "./Components/Financiamiento/financiamiento";
 import PropertyPage from "./Components/PropertyPage/PropertyPage";
 import ProfilePage from "./Components/ProfilePage/ProfilePage";
+import ProtectedRoute from "./Components/UI/ProtectedRoute/ProtectedRoute";
 
 
 function App() {
@@ -30,10 +31,17 @@ function App() {
             <Route path="/registro" element={<Registro />} />
             <Route path="/search" element={<Search />} />
             <Route path="/Info" element={<InfoPage />} />
-            <Route path="Property/:id" element={<PropertyPage />} />
+            <Route path="/Property/:id" element={<PropertyPage />} />
             <Route path="*" element={<NoMatch />} />
 
-            <Route path="perfil" element={<ProfilePage />} />
+            <Route 
+              path="/perfil" 
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </Router>
       </div>

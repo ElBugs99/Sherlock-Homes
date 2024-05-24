@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './infoSection.css'
 import FeaturedCard from '../../UI/FeaturedCard/FeaturedCard';
+import { appContext } from '../../../appContext';
 
 
 export default function InfoSection() {
@@ -8,6 +9,7 @@ export default function InfoSection() {
   const [properties, setProperties] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+
 
   const fetchHouses = async () => {
     try {
