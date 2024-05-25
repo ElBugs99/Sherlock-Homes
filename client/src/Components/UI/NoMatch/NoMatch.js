@@ -28,6 +28,7 @@ export default function NoMatch() {
             options={defaultOptions}
             height={500}
             width={500}
+            isClickToPauseDisabled={true}
           />
         </div>
         <div className='not-found-info'>Página no encontrada</div>
