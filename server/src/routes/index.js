@@ -7,7 +7,8 @@ import {
   deleteHouse,
   updateHouse,
   createUser,
-  getAllUsers
+  getAllUsers,
+  addFavorite
 } from "../controllers/index.controller.js";
 import { pool } from '../controllers/index.controller.js';
 
@@ -32,5 +33,8 @@ router.use('/api/auth', authRoutes);
 // Users routes
 router.post('/register', createUser);
 router.get('/users', getAllUsers);
+
+//favorite
+router.post('/addFavorite', addFavorite);
 
 export default router;

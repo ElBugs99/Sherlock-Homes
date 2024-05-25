@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaHeart } from 'react-icons/fa';
-import { FaShare } from "react-icons/fa";
 import { PiToiletLight } from "react-icons/pi";
 import { IoBedOutline } from "react-icons/io5";
 import { TbMeterSquare } from "react-icons/tb";
@@ -18,26 +17,39 @@ export default function HomeCard({
   media,
   city,
   url,
-  onClick
+  propertyId,
+  onClick,
+  onFavoriteClick
 }) {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleFavoriteClick = (e) => {
+    e.stopPropagation(); // Prevent card click event
+    setIsFavorite(!isFavorite);
+    onFavoriteClick(propertyId);
+  };
 
   return (
     <div 
       className="home-card"
       onClick={onClick}
-      >
+    >
       <div className="home-card-container">
         <div className="home-card-img-container">
           <img className="home-card-img" src={media} alt="home" />
+          <div 
+            className={`favorite-icon-container ${isFavorite ? 'favorite' : ''}`}
+            onClick={handleFavoriteClick}
+          >
+            <FaHeart className="favorite-icon" />
+          </div>
         </div>
         <div className="home-card-info">
           <div className="">{title}</div>
-
           <div className="home-card-price">$ { addDotsToNumber(price) }</div>
           <div className=""><IoBedOutline /> {bedrooms} Dormitorios</div>
           <div className=""><PiToiletLight /> {bathrooms} Baños</div>
           { sqft ? <div className=""><TbMeterSquare /> {sqft}  Metros cuadrados</div> : ""}
-
           <div className="">{city}</div>
         </div>
       </div>

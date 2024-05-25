@@ -162,3 +162,39 @@ export const createUser = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
+//favorites
+export const addFavorite = async (req, res) => {
+  const { userId, propertyId } = req.body;
+
+  try {
+    const client = await pool.connect();
+
+    // Check if the user has already marked the property as favorite
+    const checkQuery = `
+      SELECT * FROM favorites 
+      WHERE user_id = $1 AND property_id = $2;
+    `;
+    const checkResult = await client.query(checkQuery, [userId, propertyId]);
+
+    if (checkResult.rows.length > 0) {
+      // If the user has already marked the property as favorite, do not insert again
+      res.status(400).json({ message: 'Property already marked as favorite.' });
+    } else {
+      // Insert the new favorite into the table
+      const insertQuery = `
+        INSERT INTO favorites (user_id, property_id, added_at)
+        VALUES ($1, $2, CURRENT_TIMESTAMP)
+        RETURNING *;
+      `;
+      const insertResult = await client.query(insertQuery, [userId, propertyId]);
+
+      res.status(201).json({ favorite: insertResult.rows[0] });
+    }
+
+    client.release();
+  } catch (error) {
+    console.error('Error adding favorite:', error);
+    res.status(500).json({ message: 'Internal server error.' });
+  }
+}
