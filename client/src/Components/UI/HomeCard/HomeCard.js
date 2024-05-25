@@ -1,4 +1,10 @@
 import React from "react";
+import { FaHeart } from 'react-icons/fa';
+import { FaShare } from "react-icons/fa";
+import { PiToiletLight } from "react-icons/pi";
+import { IoBedOutline } from "react-icons/io5";
+import { TbMeterSquare } from "react-icons/tb";
+import { addDotsToNumber } from '../../../utils/numberUtils';
 import "./homeCard.css";
 
 export default function HomeCard({
@@ -27,10 +33,10 @@ export default function HomeCard({
         <div className="home-card-info">
           <div className="">{title}</div>
 
-          <div className="home-card-price">{price}</div>
-          <div className="">Dormitorios: {bedrooms}</div>
-          <div className="">Baños: {bathrooms}</div>
-          { sqft ? <div className="">Metros cuadrados: {sqft}</div> : ""}
+          <div className="home-card-price">$ { addDotsToNumber(price) }</div>
+          <div className=""><IoBedOutline /> {bedrooms} Dormitorios</div>
+          <div className=""><PiToiletLight /> {bathrooms} Baños</div>
+          { sqft ? <div className=""><TbMeterSquare /> {sqft}  Metros cuadrados</div> : ""}
 
           <div className="">{city}</div>
         </div>
