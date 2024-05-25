@@ -8,7 +8,9 @@ import {
   updateHouse,
   createUser,
   getAllUsers,
-  addFavorite
+  addFavorite,
+  getFavorites,
+  deleteFavorite
 } from "../controllers/index.controller.js";
 import { pool } from '../controllers/index.controller.js';
 
@@ -36,5 +38,7 @@ router.get('/users', getAllUsers);
 
 //favorite
 router.post('/addFavorite', addFavorite);
+router.get('/favorites', getFavorites);
+router.post('/deleteFavorite', deleteFavorite);
 
 export default router;

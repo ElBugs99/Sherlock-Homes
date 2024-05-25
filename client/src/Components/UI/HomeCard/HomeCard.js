@@ -1,32 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaHeart } from 'react-icons/fa';
 import { PiToiletLight } from "react-icons/pi";
 import { IoBedOutline } from "react-icons/io5";
 import { TbMeterSquare } from "react-icons/tb";
 import { addDotsToNumber } from '../../../utils/numberUtils';
+import { appContext } from '../../../appContext';
 import "./homeCard.css";
 
 export default function HomeCard({
   title,
   price,
-  uf,
   bedrooms,
   bathrooms,
   sqft,
-  property_type,
   media,
   city,
-  url,
-  propertyId,
-  onClick,
-  onFavoriteClick
+  property_id,
+  onClick
 }) {
+  const { user } = useContext(appContext);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const handleFavoriteClick = (e) => {
+  const handleFavoriteClick = async (e) => {
     e.stopPropagation(); // Prevent card click event
+
+    if (!user) {
+      // Redirect to login if user is not logged in
+      window.location.href = '/login';
+      return;
+    }
+
     setIsFavorite(!isFavorite);
-    onFavoriteClick(propertyId);
+    
+    try {
+      const url = isFavorite ? 'http://localhost:3001/deleteFavorite' : 'http://localhost:3001/addFavorite';
+      /*const method = isFavorite ? 'DELETE' : 'POST'; */
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId: user.id, propertyId: property_id }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        console.log(isFavorite ? 'Favorite removed' : 'Favorite added');
+      } else {
+        console.error(data.message);
+      }
+    } catch (error) {
+      console.error('Error updating favorite status:', error);
+    }
   };
 
   return (

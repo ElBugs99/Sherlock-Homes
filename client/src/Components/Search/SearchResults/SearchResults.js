@@ -61,10 +61,6 @@ export default function SearchResults({ data }) {
     }
   };
 
-  const handleOpenModal = (property) => {
-    setSelectedProperty(property);
-  };
-
   const handleFavoriteClick = async (propertyId) => {
     if (!user) {
       // Redirect to login if not logged in
@@ -107,6 +103,7 @@ export default function SearchResults({ data }) {
       </div>
     );
 
+
   return (
     <>
       <div>Resultados: {houses?.meta?.totalCount}</div>
@@ -130,7 +127,7 @@ export default function SearchResults({ data }) {
             sqft={x.sqft}
             location={x.location}
             media={x.media[0] === null || undefined ? defaultImage : x.media[0]}
-            propertyId={x.id}
+            property_id={x.id}
             onClick={() => window.open(`/Property/${x.id}`, '_blank')}
             onFavoriteClick={handleFavoriteClick}
           />

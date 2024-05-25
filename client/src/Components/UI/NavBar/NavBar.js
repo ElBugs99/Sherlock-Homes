@@ -17,8 +17,6 @@ export default function NavBar({ searchHidden }) {
     }
   }, [user])
 
-  console.log('navbar user', user);
-
   const navigate = useNavigate();
 
   const handleDropDownOptionClick = (option) => {

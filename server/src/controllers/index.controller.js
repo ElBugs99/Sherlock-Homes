@@ -198,3 +198,61 @@ export const addFavorite = async (req, res) => {
     res.status(500).json({ message: 'Internal server error.' });
   }
 }
+
+export const getFavorites = async (req, res) => {
+  try {
+    const result = await pool.query(
+      `SELECT *
+       FROM favorites
+       `
+    );
+
+    res.status(200).json({
+      success: true,
+      data: result.rows
+    });
+  } catch (error) {
+    console.error('Error getting favorites:', error);
+    res.status(500).json({
+      success: false,
+      message: 'An error occurred while getting favorites'
+    });
+  }
+};
+
+export const deleteFavorite = async (req, res) => {
+  const { userId, propertyId } = req.body; // Use userId and propertyId
+
+  try {
+    if (!userId || !propertyId) {
+      return res.status(400).json({
+        success: false,
+        message: 'User ID and Property ID are required'
+      });
+    }
+
+    const result = await pool.query(
+      `DELETE FROM favorites WHERE user_id = $1 AND property_id = $2 RETURNING *`,
+      [userId, propertyId]
+    );
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Favorite not found'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'Favorite deleted successfully',
+      data: result.rows[0]
+    });
+  } catch (error) {
+    console.error('Error deleting favorite:', error);
+    res.status(500).json({
+      success: false,
+      message: 'An error occurred while deleting the favorite'
+    });
+  }
+};
