@@ -3,20 +3,21 @@
 .infoSection {
     font-family: 'Roboto', sans-serif;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     padding-top: 1%;
     margin-bottom: 3%;
     margin-top: 5%;
-    
 }
 
 .feature-element {
   padding: 10px;
 }
 
-
-
+.article {
+  width: 100%;
+}
 
 @media screen and (max-width: 950px) {
     .infoSection{
@@ -40,4 +41,4 @@
     .promoSection{
       margin-bottom: 300px;
     }
-  }
+}
