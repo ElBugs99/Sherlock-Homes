@@ -5,9 +5,22 @@ import Footer from '../UI/Footer/Footer';
 import { MdFavorite } from "react-icons/md";
 import { FaComment } from "react-icons/fa";
 import { FaHouse } from "react-icons/fa6";
+import Lottie from 'react-lottie';
+import animationData from '../../assets/animation/Animation - chip.json';
 import './profilePage.css';
 
 export default function ProfilePage() {
+
+
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+    };
+
     return (
         <div className='profile-page-container'>
             <NavBar searchHidden={true} />
@@ -18,14 +31,14 @@ export default function ProfilePage() {
                         right
                     </div> */}
                 </div>
-                
+
                 <div className='profile-page-center'>
                     <div className='profile-center-top'>
                         <div className='profile-info-box favorites'>
                             Favoritos <MdFavorite className='profile-icon' />
                         </div>
                         <div className='profile-info-box comments'>
-                            Comentarios <FaComment  className='profile-icon' />
+                            Comentarios <FaComment className='profile-icon' />
                         </div>
                         <div className='profile-info-box publications'>
                             Publicaciones <FaHouse className='profile-icon' />
@@ -33,7 +46,14 @@ export default function ProfilePage() {
                     </div>
                     <div className='profile-center-info-box'>
                         <div className='profile-center-info-box-content'>
-                            center
+                            <div className='profile-center-lottie'>
+                                <Lottie
+                                    options={defaultOptions}
+                                    isClickToPauseDisabled={true}
+                                    height={200}
+                                    width={200}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
