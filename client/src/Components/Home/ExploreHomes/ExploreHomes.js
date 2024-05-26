@@ -15,7 +15,12 @@ export default function ExploreHomes() {
     <div className='explore-homes'>
       <div className='cities-container'>
         <div className='cities-title'>
-            {user ? <div>Bienvenid@, {user.username}</div> : 'Explora en tu ciudad'}
+            {user ? <div className='welcome-msg'>
+                      <div className='welcome-msg-text'>
+                        Bienvenid@, {user.username}
+                      </div>
+                    </div>
+                    : 'Explora en tu ciudad'}
         </div>
         <div className='explore-cities apareciendo'>
             <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={vina} />
