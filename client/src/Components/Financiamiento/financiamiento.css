@@ -5,22 +5,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: aliceblue;
-    
-    
+    background-color: #ebf1ec;
+    color: #535A77;
+}
+
+.f-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
 }
 
 .financiamineto-info{
     margin-top: 10%;
     display: block;
     margin-bottom: 1%;
-    
-
 }
 
 .info{
-    margin-left: 3%;
-    margin-right: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
     text-align: justify;
 }
 .imgFinanciemaiento{
@@ -28,8 +33,7 @@
     width: 516px;
     border-style:groove;
     border-radius: 12px;
-    margin-right: 60%;
-    
+    align-self: center;
 }
 
 .video{
