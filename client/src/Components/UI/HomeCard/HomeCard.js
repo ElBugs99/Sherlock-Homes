@@ -22,7 +22,6 @@ export default function HomeCard({
   const { user } = useContext(appContext);
   const [isFavorite, setIsFavorite] = useState(initialIsFavorite);
 
-  console.log('propertyId', property_id);
   const handleFavoriteClick = async (e) => {
     e.stopPropagation();
 

@@ -26,7 +26,7 @@ export default function SearchResults({ data }) {
         if (token) {
           const decodedToken = jwtDecode(token);
           const userId = decodedToken.id;
-          
+
           if (token) {
             const favoritesResponse = await fetch(`http://localhost:3001/favorites/${userId}`, {
               headers: {
@@ -124,18 +124,14 @@ export default function SearchResults({ data }) {
       </div>
     );
 
-    console.log('favorites', favorites);
-
-    const checkFavorite = (pubId) => {
-      console.log('favorite ' + pubId + ' is in array ? ' + favorites?.includes(pubId));
-      if (!favorites) console.log('favorites doesnt exist');
-      return favorites?.includes(pubId);
-    }
+  const checkFavorite = (pubId) => {
+    if (!favorites) console.log('favorites doesnt exist');
+    return favorites?.includes(pubId);
+  }
 
   return (
     <>
-      <div>Resultados: {houses?.meta?.totalCount}</div>
-      <input
+      {/* <input
         className=""
         spellCheck="false"
         value={searchQuery}
@@ -143,7 +139,12 @@ export default function SearchResults({ data }) {
       />
       <button className="" onClick={handleSubmit}>
         Buscar
-      </button>
+      </button> */}
+      <div className="search-results-header">
+        <div className="search-results-header-content">
+          Resultados: {houses?.meta?.totalCount}
+        </div>
+      </div>
       <div className="search-results-container">
         {houses?.data?.map((x, index) => (
           <HomeCard

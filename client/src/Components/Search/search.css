@@ -45,7 +45,21 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+}
+
+.search-results-header {
+    display: flex;
+    height: 50px;
+    align-items: flex-end;
+    width: 100%;
     margin-top: 60px;
+}
+
+.search-results-header-content {
+    width: 100%;
+    padding: 0 0 20px 50px;
+    font-weight: 600;
+    color: #535A77;
 }
 
 .loading {
