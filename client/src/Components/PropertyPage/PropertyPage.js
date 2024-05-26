@@ -14,6 +14,7 @@ import Spinner from '../UI/Spinner/Spinner';
 import Calculator from '../UI/Calculator/Calculator';
 import Map from '../UI/Map/Map';
 import { FaLink } from "react-icons/fa6";
+import CommentSection from '../UI/CommentSection/CommentSection';
 
 
 export default function PropertyPage() {
@@ -193,6 +194,10 @@ export default function PropertyPage() {
                 </div>
 
                 <div className='property-right-info'>Graficos</div>
+            </div>
+
+            <div className='property-comment-section'>
+                <CommentSection propertyId={id}/>
             </div>
 
             <Footer />

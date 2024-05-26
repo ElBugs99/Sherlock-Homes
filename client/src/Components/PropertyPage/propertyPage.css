@@ -245,3 +245,8 @@
     color: #df4444;
     font-size: small;
 }
+
+.property-comment-section {
+    width: 100%;
+    min-height: 50vh;
+}
