@@ -256,3 +256,29 @@ export const deleteFavorite = async (req, res) => {
     });
   }
 };
+
+export const getFavoritesByUserId = async (req, res) => {
+  const userId = req.params.userId;
+
+  if (!userId) {
+    return res.status(400).json({ success: false, message: 'User ID is required' });
+  }
+
+  try {
+    const query = {
+      text: 'SELECT * FROM favorites WHERE user_id = $1',
+      values: [userId],
+    };
+
+    const result = await pool.query(query);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ success: false, message: 'No favorites found for this user' });
+    }
+
+    res.status(200).json({ success: true, data: result.rows });
+  } catch (error) {
+    console.error('Error fetching user favorites:', error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};

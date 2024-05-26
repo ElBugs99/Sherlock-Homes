@@ -10,7 +10,8 @@ import {
   getAllUsers,
   addFavorite,
   getFavorites,
-  deleteFavorite
+  deleteFavorite,
+  getFavoritesByUserId
 } from "../controllers/index.controller.js";
 import { pool } from '../controllers/index.controller.js';
 
@@ -40,5 +41,6 @@ router.get('/users', getAllUsers);
 router.post('/addFavorite', addFavorite);
 router.get('/favorites', getFavorites);
 router.post('/deleteFavorite', deleteFavorite);
+router.get('/favorites/:userId', getFavoritesByUserId);
 
 export default router;

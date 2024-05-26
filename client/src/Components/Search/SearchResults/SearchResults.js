@@ -5,6 +5,7 @@ import defaultImage from "../../../assets/images/defaulthome2.jpg";
 import { appContext } from "../../../appContext";
 import HouseModal from "../../UI/HouseModal/HouseModal";
 import Spinner from "../../UI/Spinner/Spinner";
+import { jwtDecode } from 'jwt-decode';
 /* import useFilter from "../../../hooks/useFilter"; */
 
 export default function SearchResults({ data }) {
@@ -16,23 +17,43 @@ export default function SearchResults({ data }) {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [error, setError] = useState(false);
-
-  // Fetch houses data
-  const fetchHouses = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/houses?page=2&limit=42");
-      const data = await response.json();
-      setHouses(data);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      setError(true);
-    }
-  };
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    fetchHouses();
-  }, []);
+    const fetchFavoritesAndHouses = async () => {
+      const token = localStorage.getItem('token');
+      try {
+        if (token) {
+          const decodedToken = jwtDecode(token);
+          const userId = decodedToken.id;
+          
+          if (token) {
+            const favoritesResponse = await fetch(`http://localhost:3001/favorites/${userId}`, {
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
+            });
+            const favoritesData = await favoritesResponse.json();
+            if (favoritesData.success) {
+              setFavorites(favoritesData.data.map(fav => fav.property_id));
+            } else {
+              console.error(favoritesData.message);
+            }
+          }
+        }
+
+        const housesResponse = await fetch("http://localhost:3001/houses?page=2&limit=42");
+        const housesData = await housesResponse.json();
+        setHouses(housesData);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        setError(true);
+      }
+    };
+
+    fetchFavoritesAndHouses();
+  }, [user]);
 
   // Pagination logic
   const postsPerPage = 9;
@@ -103,6 +124,13 @@ export default function SearchResults({ data }) {
       </div>
     );
 
+    console.log('favorites', favorites);
+
+    const checkFavorite = (pubId) => {
+      console.log('favorite ' + pubId + ' is in array ? ' + favorites?.includes(pubId));
+      if (!favorites) console.log('favorites doesnt exist');
+      return favorites?.includes(pubId);
+    }
 
   return (
     <>
@@ -130,6 +158,7 @@ export default function SearchResults({ data }) {
             property_id={x.id}
             onClick={() => window.open(`/Property/${x.id}`, '_blank')}
             onFavoriteClick={handleFavoriteClick}
+            isFavorite={checkFavorite(x.id)}
           />
         ))}
       </div>

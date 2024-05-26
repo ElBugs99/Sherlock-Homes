@@ -16,16 +16,17 @@ export default function HomeCard({
   media,
   city,
   property_id,
-  onClick
+  onClick,
+  isFavorite: initialIsFavorite,
 }) {
   const { user } = useContext(appContext);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(initialIsFavorite);
 
+  console.log('propertyId', property_id);
   const handleFavoriteClick = async (e) => {
-    e.stopPropagation(); // Prevent card click event
+    e.stopPropagation();
 
     if (!user) {
-      // Redirect to login if user is not logged in
       window.location.href = '/login';
       return;
     }
