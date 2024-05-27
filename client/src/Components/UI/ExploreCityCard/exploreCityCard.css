@@ -5,7 +5,7 @@
     width: 300px;
     background-color: rgb(199, 199, 199);
     margin: 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     transition: transform 0.3s ease;
 }
 
@@ -17,24 +17,33 @@
     object-fit: cover;
     height: 100%;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .city-card-title {
     font-weight: bold;
     font-size: x-large;
     color: white;
-    padding: 20px;
-    position: absolute;
+/*     padding: 20px; */
+/*     position: absolute; */
     top: 10%;
 }
 
 .city-card-info {
     font-weight: 600;
     color: white;
-    top: 25%;
-    padding: 20px;
+/*     top: 25%; */
+    /* position: absolute; */
+}
+
+.city-card-letters {
+    padding: 10px;
+    /* top: 160px; */
+    bottom: 15px;
+    left: 0;
     position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
 }
 
 @media screen and (max-width:950px) {
