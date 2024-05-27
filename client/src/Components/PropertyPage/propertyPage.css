@@ -217,6 +217,12 @@
     height: 100%;
 }
 
+.Title-chart{
+    text-align: center;
+    font-size: large;
+    margin-bottom: 400px;
+}
+
 @keyframes squish {
     50% {
         scale: 2.4 0.6;
@@ -238,6 +244,12 @@
     border-radius: 5px;
     background-color:#264653;
     
+}
+
+.chart{
+    padding: 5px;
+    display: flex;
+    margin: 5px;
 }
 
 .msg-error-mapa{
