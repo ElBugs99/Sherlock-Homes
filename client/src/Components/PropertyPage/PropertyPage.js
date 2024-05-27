@@ -15,6 +15,8 @@ import Calculator from '../UI/Calculator/Calculator';
 import Map from '../UI/Map/Map';
 import { FaLink } from "react-icons/fa6";
 import CommentSection from '../UI/CommentSection/CommentSection';
+import Graficos from '../UI/Graffics/Graficos';
+import ChartBar from '../UI/ChartBar/ChartBar';
 
 
 export default function PropertyPage() {
@@ -186,14 +188,24 @@ export default function PropertyPage() {
                     </div>
                 </div>
             </div>
-            {/* <div className='property-calculations-title'>Calculos</div> */}
+            {/* <div className='property-calculations-title'>Calculos</div>  */}
             
             <div className='property-calculations'>
+               
                 <div className='property-left-info'>
                 <Calculator valor={property.price}/>
                 </div>
 
-                <div className='property-right-info'>Graficos</div>
+                <div className='property-right-info'>
+                    {/* <div className='Title-chart'>
+                        <p>Grafico Comparativo de Precios</p>
+                    </div> */}
+                
+                <Graficos bed={property.bedrooms} bath={property.bathrooms} mts={property.sqft} valor={property.price}/>
+                
+               
+                </div>
+                
             </div>
 
             <div className='property-comment-section'>
