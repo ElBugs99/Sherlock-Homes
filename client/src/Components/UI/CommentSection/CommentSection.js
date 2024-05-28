@@ -67,6 +67,8 @@ export default function CommentSection({ propertyId }) {
     }
   };
 
+  //TODO edit, delete
+
   return (
     <div className="comment-section">
 
@@ -81,10 +83,10 @@ export default function CommentSection({ propertyId }) {
           onBlur={() => setInputFocused(false)}
         />
         <div className='submit-container'>
+        {commentError && <div className="comment-error">{commentError}</div>}
             <button type="submit" className="submit-button">Publicar</button>
         </div>
       </form>
-      {commentError && <div className="comment-error">{commentError}</div>}
 
       { comments?.length > 0 ?
         <div className="comments-list">

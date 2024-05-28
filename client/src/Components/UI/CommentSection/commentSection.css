@@ -16,11 +16,6 @@
     border-radius: 5px;
 }
 
-.comment {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-}
-
 .comment:last-child {
     border-bottom: none;
 }
@@ -81,6 +76,12 @@
     color: #535A77;
 }
 
+.comment {
+    width: 70%;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
 .comment-container {
     background-color: #d3dfd7;
     border-radius: 5px;
@@ -88,4 +89,33 @@
 
 .comment-content {
     padding: 20px;
+    color: #535A77;
+}
+
+.comment-error {
+    color: #df4444;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+}
+
+.comment-username {
+    font-weight: 600;
+    padding-left: 20px;
+}
+
+.comment-date {
+    padding-left: 30px;
+}
+
+.comment-text-wrapper {
+    padding: 20px;
+    width: 100%;
+}
+
+.comment-text {
+
+    padding-left: 10%;
 }
