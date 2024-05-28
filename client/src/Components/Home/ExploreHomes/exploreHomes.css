@@ -55,7 +55,7 @@
   white-space: nowrap;
   overflow: hidden;
   animation: 
-        typing 4s,
+        typing 3s,
         cursor .4s step-end infinite alternate;
 }
 
