@@ -9,6 +9,7 @@ import InfoPage from "./Components/InfoPage/InfoPage";
 import Registro from "./Components/Registro/registro";
 import Carrusel from "./Components/Carrusel/carrusel";
 import Financiamiento from "./Components/Financiamiento/financiamiento";
+import TerminosCondiciones from "./Components/TerminosCondiciones/Terminoscondiciones";
 import PropertyPage from "./Components/PropertyPage/PropertyPage";
 import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import ProtectedRoute from "./Components/UI/ProtectedRoute/ProtectedRoute";
@@ -28,6 +29,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/carrusel" element={<Carrusel />} />
             <Route path="/financiamiento" element={<Financiamiento />} />
+            <Route path="/terminoscondiciones" element={<TerminosCondiciones/>} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/search" element={<Search />} />
             <Route path="/Info" element={<InfoPage />} />

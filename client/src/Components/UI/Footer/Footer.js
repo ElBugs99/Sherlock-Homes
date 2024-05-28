@@ -38,6 +38,11 @@ export default function Footer() {
             <img className='rrss-icon' src={xI} alt="X" />                
             </a>
           </div>
+          <a className='botonTerminosCondiciones' href="/terminoscondiciones">
+                    <button>
+                    Terminos y Condiciones
+                    </button>
+                </a>
         </div>
       </div>
       <div className='grupo-2'>

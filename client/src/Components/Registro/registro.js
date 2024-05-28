@@ -121,17 +121,17 @@ export default function Registro() {
           <div>
             <h4 className="Titulo">Datos de Usuario</h4>
             <>
-              {serverSuccess && 
-              <div className='server-success'>
-                {serverSuccess.map((x, i) => (<p key={i}>{x.message}</p>))}
-              </div>}
+              {serverSuccess &&
+                <div className='server-success'>
+                  {serverSuccess.map((x, i) => (<p key={i}>{x.message}</p>))}
+                </div>}
             </>
-                {serverError && (
+            {serverError && (
               <div className="server-error">
                 {serverError.map((error, index) => (
-                <p key={index}>{error.message}</p>
+                  <p key={index}>{error.message}</p>
                 ))}
-            </div>
+              </div>
             )}
             <input
               className="form-input-rg"
@@ -202,6 +202,7 @@ export default function Registro() {
         </div>
         <input className="submit-rg" type="submit" value="Enviar" />
         <a className="yatengoCuenta" href="/login">Ya tengo una cuenta</a>
+        <a className='botonTerminosCondiciones' href="/terminoscondiciones">Terminos y Condiciones</a>
       </form>
 
       <div className="right-section-rg">
