@@ -1,6 +1,8 @@
 import puppeteer from "puppeteer";
 import fs from 'fs/promises';
 
+//TODO clean uf value, turn it into number instead of str
+
 console.log('Begining scraping...');
 
 (async () => {

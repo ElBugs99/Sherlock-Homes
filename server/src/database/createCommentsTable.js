@@ -16,7 +16,7 @@ async function createTable() {
         user_id INTEGER NOT NULL,
         content TEXT NOT NULL,
         date_created TIMESTAMP NOT NULL,
-        FOREIGN KEY (publication_id) REFERENCES publications(id) ON DELETE CASCADE,
+        FOREIGN KEY (publication_id) REFERENCES house(id) ON DELETE CASCADE,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
       );
     `;

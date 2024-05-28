@@ -282,3 +282,143 @@ export const getFavoritesByUserId = async (req, res) => {
     res.status(500).json({ success: false, message: 'Internal server error' });
   }
 };
+
+//comments
+
+export const getCommentsByUserId = async (req, res) => {
+  const userId = req.params.userId;
+
+  if (!userId) {
+    return res.status(400).json({ success: false, message: 'User ID is required' });
+  }
+
+  try {
+    const query = {
+      text: 'SELECT * FROM comments WHERE user_id = $1',
+      values: [userId],
+    };
+
+    const result = await pool.query(query);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ success: false, message: 'No comments found for this user' });
+    }
+
+    res.status(200).json({ success: true, data: result.rows });
+  } catch (error) {
+    console.error('Error fetching user comments:', error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
+
+export const getCommentsByPublication = async (req, res) => {
+  const publicationId = req.params.publicationId;
+
+  if (!publicationId) {
+    return res.status(400).json({ success: false, message: 'Publication ID is required' });
+  }
+
+  try {
+    const query = {
+      text: `
+        SELECT comments.comment_id, comments.publication_id, comments.user_id, comments.content, comments.date_created, users.username
+        FROM comments
+        JOIN users ON comments.user_id = users.id
+        WHERE comments.publication_id = $1
+      `,
+      values: [publicationId],
+    };
+
+    const result = await pool.query(query);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ success: false, message: 'No comments found for this publication' });
+    }
+
+    res.status(200).json({ success: true, data: result.rows });
+  } catch (error) {
+    console.error('Error fetching publication comments:', error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
+
+export const getComments = async (req, res) => {
+  try {
+    const query = 'SELECT * FROM comments';
+
+    const result = await pool.query(query);
+
+    res.status(200).json({ success: true, data: result.rows });
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
+export const uploadComment = async (req, res) => {
+  try {
+    const { userId, publicationId, content } = req.body;
+
+    // Insert the new comment into the database
+    const query = {
+      text: 'INSERT INTO comments (publication_id, user_id, content, date_created) VALUES ($1, $2, $3, CURRENT_TIMESTAMP) RETURNING *',
+      values: [publicationId, userId, content]
+    };
+
+    const result = await pool.query(query);
+
+    res.status(201).json({ success: true, comment: result.rows[0] });
+  } catch (error) {
+    console.error('Error uploading comment:', error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
+export const deleteComment = async (req, res) => {
+  try {
+    const commentId = req.params.commentId;
+
+    // Delete the comment from the database
+    const query = {
+      text: 'DELETE FROM comments WHERE comment_id = $1 RETURNING *',
+      values: [commentId]
+    };
+
+    const result = await pool.query(query);
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ success: false, message: 'Comment not found' });
+    }
+
+    res.status(200).json({ success: true, message: 'Comment deleted successfully', deletedComment: result.rows[0] });
+  } catch (error) {
+    console.error('Error deleting comment:', error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
+export const updateComment = async (req, res) => {
+  try {
+    const commentId = req.params.commentId;
+    const { content } = req.body;
+
+    // Update the comment in the database
+    const query = {
+      text: 'UPDATE comments SET content = $1 WHERE comment_id = $2 RETURNING *',
+      values: [content, commentId]
+    };
+
+    const result = await pool.query(query);
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ success: false, message: 'Comment not found' });
+    }
+
+    res.status(200).json({ success: true, message: 'Comment updated successfully', updatedComment: result.rows[0] });
+  } catch (error) {
+    console.error('Error updating comment:', error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};

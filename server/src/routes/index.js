@@ -11,7 +11,12 @@ import {
   addFavorite,
   getFavorites,
   deleteFavorite,
-  getFavoritesByUserId
+  getFavoritesByUserId,
+  getComments,
+  uploadComment,
+  deleteComment,
+  updateComment,
+  getCommentsByPublication
 } from "../controllers/index.controller.js";
 import { pool } from '../controllers/index.controller.js';
 
@@ -42,5 +47,12 @@ router.post('/addFavorite', addFavorite);
 router.get('/favorites', getFavorites);
 router.post('/deleteFavorite', deleteFavorite);
 router.get('/favorites/:userId', getFavoritesByUserId);
+
+//comments
+router.get('/comments', getComments);
+router.post('/uploadComment', uploadComment);
+router.delete('/deleteComment/:commentId', deleteComment);
+router.put('/updateComment/:commentId', updateComment);
+router.get('/getCommentsByPublication/:publicationId', getCommentsByPublication);
 
 export default router;
