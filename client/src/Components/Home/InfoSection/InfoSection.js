@@ -32,7 +32,6 @@ export default function InfoSection() {
     fetchHouses();
   }, []);
 
-  console.log("featured", properties)
 
   const cards = properties?.map(x => {
     return (

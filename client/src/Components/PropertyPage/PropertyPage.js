@@ -59,7 +59,7 @@ export default function PropertyPage() {
             </div>
             <Footer />
         </div>
-        )
+    )
     if (error) return (
         <div className="property-modal-container">
             <NavBar searchHidden={true} />
@@ -70,7 +70,7 @@ export default function PropertyPage() {
             </div>
             <Footer />
         </div>
-        )
+    )
 
     return (
 
@@ -82,7 +82,7 @@ export default function PropertyPage() {
                     <div className="modal-left-top-section">
                         <div className="property-modal-img-container">
                             {/* <img className="property-modal-img" src={property.media[0]} alt="home" /> */}
-                            <ImageCarousel imageArray={property.media} height={'60vh'}/>
+                            <ImageCarousel imageArray={property.media} height={'60vh'} />
                         </div>
                     </div>
 
@@ -159,57 +159,57 @@ export default function PropertyPage() {
                             <div className="property-modal-atribute property-modal-title">{property.title}</div>
                             <div className="property-modal-price">$ {addDotsToNumber(property.price)}</div>
                             <div className="property-modal-atribute">
-                                
+
                                 <button className='button-PP'>
-                                    
-                                <a 
-                                href={property.listing_url} target="_blank" rel="noopener noreferrer" className="property-modal-url">
-                                    <FaLink></FaLink> Ir a la Publicacion
-                                </a>
-                                
+
+                                    <a
+                                        href={property.listing_url} target="_blank" rel="noopener noreferrer" className="property-modal-url">
+                                        <FaLink></FaLink> Ir a la Publicacion
+                                    </a>
+
                                 </button>
-                                
-                            </div>
-                            
-                            
-                        </div>
-                            <div className='mapa'>
-                                    <Map lat={property.latitude} lng={property.longitude} />
-                                    <div className='msg-error-mapa'> {property.latitude ? "" : "Esta publicacion tiene oculta su direccion"} </div>
-                                    
 
                             </div>
+
+
+                        </div>
+                        <div className='mapa'>
+                            <Map lat={property.latitude} lng={property.longitude} />
+                            <div className='msg-error-mapa'> {property.latitude ? "" : "Esta publicacion tiene oculta su direccion"} </div>
+
+
+                        </div>
                         <div className="modal-lower-section">
                             <div className="property-modal-desc">
                                 <div>{property.description}</div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
             {/* <div className='property-calculations-title'>Calculos</div>  */}
-            
-            <div className='property-calculations'>
-               
-                <div className='property-left-info'>
-                <Calculator valor={property.price}/>
-                </div>
 
-                <div className='property-right-info'>
-                    {/* <div className='Title-chart'>
+            <div className='property-calculations'>
+                <div className='property-info-row'>
+                    <div className='property-left-info'>
+                        <div className='calculator-wrapper'>
+                            <Calculator valor={property.price} />
+                        </div>
+                    </div>
+
+                    <div className='property-right-info'>
+                        {/* <div className='Title-chart'>
                         <p>Grafico Comparativo de Precios</p>
                     </div> */}
-                
-                <Graficos bed={property.bedrooms} bath={property.bathrooms} mts={property.sqft} valor={property.price}/>
-                
-               
+                        <Graficos bed={property.bedrooms} bath={property.bathrooms} mts={property.sqft} valor={property.price} />
+                    </div>
                 </div>
-                
+
             </div>
 
             <div className='property-comment-section'>
-                <CommentSection propertyId={id}/>
+                <CommentSection propertyId={id} />
             </div>
 
             <Footer />
