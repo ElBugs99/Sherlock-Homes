@@ -20,6 +20,11 @@
   padding: 20px 20px 5px 20px;
   outline: none;
   transition: border-color 0.3s;
+  text-align: center;
+}
+
+.input-calc {
+  align-self: center;
 }
 
 .calc-input:focus {
@@ -42,12 +47,7 @@
 }
 
 .boton-Calc {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-}
-
-.boton-Calc {
+  border-radius: 15px;
   width: 100px;
   height: 50px;
   background-color: #2fb5a3;
@@ -58,7 +58,6 @@
 
 .boton-Calc:hover {
   background-color: #26647a;
-  border-radius: 15px;
 }
 
 #results {
