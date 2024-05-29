@@ -34,10 +34,10 @@ export default function Comment({
                 type="text"
                 value={editingContent}
                 onChange={(e) => setEditingContent(e.target.value)}
-                className="comment-input"
+                className="comment-input-edit"
               />
-              <button type="submit" className="edit-button">Guardar</button>
-              <button type="button" className="cancel-button" onClick={() => setEditingCommentId(null)}>Cancelar</button>
+              <button type="submit" className="edit-comment-button">Guardar</button>
+              <button type="button" className="delete-comment-button" onClick={() => setEditingCommentId(null)}>Cancelar</button>
             </form>
           ) : (
             <div className='comment-text'>
@@ -49,9 +49,12 @@ export default function Comment({
       {currentUserId && (
         <div className='comment-actions'>
           {currentUserId === userId && editingCommentId !== commentId && (
+            <>
             <button onClick={() => onEdit(commentId, content)} className="edit-comment-button">
               Editar
             </button>
+            <button type="button" className="delete-comment-button">Borrar</button>
+            </>
           )}
         </div>
       )}

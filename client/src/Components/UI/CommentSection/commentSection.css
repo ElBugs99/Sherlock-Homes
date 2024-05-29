@@ -38,8 +38,6 @@
     padding: 20px 20px 5px 20px;
     outline: none;
     transition: border-color 0.3s;
-    /* border-radius: 5px; */
-    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
 }
 
 .comment-input.focused {
@@ -63,6 +61,20 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #264653;
     color: white;
+    margin-left: 5px;
+}
+
+.delete-comment-button {
+    font-family: inherit;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+    background-color: transparent;
+    color: #df4444;
+    margin-left: 10px;
+    font-weight: 600;
 }
 
 .edit-comment-button:hover {
@@ -141,6 +153,22 @@
 }
 
 .comment-text {
-
     padding-left: 10%;
+}
+
+.edit-form {
+    padding:  0 0 0 20px;
+}
+
+.comment-input-edit {
+    font-family: inherit;
+    color: #535A77;
+    background-color: #d3dfd7;
+    font-size: 17px;
+    flex: 1;
+    border: none;
+    border-bottom: 3px solid #535A77;
+    padding: 20px 20px 5px 20px;
+    outline: none;
+    transition: border-color 0.3s;
 }
