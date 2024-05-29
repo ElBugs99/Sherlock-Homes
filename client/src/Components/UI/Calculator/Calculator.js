@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react'
 import './calculator.css'
-
+import { addDotsToNumber } from '../../../utils/numberUtils';
 import { useParams } from 'react-router-dom';
 
 
 export default function Calculator({ valor }) {
-  const [propertyPrice, setPropertyPrice] = useState('');
+  const [propertyPrice, setPropertyPrice] = useState(valor || '');
   const [downPayment, setDownPayment] = useState('');
   const [interestRate, setInterestRate] = useState('');
   const [loanTerm, setLoanTerm] = useState('');
@@ -14,10 +14,20 @@ export default function Calculator({ valor }) {
   const [totalInterest, setTotalInterest] = useState(null);
   const [totalCost, setTotalCost] = useState(null);
 
+  const truncate = (num, decimalPlaces) => {
+    const factor = Math.pow(10, decimalPlaces);
+    return Math.floor(num * factor) / factor;
+  };
+
   const calculateMortgage = () => {
     const loanAmount = propertyPrice - downPayment;
     const monthlyInterestRate = (interestRate / 100) / 12;
     const numberOfPayments = loanTerm * 12;
+
+    if (loanAmount <= 0 || monthlyInterestRate <= 0 || numberOfPayments <= 0) {
+      alert('Por favor, ingrese valores válidos.');
+      return;
+    }
 
     const monthlyPayment =
       (loanAmount * monthlyInterestRate) /
@@ -31,9 +41,11 @@ export default function Calculator({ valor }) {
     setTotalCost(totalCost.toFixed(2));
   };
 
+    
+
   return (
     <div className="calculadora">
-      <h3 className='titulo-calc'>Calculadora de Hipoteca</h3>
+      <h3 className='titulo-calc'>Simula tu Credito Hipotecario</h3>
       <div className="form-group">
         <label className='label-calc' htmlFor="propertyPrice">Precio de la propiedad:</label>
         <div className='input-calc'>
@@ -49,7 +61,7 @@ export default function Calculator({ valor }) {
       </div>
       <div className="form-group">
         <label className='label-calc' htmlFor="downPayment">Pago inicial:</label>
-        <div className='input-cal'>
+        <div className='input-calc'>
           <input
             type="number"
             id="downPayment"
@@ -90,9 +102,9 @@ export default function Calculator({ valor }) {
       <button className='boton-Calc' onClick={calculateMortgage}>Calcular</button>
       {monthlyPayment && (
         <div id="results">
-          <p>Pago mensual: ${monthlyPayment}</p>
-          <p>Total de intereses pagados: ${totalInterest}</p>
-          <p>Costo total del préstamo: ${totalCost}</p>
+          <p>Pago mensual: ${addDotsToNumber(truncate(monthlyPayment,0))}</p>
+          <p>Total de intereses a pagar: ${addDotsToNumber(truncate(totalInterest,0))}</p>
+          <p>Costo total del préstamo: ${addDotsToNumber(truncate(totalCost,0))}</p>
         </div>
       )}
     </div>
