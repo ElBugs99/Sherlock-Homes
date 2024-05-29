@@ -15,6 +15,8 @@ export default function CommentSection({ propertyId }) {
   const decodedToken = token ? jwtDecode(token) : null;
   const userId = decodedToken ? decodedToken.id : null;
 
+  //TODO add comment deleted and edited confirmation message
+
   useEffect(() => {
     const fetchComments = async () => {
       try {
@@ -117,7 +119,26 @@ export default function CommentSection({ propertyId }) {
     }
   };
 
-  console.log('comments', comments);
+  const handleDeleteComment = async (commentId) => {
+    try {
+      const response = await fetch(`http://localhost:3001/deleteComment/${commentId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        const updatedComments = comments.filter(comment => comment.comment_id !== commentId);
+        setComments(updatedComments);
+      } else {
+        console.error(data.message);
+      }
+    } catch (error) {
+      console.error('Error deleting comment:', error);
+    }
+  };
 
   return (
     <div className="comment-section">
@@ -151,6 +172,7 @@ export default function CommentSection({ propertyId }) {
               currentUserId={userId}
               onEdit={handleEditComment}
               onEditSubmit={handleEditSubmit}
+              onDelete={handleDeleteComment}
               editingCommentId={editingCommentId}
               editingContent={editingContent}
               setEditingContent={setEditingContent}

@@ -11,6 +11,7 @@ export default function Comment({
   currentUserId,
   onEdit,
   onEditSubmit,
+  onDelete,
   editingCommentId,
   editingContent,
   setEditingContent,
@@ -50,10 +51,12 @@ export default function Comment({
         <div className='comment-actions'>
           {currentUserId === userId && editingCommentId !== commentId && (
             <>
-            <button onClick={() => onEdit(commentId, content)} className="edit-comment-button">
-              Editar
-            </button>
-            <button type="button" className="delete-comment-button">Borrar</button>
+              <button onClick={() => onEdit(commentId, content)} className="edit-comment-button">
+                Editar
+              </button>
+              <button type="button" className="delete-comment-button" onClick={() => onDelete(commentId)}>
+                Borrar
+              </button>
             </>
           )}
         </div>
