@@ -28,6 +28,27 @@ async function createTable() {
   }
 }
 
-createTable();
+async function addEditedColumn() {
+  try {
+    const client = await pool.connect();
+    // SQL query to add the edited column to the comments table
+    const addColumnQuery = `
+      ALTER TABLE comments
+      ADD COLUMN IF NOT EXISTS edited BOOLEAN DEFAULT false;
+    `;
+    await client.query(addColumnQuery);
+    console.log('Edited column added successfully.');
+    client.release();
+  } catch (error) {
+    console.error('Error adding edited column:', error);
+  }
+}
 
-export default createTable;
+async function initializeDatabase() {
+  await createTable();
+  await addEditedColumn();
+}
+
+initializeDatabase();
+
+export default initializeDatabase;

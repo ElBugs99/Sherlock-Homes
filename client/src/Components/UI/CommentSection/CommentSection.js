@@ -8,6 +8,8 @@ export default function CommentSection({ propertyId }) {
   const [newComment, setNewComment] = useState('');
   const [inputFocused, setInputFocused] = useState(false);
   const [commentError, setCommentError] = useState('');
+  const [editingCommentId, setEditingCommentId] = useState(null);
+  const [editingContent, setEditingContent] = useState('');
 
   const token = localStorage.getItem('token');
   const decodedToken = token ? jwtDecode(token) : null;
@@ -67,11 +69,58 @@ export default function CommentSection({ propertyId }) {
     }
   };
 
-  //TODO edit, delete
+  const handleEditComment = (commentId, content) => {
+    setEditingCommentId(commentId);
+    setEditingContent(content);
+  };
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    if (!editingContent.trim()) {
+      setCommentError('El comentario no puede estar vacío.');
+      return;
+    }
+    if (editingContent.trim().length < 3) {
+      setCommentError('El comentario debe tener al menos 3 caracteres.');
+      return;
+    }
+    if (editingContent.length > 50) {
+      setCommentError('El comentario no puede tener más de 50 caracteres.');
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:3001/updateComment/${editingCommentId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content: editingContent.trim(), edited: true }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        const updatedComments = comments.map((comment) =>
+          comment.comment_id === editingCommentId
+            ? { ...comment, content: editingContent.trim(), edited: true }
+            : comment
+        );
+        setComments(updatedComments);
+        setEditingCommentId(null);
+        setEditingContent('');
+        setCommentError('');
+      } else {
+        console.error(data.message);
+      }
+    } catch (error) {
+      console.error('Error updating comment:', error);
+    }
+  };
+
+  console.log('comments', comments);
 
   return (
     <div className="comment-section">
-
       <form onSubmit={handleCommentSubmit} className="comment-form">
         <input
           type="text"
@@ -83,27 +132,35 @@ export default function CommentSection({ propertyId }) {
           onBlur={() => setInputFocused(false)}
         />
         <div className='submit-container'>
-        {commentError && <div className="comment-error">{commentError}</div>}
-            <button type="submit" className="submit-button">Publicar</button>
+          {commentError && <div className="comment-error">{commentError}</div>}
+          <button type="submit" className="submit-button">Publicar</button>
         </div>
       </form>
 
-      { comments?.length > 0 ?
+      {comments?.length > 0 ? (
         <div className="comments-list">
-        {comments.map((comment, index) => (
-          <div key={index} className="comment">
+          {comments.map((comment) => (
             <Comment
-              content={comment.content}
+              key={comment.comment_id}
+              commentId={comment.comment_id}
               username={comment.username}
+              content={comment.content}
               date={comment.date_created}
+              edited={comment.edited}
+              userId={comment.user_id}
+              currentUserId={userId}
+              onEdit={handleEditComment}
+              onEditSubmit={handleEditSubmit}
+              editingCommentId={editingCommentId}
+              editingContent={editingContent}
+              setEditingContent={setEditingContent}
+              setEditingCommentId={setEditingCommentId}
             />
-          </div>
-        ))}
-      </div>
-      :
-      <div className='no-comments'>Esta publicación aún no tiene comentarios</div>
-      }
-
+          ))}
+        </div>
+      ) : (
+        <div className='no-comments'>Esta publicación aún no tiene comentarios</div>
+      )}
     </div>
   );
 }

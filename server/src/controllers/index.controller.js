@@ -322,7 +322,7 @@ export const getCommentsByPublication = async (req, res) => {
   try {
     const query = {
       text: `
-        SELECT comments.comment_id, comments.publication_id, comments.user_id, comments.content, comments.date_created, users.username
+        SELECT comments.comment_id, comments.publication_id, comments.user_id, comments.content, comments.date_created, comments.edited, users.username
         FROM comments
         JOIN users ON comments.user_id = users.id
         WHERE comments.publication_id = $1
@@ -404,10 +404,9 @@ export const updateComment = async (req, res) => {
     const commentId = req.params.commentId;
     const { content } = req.body;
 
-    // Update the comment in the database
     const query = {
-      text: 'UPDATE comments SET content = $1 WHERE comment_id = $2 RETURNING *',
-      values: [content, commentId]
+      text: 'UPDATE comments SET content = $1, edited = $2 WHERE comment_id = $3 RETURNING *',
+      values: [content, true, commentId]
     };
 
     const result = await pool.query(query);
