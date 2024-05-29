@@ -33,7 +33,7 @@ h1{
     font-size: 30px;
 }
 
-button {
+/* button {
     display: inline-block;
     padding: 10px 20px;
     font-size: 30px;
@@ -44,7 +44,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     align-self: center;
-}
+} */
 
 .h1vamos{
     text-align: center;

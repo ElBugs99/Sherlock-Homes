@@ -48,12 +48,13 @@
 
 .boton-Calc {
   border-radius: 15px;
-  width: 100px;
+  width: 150px;
   height: 50px;
   background-color: #2fb5a3;
   color: white;
   border: none;
   cursor: pointer;
+  
 }
 
 .boton-Calc:hover {
