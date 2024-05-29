@@ -1,18 +1,27 @@
 import React from 'react'
-import { Bars } from 'react-loader-spinner'
+
+import Lottie from 'react-lottie'
+import LupaLoading from '../../../assets/animation/Animation - lupaloading.json';
 
 export default function Spinner() {
+
+    const LupaOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: LupaLoading,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+
+    };
     return (
         <div>
-            <Bars
-                height="80"
-                width="80"
-                color="#38ba8c"
-                ariaLabel="bars-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
-                visible={true}
-            />
+            <Lottie
+              options={LupaOptions}
+              isClickToPauseDisabled={true}
+              height={200}
+              width={250}
+              />
         </div>
     )
 }

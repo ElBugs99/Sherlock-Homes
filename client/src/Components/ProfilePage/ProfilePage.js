@@ -7,6 +7,7 @@ import { FaComment } from "react-icons/fa";
 import { FaHouse } from "react-icons/fa6";
 import Lottie from 'react-lottie';
 import animationData from '../../assets/animation/Animation - chip.json';
+import HouseAnimation from '../../assets/animation/Animation - House.json';
 import './profilePage.css';
 
 export default function ProfilePage() {
@@ -20,6 +21,18 @@ export default function ProfilePage() {
             preserveAspectRatio: 'xMidYMid slice'
         }
     };
+    const houseOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: HouseAnimation,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+
+    };
+
+   
+
 
     return (
         <div className='profile-page-container'>
@@ -58,8 +71,20 @@ export default function ProfilePage() {
                     </div>
                 </div>
                 <div className='profile-page-right'>
+                    
                     <div className='profile-page-side-info-box'>
-                        right
+                        <div className='house-animation-container'>
+                        <Lottie
+                        options={houseOptions}
+                        isClickToPauseDisabled={true}
+                        height={200}
+                        width={250}
+                        />
+                          <p className='house-animation-text'>
+                            Cientos de Familias han encontrado su hogar ideal gracias a Sherlock Homes.
+                            ¿Que estas esperando?</p>
+                        </div>
+                        
                     </div>
                     <div className='profile-page-side-info-box info-box2'>
                         right2

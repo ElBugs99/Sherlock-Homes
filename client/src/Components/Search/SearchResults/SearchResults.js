@@ -113,7 +113,7 @@ export default function SearchResults({ data }) {
     return (
       <div className="preload-container">
         <Spinner />
-        <div className="loading">Cargando...</div>
+        
       </div>
     );
 
