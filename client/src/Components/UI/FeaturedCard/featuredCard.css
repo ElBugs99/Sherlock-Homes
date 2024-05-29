@@ -1,66 +1,88 @@
-.featured-card{
-    height: 500px;
-    position: relative;
-    transition: transform 0.3s;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-}
-.featured-card:hover{
-    transform: scale(1.01);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-.casas{
-    width: 300px;
-    height: 250px;
-    float: lefts;
-    object-fit: cover;
-}
-.Venta{
-    text-align: center;
+.featured-card {
+  height: 500px;
+  width: 350px;
+  position: relative;
+  transition: transform 0.3s;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  color: #535A77;
 }
 
-.descripcion{
-   font-size:small;
+.featured-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
- 
-.like{
-    position: absolute;
+
+.casas {
+  width: 300px;
+  height: 250px;
+  float: lefts;
+  object-fit: cover;
+}
+
+.Venta {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #535A77;
+}
+
+.featured-price {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #5d9673;
+}
+
+.descripcion {
+  font-size: small;
+  max-width: 100%;
+}
+
+.like {
+  position: absolute;
   top: 15px;
   right: 33px;
 }
 
-.Compartir{
-    position: absolute;
-    top: 14px;
-    right: 10px;
+.Compartir {
+  position: absolute;
+  top: 14px;
+  right: 10px;
 }
 
 .destacado {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-
-.cantidad{
-    font-size: small;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-.botonOferta{
+
+.cantidad {
+  font-size: medium;
+}
+
+.botonOferta {
   display: flex;
 }
-.btn-oferta:hover{
-  background-color: #7fbf65; /* Color del botón cuando se pasa por encima */
+
+.btn-oferta:hover {
+  background-color: #7fbf65;
+  /* Color del botón cuando se pasa por encima */
   transition: background-color 0.3s;
 }
-.btn-comparar:hover{
-  background-color: #42868f; /* Color del botón cuando se pasa por encima */
+
+.btn-comparar:hover {
+  background-color: #42868f;
+  /* Color del botón cuando se pasa por encima */
   transition: background-color 0.3s;
 }
-.btn-oferta{
+
+.btn-oferta {
   margin-right: 10px;
 }

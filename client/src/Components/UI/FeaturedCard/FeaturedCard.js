@@ -11,7 +11,7 @@ export default function FeaturedCard({ title, price, bathrooms, bedrooms, sqft, 
   return (
     <div>
       <div className='featured-card' onClick={ onClick }>
-          <h3 className='Venta'>Oferta Destacada</h3>
+          <div className='Venta'>Publicación destacada</div>
 
           <div className='iconos'>
             <FaHeart className='like' />
@@ -23,7 +23,7 @@ export default function FeaturedCard({ title, price, bathrooms, bedrooms, sqft, 
             <img className='casas' src={ img } alt='Los Alemendros' />
           </center>
           <p className='descripcion'>{ title }</p>
-          <h3>$ { addDotsToNumber(price) }</h3>
+          <div className='featured-price'>$ { addDotsToNumber(price) }</div>
 
           <p className='cantidad'>
             <PiToiletLight /> { bathrooms } Baños
