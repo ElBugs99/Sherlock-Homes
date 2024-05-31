@@ -136,6 +136,11 @@
     width: 100%;
 }
 
+.profile-link {
+    color: #38ba8c;
+    text-decoration: none;
+}
+
 .profile-center-lottie {
     display: flex;
     justify-content: center;

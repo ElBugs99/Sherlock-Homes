@@ -10,6 +10,8 @@ import animationData from '../../assets/animation/Animation - chip.json';
 import HouseAnimation from '../../assets/animation/Animation - House.json';
 import {jwtDecode} from 'jwt-decode';
 import './profilePage.css';
+import TableRow from '../UI/Table/TableRow';
+import { addDotsToNumber } from '../../utils/numberUtils';
 
 export default function ProfilePage() {
     const [user, setUser] = useState(null);
@@ -75,6 +77,43 @@ export default function ProfilePage() {
         }
     };
 
+    function truncateString(str, num) {
+        if (str.length <= num) {
+            return str;
+        }
+        return str.slice(0, num) + '...';
+    }
+
+    const commentsTitleRow = [
+        'Id publicación',
+        'Comentario',
+        'Fecha',
+        'Publicación'
+    ];
+
+    const commentsRows = comments.map(comment => ([
+        comment.publication_id,
+        truncateString(comment.content, 20),
+        new Date(comment.date_created).toLocaleDateString(),
+        <a className='profile-link' href={`/property/${comment.publication_id}`}>Ver publicación</a>
+    ]));
+
+    const favoritesTitleRow = [
+        'Título',
+        'Ciudad',
+        'Tipo de propiedad',
+        'Precio',
+        'Enlace'
+    ];
+
+    const favoritesRows = favorites.map(favorite => ([
+        truncateString(favorite.title, 20),
+        favorite.city,
+        favorite.property_type,
+        `$ ${addDotsToNumber(favorite.price)}`,
+        <a className='profile-link' href={`/Property/${favorite.property_id}`}>Ver propiedad</a>
+    ]));
+
     return (
         <div className='profile-page-container'>
             <NavBar searchHidden={true} />
@@ -95,19 +134,16 @@ export default function ProfilePage() {
                         <div className='profile-center-info-box-content'>
                             {selectedSection === 'favorites' && favorites.length > 0 ? (
                                 <div className='favorites-list'>
-                                    {favorites.map(favorite => (
-                                        <div key={favorite.favorite_id} className='favorite-item'>
-                                            {favorite.property_id}
-                                        </div>
+                                    <TableRow row={favoritesTitleRow} isTitle={true} />
+                                    {favoritesRows.map((row, index) => (
+                                        <TableRow key={index} row={row} />
                                     ))}
                                 </div>
                             ) : selectedSection === 'comments' && comments.length > 0 ? (
                                 <div className='comments-list-profile'>
-                                    {comments.map(comment => (
-                                        <div key={comment.comment_id} className='comment-item'>
-                                            <p>{comment.content}</p>
-                                            <span>{comment.date_created}</span>
-                                        </div>
+                                    <TableRow row={commentsTitleRow} isTitle={true} />
+                                    {commentsRows.map((row, index) => (
+                                        <TableRow key={index} row={row} />
                                     ))}
                                 </div>
                             ) : (

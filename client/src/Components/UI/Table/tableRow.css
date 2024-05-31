@@ -1,0 +1,21 @@
+.table-row-container {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    border-bottom: 3px solid #535A77;
+    padding: 15px 0 5px 0;
+    outline: none;
+}
+
+.table-column {
+    display: flex;
+    align-items: center;
+    width: 20%;
+    padding-left: 20px;
+}
+
+
+.table-row-container.title-row {
+    font-weight: 600;
+  }
+  
