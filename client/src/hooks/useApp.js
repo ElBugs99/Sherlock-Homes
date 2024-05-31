@@ -21,7 +21,6 @@ export default function useApp() {
     }
   }, [localStorage]);
 
-  console.log('useApp user', user);
   return (
     {
       setUser,

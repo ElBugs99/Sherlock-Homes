@@ -16,7 +16,8 @@ import {
   uploadComment,
   deleteComment,
   updateComment,
-  getCommentsByPublication
+  getCommentsByPublication,
+  getCommentsByUser
 } from "../controllers/index.controller.js";
 import { pool } from '../controllers/index.controller.js';
 
@@ -53,6 +54,7 @@ router.get('/comments', getComments);
 router.post('/uploadComment', uploadComment);
 router.delete('/deleteComment/:commentId', deleteComment);
 router.put('/updateComment/:commentId', updateComment);
+router.get('/getCommentsByUser/:userId', getCommentsByUser);
 router.get('/getCommentsByPublication/:publicationId', getCommentsByPublication);
 
 export default router;

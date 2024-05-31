@@ -266,7 +266,31 @@ export const getFavoritesByUserId = async (req, res) => {
 
   try {
     const query = {
-      text: 'SELECT * FROM favorites WHERE user_id = $1',
+      text: `
+        SELECT 
+          favorites.favorite_id, 
+          favorites.user_id, 
+          favorites.property_id, 
+          house.title, 
+          house.price, 
+          house.uf, 
+          house.property_type, 
+          house.bedrooms, 
+          house.bathrooms, 
+          house.sqft, 
+          house.address, 
+          house.description, 
+          house.region, 
+          house.city, 
+          house.listing_url, 
+          house.transaction, 
+          house.latitude, 
+          house.longitude, 
+          house.media
+        FROM favorites
+        JOIN house ON favorites.property_id = house.id
+        WHERE favorites.user_id = $1
+      `,
       values: [userId],
     };
 
@@ -339,6 +363,37 @@ export const getCommentsByPublication = async (req, res) => {
     res.status(200).json({ success: true, data: result.rows });
   } catch (error) {
     console.error('Error fetching publication comments:', error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
+export const getCommentsByUser = async (req, res) => {
+  const userId = req.params.userId;
+
+  if (!userId) {
+    return res.status(400).json({ success: false, message: 'User ID is required' });
+  }
+
+  try {
+    const query = {
+      text: `
+        SELECT comments.comment_id, comments.publication_id, comments.user_id, comments.content, comments.date_created, comments.edited, users.username
+        FROM comments
+        JOIN users ON comments.user_id = users.id
+        WHERE comments.user_id = $1
+      `,
+      values: [userId],
+    };
+
+    const result = await pool.query(query);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ success: false, message: 'No comments found for this user' });
+    }
+
+    res.status(200).json({ success: true, data: result.rows });
+  } catch (error) {
+    console.error('Error fetching user comments:', error);
     res.status(500).json({ success: false, message: 'Internal server error' });
   }
 };

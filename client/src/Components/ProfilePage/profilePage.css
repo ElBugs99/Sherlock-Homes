@@ -125,6 +125,11 @@
     margin-left: 10px;
 }
 
+.comments-list-profile {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
 .profile-options {
     display: flex;
     justify-content: center;
