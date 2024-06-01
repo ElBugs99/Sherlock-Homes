@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./topSection.css";
-import homeVideo from "../../../assets/videos/home-video.mp4";
+import homeVideo from "../../../assets/videos/edificios1.mp4";
 import search from "../../../assets/images/white-search-icon.svg";
 import DropDown from '../../UI/DropDown/DropDown';
 import SearchBar from "../../UI/SearchBar/SearchBar";
