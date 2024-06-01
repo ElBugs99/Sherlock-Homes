@@ -3,6 +3,7 @@ import Lottie from 'react-lottie';
 import animationData from '../../assets/animation/Animation - grafico.json';
 import animationData2 from '../../assets/animation/Animation - familia.json';
 import animationData3 from '../../assets/animation/Animation - lupaVerde.json';
+import animationData4 from '../../assets/animation/Animation - comentario.json';
 import './missionSection.css';
 
 export default function MissionSection() {
@@ -30,6 +31,15 @@ export default function MissionSection() {
     loop: true,
     autoplay: true,
     animationData: animationData3,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
+  const defaultOptions4 = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData4,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice'
     }
@@ -69,6 +79,18 @@ export default function MissionSection() {
             <div className='m-row'>
               <Lottie
                 options={defaultOptions3}
+                isClickToPauseDisabled={true}
+                height={120}
+                width={120}
+              />
+              <div className='m-row-info'>
+                INFORMACIOn
+              </div>
+            </div>
+
+            <div className='m-row'>
+              <Lottie
+                options={defaultOptions4}
                 isClickToPauseDisabled={true}
                 height={120}
                 width={120}
