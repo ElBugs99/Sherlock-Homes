@@ -169,8 +169,7 @@ export default function ProfilePage() {
                                 width={250}
                             />
                             <p className='house-animation-text'>
-                                Cientos de Familias han encontrado su hogar ideal gracias a Sherlock Homes.
-                                ¿Que estas esperando?
+                                Cientos de familias han encontrado su hogar ideal gracias a Sherlock Homes. ¿Qué estás esperando?
                             </p>
                         </div>
                     </div>
