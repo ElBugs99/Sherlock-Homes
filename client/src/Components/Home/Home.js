@@ -7,6 +7,7 @@ import PromoSection from './PromoSection/PromoSection';
 import InfoSection from './InfoSection/InfoSection';
 import Footer from '../UI/Footer/Footer';
 import ExploreHomes from './ExploreHomes/ExploreHomes';
+import MissionSection from '../MissionSection/MissionSection';
 
 export default function Home() {
 
@@ -20,6 +21,7 @@ export default function Home() {
         <NavBar searchHidden={true}/>
         <TopSection />
         <ExploreHomes />
+        <MissionSection />
         <PromoSection />
         <InfoSection />
         <Footer />

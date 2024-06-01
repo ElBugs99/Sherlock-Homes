@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.m-section-container {
+    font-family: 'Roboto', sans-serif;
+    flex-wrap: wrap;
+    height: 80vh;
+    width: 100%;
+    background-color: #d4e4da;
+    color: #535A77;
+}
+
+.m-section {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.m-left {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.m-right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    align-items: flex-start;
+    padding-left: 30px;
+    justify-content: center;
+}
+
+.m-lottie-background {
+    background-color: rgb(159, 226, 226);
+    width: 80%;
+    border-radius: 20px;
+}
+
+.m-right-header {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 50px;
+    color: #535A77;
+}
+
+.m-right-body {
+
+}
+
+.m-row {
+    display: flex;
+}
+
+.m-row-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
