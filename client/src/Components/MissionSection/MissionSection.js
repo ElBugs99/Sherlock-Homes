@@ -93,7 +93,9 @@ export default function MissionSection() {
 
               <div className='m-row-info'>
                 <div className='m-row-info-title'>Análisis</div>
-                <div className='m-row-info-subtitle'>Subtitulo subtitle Subtitulo</div>
+                <div className='m-row-info-subtitle'>
+                  Nuestra herramienta de análisis ofrece calculadoras de hipotecas, tasación y créditos, además de gráficos demostrativos para ayudarte a tomar decisiones informadas.
+                </div>
               </div>
             </div>
 
@@ -108,7 +110,9 @@ export default function MissionSection() {
               </div>
               <div className='m-row-info'>
                 <div className='m-row-info-title'>Búsqueda</div>
-                <div className='m-row-info-subtitle'>Subtitulo subtitle Subtitulo</div>
+                <div className='m-row-info-subtitle'>
+                  Nuestra herramienta de búsqueda avanzada te permite filtrar viviendas por ubicación, precio, tamaño y más, para que encuentres exactamente lo que necesitas.
+                </div>
               </div>
             </div>
 
@@ -124,7 +128,9 @@ export default function MissionSection() {
 
               <div className='m-row-info'>
                 <div className='m-row-info-title'>Opiniones</div>
-                <div className='m-row-info-subtitle'>Subtitulo subtitle Subtitulo</div>
+                <div className='m-row-info-subtitle'>
+                  Lee las opiniones de otros usuarios y deja tus comentarios para compartir tu experiencia sobre cada vivienda.
+                </div>
               </div>
             </div>
 
@@ -140,7 +146,9 @@ export default function MissionSection() {
 
               <div className='m-row-info'>
                 <div className='m-row-info-title'>Perfil</div>
-                <div className='m-row-info-subtitle'>Subtitulo subtitle Subtitulo</div>
+                <div className='m-row-info-subtitle'>
+                  Al crear tu propio perfil, puedes guardar tus publicaciones favoritas, gestionar tus comentarios y personalizar tu experiencia en la plataforma.
+                </div>
               </div>
             </div>
 

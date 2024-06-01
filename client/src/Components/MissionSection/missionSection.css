@@ -72,10 +72,11 @@
 }
 
 .m-row-info {
-    width: 70%;
+    width: 60%;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    /* font-weight: 600; */
 }
 
 .m-lottie {
