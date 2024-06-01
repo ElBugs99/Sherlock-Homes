@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react'
-import './infoSection.css'
+// InfoSection.js
+import React, { useState, useEffect } from 'react';
+import './infoSection.css';
 import FeaturedCard from '../../UI/FeaturedCard/FeaturedCard';
-import { appContext } from '../../../appContext';
+import HorizontalScroller from '../../UI/Scroller/HorizontalScroller';
 
 
 export default function InfoSection() {
-
   const [properties, setProperties] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
-
 
   const fetchHouses = async () => {
     try {
@@ -32,32 +31,33 @@ export default function InfoSection() {
     fetchHouses();
   }, []);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-  const cards = properties?.map(x => {
-    return (
-      <div className='feature-element'>
-      <FeaturedCard 
-        title={x.title}
-        price={x.price}
-        bathrooms={x.bathrooms}
-        bedrooms={x.bedrooms}
-        sqft={x.sqft}
-        img={x.media[0]}
-        onClick={() => window.open(`/Property/${x.id}`, '_blank')}
-      />
-    </div>
-    )
-    
-  })
+  if (error) {
+    return <div>Error loading properties</div>;
+  }
 
   return (
-
     <section className='article'>
       <div className='infoSection'>
 
-      {cards}
+        {properties?.map((x, index) => (
+          <div className='feature-element' key={index}>
+            <FeaturedCard
+              title={x.title}
+              price={x.price}
+              bathrooms={x.bathrooms}
+              bedrooms={x.bedrooms}
+              sqft={x.sqft}
+              img={x.media[0]}
+              onClick={() => window.open(`/Property/${x.id}`, '_blank')}
+            />
+          </div>
+        ))}
 
       </div>
     </section>
-  )
+  );
 }

@@ -1,0 +1,29 @@
+/* HorizontalScroller.css */
+/* HorizontalScroller.css */
+.horizontal-scroller {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+  }
+  
+  .horizontal-scroller-content {
+    display: inline-flex;
+    white-space: nowrap;
+    transition: transform 0.5s ease; /* Add transition */
+  }
+  
+  
+  
+  /* infoSection.css */
+  .infoSection {
+    position: relative;
+    /* overflow: hidden; */
+    max-width: 100%;
+  }
+  
+  .feature-element {
+    display: inline-block;
+    margin-right: 16px;
+  }
+  

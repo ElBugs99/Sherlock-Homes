@@ -8,6 +8,7 @@ import InfoSection from './InfoSection/InfoSection';
 import Footer from '../UI/Footer/Footer';
 import ExploreHomes from './ExploreHomes/ExploreHomes';
 import MissionSection from '../MissionSection/MissionSection';
+import Scroller from '../UI/Scroller/Scroller';
 
 export default function Home() {
 
@@ -23,6 +24,7 @@ export default function Home() {
         <ExploreHomes />
         <MissionSection />
         <PromoSection />
+        <Scroller />
         <InfoSection />
         <Footer />
     </div>
