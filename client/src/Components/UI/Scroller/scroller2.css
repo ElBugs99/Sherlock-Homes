@@ -1,24 +1,24 @@
-@keyframes slide {
+@keyframes slide2 {
     from {
-        transform: translateX(0);
+        transform: translateX(-100%);
     }
 
     to {
-        transform: translateX(-100%);
+        transform: translateX(0);
     }
 }
 
-.logos {
+.logos2 {
     overflow: hidden;
-    padding: 60px 0;
+    padding: 40px 0;
     background: white;
     white-space: nowrap;
     position: relative;
     width: 500px;
 }
 
-.logos:before,
-.logos:after {
+.logos2:before,
+.logos2:after {
     position: absolute;
     top: 0;
     width: 250px;
@@ -27,26 +27,26 @@
     z-index: 2;
 }
 
-.logos:before {
+.logos2:before {
     left: 0;
     background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
 }
 
-.logos:after {
+.logos2:after {
     right: 0;
     background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
 }
 
-.logos:hover .logos-slide {
+.logos2:hover .logos2-slide {
     animation-play-state: paused;
 }
 
-.logos-slide {
+.logos2-slide {
     display: inline-block;
-    animation: 35s slide infinite linear;
+    animation: 35s slide2 infinite linear;
 }
 
-.logos-slide img {
+.logos2-slide img {
     height: 50px;
     margin: 0 40px;
 }

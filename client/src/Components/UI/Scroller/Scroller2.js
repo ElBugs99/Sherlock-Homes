@@ -11,8 +11,8 @@ import img8 from '../../../assets/images/inmobiliarias/delcerro.png';
 
 export default function Scroller() {
     return (
-    <div className="logos">
-      <div className="logos-slide">
+    <div className="logos2">
+      <div className="logos2-slide">
         <img src={img} alt="3M Logo" />
         <img src={img2} alt="3M Logo" />
         <img src={img3} alt="3M Logo" />
@@ -23,7 +23,7 @@ export default function Scroller() {
         <img src={img8} alt="3M Logo" />
       </div>
 
-      <div className="logos-slide">
+      <div className="logos2-slide">
         <img src={img} alt="3M Logo" />
         <img src={img2} alt="3M Logo" />
         <img src={img3} alt="3M Logo" />
