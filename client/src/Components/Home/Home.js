@@ -25,6 +25,7 @@ export default function Home() {
         <MissionSection />
         <PromoSection />
         <Scroller />
+        <Scroller />
         <InfoSection />
         <Footer />
     </div>
