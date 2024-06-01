@@ -1,5 +1,5 @@
 import React from 'react';
-import './scroller.css';
+import './scroller2.css';
 import img from '../../../assets/images/inmobiliarias/LOGO-ARGENTA-5.png';
 import img2 from '../../../assets/images/inmobiliarias/Trei-Inmobiliaria.png';
 import img3 from '../../../assets/images/inmobiliarias/cropped-Recurso-2.png';
