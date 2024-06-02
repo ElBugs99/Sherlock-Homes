@@ -9,11 +9,11 @@
   
   .logos {
     overflow: hidden;
-    padding: 40px 0;
-    background: white;
+    padding: 25px 0;
+    background: #d4e4da;
     white-space: nowrap;
     position: relative;
-    width: 500px;
+    width: 700px;
   }
   
   .logos:before,
@@ -28,12 +28,12 @@
   
   .logos:before {
     left: 0;
-    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), #d4e4da);
   }
   
   .logos:after {
     right: 0;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #d4e4da);
   }
   
   .logos:hover .logos-slide {
@@ -48,4 +48,8 @@
   .logos-slide img {
     height: 50px;
     margin: 0 40px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }

@@ -8,8 +8,7 @@ import InfoSection from './InfoSection/InfoSection';
 import Footer from '../UI/Footer/Footer';
 import ExploreHomes from './ExploreHomes/ExploreHomes';
 import MissionSection from '../MissionSection/MissionSection';
-import Scroller from '../UI/Scroller/Scroller';
-import Scroller2 from '../UI/Scroller/Scroller2';
+import Asociates from '../Asociates/Asociates';
 
 export default function Home() {
 
@@ -25,8 +24,7 @@ export default function Home() {
         <ExploreHomes />
         <MissionSection />
         <PromoSection />
-        <Scroller />
-        <Scroller2 />
+        <Asociates />
         <InfoSection />
         <Footer />
     </div>

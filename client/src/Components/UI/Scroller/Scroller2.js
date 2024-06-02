@@ -1,13 +1,13 @@
 import React from 'react';
 import './scroller2.css';
-import img from '../../../assets/images/inmobiliarias/LOGO-ARGENTA-5.png';
-import img2 from '../../../assets/images/inmobiliarias/Trei-Inmobiliaria.png';
-import img3 from '../../../assets/images/inmobiliarias/cropped-Recurso-2.png';
-import img5 from '../../../assets/images/inmobiliarias/aval.png';
-import img4 from '../../../assets/images/inmobiliarias/iPeumo-Logo-1.png';
-import img6 from '../../../assets/images/inmobiliarias/notari.png';
-import img7 from '../../../assets/images/inmobiliarias/green-dreams.png';
-import img8 from '../../../assets/images/inmobiliarias/delcerro.png';
+import img from '../../../assets/images/inmobiliarias/aym.png';
+import img2 from '../../../assets/images/inmobiliarias/look.png';
+import img3 from '../../../assets/images/inmobiliarias/logo-casen.png';
+import img5 from '../../../assets/images/inmobiliarias/logo-fernando-montserrat.png';
+import img4 from '../../../assets/images/inmobiliarias/logocrear.png';
+import img6 from '../../../assets/images/inmobiliarias/altet.png';
+import img7 from '../../../assets/images/inmobiliarias/lares.png';
+import img8 from '../../../assets/images/inmobiliarias/Habitat_Inmobiliaria.png';
 
 export default function Scroller() {
     return (
