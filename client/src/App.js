@@ -31,7 +31,7 @@ function App() {
             <Route path="/financiamiento" element={<Financiamiento />} />
             <Route path="/terminoscondiciones" element={<TerminosCondiciones/>} />
             <Route path="/registro" element={<Registro />} />
-            <Route path="/search" element={<Search />} />
+            <Route path="/search/*" element={<Search />} />
             <Route path="/Info" element={<InfoPage />} />
             <Route path="/Property/:id" element={<PropertyPage />} />
             <Route path="*" element={<NoMatch />} />

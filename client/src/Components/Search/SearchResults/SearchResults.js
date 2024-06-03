@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useParams } from "react";
 import HomeCard from "../../UI/HomeCard/HomeCard";
 import Pagination from "../../UI/Pagination/Pagination";
 import defaultImage from "../../../assets/images/defaulthome2.jpg";
@@ -8,7 +8,7 @@ import Spinner from "../../UI/Spinner/Spinner";
 import { jwtDecode } from 'jwt-decode';
 /* import useFilter from "../../../hooks/useFilter"; */
 
-export default function SearchResults({ data }) {
+export default function SearchResults({ queryParams }) {
 
   /* const { error } = useContext(appContext); */
   const { user } = useContext(appContext);
@@ -42,9 +42,14 @@ export default function SearchResults({ data }) {
           }
         }
 
-        const housesResponse = await fetch("http://localhost:3001/houses?page=2&limit=42");
-        const housesData = await housesResponse.json();
-        setHouses(housesData);
+        let apiUrl = 'http://localhost:3001/houses?page=2&limit=42&city=';
+        const params = new URLSearchParams(queryParams);
+        if (params.toString()) {
+          apiUrl += `?${params.toString()}`;
+        }
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        setHouses(data);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
