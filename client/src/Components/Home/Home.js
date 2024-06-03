@@ -9,6 +9,7 @@ import Footer from '../UI/Footer/Footer';
 import ExploreHomes from './ExploreHomes/ExploreHomes';
 import MissionSection from '../MissionSection/MissionSection';
 import Asociates from '../Asociates/Asociates';
+import Chatbot from '../UI/ChatBot/Chatbot';
 
 export default function Home() {
 
@@ -26,6 +27,7 @@ export default function Home() {
         <PromoSection />
         <Asociates />
         <InfoSection />
+        <Chatbot />
         <Footer />
     </div>
   )
