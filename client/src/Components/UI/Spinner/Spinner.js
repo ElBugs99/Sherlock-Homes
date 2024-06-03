@@ -1,23 +1,33 @@
 import React from 'react'
-
 import Lottie from 'react-lottie'
-import LupaLoading from '../../../assets/animation/Animation - lupaloading.json';
+/* import LupaLoading from '../../../assets/animation/Animation - dots.json'; */
+import data from '../../../assets/animation/Animation - dots.json';
 
 export default function Spinner() {
 
-    const LupaOptions = {
+    /* const LupaOptions = {
         loop: true,
         autoplay: true,
         animationData: LupaLoading,
         rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice'
+        preserveAspectRatio: 'xMidYMid slice'
         }
-
     };
+     */
+
+    const options = {
+        loop: true,
+        autoplay: true,
+        animationData: data,
+        rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+        }
+    };
+
     return (
         <div>
             <Lottie
-              options={LupaOptions}
+              options={options}
               isClickToPauseDisabled={true}
               height={200}
               width={250}
