@@ -4,10 +4,8 @@ import SideBar from "../UI/SideBar/SideBar";
 import NavBar from "../UI/NavBar/NavBar";
 import Footer from "../UI/Footer/Footer";
 import SearchResults from "./SearchResults/SearchResults";
-import useFilter from "../../hooks/useFilter";
 
 export default function Search() {
-  const { filteredItems } = useFilter();
 
   return (
     <div className="search">
@@ -18,7 +16,7 @@ export default function Search() {
           <SideBar />
         </div>
         <div className="search-results">
-          <SearchResults data={filteredItems}/>
+          <SearchResults />
         </div>
       </div>
       <Footer />

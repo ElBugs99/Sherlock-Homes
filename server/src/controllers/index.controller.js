@@ -11,18 +11,43 @@ export const pool = new Pool({
 
 export const getHouses = async (req, res) => {
   try {
-    const { page = 1, limit = 10 } = req.query;
+    const { page = 1, limit = 10, city, sqft, bathrooms, bedrooms, price, property_type } = req.query;
     const offset = (page - 1) * limit;
+    
+    let queryText = 'SELECT * FROM house WHERE 1=1';
+    const queryParams = [];
 
-    const query = {
-      text: 'SELECT * FROM house LIMIT $1 OFFSET $2',
-      values: [limit, offset],
-    };
+    if (city) {
+      queryParams.push(`%${city}%`);
+      queryText += ` AND city ILIKE $${queryParams.length}`;
+    }
+    if (sqft) {
+      queryParams.push(sqft);
+      queryText += ` AND sqft >= $${queryParams.length}`;
+    }
+    if (bathrooms) {
+      queryParams.push(bathrooms);
+      queryText += ` AND bathrooms >= $${queryParams.length}`;
+    }
+    if (bedrooms) {
+      queryParams.push(bedrooms);
+      queryText += ` AND bedrooms >= $${queryParams.length}`;
+    }
+    if (price) {
+      queryParams.push(price);
+      queryText += ` AND price <= $${queryParams.length}`;
+    }
+    if (property_type) {
+      queryParams.push(property_type);
+      queryText += ` AND property_type = $${queryParams.length}`;
+    }
 
-    const countQuery = 'SELECT COUNT(*) FROM house';
+    queryParams.push(limit, offset);
+    queryText += ` LIMIT $${queryParams.length - 1} OFFSET $${queryParams.length}`;
 
+    const countQuery = 'SELECT COUNT(*) FROM house WHERE 1=1';
     const [dataResponse, countResponse] = await Promise.all([
-      pool.query(query),
+      pool.query(queryText, queryParams),
       pool.query(countQuery),
     ]);
 
@@ -44,6 +69,7 @@ export const getHouses = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
 
 export const getFeaturedHouses = async (req, res) => {
   try {

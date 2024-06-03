@@ -6,10 +6,13 @@ import vina from '../../../assets/images/vina-noche.jpg';
 import valparaiso from '../../../assets/images/Valparaíso.jpg';
 import quilpue from '../../../assets/images/Quilpue.jpg';
 import villa from '../../../assets/images/molino2.png';
+import useFilter from '../../../hooks/useFilter';
+
 
 export default function ExploreHomes() {
 
   const { user } = useContext(appContext);
+  const {  } = useFilter();
 
   return (
     <div className='explore-homes'>

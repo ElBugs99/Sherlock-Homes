@@ -78,7 +78,7 @@ export default function NavBar({ searchHidden }) {
                 placeholder='Perfil'
                 background='#264653'
                 color='white'
-                width='80px'
+                width='120px'
                 callback={handleUserDropDownOption}
               />
               :
@@ -87,7 +87,7 @@ export default function NavBar({ searchHidden }) {
                 placeholder='Ingresa'
                 background='#264653'
                 color='white'
-                width='80px'
+                width='120px'
                 callback={handleDropDownOptionClick}
               />}
           </div>
@@ -97,7 +97,8 @@ export default function NavBar({ searchHidden }) {
             placeholder={'Aprende'}
             background='#264653'
             color='white'
-            width='80px'
+            
+            innerWidth='90px'
             callback={handleDropDownOptionClick2}
           />
         </div>

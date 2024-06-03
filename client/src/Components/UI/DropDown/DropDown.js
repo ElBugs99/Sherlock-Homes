@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './dropdown.css';
 
-export default function DropDown({ options, callback, placeholder, background, color, width }) {
+export default function DropDown({ options, callback, placeholder, background, color, width, innerWidth }) {
     const [selected, setSelected] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -16,13 +16,18 @@ export default function DropDown({ options, callback, placeholder, background, c
     };
 
     return (
-        <div className='dropdown'>
+        <div
+          className='dropdown'
+          style={{
+            width: width
+        }}
+        >
             <div
                 className={`select ${isOpen ? 'select-clicked' : ''}`}
                 style={{
                     backgroundColor: background,
                     color: color,
-                    width: width
+                    width: innerWidth
                 }}
                 onClick={toggleDropdown}
             >

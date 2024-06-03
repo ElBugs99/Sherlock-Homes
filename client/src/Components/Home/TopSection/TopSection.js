@@ -37,6 +37,8 @@ export default function TopSection() {
     };
   }, [title]);
 
+  //TODO property type, transaction type
+
   return (
     <div className="topSection">
       <div className="top-overlay"></div>
@@ -50,13 +52,71 @@ export default function TopSection() {
         <div className="top-form">
           <SearchBar />
           <div className="dropdowns">
+            {/* <div className="dropdown-element">
+              <DropDown
+                options={['Quinta región']}
+                placeholder='Quinta región'
+                width='150px' 
+              />
+            </div> */}
             <div className="dropdown-element">
-              <DropDown options={[ 'Quinta región' ]} placeholder={'Quinta región'} />
+              <DropDown
+                options={['Ninguna', 'Viña', 'Valparaíso']}
+                placeholder='Comuna'
+                width='110px'
+              />
             </div>
             <div className="dropdown-element">
-              <DropDown options={[ 'Ninguna', 'Viña', 'Valparaíso' ]} placeholder={'Comuna'} />
+              <DropDown
+                options={['Ninguna', 'Viña', 'Valparaíso']}
+                placeholder='Dormitorios'
+                width='110px'
+              />
+            </div>
+            <div className="dropdown-element">
+              <DropDown
+                options={['Ninguna', 'Viña', 'Valparaíso']}
+                placeholder='Baños'
+                width='110px'
+              />
+            </div>
+            <div className="dropdown-element">
+              <DropDown
+                options={['Ninguna', 'Viña', 'Valparaíso']}
+                placeholder='Metros'
+                width='110px'
+              />
+            </div>
+            <div className="dropdown-element">
+              <DropDown
+                options={['Ninguna', 'Viña', 'Valparaíso']}
+                placeholder='Precio'
+                width='110px'
+              />
             </div>
           </div>
+
+          {/* <div className="dropdowns2">
+            <div className="dropdown-element">
+              <DropDown
+                options={['Quinta región']}
+                placeholder='Quinta región'
+              />
+            </div>
+            <div className="dropdown-element">
+              <DropDown
+                options={['Ninguna', 'Viña', 'Valparaíso']}
+                placeholder='Comuna'
+              />
+            </div>
+            <div className="dropdown-element">
+              <DropDown
+                options={['Ninguna', 'Viña', 'Valparaíso']}
+                placeholder='Comuna'
+              />
+            </div>
+          </div> */}
+          
         </div>
 
         <div className="top-img-text-container">
