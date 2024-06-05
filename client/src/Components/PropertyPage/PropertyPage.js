@@ -19,6 +19,8 @@ import Graficos from '../UI/Graffics/Graficos';
 import ChartBar from '../UI/ChartBar/ChartBar';
 import Tasacion from '../UI/Tasacion/Tasacion';
 
+import Calculator2 from '../UI/Calculator2/Calculator2'
+
 
 export default function PropertyPage() {
 
@@ -196,11 +198,15 @@ export default function PropertyPage() {
                     <div className='property-left-info'>
                         <div className='calculator-wrapper'>
                             <Calculator valor={property.price} />
+                            
                         </div>
 
                         <div>
                             <Tasacion/>
                         </div>
+                        {/* <div>
+                            <Calculator2/>
+                        </div> */}
                     </div>
 
                     <div className='property-right-info'>

@@ -3,6 +3,7 @@ import './leftSection.css'
 import LoginForm from './LoginForm/LoginForm';
 import svgImage from '../../../assets/images/greenicon.svg';
 import { FaArrowRightLong } from "react-icons/fa6";
+import { GrHomeRounded } from "react-icons/gr";
 
 export default function LeftSection() {
   return (
@@ -14,6 +15,12 @@ export default function LeftSection() {
           <div>
             <img className='icon' src={svgImage} alt="SVG" />
           </div>
+        </div>
+        <div className='boton-inicio'>
+          <a href='/'>
+          <GrHomeRounded />
+          </a>
+         
         </div>
       </div>
       <LoginForm />
