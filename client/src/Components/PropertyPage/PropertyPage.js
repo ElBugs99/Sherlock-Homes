@@ -17,6 +17,7 @@ import { FaLink } from "react-icons/fa6";
 import CommentSection from '../UI/CommentSection/CommentSection';
 import Graficos from '../UI/Graffics/Graficos';
 import ChartBar from '../UI/ChartBar/ChartBar';
+import Tasacion from '../UI/Tasacion/Tasacion';
 
 
 export default function PropertyPage() {
@@ -195,6 +196,10 @@ export default function PropertyPage() {
                     <div className='property-left-info'>
                         <div className='calculator-wrapper'>
                             <Calculator valor={property.price} />
+                        </div>
+
+                        <div>
+                            <Tasacion/>
                         </div>
                     </div>
 
