@@ -1,7 +1,7 @@
 import React from "react";
 import  './tasacion.css';
 import Lottie from 'react-lottie';
-import animationTasacion from '../../../assets/animation/Animation - tasacion.json'
+import animationTasacion from '../../../assets/animation/Animation - animacionTasacion.json'
 
 
 export default function Tasacion(){
