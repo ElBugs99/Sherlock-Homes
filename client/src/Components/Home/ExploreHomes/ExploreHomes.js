@@ -31,7 +31,7 @@ export default function ExploreHomes() {
               listings={50}
               image={vina}
               cityValue={'viña'}
-              onClick={() => redirectByCity()}
+              onClick={() => redirectByCity('Viña')}
             />
             <ExploreCityCard
               cityName={'Valparaíso'}
