@@ -41,7 +41,7 @@ console.log('Beginning scraping...');
 
   const allListingInfo = [];
 
-  for (let pageNumber = 1; pageNumber <= 1; pageNumber++) {
+  for (let pageNumber = 1; pageNumber <= lastpage; pageNumber++) {
     await page.goto(`https://www.yapo.cl/valparaiso/inmuebles/inmuebles/comprar?comuna=valparaiso&descripcion=true&tipo-inmueble=casa&pagina=${pageNumber}`);
     await page.waitForSelector('listing-result-ad');
     const listingUrls = await page.evaluate(() => {
