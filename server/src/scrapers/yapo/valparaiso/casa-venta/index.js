@@ -8,6 +8,8 @@ const __dirname = path.dirname(__filename);
 
 console.log('Beginning scraping...');
 
+//TODO sqft bugs if theres more than 3 digits
+
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();

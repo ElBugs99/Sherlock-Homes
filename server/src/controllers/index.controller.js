@@ -19,31 +19,37 @@ export const getHouses = async (req, res) => {
     const queryParams = [];
     const countParams = [];
 
-    if (city) {
-      queryParams.push(`%${city}%`);
-      countParams.push(`%${city}%`);
-      queryText += ` AND city ILIKE $${queryParams.length}`;
-      countQuery += ` AND city ILIKE $${countParams.length}`;
+    const removeAccents = (str) => {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    };
+
+    if ( city && city !== 'undefined' ) {
+      const normalizedCity = removeAccents(city);
+      console.log('city', normalizedCity);
+      queryParams.push(`%${normalizedCity}%`);
+      countParams.push(`%${normalizedCity}%`);
+      queryText += ` AND unaccent(city) ILIKE unaccent($${queryParams.length})`;
+      countQuery += ` AND unaccent(city) ILIKE unaccent($${countParams.length})`;
     }
-    if (sqft) {
+    if ( sqft && sqft !== 'undefined' ) {
       queryParams.push(sqft);
       countParams.push(sqft);
       queryText += ` AND sqft >= $${queryParams.length}`;
       countQuery += ` AND sqft >= $${countParams.length}`;
     }
-    if (bathrooms) {
+    if ( bathrooms && bathrooms !== 'undefined' ) {
       queryParams.push(bathrooms);
       countParams.push(bathrooms);
       queryText += ` AND bathrooms >= $${queryParams.length}`;
       countQuery += ` AND bathrooms >= $${countParams.length}`;
     }
-    if (bedrooms) {
+    if ( bedrooms && bathrooms !== 'undefined' ) {
       queryParams.push(bedrooms);
       countParams.push(bedrooms);
       queryText += ` AND bedrooms >= $${queryParams.length}`;
       countQuery += ` AND bedrooms >= $${countParams.length}`;
     }
-    if (price) {
+    if ( price && price !== 'undefined' ) {
       queryParams.push(price);
       countParams.push(price);
       queryText += ` AND price <= $${queryParams.length}`;
@@ -82,6 +88,7 @@ export const getHouses = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
 
 
 export const getFeaturedHouses = async (req, res) => {

@@ -151,7 +151,7 @@ export default function SearchResults({ city }) {
       </button> */}
       <div className="search-results-header">
         <div className="search-results-header-content">
-          Resultados: {houses?.meta?.totalCount} {city}
+          Resultados: {houses?.meta?.totalCount} {city === 'undefined' ? 'Todas las publicaciones' : city}
         </div>
       </div>
       <div className="search-results-container">
