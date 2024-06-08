@@ -61,35 +61,35 @@ export default function TopSection() {
             </div> */}
             <div className="dropdown-element">
               <DropDown
-                options={['Ninguna', 'Viña', 'Valparaíso']}
+                options={['Ninguna', 'Viña', 'Valparaíso', 'Quilpué', 'Villa alemana']}
                 placeholder='Comuna'
                 width='110px'
               />
             </div>
             <div className="dropdown-element">
               <DropDown
-                options={['Ninguna', 'Viña', 'Valparaíso']}
+                options={['cualquiera', '1', '2', '3', '+4']}
                 placeholder='Dormitorios'
                 width='110px'
               />
             </div>
             <div className="dropdown-element">
               <DropDown
-                options={['Ninguna', 'Viña', 'Valparaíso']}
+                options={['cualquiera', '1', '2', '3', '+4']}
                 placeholder='Baños'
                 width='110px'
               />
             </div>
             <div className="dropdown-element">
               <DropDown
-                options={['Ninguna', 'Viña', 'Valparaíso']}
-                placeholder='Metros'
+                options={['Cualquiera', '50-100 (m²)', '100-200 (m²)', '200-400 (m²)', '+400 (m²)']}
+                placeholder='Superficie'
                 width='110px'
               />
             </div>
             <div className="dropdown-element">
               <DropDown
-                options={['Ninguna', 'Viña', 'Valparaíso']}
+                options={['Cualquiera', 'Viña', 'Valparaíso']}
                 placeholder='Precio'
                 width='110px'
               />
