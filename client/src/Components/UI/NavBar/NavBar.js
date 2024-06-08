@@ -69,7 +69,7 @@ export default function NavBar({ searchHidden }) {
           <SearchBar />
         </div>
         <div className='nav-options'>
-          <NavLink to='/search' className='nav-option'>Búsqueda</NavLink>
+          {/* <NavLink to='/search' className='nav-option'>Búsqueda</NavLink> */}
 
           <div className='nav-drop'>
             { isLogged ?
