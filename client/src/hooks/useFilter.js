@@ -10,11 +10,17 @@ export default function useFilter() {
   const { price, setPrice } = useState();
 
   const redirectByCity = (city) => {
-    console.log('redirect: ', `/search/${city}`)
-    window.location.href = `/search/${city}`;
+/*     console.log('redirect: ', `/search/${city}/undefined`) */
+    window.location.href = `/search/${city}/undefined`;
+  }
+
+  const redirectByFilters = () => {
+    console.log('search', `/search/${city}`)
+    window.location.href = `/search/${city}/${bedrooms}`;///${bathrooms}/${sqft}
   }
 
   return {
-    redirectByCity
+    redirectByCity,
+    redirectByFilters
   }
 }

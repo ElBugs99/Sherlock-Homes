@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./topSection.css";
 import homeVideo from "../../../assets/videos/edificios1.mp4";
 /* import homeVideo from "../../../assets/videos/flor.mp4"; */
-import search from "../../../assets/images/white-search-icon.svg";
 import DropDown from '../../UI/DropDown/DropDown';
 import SearchBar from "../../UI/SearchBar/SearchBar";
+import useFilter from '../../../hooks/useFilter';
 
 export default function TopSection() {
   const styles = {
@@ -15,6 +15,8 @@ export default function TopSection() {
       4: { title: "Estudio", style: { color: "#38baba" } },
     },
   };
+
+  const { redirectByFilters } = useFilter();
 
   const [title, setTitle] = useState(1);
 
@@ -50,7 +52,7 @@ export default function TopSection() {
         </video>
         {/* <img className='top-img' src={img} alt='promo' /> */}
         <div className="top-form">
-          <SearchBar />
+          <SearchBar callback={() => redirectByFilters()}/>
           <div className="dropdowns">
             {/* <div className="dropdown-element">
               <DropDown

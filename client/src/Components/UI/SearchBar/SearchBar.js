@@ -3,7 +3,7 @@ import search from "../../../assets/images/white-search-icon.svg";
 import useFilter from '../../../hooks/useFilter';
 import "./searchBar.css"
 
-export default function SearchBar() {
+export default function SearchBar({ callback }) {
   const { setSearchFilteredData } = useFilter();
   const [ searchQuery, setSearchQuery] = useState('');
 
@@ -13,7 +13,8 @@ export default function SearchBar() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSearchFilteredData(searchQuery); 
+    /* console.log('preventDefault', callback); */
+    callback();
   };
 
   useEffect(() =>{
