@@ -60,7 +60,7 @@ export default function NavBar({ searchHidden }) {
   return (
     <nav className='navBar'>
       <div className='nav-options-container'>
-        <div className='nav-logo-container' onClick={() => navigate('/')}>
+        <div className='nav-logo-container' onClick={() => window.location.href = '/'}>
           <div className='nav-logo'>Sherlock Homes</div>
           <img className='nav-icon' src={svgImage} alt="SVG" />
         </div>

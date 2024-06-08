@@ -15,40 +15,53 @@ export const getHouses = async (req, res) => {
     const offset = (page - 1) * limit;
     
     let queryText = 'SELECT * FROM house WHERE 1=1';
+    let countQuery = 'SELECT COUNT(*) FROM house WHERE 1=1';
     const queryParams = [];
+    const countParams = [];
 
     if (city) {
       queryParams.push(`%${city}%`);
+      countParams.push(`%${city}%`);
       queryText += ` AND city ILIKE $${queryParams.length}`;
+      countQuery += ` AND city ILIKE $${countParams.length}`;
     }
     if (sqft) {
       queryParams.push(sqft);
+      countParams.push(sqft);
       queryText += ` AND sqft >= $${queryParams.length}`;
+      countQuery += ` AND sqft >= $${countParams.length}`;
     }
     if (bathrooms) {
       queryParams.push(bathrooms);
+      countParams.push(bathrooms);
       queryText += ` AND bathrooms >= $${queryParams.length}`;
+      countQuery += ` AND bathrooms >= $${countParams.length}`;
     }
     if (bedrooms) {
       queryParams.push(bedrooms);
+      countParams.push(bedrooms);
       queryText += ` AND bedrooms >= $${queryParams.length}`;
+      countQuery += ` AND bedrooms >= $${countParams.length}`;
     }
     if (price) {
       queryParams.push(price);
+      countParams.push(price);
       queryText += ` AND price <= $${queryParams.length}`;
+      countQuery += ` AND price <= $${countParams.length}`;
     }
     if (property_type) {
       queryParams.push(property_type);
+      countParams.push(property_type);
       queryText += ` AND property_type = $${queryParams.length}`;
+      countQuery += ` AND property_type = $${countParams.length}`;
     }
 
     queryParams.push(limit, offset);
     queryText += ` LIMIT $${queryParams.length - 1} OFFSET $${queryParams.length}`;
 
-    const countQuery = 'SELECT COUNT(*) FROM house WHERE 1=1';
     const [dataResponse, countResponse] = await Promise.all([
       pool.query(queryText, queryParams),
-      pool.query(countQuery),
+      pool.query(countQuery, countParams),
     ]);
 
     const data = dataResponse.rows;

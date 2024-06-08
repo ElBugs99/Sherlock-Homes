@@ -5,14 +5,14 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-//TODO change city
+
 console.log('Beginning scraping...');
 
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  await page.goto('https://www.yapo.cl/paginas/valparaiso/vina-del-mar/comprar/casa?pagina=1', { timeout: 60000 });
+  await page.goto('https://www.yapo.cl/valparaiso/inmuebles/inmuebles/comprar?comuna=valparaiso&descripcion=true&tipo-inmueble=casa&pagina=1', { timeout: 60000 });
   await page.waitForSelector('app-paginator', { visible: true });
 
   const allListingUrls = [];
@@ -41,8 +41,8 @@ console.log('Beginning scraping...');
 
   const allListingInfo = [];
 
-  for (let pageNumber = 1; pageNumber <= lastpage; pageNumber++) {
-    await page.goto(`https://www.yapo.cl/paginas/valparaiso/vina-del-mar/comprar/casa?pagina=${pageNumber}`);
+  for (let pageNumber = 1; pageNumber <= 1; pageNumber++) {
+    await page.goto(`https://www.yapo.cl/valparaiso/inmuebles/inmuebles/comprar?comuna=valparaiso&descripcion=true&tipo-inmueble=casa&pagina=${pageNumber}`);
     await page.waitForSelector('listing-result-ad');
     const listingUrls = await page.evaluate(() => {
       const urls = [];
@@ -179,7 +179,7 @@ console.log('Beginning scraping...');
       const uf = cleanUFValue(ufStr);
 
       const region = 'V';
-      const city = 'Viña';
+      const city = 'Valparaiso';
       const transaction = 'sale';
 
       const description = document.querySelector('.description').innerText;

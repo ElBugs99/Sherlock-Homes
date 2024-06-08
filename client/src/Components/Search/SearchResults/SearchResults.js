@@ -8,7 +8,7 @@ import Spinner from "../../UI/Spinner/Spinner";
 import { jwtDecode } from 'jwt-decode';
 /* import useFilter from "../../../hooks/useFilter"; */
 
-export default function SearchResults({ queryParams }) {
+export default function SearchResults({ city }) {
 
   /* const { error } = useContext(appContext); */
   const { user } = useContext(appContext);
@@ -42,11 +42,8 @@ export default function SearchResults({ queryParams }) {
           }
         }
 
-        let apiUrl = 'http://localhost:3001/houses?page=2&limit=42&city=';
-        const params = new URLSearchParams(queryParams);
-        if (params.toString()) {
-          apiUrl += `?${params.toString()}`;
-        }
+        let apiUrl = `http://localhost:3001/houses?page=1&limit=42&city=${city}`;
+        
         const response = await fetch(apiUrl);
         const data = await response.json();
         setHouses(data);
@@ -129,6 +126,13 @@ export default function SearchResults({ queryParams }) {
       </div>
     );
 
+    if ( houses?.data?.length === 0)
+      return (
+        <div className="preload-container">
+          <div className="errormsj">No se han encontrado resultados</div>
+        </div>
+      );
+
   const checkFavorite = (pubId) => {
     if (!favorites) console.log('favorites doesnt exist');
     return favorites?.includes(pubId);
@@ -147,7 +151,7 @@ export default function SearchResults({ queryParams }) {
       </button> */}
       <div className="search-results-header">
         <div className="search-results-header-content">
-          Resultados: {houses?.meta?.totalCount}
+          Resultados: {houses?.meta?.totalCount} {city}
         </div>
       </div>
       <div className="search-results-container">

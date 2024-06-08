@@ -12,7 +12,7 @@ import useFilter from '../../../hooks/useFilter';
 export default function ExploreHomes() {
 
   const { user } = useContext(appContext);
-  const {  } = useFilter();
+  const { redirectByCity } = useFilter();
 
   return (
     <div className='explore-homes'>
@@ -26,10 +26,31 @@ export default function ExploreHomes() {
                     : 'Explora en tu ciudad'}
         </div>
         <div className='explore-cities apareciendo'>
-            <ExploreCityCard cityName={'Viña del Mar'} listings={50} image={vina} />
-            <ExploreCityCard cityName={'Valparaíso'} listings={50} image={valparaiso}/>
-            <ExploreCityCard cityName={'Quilpué'} listings={50} image={quilpue}/>
-            <ExploreCityCard cityName={'Villa alemana'} listings={50} image={villa}/>
+            <ExploreCityCard
+              cityName={'Viña del Mar'}
+              listings={50}
+              image={vina}
+              cityValue={'viña'}
+              onClick={() => redirectByCity('viña')}
+            />
+            <ExploreCityCard
+              cityName={'Valparaíso'}
+              listings={50}
+              image={valparaiso}
+              onClick={() => redirectByCity('valparaiso')}
+            />
+            <ExploreCityCard
+              cityName={'Quilpué'}
+              listings={50}
+              image={quilpue}
+              onClick={() => redirectByCity('quilpue')}
+            />
+            <ExploreCityCard
+              cityName={'Villa alemana'}
+              listings={50}
+              image={villa}
+              onClick={() => redirectByCity('villa alemana')}
+            />
         </div>
       </div>
     </div>

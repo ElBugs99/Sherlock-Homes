@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import "./search.css";
 import SideBar from "../UI/SideBar/SideBar";
 import NavBar from "../UI/NavBar/NavBar";
@@ -8,7 +8,7 @@ import SearchResults from "./SearchResults/SearchResults";
 
 export default function Search() {
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
+  const { city } = useParams();
 
   return (
     <div className="search">
@@ -19,7 +19,7 @@ export default function Search() {
           <SideBar />
         </div>
         <div className="search-results">
-          <SearchResults queryParams={queryParams} />
+          <SearchResults city={city} />
         </div>
       </div>
       <Footer />
