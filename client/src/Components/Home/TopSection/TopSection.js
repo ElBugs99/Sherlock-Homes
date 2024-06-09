@@ -16,7 +16,11 @@ export default function TopSection() {
     },
   };
 
-  const { redirectByFilters, defineCity } = useFilter();
+  const { 
+          redirectByFilters,
+          defineCity,
+          defineDorms
+        } = useFilter();
 
   const [title, setTitle] = useState(1);
 
@@ -71,14 +75,15 @@ export default function TopSection() {
             </div>
             <div className="dropdown-element">
               <DropDown
-                options={['cualquiera', '1', '2', '3', '+4']}
+                options={['Cualquiera', '1', '2', '3', '+4']}
                 placeholder='Dormitorios'
                 width='110px'
+                callback={defineDorms}
               />
             </div>
             <div className="dropdown-element">
               <DropDown
-                options={['cualquiera', '1', '2', '3', '+4']}
+                options={['Cualquiera', '1', '2', '3', '+4']}
                 placeholder='Baños'
                 width='110px'
               />

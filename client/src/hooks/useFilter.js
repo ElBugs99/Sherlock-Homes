@@ -11,21 +11,26 @@ export default function useFilter() {
 
   const redirectByCity = (city) => {
 /*     console.log('redirect: ', `/search/${city}/undefined`) */
-    window.location.href = `/search/${city}/undefined`;
+    window.location.href = `/search/${city}/undefined/undefined/undefined/undefined`;
   }
 
   const redirectByFilters = () => {
     console.log('search', `/search/${city}`)
-    window.location.href = `/search/${city}/${bedrooms}`;///${bathrooms}/${sqft}
+    window.location.href = `/search/${city}/${bedrooms}/${bathrooms}/${sqft}/${price}`;
   }
 
   const defineCity = ( city ) => {
     console.log('city value', city);
-    if (city === 'Viña') {
-      setCity(city);
+    if ( city === 'Ninguna') {
+      setCity(undefined);
       return;
     }
 
+    if ( city ) {
+      setCity(city);
+      return;
+    }
+/* 
     if (city === 'Valparaíso') {
       setCity(city);
       return;
@@ -39,12 +44,37 @@ export default function useFilter() {
     if (city === 'Villa alemana') {
       setCity(city);
       return;
+    } */
+  }
+
+  const defineDorms = (dorms) => {
+    console.log('Dorms:', dorms);
+
+    if ( dorms === 'Cualquiera') {
+      setBedrooms(undefined);
     }
+
+    if ( dorms ) {
+      setBedrooms(dorms);
+    }
+    
+    /* if ( dorms === '2') {
+      setBedrooms(dorms);
+    }
+
+    if ( dorms === '3') {
+      setBedrooms(dorms);
+    }
+
+    if ( dorms === '4') {
+      setBedrooms(dorms);
+    } */
   }
 
   return {
     redirectByCity,
     redirectByFilters,
-    defineCity
+    defineCity,
+    defineDorms
   }
 }

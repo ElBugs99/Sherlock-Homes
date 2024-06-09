@@ -23,7 +23,7 @@ export const getHouses = async (req, res) => {
       return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     };
 
-    if ( city && city !== 'undefined' ) {
+    if (city && city !== 'undefined') {
       const normalizedCity = removeAccents(city);
       console.log('city', normalizedCity);
       queryParams.push(`%${normalizedCity}%`);
@@ -31,25 +31,32 @@ export const getHouses = async (req, res) => {
       queryText += ` AND unaccent(city) ILIKE unaccent($${queryParams.length})`;
       countQuery += ` AND unaccent(city) ILIKE unaccent($${countParams.length})`;
     }
-    if ( sqft && sqft !== 'undefined' ) {
+    if (sqft && sqft !== 'undefined') {
       queryParams.push(sqft);
       countParams.push(sqft);
       queryText += ` AND sqft >= $${queryParams.length}`;
       countQuery += ` AND sqft >= $${countParams.length}`;
     }
-    if ( bathrooms && bathrooms !== 'undefined' ) {
+    if (bathrooms && bathrooms !== 'undefined') {
       queryParams.push(bathrooms);
       countParams.push(bathrooms);
       queryText += ` AND bathrooms >= $${queryParams.length}`;
       countQuery += ` AND bathrooms >= $${countParams.length}`;
     }
-    if ( bedrooms && bathrooms !== 'undefined' ) {
-      queryParams.push(bedrooms);
-      countParams.push(bedrooms);
-      queryText += ` AND bedrooms >= $${queryParams.length}`;
-      countQuery += ` AND bedrooms >= $${countParams.length}`;
+    if (bedrooms && bedrooms !== 'undefined') {
+      if (bedrooms === '+4') {
+        queryParams.push(4);
+        countParams.push(4);
+        queryText += ` AND bedrooms >= $${queryParams.length}`;
+        countQuery += ` AND bedrooms >= $${countParams.length}`;
+      } else {
+        queryParams.push(bedrooms);
+        countParams.push(bedrooms);
+        queryText += ` AND bedrooms = $${queryParams.length}`;
+        countQuery += ` AND bedrooms = $${countParams.length}`;
+      }
     }
-    if ( price && price !== 'undefined' ) {
+    if (price && price !== 'undefined') {
       queryParams.push(price);
       countParams.push(price);
       queryText += ` AND price <= $${queryParams.length}`;
@@ -88,6 +95,7 @@ export const getHouses = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
 
 
 

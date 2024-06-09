@@ -8,7 +8,7 @@ import SearchResults from "./SearchResults/SearchResults";
 
 export default function Search() {
   const location = useLocation();
-  const { city } = useParams();
+  const { city, bedrooms } = useParams();
 
   return (
     <div className="search">
@@ -19,7 +19,7 @@ export default function Search() {
           <SideBar />
         </div>
         <div className="search-results">
-          <SearchResults city={city} />
+          <SearchResults city={city} bedrooms={bedrooms} />
         </div>
       </div>
       <Footer />

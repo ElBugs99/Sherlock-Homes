@@ -8,7 +8,7 @@ import Spinner from "../../UI/Spinner/Spinner";
 import { jwtDecode } from 'jwt-decode';
 /* import useFilter from "../../../hooks/useFilter"; */
 
-export default function SearchResults({ city }) {
+export default function SearchResults({ city, bedrooms }) {
 
   /* const { error } = useContext(appContext); */
   const { user } = useContext(appContext);
@@ -42,7 +42,7 @@ export default function SearchResults({ city }) {
           }
         }
 
-        let apiUrl = `http://localhost:3001/houses?page=1&limit=42&city=${city}`;
+        let apiUrl = `http://localhost:3001/houses?page=1&limit=42&city=${city}&bedrooms=${bedrooms}`;
         
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -151,7 +151,7 @@ export default function SearchResults({ city }) {
       </button> */}
       <div className="search-results-header">
         <div className="search-results-header-content">
-          Resultados: {houses?.meta?.totalCount} {city === 'undefined' ? 'Todas las publicaciones' : city}
+          Resultados: <div className="res">{houses?.meta?.totalCount}</div> En {city === 'undefined' ? 'cualquier comuna' : city}
         </div>
       </div>
       <div className="search-results-container">
