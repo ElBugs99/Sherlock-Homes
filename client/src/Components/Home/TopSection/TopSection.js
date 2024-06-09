@@ -16,7 +16,7 @@ export default function TopSection() {
     },
   };
 
-  const { redirectByFilters } = useFilter();
+  const { redirectByFilters, defineCity } = useFilter();
 
   const [title, setTitle] = useState(1);
 
@@ -66,6 +66,7 @@ export default function TopSection() {
                 options={['Ninguna', 'Viña', 'Valparaíso', 'Quilpué', 'Villa alemana']}
                 placeholder='Comuna'
                 width='110px'
+                callback={defineCity}
               />
             </div>
             <div className="dropdown-element">
