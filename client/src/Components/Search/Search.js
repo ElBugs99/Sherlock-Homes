@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import "./search.css";
 import SideBar from "../UI/SideBar/SideBar";
 import NavBar from "../UI/NavBar/NavBar";
@@ -7,7 +7,6 @@ import Footer from "../UI/Footer/Footer";
 import SearchResults from "./SearchResults/SearchResults";
 
 export default function Search() {
-  const location = useLocation();
   const { city, bedrooms } = useParams();
 
   return (

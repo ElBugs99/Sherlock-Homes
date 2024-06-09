@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useParams } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import HomeCard from "../../UI/HomeCard/HomeCard";
 import Pagination from "../../UI/Pagination/Pagination";
 import defaultImage from "../../../assets/images/defaulthome2.jpg";
