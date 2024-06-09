@@ -6,6 +6,8 @@ import { appContext } from "../../../appContext";
 import HouseModal from "../../UI/HouseModal/HouseModal";
 import Spinner from "../../UI/Spinner/Spinner";
 import { jwtDecode } from 'jwt-decode';
+import Lottie from 'react-lottie';
+import animationData from '../../../assets/animation/Animation - sin-resultados.json';
 /* import useFilter from "../../../hooks/useFilter"; */
 
 export default function SearchResults({ city, bedrooms }) {
@@ -43,7 +45,7 @@ export default function SearchResults({ city, bedrooms }) {
         }
 
         let apiUrl = `http://localhost:3001/houses?page=1&limit=42&city=${city}&bedrooms=${bedrooms}`;
-        
+
         const response = await fetch(apiUrl);
         const data = await response.json();
         setHouses(data);
@@ -111,11 +113,20 @@ export default function SearchResults({ city, bedrooms }) {
     }
   };
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
   if (isLoading)
     return (
       <div className="preload-container">
         <Spinner />
-        
+
       </div>
     );
 
@@ -126,12 +137,18 @@ export default function SearchResults({ city, bedrooms }) {
       </div>
     );
 
-    if ( houses?.data?.length === 0)
-      return (
-        <div className="preload-container">
-          <div className="errormsj">No se han encontrado resultados</div>
-        </div>
-      );
+  if (houses?.data?.length === 0)
+    return (
+      <div className="preload-container">
+        <div className="errormsj">No se han encontrado resultados</div>
+        <Lottie
+          options={defaultOptions}
+          isClickToPauseDisabled={true}
+          height={200}
+          width={200}
+        />
+      </div>
+    );
 
   const checkFavorite = (pubId) => {
     if (!favorites) console.log('favorites doesnt exist');
