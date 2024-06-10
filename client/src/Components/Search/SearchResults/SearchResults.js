@@ -153,20 +153,30 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
     return favorites?.includes(pubId);
   }
 
+  const unfilteredPropertiesArray = 
+  [
+    bedrooms !== 'undefined' ? `${bedrooms} dormitorios` : '',
+    bathrooms !== 'undefined' ? `${bathrooms} Baños` : '',
+    sqft !== 'undefined' ? `${sqft} (m²) ` : '',
+    price !== 'undefined' ? `${price} precio` : '',
+  ];
+
+  const propertiesArray = unfilteredPropertiesArray.filter((x) => x !== '');
+
   return (
     <>
-      {/* <input
-        className=""
-        spellCheck="false"
-        value={searchQuery}
-        onChange={handleOnChangeSearch}
-      />
-      <button className="" onClick={handleSubmit}>
-        Buscar
-      </button> */}
       <div className="search-results-header">
         <div className="search-results-header-content">
-          Resultados: <div className="res">{houses?.meta?.totalCount}</div> En {city === 'undefined' ? 'cualquier comuna' : city}
+          Resultados: <div className="res">{houses?.meta?.totalCount}</div>
+          En {city === 'undefined' ? 'cualquier comuna' : city}
+          { bedrooms || bathrooms || sqft || price ? ' con ' : '' }
+          {propertiesArray.map(( p, i ) => {
+            if ( i + 1 === propertiesArray.length ) {
+              return p;
+            }
+            return p + ', ';
+          })}
+
         </div>
       </div>
       <div className="search-results-container">
