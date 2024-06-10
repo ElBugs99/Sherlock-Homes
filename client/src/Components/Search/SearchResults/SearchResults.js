@@ -8,11 +8,9 @@ import Spinner from "../../UI/Spinner/Spinner";
 import { jwtDecode } from 'jwt-decode';
 import Lottie from 'react-lottie';
 import animationData from '../../../assets/animation/Animation - sin-resultados.json';
-/* import useFilter from "../../../hooks/useFilter"; */
 
 export default function SearchResults({ city, bedrooms }) {
 
-  /* const { error } = useContext(appContext); */
   const { user } = useContext(appContext);
   const [filteredItems, setFilteredItems] = useState([]);
   const [houses, setHouses] = useState([]);

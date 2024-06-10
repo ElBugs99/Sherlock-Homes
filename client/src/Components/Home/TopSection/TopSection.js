@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./topSection.css";
 import homeVideo from "../../../assets/videos/edificios1.mp4";
-/* import homeVideo from "../../../assets/videos/flor.mp4"; */
 import DropDown from '../../UI/DropDown/DropDown';
 import SearchBar from "../../UI/SearchBar/SearchBar";
 import useFilter from '../../../hooks/useFilter';
@@ -17,10 +16,13 @@ export default function TopSection() {
   };
 
   const { 
-          redirectByFilters,
-          defineCity,
-          defineDorms
-        } = useFilter();
+    redirectByFilters,
+    defineCity,
+    defineDorms,
+    defineBathrooms,
+    defineSqft,
+    definePrice
+  } = useFilter();
 
   const [title, setTitle] = useState(1);
 
@@ -33,7 +35,6 @@ export default function TopSection() {
           setTitle((prev) => prev + 1);
         }
       } catch (error) {
-        // Handle the error
         console.error(error);
       }
     }, 2000);
@@ -43,28 +44,17 @@ export default function TopSection() {
     };
   }, [title]);
 
-  //TODO property type, transaction type
-
   return (
     <div className="topSection">
       <div className="top-overlay"></div>
       <div className="top-img-container">
         <video className="top-img" autoPlay loop muted>
           <source src={homeVideo} type="video/mp4" />
-          {/* Add additional source elements for other formats (WebM, Ogg) */}
           Your browser does not support the video tag.
         </video>
-        {/* <img className='top-img' src={img} alt='promo' /> */}
         <div className="top-form">
           <SearchBar callback={() => redirectByFilters()}/>
           <div className="dropdowns">
-            {/* <div className="dropdown-element">
-              <DropDown
-                options={['Quinta región']}
-                placeholder='Quinta región'
-                width='150px' 
-              />
-            </div> */}
             <div className="dropdown-element">
               <DropDown
                 options={['Ninguna', 'Viña', 'Valparaíso', 'Quilpué', 'Villa alemana']}
@@ -86,6 +76,7 @@ export default function TopSection() {
                 options={['Cualquiera', '1', '2', '3', '+4']}
                 placeholder='Baños'
                 width='110px'
+                callback={defineBathrooms}
               />
             </div>
             <div className="dropdown-element">
@@ -93,40 +84,19 @@ export default function TopSection() {
                 options={['Cualquiera', '50-100 (m²)', '100-200 (m²)', '200-400 (m²)', '+400 (m²)']}
                 placeholder='Superficie'
                 width='110px'
+                callback={defineSqft}
               />
             </div>
             <div className="dropdown-element">
               <DropDown
-                options={['Cualquiera', 'Viña', 'Valparaíso']}
+                options={['Cualquiera', '0-50m', '50-100', '100-200', '200-300']}
                 placeholder='Precio'
                 width='110px'
+                callback={definePrice}
               />
             </div>
           </div>
-
-          {/* <div className="dropdowns2">
-            <div className="dropdown-element">
-              <DropDown
-                options={['Quinta región']}
-                placeholder='Quinta región'
-              />
-            </div>
-            <div className="dropdown-element">
-              <DropDown
-                options={['Ninguna', 'Viña', 'Valparaíso']}
-                placeholder='Comuna'
-              />
-            </div>
-            <div className="dropdown-element">
-              <DropDown
-                options={['Ninguna', 'Viña', 'Valparaíso']}
-                placeholder='Comuna'
-              />
-            </div>
-          </div> */}
-          
         </div>
-
         <div className="top-img-text-container">
           <div className="top-img-text">
             Encuentra tu nuevo{" "}
