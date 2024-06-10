@@ -13,7 +13,7 @@ export const getHouses = async (req, res) => {
   try {
     const { page = 1, limit = 10, city, sqft, bathrooms, bedrooms, price, property_type } = req.query;
     const offset = (page - 1) * limit;
-    
+
     let queryText = 'SELECT * FROM house WHERE 1=1';
     let countQuery = 'SELECT COUNT(*) FROM house WHERE 1=1';
     const queryParams = [];
@@ -25,24 +25,41 @@ export const getHouses = async (req, res) => {
 
     if (city && city !== 'undefined') {
       const normalizedCity = removeAccents(city);
-      console.log('city', normalizedCity);
       queryParams.push(`%${normalizedCity}%`);
       countParams.push(`%${normalizedCity}%`);
       queryText += ` AND unaccent(city) ILIKE unaccent($${queryParams.length})`;
       countQuery += ` AND unaccent(city) ILIKE unaccent($${countParams.length})`;
     }
+
     if (sqft && sqft !== 'undefined') {
-      queryParams.push(sqft);
-      countParams.push(sqft);
-      queryText += ` AND sqft >= $${queryParams.length}`;
-      countQuery += ` AND sqft >= $${countParams.length}`;
+      const sqftRange = sqft.split('-');
+      if (sqftRange.length === 2) {
+        queryParams.push(sqftRange[0], sqftRange[1]);
+        countParams.push(sqftRange[0], sqftRange[1]);
+        queryText += ` AND sqft BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
+        countQuery += ` AND sqft BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
+      } else if (sqft === '+400') {
+        queryParams.push(400);
+        countParams.push(400);
+        queryText += ` AND sqft > $${queryParams.length}`;
+        countQuery += ` AND sqft > $${countParams.length}`;
+      }
     }
+
     if (bathrooms && bathrooms !== 'undefined') {
-      queryParams.push(bathrooms);
-      countParams.push(bathrooms);
-      queryText += ` AND bathrooms >= $${queryParams.length}`;
-      countQuery += ` AND bathrooms >= $${countParams.length}`;
+      if (bathrooms === '+4') {
+        queryParams.push(4);
+        countParams.push(4);
+        queryText += ` AND bathrooms >= $${queryParams.length}`;
+        countQuery += ` AND bathrooms >= $${countParams.length}`;
+      } else {
+        queryParams.push(bathrooms);
+        countParams.push(bathrooms);
+        queryText += ` AND bathrooms = $${queryParams.length}`;
+        countQuery += ` AND bathrooms = $${countParams.length}`;
+      }
     }
+
     if (bedrooms && bedrooms !== 'undefined') {
       if (bedrooms === '+4') {
         queryParams.push(4);
@@ -56,13 +73,23 @@ export const getHouses = async (req, res) => {
         countQuery += ` AND bedrooms = $${countParams.length}`;
       }
     }
+
     if (price && price !== 'undefined') {
-      queryParams.push(price);
-      countParams.push(price);
-      queryText += ` AND price <= $${queryParams.length}`;
-      countQuery += ` AND price <= $${countParams.length}`;
+      const priceRange = price.split('-');
+      if (priceRange.length === 2) {
+        queryParams.push(priceRange[0], priceRange[1]);
+        countParams.push(priceRange[0], priceRange[1]);
+        queryText += ` AND price BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
+        countQuery += ` AND price BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
+      } else if (price === '0-50m') {
+        queryParams.push(0, 50000);
+        countParams.push(0, 50000);
+        queryText += ` AND price BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
+        countQuery += ` AND price BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
+      }
     }
-    if (property_type) {
+
+    if (property_type && property_type !== 'undefined') {
       queryParams.push(property_type);
       countParams.push(property_type);
       queryText += ` AND property_type = $${queryParams.length}`;
@@ -95,6 +122,7 @@ export const getHouses = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
 
 
 
