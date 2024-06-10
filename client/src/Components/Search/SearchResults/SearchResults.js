@@ -111,6 +111,40 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
     }
   };
 
+  const unfilteredPropertiesArray =
+    [
+      bedrooms !== 'undefined' ? `${bedrooms} dormitorios` : '',
+      bathrooms !== 'undefined' ? `${bathrooms} Baños` : '',
+      sqft !== 'undefined' ? `${sqft} (m²) ` : '',
+      price !== 'undefined' ? `${price} precio` : '',
+    ];
+
+  const propertiesArray = unfilteredPropertiesArray.filter((x) => x !== '');
+
+  const searchParameters = () => {
+    return (
+      <>
+        {city === 'undefined' ? 'cualquier comuna' : city}
+        {
+          bedrooms !== 'undefined'
+          || bathrooms !== 'undefined'
+          || sqft !== 'undefined'
+          || price !== 'undefined'
+          ?
+          ' con '
+          :
+          ''
+        }
+        {propertiesArray.map((p, i) => {
+          if (i + 1 === propertiesArray.length) {
+            return p;
+          }
+          return p + ', ';
+        })}
+      </>
+    )
+  }
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -138,7 +172,10 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
   if (houses?.data?.length === 0)
     return (
       <div className="preload-container">
-        <div className="errormsj">No se han encontrado resultados</div>
+        <div className="errormsj">No se han encontrado resultados para:</div>
+          <div className="search-parameters">
+            {searchParameters()}
+          </div>
         <Lottie
           options={defaultOptions}
           isClickToPauseDisabled={true}
@@ -153,29 +190,12 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
     return favorites?.includes(pubId);
   }
 
-  const unfilteredPropertiesArray = 
-  [
-    bedrooms !== 'undefined' ? `${bedrooms} dormitorios` : '',
-    bathrooms !== 'undefined' ? `${bathrooms} Baños` : '',
-    sqft !== 'undefined' ? `${sqft} (m²) ` : '',
-    price !== 'undefined' ? `${price} precio` : '',
-  ];
-
-  const propertiesArray = unfilteredPropertiesArray.filter((x) => x !== '');
-
   return (
     <>
       <div className="search-results-header">
         <div className="search-results-header-content">
           Resultados: <div className="res">{houses?.meta?.totalCount}</div>
-          En {city === 'undefined' ? 'cualquier comuna' : city}
-          { bedrooms || bathrooms || sqft || price ? ' con ' : '' }
-          {propertiesArray.map(( p, i ) => {
-            if ( i + 1 === propertiesArray.length ) {
-              return p;
-            }
-            return p + ', ';
-          })}
+          En {searchParameters()}
 
         </div>
       </div>
