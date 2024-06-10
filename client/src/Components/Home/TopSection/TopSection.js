@@ -81,15 +81,15 @@ export default function TopSection() {
             </div>
             <div className="dropdown-element">
               <DropDown
-                options={['Cualquiera', '50-100 (m²)', '100-200 (m²)', '200-400 (m²)', '+400 (m²)']}
-                placeholder='Superficie'
+                options={['Cualquiera', '50-100', '100-200', '200-400', '400+']}
+                placeholder='Superficie (m²)'
                 width='110px'
                 callback={defineSqft}
               />
             </div>
             <div className="dropdown-element">
               <DropDown
-                options={['Cualquiera', '0-50m', '50-100', '100-200', '200-300']}
+                options={['Cualquiera', '0-50000', '50000-100000', '100000-200000', '200000+']}
                 placeholder='Precio'
                 width='110px'
                 callback={definePrice}

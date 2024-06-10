@@ -7,7 +7,12 @@ import Footer from "../UI/Footer/Footer";
 import SearchResults from "./SearchResults/SearchResults";
 
 export default function Search() {
-  const { city, bedrooms } = useParams();
+  const { city,
+          bedrooms,
+          bathrooms,
+          sqft,
+          price
+        } = useParams();
 
   return (
     <div className="search">
@@ -18,7 +23,13 @@ export default function Search() {
           <SideBar />
         </div>
         <div className="search-results">
-          <SearchResults city={city} bedrooms={bedrooms} />
+          <SearchResults
+            city={city}
+            bedrooms={bedrooms}
+            bathrooms={bathrooms}
+            sqft={sqft}
+            price={price}
+          />
         </div>
       </div>
       <Footer />

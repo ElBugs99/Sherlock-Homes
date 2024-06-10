@@ -32,60 +32,68 @@ export const getHouses = async (req, res) => {
     }
 
     if (sqft && sqft !== 'undefined') {
-      const sqftRange = sqft.split('-');
-      if (sqftRange.length === 2) {
-        queryParams.push(sqftRange[0], sqftRange[1]);
-        countParams.push(sqftRange[0], sqftRange[1]);
-        queryText += ` AND sqft BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
-        countQuery += ` AND sqft BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
-      } else if (sqft === '+400') {
-        queryParams.push(400);
-        countParams.push(400);
-        queryText += ` AND sqft > $${queryParams.length}`;
-        countQuery += ` AND sqft > $${countParams.length}`;
+      if (sqft.includes('-')) {
+        const [minSqft, maxSqft] = sqft.split('-').map(Number);
+        if (!isNaN(minSqft) && !isNaN(maxSqft)) {
+          queryParams.push(minSqft, maxSqft);
+          countParams.push(minSqft, maxSqft);
+          queryText += ` AND sqft BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
+          countQuery += ` AND sqft BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
+        }
+      } else if (sqft === '400+') {
+        const minSqft = 400;
+        queryParams.push(minSqft);
+        countParams.push(minSqft);
+        queryText += ` AND sqft >= $${queryParams.length}`;
+        countQuery += ` AND sqft >= $${countParams.length}`;
       }
     }
 
     if (bathrooms && bathrooms !== 'undefined') {
-      if (bathrooms === '+4') {
-        queryParams.push(4);
-        countParams.push(4);
-        queryText += ` AND bathrooms >= $${queryParams.length}`;
-        countQuery += ` AND bathrooms >= $${countParams.length}`;
-      } else {
-        queryParams.push(bathrooms);
-        countParams.push(bathrooms);
-        queryText += ` AND bathrooms = $${queryParams.length}`;
-        countQuery += ` AND bathrooms = $${countParams.length}`;
+      const numBathrooms = bathrooms === '+4' ? 4 : Number(bathrooms);
+      if (!isNaN(numBathrooms)) {
+        queryParams.push(numBathrooms);
+        countParams.push(numBathrooms);
+        if (bathrooms === '+4') {
+          queryText += ` AND bathrooms >= $${queryParams.length}`;
+          countQuery += ` AND bathrooms >= $${countParams.length}`;
+        } else {
+          queryText += ` AND bathrooms = $${queryParams.length}`;
+          countQuery += ` AND bathrooms = $${countParams.length}`;
+        }
       }
     }
 
     if (bedrooms && bedrooms !== 'undefined') {
-      if (bedrooms === '+4') {
-        queryParams.push(4);
-        countParams.push(4);
-        queryText += ` AND bedrooms >= $${queryParams.length}`;
-        countQuery += ` AND bedrooms >= $${countParams.length}`;
-      } else {
-        queryParams.push(bedrooms);
-        countParams.push(bedrooms);
-        queryText += ` AND bedrooms = $${queryParams.length}`;
-        countQuery += ` AND bedrooms = $${countParams.length}`;
+      const numBedrooms = bedrooms === '+4' ? 4 : Number(bedrooms);
+      if (!isNaN(numBedrooms)) {
+        queryParams.push(numBedrooms);
+        countParams.push(numBedrooms);
+        if (bedrooms === '+4') {
+          queryText += ` AND bedrooms >= $${queryParams.length}`;
+          countQuery += ` AND bedrooms >= $${countParams.length}`;
+        } else {
+          queryText += ` AND bedrooms = $${queryParams.length}`;
+          countQuery += ` AND bedrooms = $${countParams.length}`;
+        }
       }
     }
 
     if (price && price !== 'undefined') {
-      const priceRange = price.split('-');
-      if (priceRange.length === 2) {
-        queryParams.push(priceRange[0], priceRange[1]);
-        countParams.push(priceRange[0], priceRange[1]);
-        queryText += ` AND price BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
-        countQuery += ` AND price BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
-      } else if (price === '0-50m') {
-        queryParams.push(0, 50000);
-        countParams.push(0, 50000);
-        queryText += ` AND price BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
-        countQuery += ` AND price BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
+      if (price.includes('-')) {
+        const [minPrice, maxPrice] = price.split('-').map(Number);
+        if (!isNaN(minPrice) && !isNaN(maxPrice)) {
+          queryParams.push(minPrice, maxPrice);
+          countParams.push(minPrice, maxPrice);
+          queryText += ` AND price BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
+          countQuery += ` AND price BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
+        }
+      } else if (price === '200000+') {
+        const minPrice = 200000;
+        queryParams.push(minPrice);
+        countParams.push(minPrice);
+        queryText += ` AND price >= $${queryParams.length}`;
+        countQuery += ` AND price >= $${countParams.length}`;
       }
     }
 
@@ -122,9 +130,6 @@ export const getHouses = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
-
-
-
 
 
 export const getFeaturedHouses = async (req, res) => {

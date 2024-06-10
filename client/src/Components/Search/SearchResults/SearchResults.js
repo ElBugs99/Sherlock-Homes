@@ -9,7 +9,7 @@ import { jwtDecode } from 'jwt-decode';
 import Lottie from 'react-lottie';
 import animationData from '../../../assets/animation/Animation - sin-resultados.json';
 
-export default function SearchResults({ city, bedrooms }) {
+export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }) {
 
   const { user } = useContext(appContext);
   const [filteredItems, setFilteredItems] = useState([]);
@@ -42,7 +42,7 @@ export default function SearchResults({ city, bedrooms }) {
           }
         }
 
-        let apiUrl = `http://localhost:3001/houses?page=1&limit=42&city=${city}&bedrooms=${bedrooms}`;
+        let apiUrl = `http://localhost:3001/houses?page=1&limit=42&city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&sqft=${sqft}&price=${price}`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();
