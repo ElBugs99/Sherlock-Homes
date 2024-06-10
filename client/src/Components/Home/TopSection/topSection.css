@@ -82,6 +82,15 @@
     padding: 5px;
 }
 
+.dropdown-top-label {
+    color: white;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
 .dropdowns2 {
     position: absolute;
     display: flex;

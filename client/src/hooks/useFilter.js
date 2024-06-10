@@ -16,7 +16,7 @@ export default function useFilter() {
   };
 
   const defineCity = (city) => {
-    if (city === 'Ninguna') {
+    if (city === 'Cualquiera') {
       setCity(undefined);
       return;
     }

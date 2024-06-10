@@ -56,41 +56,46 @@ export default function TopSection() {
           <SearchBar callback={() => redirectByFilters()}/>
           <div className="dropdowns">
             <div className="dropdown-element">
+              <div className="dropdown-top-label">Comuna</div>
               <DropDown
-                options={['Ninguna', 'Viña', 'Valparaíso', 'Quilpué', 'Villa alemana']}
-                placeholder='Comuna'
+                options={['Cualquiera', 'Viña', 'Valparaíso', 'Quilpué', 'Villa alemana']}
+                placeholder='Cualquiera'
                 width='110px'
                 callback={defineCity}
               />
             </div>
             <div className="dropdown-element">
+              <div className="dropdown-top-label">Dormitorios</div>
               <DropDown
                 options={['Cualquiera', '1', '2', '3', '+4']}
-                placeholder='Dormitorios'
+                placeholder='Cualquiera'
                 width='110px'
                 callback={defineDorms}
               />
             </div>
             <div className="dropdown-element">
+              <div className="dropdown-top-label">Baños</div>
               <DropDown
                 options={['Cualquiera', '1', '2', '3', '+4']}
-                placeholder='Baños'
+                placeholder='Cualquiera'
                 width='110px'
                 callback={defineBathrooms}
               />
             </div>
             <div className="dropdown-element">
+              <div className="dropdown-top-label">Superficie (m²)</div>
               <DropDown
                 options={['Cualquiera', '50-100', '100-200', '200-400', '400+']}
-                placeholder='Superficie (m²)'
+                placeholder='Cualquiera'
                 width='110px'
                 callback={defineSqft}
               />
             </div>
             <div className="dropdown-element">
+              <div className="dropdown-top-label">Precio</div>
               <DropDown
                 options={['Cualquiera', '0-50000', '50000-100000', '100000-200000', '200000+']}
-                placeholder='Precio'
+                placeholder='Cualquiera'
                 width='110px'
                 callback={definePrice}
               />
