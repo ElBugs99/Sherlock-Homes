@@ -37,19 +37,19 @@ export default function ExploreHomes() {
               cityName={'Valparaíso'}
               listings={50}
               image={valparaiso}
-              onClick={() => redirectByCity('valparaiso')}
+              onClick={() => redirectByCity('Valparaíso')}
             />
             <ExploreCityCard
               cityName={'Quilpué'}
               listings={50}
               image={quilpue}
-              onClick={() => redirectByCity('quilpue')}
+              onClick={() => redirectByCity('Quilpué')}
             />
             <ExploreCityCard
               cityName={'Villa alemana'}
               listings={50}
               image={villa}
-              onClick={() => redirectByCity('villa alemana')}
+              onClick={() => redirectByCity('Villa alemana')}
             />
         </div>
       </div>
