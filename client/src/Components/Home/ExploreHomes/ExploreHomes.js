@@ -18,39 +18,39 @@ export default function ExploreHomes() {
     <div className='explore-homes'>
       <div className='cities-container'>
         <div className='cities-title'>
-            {user ? <div className='welcome-msg'>
-                      <div className='welcome-msg-text'>
-                        Bienvenid@, {user.username}
-                      </div>
-                    </div>
-                    : 'Explora en tu ciudad'}
+          {user ? <div className='welcome-msg'>
+            <div className='welcome-msg-text'>
+              Bienvenid@, {user.username}
+            </div>
+          </div>
+            : 'Explora en tu ciudad'}
         </div>
         <div className='explore-cities apareciendo'>
-            <ExploreCityCard
-              cityName={'Viña del Mar'}
-              listings={50}
-              image={vina}
-              cityValue={'viña'}
-              onClick={() => redirectByCity('Viña')}
-            />
-            <ExploreCityCard
-              cityName={'Valparaíso'}
-              listings={50}
-              image={valparaiso}
-              onClick={() => redirectByCity('Valparaíso')}
-            />
-            <ExploreCityCard
-              cityName={'Quilpué'}
-              listings={50}
-              image={quilpue}
-              onClick={() => redirectByCity('Quilpué')}
-            />
-            <ExploreCityCard
-              cityName={'Villa alemana'}
-              listings={50}
-              image={villa}
-              onClick={() => redirectByCity('Villa alemana')}
-            />
+          <ExploreCityCard
+            cityName={'Viña del Mar'}
+            listings={50}
+            image={vina}
+            cityValue={'viña'}
+            onClick={() => redirectByCity('Viña')}
+          />
+          <ExploreCityCard
+            cityName={'Valparaíso'}
+            listings={50}
+            image={valparaiso}
+            onClick={() => redirectByCity('Valparaíso')}
+          />
+          <ExploreCityCard
+            cityName={'Quilpué'}
+            listings={50}
+            image={quilpue}
+            onClick={() => redirectByCity('Quilpué')}
+          />
+          <ExploreCityCard
+            cityName={'Villa alemana'}
+            listings={50}
+            image={villa}
+            onClick={() => redirectByCity('Villa alemana')}
+          />
         </div>
       </div>
     </div>
