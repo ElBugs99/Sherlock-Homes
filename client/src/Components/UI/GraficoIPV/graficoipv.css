@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+.GraficoIPV{
+    font-family: 'Roboto', sans-serif;
+    color: #535A77;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    
+        
+}
+
+
+
+.textoGraficoIPV{
+   text-align: center;
+   margin-top: 1px;
+}

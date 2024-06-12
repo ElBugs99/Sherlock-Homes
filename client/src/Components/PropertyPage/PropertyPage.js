@@ -16,10 +16,11 @@ import Map from '../UI/Map/Map';
 import { FaLink } from "react-icons/fa6";
 import CommentSection from '../UI/CommentSection/CommentSection';
 import Graficos from '../UI/Graffics/Graficos';
-import ChartBar from '../UI/ChartBar/ChartBar';
+
 import Tasacion from '../UI/Tasacion/Tasacion';
 
-import Calculator2 from '../UI/Calculator2/Calculator2'
+
+import GraficoIpv from '../UI/GraficoIPV/GraficoIPV';
 
 
 export default function PropertyPage() {
@@ -204,16 +205,26 @@ export default function PropertyPage() {
                         <div>
                             <Tasacion/>
                         </div>
-                        {/* <div>
-                            <Calculator2/>
-                        </div> */}
+
+                        
+
+                        
+                         
                     </div>
 
                     <div className='property-right-info'>
-                        {/* <div className='Title-chart'>
-                        <p>Grafico Comparativo de Precios</p>
-                    </div> */}
-                        <Graficos bed={property.bedrooms} bath={property.bathrooms} mts={property.sqft} valor={property.price} />
+                        
+                        <div className='graficoPie'>
+                            <Graficos  valor={property.price} />
+                        </div>
+
+                        <div className='graficoIPV'>
+                            <GraficoIpv/>
+                        </div>
+
+                        
+                        
+
                     </div>
                 </div>
 

@@ -223,17 +223,36 @@
     padding: 20px 20px 0 20px;
     width: 50%;
     height: 100%;
+    flex-direction: column;
+    align-items: center;
 }
+
+.graficoPie{
+    margin-bottom: 5px;
+    padding: 1%;
+    align-items: start;
+    position: relative;
+    top: -90px;
+
+    
+    
+    
+   
+}
+
+.graficoIPV{
+    margin-top: 1px;
+    margin-right: 30px;
+    margin-left: 20px;
+    margin-bottom: 5px    ;
+    
+} 
 
 .calculator-wrapper {
     height: 50%;
 }
 
-.Title-chart{
-    text-align: center;
-    font-size: large;
-    margin-bottom: 400px;
-}
+
 
 @keyframes squish {
     50% {
@@ -260,11 +279,7 @@
     
 }
 
-.chart{
-    padding: 5px;
-    display: flex;
-    margin: 5px;
-}
+  
 
 .msg-error-mapa{
     font-style: italic;

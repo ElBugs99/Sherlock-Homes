@@ -20,7 +20,7 @@ export default function Search() {
       <div className="search-container">
         <div className="search-info">
           <div className="search-info-title"></div>
-          <SideBar />
+          {/* <SideBar /> */}
         </div>
         <div className="search-results">
           <SearchResults

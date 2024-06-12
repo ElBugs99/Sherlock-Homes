@@ -2,43 +2,65 @@ import React from "react";
 import "./graficos.css";
 import { PieChart } from '@mui/x-charts/PieChart';
 
-export default function Graficos({ bed, bath, mts, valor }) {
+export default function Graficos({ valor }) {
   const data = [
     { id: 0, value: Number(valor), label: 'Valor CLP Propiedad actual' },
     { id: 1, value: 284262254, label: 'Promedio Valor CLP Viña del Mar' }
   ];
   
-  const colors = ['#fefae0', '#3b6978', '#3c6e71', '#e68459'];
+  const colors = ['#47e0af', '#3b6978', '#3c6e71', '#e68459'];
 
   return (
-    <PieChart
-      series={[
-        {
-          data,
-          highlightScope: { 
-            faded: 'global', 
-            highlighted: 'item' 
-          },
-          faded: { 
-            innerRadius: 30, 
-            additionalRadius: 0, 
-            color: 'gray'
-          },
-          highlighted: { 
-            additionalRadius: 10,
-            innerRadius: 30
-          },
-          color: colors
-        },
-      ]}
-      height={430}
-      margin={{
-        left: 0,
-        right: 280,
-        bottom: 10,
-        top: 130,
-      }}
-      colors={colors}
-    />
+
+    <div className="grficoPie">
+        <h4 className="textoPie"> Grafico Comparativo de Precios</h4> 
+
+        <PieChart
+              series={[
+                {
+                  data,
+                  highlightScope: { 
+                    faded: 'global', 
+                    highlighted: 'item' 
+                    
+                  },
+                  faded: { 
+                    innerRadius: 40, 
+                    additionalRadius: 0, 
+                    color: 'gray'
+                  },
+                  highlighted: { 
+                    additionalRadius: 5,
+                    innerRadius: 10
+                  },
+                  color: colors
+                },
+               
+              ]}
+              margin={{ top: 10, bottom: 50, left: 10, right:10 }}
+              width={500}
+              height={237}
+              
+              colors={colors}
+              slotProps={{
+                legend: {
+                  direction: 'row',
+                  position: { vertical: 'bottom', horizontal: 'middle' },
+                  padding:1,
+                  itemMarkWidth: 10,
+                  itemMarkHeight:20,
+                  markGap: 4,
+                  itemGap: 15,
+                  
+                },
+              }}
+              
+
+              
+            />
+     
+    </div>
+   
+    
   );
 }
