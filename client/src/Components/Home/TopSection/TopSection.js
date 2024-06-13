@@ -92,7 +92,7 @@ export default function TopSection() {
                 width='110px'
                 callback={defineSqft}
                 background='#fff'
-                color='#000'
+                color='#757575'
                 innerWidth='100%'
               />
             </div>
@@ -105,7 +105,7 @@ export default function TopSection() {
                 width='110px'
                 callback={definePrice}
                 background='#fff'
-                color='#000'
+                color='#757575'
                 innerWidth='100%'
               />
             </div>
