@@ -8,11 +8,11 @@ import Spinner from "../../UI/Spinner/Spinner";
 import {jwtDecode} from 'jwt-decode';
 import Lottie from 'react-lottie';
 import animationData from '../../../assets/animation/Animation - sin-resultados.json';
+import { addDotsToNumber } from "../../../utils/numberUtils";
 
 export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }) {
 
   const { user } = useContext(appContext);
-  const [filteredItems, setFilteredItems] = useState([]);
   const [houses, setHouses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedProperty, setSelectedProperty] = useState(null);
@@ -60,27 +60,6 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
     fetchFavoritesAndHouses();
   }, [user, currentPage, city, bedrooms, bathrooms, sqft, price]);
 
-  // Search filter logic
-  const setSearchFilteredData = (value) => {
-    const filteredList = houses.filter((item) => {
-      return item.location.toLowerCase().includes(value.toLowerCase());
-    });
-    setFilteredItems(filteredList);
-  };
-
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleOnChangeSearch = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (searchQuery.length >= 3) {
-      setSearchFilteredData(searchQuery);
-    }
-  };
-
   const handleFavoriteClick = async (propertyId) => {
     if (!user) {
       // Redirect to login if not logged in
@@ -108,12 +87,17 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
     }
   };
 
+  const priceArray = price.split("-").map(value => parseInt(value, 10));
+  const sqftArray = sqft.split("-").map(value => parseInt(value, 10));
+
   const unfilteredPropertiesArray =
     [
       bedrooms !== 'undefined' ? `${bedrooms} dormitorios` : '',
       bathrooms !== 'undefined' ? `${bathrooms} Baños` : '',
-      sqft !== 'undefined' ? `${sqft} (m²) ` : '',
-      price !== 'undefined' ? `${price} precio` : '',
+      (sqftArray[0] !== 0 || sqftArray[1] !== 3000) ? `
+      ${addDotsToNumber(sqftArray[0]) + ' - ' + addDotsToNumber(sqftArray[1])} (m²) ` : 'cualquier m²',
+      (priceArray[0] !== 0 || priceArray[1] !== 2000000000) ? `
+      ${addDotsToNumber(priceArray[0]) + ' - ' + addDotsToNumber(priceArray[1])} precio` : 'cualquier precio',
     ];
 
   const propertiesArray = unfilteredPropertiesArray.filter((x) => x !== '');
@@ -223,6 +207,7 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
             setCurrentPage={(page) => {
               setIsLoading(true);
               setCurrentPage(page);
+              window.scrollTo(0, 0);
             }}
             postsLen={houses?.meta?.totalCount || 0}
             currentPage={currentPage}
