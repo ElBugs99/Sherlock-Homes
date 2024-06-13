@@ -1,6 +1,4 @@
-
 .slider-dropdown {
-    min-width: 15em;
     position: relative;
 }
 
@@ -52,7 +50,7 @@
     color: #757575;
     position: absolute;
     font-weight: 600;
-    top: 3em;
+    top: 4.5em;
     left: 50%;
     width: 100%;
     transform: translateX(-50%);
@@ -60,6 +58,7 @@
     display: none;
     transition: 0.2s;
     z-index: 1;
+    min-width: 15em; /* Ensure the dropdown menu respects the min-width */
 }
 
 .slider-menu-open {

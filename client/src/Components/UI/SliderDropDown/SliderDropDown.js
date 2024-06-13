@@ -30,7 +30,10 @@ export default function SliderDropDown({ min, max, callback, placeholder, backgr
         const rect = sliderRef.current.getBoundingClientRect();
         const offsetX = e.clientX - rect.left;
         const sliderWidth = rect.width;
-        const newValue = min + (offsetX / sliderWidth) * (max - min);
+        let newValue = min + (offsetX / sliderWidth) * (max - min);
+
+        // Ensure newValue is within the range
+        newValue = Math.max(min, Math.min(newValue, max));
 
         handleSliderChange(index, newValue);
     };
@@ -58,14 +61,19 @@ export default function SliderDropDown({ min, max, callback, placeholder, backgr
                 style={{ backgroundColor: background, color: color, width: innerWidth }}
                 onClick={toggleDropdown}
             >
-                <span className='slider-selected'>{values[0] ? values[0] + ' - ' + values[1] : placeholder}</span>
+                <span className='slider-selected'>
+                    {
+                        (values[0] || values[1]) && (values[0] !== min || values[1] !== max) ? 
+                        addDotsToNumber(values[0]) + ' - ' + addDotsToNumber(values[1]) : placeholder
+                    }
+                </span>
                 <div
                     className={`slider-caret ${isOpen ? 'slider-caret-rotate' : ''}`}
                     style={{ borderTop: `6px solid ${color}` }}
                 ></div>
             </div>
             {isOpen && (
-                <div className={`slider-drop-menu ${isOpen ? 'slider-menu-open' : ''}`}>
+                <div className={`slider-drop-menu ${isOpen ? 'slider-menu-open' : ''}`} style={{ minWidth: '15em' }}>
                     <div
                         className="slider-range"
                         ref={sliderRef}
@@ -116,8 +124,8 @@ export default function SliderDropDown({ min, max, callback, placeholder, backgr
                         ></div>
                     </div>
                     <div className="slider-values">
-                        <span>{ addDotsToNumber( values[0] ) }</span>
-                        <span>{ addDotsToNumber( values[1] ) }</span>
+                        <span>{ addDotsToNumber(values[0]) }</span>
+                        <span>{ addDotsToNumber(values[1]) }</span>
                     </div>
                 </div>
             )}

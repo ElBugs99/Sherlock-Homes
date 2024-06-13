@@ -93,11 +93,11 @@ export default function TopSection() {
                 callback={defineSqft}
                 background='#fff'
                 color='#757575'
-                innerWidth='100%'
+                innerWidth='110px'
               />
             </div>
             <div className="dropdown-element">
-              <div className="dropdown-top-label">Precio</div>
+              <div className="dropdown-top-label">Precio (CLP)</div>
               <SliderDropDown
                 min={0}
                 max={2000000000}
@@ -106,9 +106,12 @@ export default function TopSection() {
                 callback={definePrice}
                 background='#fff'
                 color='#757575'
-                innerWidth='100%'
+                innerWidth='150px'
               />
             </div>
+          </div>
+          <div>
+            
           </div>
         </div>
         <div className="top-img-text-container">
