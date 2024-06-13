@@ -50,85 +50,92 @@ export default function SliderDropDown({ min, max, callback, placeholder, backgr
         document.addEventListener('mouseup', handleMouseUp);
     };
 
+    const handleClickOutside = () => {
+        setIsOpen(false);
+    };
+
     useEffect(() => {
         if (callback) callback(values);
     }, [values, callback]);
 
     return (
-        <div className='slider-dropdown' style={{ width: width }}>
-            <div
-                className={`slider-select ${isOpen ? 'slider-select-clicked' : ''}`}
-                style={{ backgroundColor: background, color: color, width: innerWidth }}
-                onClick={toggleDropdown}
-            >
-                <span className='slider-selected'>
-                    {
-                        (values[0] || values[1]) && (values[0] !== min || values[1] !== max) ? 
-                        addDotsToNumber(values[0]) + ' - ' + addDotsToNumber(values[1]) : placeholder
-                    }
-                </span>
+        <>
+            {isOpen && <div className="overlay" onClick={handleClickOutside}></div>}
+            <div className='slider-dropdown' style={{ width: width }}>
                 <div
-                    className={`slider-caret ${isOpen ? 'slider-caret-rotate' : ''}`}
-                    style={{ borderTop: `6px solid ${color}` }}
-                ></div>
-            </div>
-            {isOpen && (
-                <div className={`slider-drop-menu ${isOpen ? 'slider-menu-open' : ''}`} style={{ minWidth: '15em' }}>
+                    className={`slider-select ${isOpen ? 'slider-select-clicked' : ''}`}
+                    style={{ backgroundColor: background, color: color, width: innerWidth }}
+                    onClick={toggleDropdown}
+                >
+                    <span className='slider-selected'>
+                        {
+                            (values[0] || values[1]) && (values[0] !== min || values[1] !== max) ? 
+                            addDotsToNumber(values[0]) + ' - ' + addDotsToNumber(values[1]) : placeholder
+                        }
+                    </span>
                     <div
-                        className="slider-range"
-                        ref={sliderRef}
-                        style={{
-                            position: 'relative',
-                            height: '10px',
-                            background: '#ddd',
-                            cursor: 'pointer'
-                        }}
-                    >
-                        <div
-                            ref={leftHandleRef}
-                            style={{
-                                position: 'absolute',
-                                left: `${((values[0] - min) / (max - min)) * 100}%`,
-                                transform: 'translateX(-50%)',
-                                background: color,
-                                width: '10px',
-                                height: '10px',
-                                borderRadius: '50%',
-                                cursor: 'grab'
-                            }}
-                            onMouseDown={() => handleMouseDown(0)}
-                        ></div>
-                        <div
-                            ref={rightHandleRef}
-                            style={{
-                                position: 'absolute',
-                                left: `${((values[1] - min) / (max - min)) * 100}%`,
-                                transform: 'translateX(-50%)',
-                                background: color,
-                                width: '10px',
-                                height: '10px',
-                                borderRadius: '50%',
-                                cursor: 'grab'
-                            }}
-                            onMouseDown={() => handleMouseDown(1)}
-                        ></div>
-                        <div
-                            style={{
-                                position: 'absolute',
-                                left: `${((values[0] - min) / (max - min)) * 100}%`,
-                                width: `${((values[1] - values[0]) / (max - min)) * 100}%`,
-                                height: '10px',
-                                background: color,
-                                zIndex: -1
-                            }}
-                        ></div>
-                    </div>
-                    <div className="slider-values">
-                        <span>{ addDotsToNumber(values[0]) }</span>
-                        <span>{ addDotsToNumber(values[1]) }</span>
-                    </div>
+                        className={`slider-caret ${isOpen ? 'slider-caret-rotate' : ''}`}
+                        style={{ borderTop: `6px solid ${color}` }}
+                    ></div>
                 </div>
-            )}
-        </div>
+                {isOpen && (
+                    <div className={`slider-drop-menu ${isOpen ? 'slider-menu-open' : ''}`} style={{ minWidth: '15em' }}>
+                        <div
+                            className="slider-range"
+                            ref={sliderRef}
+                            style={{
+                                position: 'relative',
+                                height: '10px',
+                                background: '#ddd',
+                                cursor: 'pointer'
+                            }}
+                        >
+                            <div
+                                ref={leftHandleRef}
+                                style={{
+                                    position: 'absolute',
+                                    left: `${((values[0] - min) / (max - min)) * 100}%`,
+                                    transform: 'translateX(-50%)',
+                                    background: color,
+                                    width: '10px',
+                                    height: '10px',
+                                    borderRadius: '50%',
+                                    cursor: 'grab'
+                                }}
+                                onMouseDown={() => handleMouseDown(0)}
+                            ></div>
+                            <div
+                                ref={rightHandleRef}
+                                style={{
+                                    position: 'absolute',
+                                    left: `${((values[1] - min) / (max - min)) * 100}%`,
+                                    transform: 'translateX(-50%)',
+                                    background: color,
+                                    width: '10px',
+                                    height: '10px',
+                                    borderRadius: '50%',
+                                    cursor: 'grab'
+                                }}
+                                onMouseDown={() => handleMouseDown(1)}
+                            ></div>
+                            <div
+                                style={{
+                                    position: 'absolute',
+                                    left: `${((values[0] - min) / (max - min)) * 100}%`,
+                                    width: `${((values[1] - values[0]) / (max - min)) * 100}%`,
+                                    height: '10px',
+                                    background: color,
+                                    zIndex: -1
+                                }}
+                            ></div>
+                        </div>
+                        <div className="slider-values">
+                            <span>{ addDotsToNumber(values[0]) }</span>
+                            <span>{ addDotsToNumber(values[1]) }</span>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </>
     );
 }

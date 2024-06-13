@@ -5,7 +5,8 @@ export default function DropDown({ options, callback, placeholder, background, c
     const [selected, setSelected] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggleDropdown = () => {
+    const toggleDropdown = (e) => {
+        e.stopPropagation();
         setIsOpen(!isOpen);
     };
 
@@ -15,41 +16,49 @@ export default function DropDown({ options, callback, placeholder, background, c
         if (callback) callback(option);
     };
 
+    const handleClickOutside = () => {
+        setIsOpen(false);
+    };
+
     return (
-        <div
-          className='dropdown'
-          style={{
-            width: width
-        }}
-        >
+        <>
+            {isOpen && <div className="overlay" onClick={handleClickOutside}></div>}
             <div
-                className={`select ${isOpen ? 'select-clicked' : ''}`}
+                className='dropdown'
                 style={{
-                    backgroundColor: background,
-                    color: color,
-                    width: innerWidth
+                    width: width,
+                    zIndex: 2
                 }}
-                onClick={toggleDropdown}
             >
-                <span className='selected'>{selected || placeholder}</span>
                 <div
-                    className={`caret ${isOpen ? 'caret-rotate' : ''}`}
+                    className={`select ${isOpen ? 'select-clicked' : ''}`}
                     style={{
-                        borderTop: `6px solid ${color}`
+                        backgroundColor: background,
+                        color: color,
+                        width: innerWidth
                     }}
-                ></div>
+                    onClick={toggleDropdown}
+                >
+                    <span className='selected'>{selected || placeholder}</span>
+                    <div
+                        className={`caret ${isOpen ? 'caret-rotate' : ''}`}
+                        style={{
+                            borderTop: `6px solid ${color}`
+                        }}
+                    ></div>
+                </div>
+                <ul className={`drop-menu ${isOpen ? 'menu-open' : ''}`}>
+                    {options?.map((option, index) => (
+                        <li
+                            key={index}
+                            className={option === selected ? 'active-option' : ''}
+                            onClick={() => handleOptionClick(option)}
+                        >
+                            {option}
+                        </li>
+                    ))}
+                </ul>
             </div>
-            <ul className={`drop-menu ${isOpen ? 'menu-open' : ''}`}>
-                {options?.map((option, index) => (
-                    <li
-                        key={index}
-                        className={option === selected ? 'active-option' : ''}
-                        onClick={() => handleOptionClick(option)}
-                    >
-                        {option}
-                    </li>
-                ))}
-            </ul>
-        </div>
+        </>
     );
 }

@@ -1,11 +1,6 @@
-.dropDown {
-    min-width: 15em;
+.dropdown {
     position: relative;
-    margin: 2em;
-}
-
-.dropDown * {
-    box-sizing: border-box;
+    z-index: 2;
 }
 
 .select {
@@ -60,7 +55,7 @@
     opacity: 0;
     display: none;
     transition: 0.2s;
-    /* z-index: 1; */
+    z-index: 2; /* Ensure drop-menu is above overlay */
 }
 
 .drop-menu li {
@@ -82,4 +77,15 @@
 .menu-open {
     display: block;
     opacity: 1;
+}
+
+/* Overlay for closing dropdown */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    z-index: 1;
 }

@@ -57,7 +57,7 @@
     opacity: 0;
     display: none;
     transition: 0.2s;
-    z-index: 1;
+    z-index: 2;
     min-width: 15em; /* Ensure the dropdown menu respects the min-width */
 }
 
@@ -75,4 +75,14 @@
     display: flex;
     justify-content: space-between;
     padding: 0.5em;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    z-index: 1;
 }
