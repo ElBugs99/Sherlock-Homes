@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./topSection.css";
 import homeVideo from "../../../assets/videos/edificios1.mp4";
 import DropDown from '../../UI/DropDown/DropDown';
+import SliderDropDown from '../../UI/SliderDropDown/SliderDropDown';
 import SearchBar from "../../UI/SearchBar/SearchBar";
 import useFilter from '../../../hooks/useFilter';
 
@@ -84,20 +85,28 @@ export default function TopSection() {
             </div>
             <div className="dropdown-element">
               <div className="dropdown-top-label">Superficie (m²)</div>
-              <DropDown
-                options={['Cualquiera', '50-100', '100-200', '200-400', '400+']}
+              <SliderDropDown
+                min={0}
+                max={3000}
                 placeholder='Cualquiera'
                 width='110px'
                 callback={defineSqft}
+                background='#fff'
+                color='#000'
+                innerWidth='100%'
               />
             </div>
             <div className="dropdown-element">
               <div className="dropdown-top-label">Precio</div>
-              <DropDown
-                options={['Cualquiera', '0-50000', '50000-100000', '100000-200000', '200000+']}
+              <SliderDropDown
+                min={0}
+                max={2000000000}
                 placeholder='Cualquiera'
                 width='110px'
                 callback={definePrice}
+                background='#fff'
+                color='#000'
+                innerWidth='100%'
               />
             </div>
           </div>

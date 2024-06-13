@@ -32,20 +32,12 @@ export const getHouses = async (req, res) => {
     }
 
     if (sqft && sqft !== 'undefined') {
-      if (sqft.includes('-')) {
-        const [minSqft, maxSqft] = sqft.split('-').map(Number);
-        if (!isNaN(minSqft) && !isNaN(maxSqft)) {
-          queryParams.push(minSqft, maxSqft);
-          countParams.push(minSqft, maxSqft);
-          queryText += ` AND sqft BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
-          countQuery += ` AND sqft BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
-        }
-      } else if (sqft === '400+') {
-        const minSqft = 400;
-        queryParams.push(minSqft);
-        countParams.push(minSqft);
-        queryText += ` AND sqft >= $${queryParams.length}`;
-        countQuery += ` AND sqft >= $${countParams.length}`;
+      const [minSqft, maxSqft] = sqft.split('-').map(Number);
+      if (!isNaN(minSqft) && !isNaN(maxSqft)) {
+        queryParams.push(minSqft, maxSqft);
+        countParams.push(minSqft, maxSqft);
+        queryText += ` AND sqft BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
+        countQuery += ` AND sqft BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
       }
     }
 
@@ -80,20 +72,12 @@ export const getHouses = async (req, res) => {
     }
 
     if (price && price !== 'undefined') {
-      if (price.includes('-')) {
-        const [minPrice, maxPrice] = price.split('-').map(Number);
-        if (!isNaN(minPrice) && !isNaN(maxPrice)) {
-          queryParams.push(minPrice, maxPrice);
-          countParams.push(minPrice, maxPrice);
-          queryText += ` AND price BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
-          countQuery += ` AND price BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
-        }
-      } else if (price === '200000+') {
-        const minPrice = 200000;
-        queryParams.push(minPrice);
-        countParams.push(minPrice);
-        queryText += ` AND price >= $${queryParams.length}`;
-        countQuery += ` AND price >= $${countParams.length}`;
+      const [minPrice, maxPrice] = price.split('-').map(Number);
+      if (!isNaN(minPrice) && !isNaN(maxPrice)) {
+        queryParams.push(minPrice, maxPrice);
+        countParams.push(minPrice, maxPrice);
+        queryText += ` AND price BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
+        countQuery += ` AND price BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
       }
     }
 
@@ -130,6 +114,7 @@ export const getHouses = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
 
 
 export const getFeaturedHouses = async (req, res) => {
