@@ -21,7 +21,7 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
 
   const postsPerPage = 42;
   const [currentPage, setCurrentPage] = useState(1);
-  
+
   useEffect(() => {
     const fetchFavoritesAndHouses = async () => {
       const token = localStorage.getItem('token');
@@ -194,30 +194,41 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
           En {searchParameters()}
         </div>
       </div>
-      <div className="search-results-container">
-        {houses?.data?.map((x, index) => (
-          <HomeCard
-            key={index}
-            title={x.title}
-            price={x.price}
-            bedrooms={x.bedrooms}
-            bathrooms={x.bathrooms}
-            sqft={x.sqft}
-            location={x.location}
-            media={x.media[0] === null || undefined ? defaultImage : x.media[0]}
-            property_id={x.id}
-            onClick={() => window.open(`/Property/${x.id}`, '_blank')}
-            onFavoriteClick={handleFavoriteClick}
-            isFavorite={checkFavorite(x.id)}
+      {isLoading ? (
+        <div className="preload-container">
+          <Spinner />
+        </div>
+      ) : (
+        <>
+          <div className="search-results-container">
+            {houses?.data?.map((x, index) => (
+              <HomeCard
+                key={index}
+                title={x.title}
+                price={x.price}
+                bedrooms={x.bedrooms}
+                bathrooms={x.bathrooms}
+                sqft={x.sqft}
+                location={x.location}
+                media={x.media[0] === null || undefined ? defaultImage : x.media[0]}
+                property_id={x.id}
+                onClick={() => window.open(`/Property/${x.id}`, '_blank')}
+                onFavoriteClick={handleFavoriteClick}
+                isFavorite={checkFavorite(x.id)}
+              />
+            ))}
+          </div>
+          <Pagination
+            postsPerPage={postsPerPage}
+            setCurrentPage={(page) => {
+              setIsLoading(true);
+              setCurrentPage(page);
+            }}
+            postsLen={houses?.meta?.totalCount || 0}
+            currentPage={currentPage}
           />
-        ))}
-      </div>
-      <Pagination
-        postsPerPage={postsPerPage}
-        setCurrentPage={setCurrentPage}
-        postsLen={houses?.meta?.totalCount || 0}
-        currentPage={currentPage}
-      />
+        </>
+      )}
       {selectedProperty && <HouseModal property={selectedProperty} onClose={() => setSelectedProperty(null)} />}
     </>
   );

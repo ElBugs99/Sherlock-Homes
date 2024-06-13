@@ -7,7 +7,7 @@ export default function Pagination({
   postsLen,
   currentPage,
 }) {
-  //cantidad de paginas = totalDePosts / postsPorPagina
+  // Calculate the number of pages
   const pages = [];
   const pagesNumber = Math.ceil(postsLen / postsPerPage);
 
@@ -17,12 +17,17 @@ export default function Pagination({
 
   if (pages.length === 1) return null;
 
+  const handlePageChange = (page) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setCurrentPage(page);
+  };
+
   return (
     <div className="paginator">
       {currentPage > 1 && (
         <button
           onClick={() => {
-            if (currentPage > 1) setCurrentPage((prev) => prev - 1);
+            if (currentPage > 1) handlePageChange(currentPage - 1);
           }}
           className="paginatorButton"
         >
@@ -33,7 +38,7 @@ export default function Pagination({
         <button
           key={index}
           className={`paginatorButton ${page === currentPage ? "active" : ""}`}
-          onClick={() => setCurrentPage(page)}
+          onClick={() => handlePageChange(page)}
         >
           {page}
         </button>
@@ -42,7 +47,7 @@ export default function Pagination({
       {currentPage < pagesNumber && (
         <button
           onClick={() => {
-            if (currentPage < pagesNumber) setCurrentPage((prev) => prev + 1);
+            if (currentPage < pagesNumber) handlePageChange(currentPage + 1);
           }}
           className="paginatorButton"
         >
