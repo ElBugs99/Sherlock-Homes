@@ -5,7 +5,7 @@ import defaultImage from "../../../assets/images/defaulthome2.jpg";
 import { appContext } from "../../../appContext";
 import HouseModal from "../../UI/HouseModal/HouseModal";
 import Spinner from "../../UI/Spinner/Spinner";
-import { jwtDecode } from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 import Lottie from 'react-lottie';
 import animationData from '../../../assets/animation/Animation - sin-resultados.json';
 
@@ -19,6 +19,9 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
   const [error, setError] = useState(false);
   const [favorites, setFavorites] = useState([]);
 
+  const postsPerPage = 42;
+  const [currentPage, setCurrentPage] = useState(1);
+  
   useEffect(() => {
     const fetchFavoritesAndHouses = async () => {
       const token = localStorage.getItem('token');
@@ -42,7 +45,7 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
           }
         }
 
-        let apiUrl = `http://localhost:3001/houses?page=1&limit=42&city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&sqft=${sqft}&price=${price}`;
+        const apiUrl = `http://localhost:3001/houses?page=${currentPage}&limit=${postsPerPage}&city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&sqft=${sqft}&price=${price}`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -55,13 +58,7 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
     };
 
     fetchFavoritesAndHouses();
-  }, [user]);
-
-  // Pagination logic
-  const postsPerPage = 9;
-  const [currentPage, setCurrentPage] = useState(1);
-  const lastPostIndex = currentPage * postsPerPage;
-  const firstPostIndex = lastPostIndex - postsPerPage;
+  }, [user, currentPage, city, bedrooms, bathrooms, sqft, price]);
 
   // Search filter logic
   const setSearchFilteredData = (value) => {
@@ -158,7 +155,6 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
     return (
       <div className="preload-container">
         <Spinner />
-
       </div>
     );
 
@@ -196,7 +192,6 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
         <div className="search-results-header-content">
           Resultados: <div className="res">{houses?.meta?.totalCount}</div>
           En {searchParameters()}
-
         </div>
       </div>
       <div className="search-results-container">
@@ -220,7 +215,7 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
       <Pagination
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}
-        postsLen={filteredItems.length}
+        postsLen={houses?.meta?.totalCount || 0}
         currentPage={currentPage}
       />
       {selectedProperty && <HouseModal property={selectedProperty} onClose={() => setSelectedProperty(null)} />}
