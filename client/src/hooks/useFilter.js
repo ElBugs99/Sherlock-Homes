@@ -8,7 +8,7 @@ export default function useFilter() {
   const [price, setPrice] = useState([0, 2000000000]);
 
   const redirectByCity = (city) => {
-    window.location.href = `/search/${city}/undefined/undefined/undefined/undefined`;
+    window.location.href = `/search/${city}/undefined/undefined/0-3000/0-2000000000`;
   };
 
   const redirectByFilters = () => {

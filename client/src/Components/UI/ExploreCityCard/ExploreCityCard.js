@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './exploreCityCard.css'
 
 export default function ExploreCityCard({ cityName, listings, image, onClick, value }) {
 
-  const [ cityValue, setCityValue ] = useState(value);
 
   return (
     <div className='Explore-city-card' onClick={ onClick }>
