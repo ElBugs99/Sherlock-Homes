@@ -103,6 +103,7 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price, 
       ${addDotsToNumber(sqftArray[0]) + ' - ' + addDotsToNumber(sqftArray[1])} (m²) ` : 'cualquier m²',
       (priceArray[0] !== 0 || priceArray[1] !== 2000000000) ? `
       ${addDotsToNumber(priceArray[0]) + ' - ' + addDotsToNumber(priceArray[1])} precio` : 'cualquier precio',
+      q !== 'undefined' ? q : ''
     ];
 
   const propertiesArray = unfilteredPropertiesArray.filter((x) => x !== '');
