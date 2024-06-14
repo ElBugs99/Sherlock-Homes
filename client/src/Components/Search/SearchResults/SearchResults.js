@@ -10,7 +10,7 @@ import Lottie from 'react-lottie';
 import animationData from '../../../assets/animation/Animation - sin-resultados.json';
 import { addDotsToNumber } from "../../../utils/numberUtils";
 
-export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }) {
+export default function SearchResults({ city, bedrooms, bathrooms, sqft, price, q }) {
 
   const { user } = useContext(appContext);
   const [houses, setHouses] = useState([]);
@@ -45,7 +45,7 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price }
           }
         }
 
-        const apiUrl = `http://localhost:3001/houses?page=${currentPage}&limit=${postsPerPage}&city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&sqft=${sqft}&price=${price}`;
+        const apiUrl = `http://localhost:3001/houses?page=${currentPage}&limit=${postsPerPage}&city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&sqft=${sqft}&price=${price}&q=${q}`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();

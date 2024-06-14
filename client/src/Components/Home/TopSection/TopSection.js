@@ -22,7 +22,9 @@ export default function TopSection() {
     defineDorms,
     defineBathrooms,
     defineSqft,
-    definePrice
+    definePrice,
+    setSearchQuery,
+    searchQuery
   } = useFilter();
 
   const [title, setTitle] = useState(1);
@@ -54,7 +56,11 @@ export default function TopSection() {
           Your browser does not support the video tag.
         </video>
         <div className="top-form">
-          <SearchBar callback={() => redirectByFilters()}/>
+          <SearchBar
+            callback={() => redirectByFilters()}
+            setSearchQuery={setSearchQuery}
+            searchQuery={searchQuery}
+          />
           <div className="dropdowns">
             <div className="dropdown-element">
               <div className="dropdown-top-label">Comuna</div>

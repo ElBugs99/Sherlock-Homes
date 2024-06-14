@@ -39,9 +39,8 @@
     font-size: large;
     padding: 15px;
     border-radius: 25px;
-    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
 }
-/* transition: all 0.3s ease; */
 
 @media screen and (max-width:950px) {
 

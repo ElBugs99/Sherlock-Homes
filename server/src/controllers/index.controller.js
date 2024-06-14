@@ -11,7 +11,7 @@ export const pool = new Pool({
 
 export const getHouses = async (req, res) => {
   try {
-    const { page = 1, limit = 10, city, sqft, bathrooms, bedrooms, price, property_type } = req.query;
+    const { page = 1, limit = 10, city, sqft, bathrooms, bedrooms, price, property_type, q } = req.query;
     const offset = (page - 1) * limit;
 
     let queryText = 'SELECT * FROM house WHERE 1=1';
@@ -22,6 +22,14 @@ export const getHouses = async (req, res) => {
     const removeAccents = (str) => {
       return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     };
+
+    if (q && q !== 'undefined') {
+      const normalizedQuery = removeAccents(q);
+      queryParams.push(`%${normalizedQuery}%`, `%${normalizedQuery}%`);
+      countParams.push(`%${normalizedQuery}%`, `%${normalizedQuery}%`);
+      queryText += ` AND (unaccent(title) ILIKE unaccent($${queryParams.length - 1}) OR unaccent(description) ILIKE unaccent($${queryParams.length}))`;
+      countQuery += ` AND (unaccent(title) ILIKE unaccent($${countParams.length - 1}) OR unaccent(description) ILIKE unaccent($${countParams.length}))`;
+    }
 
     if (city && city !== 'undefined') {
       const normalizedCity = removeAccents(city);
@@ -114,6 +122,7 @@ export const getHouses = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
 
 
 

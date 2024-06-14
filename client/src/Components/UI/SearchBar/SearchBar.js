@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import search from "../../../assets/images/white-search-icon.svg";
 import useFilter from '../../../hooks/useFilter';
 import "./searchBar.css"
 
-export default function SearchBar({ callback }) {
-  const { setSearchFilteredData } = useFilter();
-  const [ searchQuery, setSearchQuery] = useState('');
+export default function SearchBar({ callback, setSearchQuery, searchQuery }) {
 
   const handleOnChangeSearch = (e) => {
     setSearchQuery(e.target.value);
@@ -13,19 +11,14 @@ export default function SearchBar({ callback }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    /* console.log('preventDefault', callback); */
     callback();
   };
-
-  useEffect(() =>{
-    console.log('searchQuery', searchQuery)
-  },[searchQuery])
 
   return (
     <div>
       <form className="search-form">
-        <input 
-        placeholder='Encuentra tu nuevo Hogar'
+        <input
+          placeholder='Encuentra tu nuevo Hogar'
           className="top-input"
           spellCheck="false"
           value={searchQuery}

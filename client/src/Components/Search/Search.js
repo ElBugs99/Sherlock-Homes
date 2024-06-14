@@ -15,7 +15,8 @@ export default function Search() {
     bedrooms,
     bathrooms,
     sqft,
-    price
+    price,
+    q
   } = useParams();
 
   const {
@@ -24,7 +25,9 @@ export default function Search() {
     defineDorms,
     defineBathrooms,
     defineSqft,
-    definePrice
+    definePrice,
+    setSearchQuery,
+    searchQuery
   } = useFilter();
 
   return (
@@ -33,10 +36,14 @@ export default function Search() {
       <div className="search-container">
         <div className="search-header">
           <div className="search-top-form">
-            <SearchBar callback={() => redirectByFilters()} />
+          <SearchBar
+            callback={() => redirectByFilters()}
+            setSearchQuery={setSearchQuery}
+            searchQuery={searchQuery}
+          />
             <div className="dropdowns">
               <div className="dropdown-element">
-                <div className="dropdown-top-label">Comuna</div>
+                <div className="dropdown-search-label">Comuna</div>
                 <DropDown
                   options={['Cualquiera', 'Viña', 'Valparaíso', 'Quilpué', 'Villa alemana']}
                   placeholder='Cualquiera'
@@ -45,7 +52,7 @@ export default function Search() {
                 />
               </div>
               <div className="dropdown-element">
-                <div className="dropdown-top-label">Dormitorios</div>
+                <div className="dropdown-search-label">Dormitorios</div>
                 <DropDown
                   options={['Cualquiera', '1', '2', '3', '+4']}
                   placeholder='Cualquiera'
@@ -54,7 +61,7 @@ export default function Search() {
                 />
               </div>
               <div className="dropdown-element">
-                <div className="dropdown-top-label">Baños</div>
+                <div className="dropdown-search-label">Baños</div>
                 <DropDown
                   options={['Cualquiera', '1', '2', '3', '+4']}
                   placeholder='Cualquiera'
@@ -63,7 +70,7 @@ export default function Search() {
                 />
               </div>
               <div className="dropdown-element">
-                <div className="dropdown-top-label">Superficie (m²)</div>
+                <div className="dropdown-search-label">Superficie (m²)</div>
                 <SliderDropDown
                   min={0}
                   max={3000}
@@ -76,7 +83,7 @@ export default function Search() {
                 />
               </div>
               <div className="dropdown-element">
-                <div className="dropdown-top-label">Precio (CLP)</div>
+                <div className="dropdown-search-label">Precio (CLP)</div>
                 <SliderDropDown
                   min={0}
                   max={2000000000}
@@ -102,6 +109,7 @@ export default function Search() {
             bathrooms={bathrooms}
             sqft={sqft}
             price={price}
+            q={q}
           />
         </div>
       </div>

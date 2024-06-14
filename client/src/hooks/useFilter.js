@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useFilter() {
   const [city, setCity] = useState();
@@ -6,13 +6,15 @@ export default function useFilter() {
   const [bathrooms, setBathrooms] = useState();
   const [sqft, setSqft] = useState([0, 3000]);
   const [price, setPrice] = useState([0, 2000000000]);
+  const [searchQuery, setSearchQuery] = useState(undefined);
 
   const redirectByCity = (city) => {
-    window.location.href = `/search/${city}/undefined/undefined/0-3000/0-2000000000`;
+    window.location.href = `/search/${city}/undefined/undefined/0-3000/0-2000000000/undefined`;
   };
 
   const redirectByFilters = () => {
-    window.location.href = `/search/${city}/${bedrooms}/${bathrooms}/${sqft.join('-')}/${price.join('-')}`;
+    /* console.log('redirect', `/search/${city}/${bedrooms}/${bathrooms}/${sqft.join('-')}/${price.join('-')}/${searchQuery}`); */
+    window.location.href = `/search/${city}/${bedrooms}/${bathrooms}/${sqft.join('-')}/${price.join('-')}/${searchQuery}`;
   };
 
   const defineCity = (city) => {
@@ -54,10 +56,13 @@ export default function useFilter() {
     if (priceRange === 'Cualquiera') {
       setPrice([0, 2000000000]);
     } else {
-      console.log('price range: ', priceRange);
       setPrice(priceRange);
     }
   };
+
+  useEffect(() => {
+    console.log('search', searchQuery);
+  }, [searchQuery])
 
   return {
     redirectByCity,
@@ -67,5 +72,7 @@ export default function useFilter() {
     defineBathrooms,
     defineSqft,
     definePrice,
+    setSearchQuery,
+    searchQuery
   };
 }
