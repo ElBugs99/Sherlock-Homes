@@ -5,7 +5,6 @@ import { IoBedOutline } from "react-icons/io5";
 import { TbMeterSquare } from "react-icons/tb";
 import { TiLocation } from "react-icons/ti";
 import { addDotsToNumber } from "../../utils/numberUtils"
-import { ImCross } from "react-icons/im";
 import ImageCarousel from '../UI/ImageCarousel/ImageCarousel';
 import NavBar from '../UI/NavBar/NavBar';
 import Footer from '../UI/Footer/Footer';
@@ -122,7 +121,6 @@ export default function PropertyPage() {
                             </div>
                         </div>
 
-
                         <div className="property-modal-row">
 
                             <div className="property-modal-box-container">
@@ -175,12 +173,10 @@ export default function PropertyPage() {
 
                             </div>
 
-
                         </div>
                         <div className='mapa'>
                             <Map lat={property.latitude} lng={property.longitude} />
                             <div className='msg-error-mapa'> {property.latitude ? "" : "Esta publicacion tiene oculta su direccion"} </div>
-
 
                         </div>
                         <div className="modal-lower-section">
@@ -199,31 +195,24 @@ export default function PropertyPage() {
                     <div className='property-left-info'>
                         <div className='calculator-wrapper'>
                             <Calculator valor={property.price} />
-                            
+
                         </div>
 
                         <div>
-                            <Tasacion/>
+                            <Tasacion />
                         </div>
 
-                        
-
-                        
-                         
                     </div>
 
                     <div className='property-right-info'>
-                        
+
                         <div className='graficoPie'>
-                            <Graficos  valor={property.price} />
+                            <Graficos valor={property.price} />
                         </div>
 
                         <div className='graficoIPV'>
-                            <GraficoIpv/>
+                            <GraficoIpv />
                         </div>
-
-                        
-                        
 
                     </div>
                 </div>
