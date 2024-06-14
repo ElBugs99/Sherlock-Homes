@@ -7,17 +7,13 @@ import SearchBar from "../UI/SearchBar/SearchBar";
 import DropDown from "../UI/DropDown/DropDown";
 import SliderDropDown from "../UI/SliderDropDown/SliderDropDown";
 import useFilter from '../../hooks/useFilter';
-import "./search.css";
+import { BarChart } from '@mui/x-charts/BarChart';
+import { Typography } from '@mui/material';
+import { axisClasses } from '@mui/x-charts/ChartsAxis';
+import './search.css';
 
 export default function Search() {
-
-  const { city,
-    bedrooms,
-    bathrooms,
-    sqft,
-    price,
-    q
-  } = useParams();
+  const { city, bedrooms, bathrooms, sqft, price, q } = useParams();
 
   const {
     redirectByFilters,
@@ -30,17 +26,40 @@ export default function Search() {
     searchQuery
   } = useFilter();
 
+  const formatNumber = (num) => new Intl.NumberFormat('es-CL').format(num);
+
+  const chartSetting = {
+    yAxis: [
+      {
+        label: 'Millones',
+        ticks: {
+          callback: (value) => `$${formatNumber(value)}`,
+        },
+      },
+    ],
+    width: 500,
+    height: 300,
+    margin: {
+      left: 80,
+    },
+    sx: {
+      [`.${axisClasses.left} .${axisClasses.label}`]: {
+        transform: 'translate(-40px, 0)',
+      },
+    },
+  };
+
   return (
     <div className="search">
       <NavBar searchHidden={true} />
       <div className="search-container">
         <div className="search-header">
           <div className="search-top-form">
-          <SearchBar
-            callback={() => redirectByFilters()}
-            setSearchQuery={setSearchQuery}
-            searchQuery={searchQuery}
-          />
+            <SearchBar
+              callback={() => redirectByFilters()}
+              setSearchQuery={setSearchQuery}
+              searchQuery={searchQuery}
+            />
             <div className="dropdowns">
               <div className="dropdown-element">
                 <div className="dropdown-search-label">Comuna</div>
@@ -98,10 +117,7 @@ export default function Search() {
             </div>
           </div>
         </div>
-        <div className="search-info">
-          <div className="search-info-title"></div>
-          {/* <SideBar /> */}
-        </div>
+        
         <div className="search-results">
           <SearchResults
             city={city}

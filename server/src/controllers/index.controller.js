@@ -16,8 +16,11 @@ export const getHouses = async (req, res) => {
 
     let queryText = 'SELECT * FROM house WHERE 1=1';
     let countQuery = 'SELECT COUNT(*) FROM house WHERE 1=1';
+    let avgPriceQuery = 'SELECT AVG(price) FROM house WHERE 1=1';
+    const totalQuery = 'SELECT COUNT(*) FROM house';
     const queryParams = [];
     const countParams = [];
+    const avgPriceParams = [];
 
     const removeAccents = (str) => {
       return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -27,25 +30,31 @@ export const getHouses = async (req, res) => {
       const normalizedQuery = removeAccents(q);
       queryParams.push(`%${normalizedQuery}%`, `%${normalizedQuery}%`);
       countParams.push(`%${normalizedQuery}%`, `%${normalizedQuery}%`);
+      avgPriceParams.push(`%${normalizedQuery}%`, `%${normalizedQuery}%`);
       queryText += ` AND (unaccent(title) ILIKE unaccent($${queryParams.length - 1}) OR unaccent(description) ILIKE unaccent($${queryParams.length}))`;
       countQuery += ` AND (unaccent(title) ILIKE unaccent($${countParams.length - 1}) OR unaccent(description) ILIKE unaccent($${countParams.length}))`;
+      avgPriceQuery += ` AND (unaccent(title) ILIKE unaccent($${avgPriceParams.length - 1}) OR unaccent(description) ILIKE unaccent($${avgPriceParams.length}))`;
     }
 
     if (city && city !== 'undefined') {
       const normalizedCity = removeAccents(city);
       queryParams.push(`%${normalizedCity}%`);
       countParams.push(`%${normalizedCity}%`);
+      avgPriceParams.push(`%${normalizedCity}%`);
       queryText += ` AND unaccent(city) ILIKE unaccent($${queryParams.length})`;
       countQuery += ` AND unaccent(city) ILIKE unaccent($${countParams.length})`;
+      avgPriceQuery += ` AND unaccent(city) ILIKE unaccent($${avgPriceParams.length})`;
     }
 
-    if (sqft && sqft !== 'undefined') {
+    if (sqft && sqft !== 'undefined' && sqft !== '0-3000') {
       const [minSqft, maxSqft] = sqft.split('-').map(Number);
       if (!isNaN(minSqft) && !isNaN(maxSqft)) {
         queryParams.push(minSqft, maxSqft);
         countParams.push(minSqft, maxSqft);
+        avgPriceParams.push(minSqft, maxSqft);
         queryText += ` AND sqft BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
         countQuery += ` AND sqft BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
+        avgPriceQuery += ` AND sqft BETWEEN $${avgPriceParams.length - 1} AND $${avgPriceParams.length}`;
       }
     }
 
@@ -54,12 +63,15 @@ export const getHouses = async (req, res) => {
       if (!isNaN(numBathrooms)) {
         queryParams.push(numBathrooms);
         countParams.push(numBathrooms);
+        avgPriceParams.push(numBathrooms);
         if (bathrooms === '+4') {
           queryText += ` AND bathrooms >= $${queryParams.length}`;
           countQuery += ` AND bathrooms >= $${countParams.length}`;
+          avgPriceQuery += ` AND bathrooms >= $${avgPriceParams.length}`;
         } else {
           queryText += ` AND bathrooms = $${queryParams.length}`;
           countQuery += ` AND bathrooms = $${countParams.length}`;
+          avgPriceQuery += ` AND bathrooms = $${avgPriceParams.length}`;
         }
       }
     }
@@ -69,12 +81,15 @@ export const getHouses = async (req, res) => {
       if (!isNaN(numBedrooms)) {
         queryParams.push(numBedrooms);
         countParams.push(numBedrooms);
+        avgPriceParams.push(numBedrooms);
         if (bedrooms === '+4') {
           queryText += ` AND bedrooms >= $${queryParams.length}`;
           countQuery += ` AND bedrooms >= $${countParams.length}`;
+          avgPriceQuery += ` AND bedrooms >= $${avgPriceParams.length}`;
         } else {
           queryText += ` AND bedrooms = $${queryParams.length}`;
           countQuery += ` AND bedrooms = $${countParams.length}`;
+          avgPriceQuery += ` AND bedrooms = $${avgPriceParams.length}`;
         }
       }
     }
@@ -84,35 +99,47 @@ export const getHouses = async (req, res) => {
       if (!isNaN(minPrice) && !isNaN(maxPrice)) {
         queryParams.push(minPrice, maxPrice);
         countParams.push(minPrice, maxPrice);
+        avgPriceParams.push(minPrice, maxPrice);
         queryText += ` AND price BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
         countQuery += ` AND price BETWEEN $${countParams.length - 1} AND $${countParams.length}`;
+        avgPriceQuery += ` AND price BETWEEN $${avgPriceParams.length - 1} AND $${avgPriceParams.length}`;
       }
     }
 
     if (property_type && property_type !== 'undefined') {
       queryParams.push(property_type);
       countParams.push(property_type);
+      avgPriceParams.push(property_type);
       queryText += ` AND property_type = $${queryParams.length}`;
       countQuery += ` AND property_type = $${countParams.length}`;
+      avgPriceQuery += ` AND property_type = $${avgPriceParams.length}`;
     }
 
     queryParams.push(limit, offset);
     queryText += ` LIMIT $${queryParams.length - 1} OFFSET $${queryParams.length}`;
 
-    const [dataResponse, countResponse] = await Promise.all([
+    const [dataResponse, countResponse, avgPriceResponse, totalResponse] = await Promise.all([
       pool.query(queryText, queryParams),
       pool.query(countQuery, countParams),
+      pool.query(avgPriceQuery, avgPriceParams),
+      pool.query(totalQuery),
     ]);
 
     const data = dataResponse.rows;
     const totalCount = parseInt(countResponse.rows[0].count);
+    const totalHouses = parseInt(totalResponse.rows[0].count);
+    const avgPrice = parseFloat(avgPriceResponse.rows[0].avg) || 0;
+    const percentage = (totalCount / totalHouses) * 100;
 
     const responseObject = {
       data,
       meta: {
         totalCount,
+        totalHouses,
         page: parseInt(page),
         limit: parseInt(limit),
+        percentage: percentage.toFixed(2),
+        avgPrice: avgPrice.toFixed(2), // Added average price
       },
     };
 
