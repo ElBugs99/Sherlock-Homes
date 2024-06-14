@@ -207,7 +207,7 @@ export default function PropertyPage() {
                     <div className='property-right-info'>
 
                         <div className='graficoPie'>
-                            <Graficos valor={property.price} />
+                            <Graficos valor={property.price} ciudad={property.city} />
                         </div>
 
                         <div className='graficoIPV'>

@@ -2,10 +2,10 @@ import React from "react";
 import "./graficos.css";
 import { PieChart } from '@mui/x-charts/PieChart';
 
-export default function Graficos({ valor }) {
+export default function Graficos({ valor, ciudad }) {
   const data = [
     { id: 0, value: Number(valor), label: 'Valor CLP Propiedad actual' },
-    { id: 1, value: 284262254, label: 'Promedio Valor CLP Viña del Mar' }
+    { id: 1, value: 284262254, label: `Promedio Valor CLP ${ciudad}`}
   ];
   
   const colors = ['#47e0af', '#3b6978', '#3c6e71', '#e68459'];
