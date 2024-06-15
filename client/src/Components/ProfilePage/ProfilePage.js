@@ -12,6 +12,7 @@ import {jwtDecode} from 'jwt-decode';
 import './profilePage.css';
 import TableRow from '../UI/Table/TableRow';
 import { addDotsToNumber } from '../../utils/numberUtils';
+import Publicidad1 from '../../assets/videos/publicidad1.mp4'
 
 export default function ProfilePage() {
     const [user, setUser] = useState(null);
@@ -174,7 +175,14 @@ export default function ProfilePage() {
                         </div>
                     </div>
                     <div className='profile-page-side-info-box info-box2'>
-                        right2
+                        <div className='videoPublicidad1'>
+
+                        <video className="publicidad1" autoPlay loop muted>
+                            <source src={Publicidad1} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+
+                        </div>
                     </div>
                 </div>
             </div>
