@@ -7,9 +7,6 @@ import SearchBar from "../UI/SearchBar/SearchBar";
 import DropDown from "../UI/DropDown/DropDown";
 import SliderDropDown from "../UI/SliderDropDown/SliderDropDown";
 import useFilter from '../../hooks/useFilter';
-import { BarChart } from '@mui/x-charts/BarChart';
-import { Typography } from '@mui/material';
-import { axisClasses } from '@mui/x-charts/ChartsAxis';
 import './search.css';
 
 export default function Search() {
@@ -26,28 +23,6 @@ export default function Search() {
     searchQuery
   } = useFilter();
 
-  const formatNumber = (num) => new Intl.NumberFormat('es-CL').format(num);
-
-  const chartSetting = {
-    yAxis: [
-      {
-        label: 'Millones',
-        ticks: {
-          callback: (value) => `$${formatNumber(value)}`,
-        },
-      },
-    ],
-    width: 500,
-    height: 300,
-    margin: {
-      left: 80,
-    },
-    sx: {
-      [`.${axisClasses.left} .${axisClasses.label}`]: {
-        transform: 'translate(-40px, 0)',
-      },
-    },
-  };
 
   return (
     <div className="search">

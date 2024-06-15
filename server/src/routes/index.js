@@ -17,7 +17,9 @@ import {
   deleteComment,
   updateComment,
   getCommentsByPublication,
-  getCommentsByUser
+  getCommentsByUser,
+  getAveragePricesByCity
+
 } from "../controllers/index.controller.js";
 import { pool } from '../controllers/index.controller.js';
 
@@ -27,6 +29,7 @@ const router = Router();
 router.get('/houses', getHouses);
 router.get('/houses/:id', getHouseById);
 router.get('/featured', getFeaturedHouses);
+router.get('/avg', getAveragePricesByCity);
 router.delete('/houses/:id', deleteHouse);
 router.put('/houses/:id', updateHouse);
 

@@ -139,7 +139,7 @@ export const getHouses = async (req, res) => {
         page: parseInt(page),
         limit: parseInt(limit),
         percentage: percentage.toFixed(2),
-        avgPrice: avgPrice.toFixed(2), // Added average price
+        avgPrice: avgPrice.toFixed(2),
       },
     };
 
@@ -150,7 +150,31 @@ export const getHouses = async (req, res) => {
   }
 };
 
+export const getAveragePricesByCity = async (req, res) => {
+  try {
+    const cities = ['viña', 'quilpue', 'valparaiso', 'villa alemana'];
 
+    const avgPriceQueries = cities.map(city => ({
+      text: 'SELECT AVG(price) AS avg_price FROM house WHERE LOWER(city) = $1',
+      values: [city.toLowerCase()],
+    }));
+
+    const avgPricesPromises = avgPriceQueries.map(query => pool.query(query));
+    const avgPricesResponses = await Promise.all(avgPricesPromises);
+
+    const avgPrices = avgPricesResponses.reduce((acc, response, index) => {
+      const city = cities[index];
+      const avgPrice = parseFloat(response.rows[0].avg_price) || 0;
+      acc[city] = avgPrice.toFixed(2);
+      return acc;
+    }, {});
+
+    res.json(avgPrices);
+  } catch (error) {
+    console.error('Error fetching average prices by city:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
 
 
 export const getFeaturedHouses = async (req, res) => {
@@ -173,7 +197,6 @@ export const getHouseById = async (req, res) => {
     const id = req.params.id;
     const response = await pool.query('SELECT * FROM house WHERE id = $1', [id]);
 
-    // Check if response is empty (no house found)
     if (response.rows.length === 0) {
       return res.status(404).json({ message: 'House not found' });
     }

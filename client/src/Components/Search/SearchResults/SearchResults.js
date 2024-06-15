@@ -6,13 +6,10 @@ import { appContext } from "../../../appContext";
 import HouseModal from "../../UI/HouseModal/HouseModal";
 import Spinner from "../../UI/Spinner/Spinner";
 import Lottie from 'react-lottie';
-import { jwtDecode } from 'jwt-decode';
-import { BarChart } from '@mui/x-charts/BarChart';
-import { Gauge } from '@mui/x-charts/Gauge';
-import { Typography } from '@mui/material';
-import { axisClasses } from '@mui/x-charts/ChartsAxis';
 import animationData from '../../../assets/animation/Animation - sin-resultados.json';
+import { jwtDecode } from 'jwt-decode';
 import { addDotsToNumber } from "../../../utils/numberUtils";
+import SearchResultsGraphs from "./SearchResultsGraphs/SearchResultsGraphs";
 
 export default function SearchResults({ city, bedrooms, bathrooms, sqft, price, q }) {
   const { user } = useContext(appContext);
@@ -22,52 +19,73 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price, 
   const [error, setError] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [avgPrice, setAvgPrice] = useState(0);
+  const [cityAvgPrices, setCityAvgPrices] = useState({
+    vina: 0,
+    quilpue: 0,
+    villaAlemana: 0,
+    valparaiso: 0,
+  });
 
   const postsPerPage = 42;
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const fetchFavoritesAndHouses = async () => {
-      const token = localStorage.getItem('token');
+    const fetchData = async () => {
       try {
-        if (token) {
-          const decodedToken = jwtDecode(token);
-          const userId = decodedToken.id;
+        const token = localStorage.getItem('token');
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.id;
 
-          if (token) {
-            const favoritesResponse = await fetch(`http://localhost:3001/favorites/${userId}`, {
-              headers: {
-                'Authorization': `Bearer ${token}`
-              }
-            });
-            const favoritesData = await favoritesResponse.json();
-            if (favoritesData.success) {
-              setFavorites(favoritesData.data.map(fav => fav.property_id));
-            } else {
-              console.error(favoritesData.message);
-            }
+        // Fetch favorites
+        const favoritesResponse = await fetch(`http://localhost:3001/favorites/${userId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
           }
+        });
+        const favoritesData = await favoritesResponse.json();
+        if (favoritesData.success) {
+          setFavorites(favoritesData.data.map(fav => fav.property_id));
+        } else {
+          console.error(favoritesData.message);
         }
 
+        // Fetch houses
         const apiUrl = `http://localhost:3001/houses?page=${currentPage}&limit=${postsPerPage}&city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&sqft=${sqft}&price=${price}&q=${q}`;
+        const housesResponse = await fetch(apiUrl);
+        const housesData = await housesResponse.json();
+        setHouses(housesData);
+        setAvgPrice(Math.round(parseFloat(housesData.meta.avgPrice) / 1000000));
+        setCityAvgPrices({
+          vina: Math.round(parseFloat(housesData.meta.avgPriceViña) / 1000000),
+          quilpue: Math.round(parseFloat(housesData.meta.avgPriceQuilpué) / 1000000),
+          villaAlemana: Math.round(parseFloat(housesData.meta.avgPriceVillaAlemana) / 1000000),
+          valparaiso: Math.round(parseFloat(housesData.meta.avgPriceValparaíso) / 1000000),
+        });
 
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        setHouses(data);
-        setAvgPrice(Math.round(data.meta.avgPrice / 1000000));
+        // Fetch average prices
+        const avgPricesResponse = await fetch('http://localhost:3001/avg');
+        const avgPrices = await avgPricesResponse.json();
+        setCityAvgPrices(prevPrices => ({
+          ...prevPrices,
+          vina: Math.round(parseFloat(avgPrices.viña) / 1000000),
+          quilpue: Math.round(parseFloat(avgPrices.quilpue) / 1000000),
+          villaAlemana: Math.round(parseFloat(avgPrices['villa alemana']) / 1000000),
+          valparaiso: Math.round(parseFloat(avgPrices.valparaiso) / 1000000),
+        }));
+
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
         setError(true);
+        console.error('Error fetching data:', error);
       }
     };
 
-    fetchFavoritesAndHouses();
+    fetchData();
   }, [user, currentPage, city, bedrooms, bathrooms, sqft, price, q]);
 
   const handleFavoriteClick = async (propertyId) => {
     if (!user) {
-      // Redirect to login if not logged in
       window.location.href = '/login';
       return;
     }
@@ -176,66 +194,14 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price, 
     return favorites?.includes(pubId);
   }
 
-  const formatNumber = (num) => new Intl.NumberFormat('es-CL').format(num);
-
   console.log('houses', houses);
+  console.log('avg', cityAvgPrices);
 
   return (
     <>
       <div className="search-results-header">
         <div className="search-info">
-          <div className="search-graph">
-            <Typography variant="h6" gutterBottom>Comparación del valor promedio de casas por ciudad</Typography>
-            <BarChart
-              series={[
-                { data: [150], stack: 'A', label: 'Viña', color: '#38ba8c' },
-                { data: [100], stack: 'B', label: 'Valparaíso', color: '#264653' },
-                { data: [200], stack: 'C', label: 'Quilpué', color: 'rgb(186, 169, 56)' },
-                { data: [130], stack: 'D', label: 'Villa alemana', color: 'rgb(186, 56, 60)' },
-                { data: [avgPrice], stack: 'E', label: 'Búsqueda', color: 'rgb(56, 186, 186)' }, // Use avgPrice here
-              ]}
-              xAxis={[
-                { scaleType: 'band', data: ['Ciudades'] }
-              ]}
-              yAxis={[
-                {
-                  scaleType: 'linear',
-                  format: (value) => `$${formatNumber(value)}`,
-                  label: 'Millones de Pesos (CLP)',
-                }
-              ]}
-              width={600}
-              height={250}
-              margin={{
-                left: 80,
-              }}
-              sx={{
-                [`.${axisClasses.left} .${axisClasses.label}`]: {
-                  transform: 'translate(-40px, 0)',
-                },
-              }}
-              options={{
-                plugins: {
-                  tooltip: {
-                    callbacks: {
-                      label: (context) => `${context.dataset.label}: $${formatNumber(context.raw)}`,
-                    },
-                  },
-                },
-                scales: {
-                  y: {
-                    ticks: {
-                      callback: (value) => `$${formatNumber(value)}`,
-                    },
-                  },
-                },
-              }}
-            />
-          </div>
-          <div className="search-graph">
-            <Gauge width={140} height={140} value={houses?.meta?.percentage} startAngle={-90} endAngle={90} series={[{ color: '#38ba8c'}]} />
-            <div className="gauge-label">El {houses?.meta?.percentage}% de las casas cumplen con los criterios de búsqueda.</div>
-          </div>
+          <SearchResultsGraphs avgPrice={avgPrice} percentage={parseFloat(houses?.meta?.percentage)} cityAvgPrices={cityAvgPrices} />
         </div>
         <div className="search-info">
           <div className="search-results-header-content">
@@ -244,42 +210,34 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price, 
           </div>
         </div>
       </div>
-      {isLoading ? (
-        <div className="preload-container">
-          <Spinner />
-        </div>
-      ) : (
-        <>
-          <div className="search-results-container">
-            {houses?.data?.map((x, index) => (
-              <HomeCard
-                key={index}
-                title={x.title}
-                price={x.price}
-                bedrooms={x.bedrooms}
-                bathrooms={x.bathrooms}
-                sqft={x.sqft}
-                location={x.location}
-                media={x.media[0] === null || undefined ? defaultImage : x.media[0]}
-                property_id={x.id}
-                onClick={() => window.open(`/Property/${x.id}`, '_blank')}
-                onFavoriteClick={handleFavoriteClick}
-                isFavorite={checkFavorite(x.id)}
-              />
-            ))}
-          </div>
-          <Pagination
-            postsPerPage={postsPerPage}
-            setCurrentPage={(page) => {
-              setIsLoading(true);
-              setCurrentPage(page);
-              window.scrollTo(0, 0);
-            }}
-            postsLen={houses?.meta?.totalCount || 0}
-            currentPage={currentPage}
+      <div className="search-results-container">
+        {houses?.data?.map((x, index) => (
+          <HomeCard
+            key={index}
+            title={x.title}
+            price={x.price}
+            bedrooms={x.bedrooms}
+            bathrooms={x.bathrooms}
+            sqft={x.sqft}
+            location={x.location}
+            media={x.media[0] === null || undefined ? defaultImage : x.media[0]}
+            property_id={x.id}
+            onClick={() => window.open(`/Property/${x.id}`, '_blank')}
+            onFavoriteClick={handleFavoriteClick}
+            isFavorite={checkFavorite(x.id)}
           />
-        </>
-      )}
+        ))}
+      </div>
+      <Pagination
+        postsPerPage={postsPerPage}
+        setCurrentPage={(page) => {
+          setIsLoading(true);
+          setCurrentPage(page);
+          window.scrollTo(0, 0);
+        }}
+        postsLen={houses?.meta?.totalCount || 0}
+        currentPage={currentPage}
+      />
       {selectedProperty && <HouseModal property={selectedProperty} onClose={() => setSelectedProperty(null)} />}
     </>
   );
