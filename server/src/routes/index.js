@@ -18,7 +18,8 @@ import {
   updateComment,
   getCommentsByPublication,
   getCommentsByUser,
-  getAveragePricesByCity
+  getAveragePricesByCity,
+  getCityCount
 
 } from "../controllers/index.controller.js";
 import { pool } from '../controllers/index.controller.js';
@@ -30,6 +31,7 @@ router.get('/houses', getHouses);
 router.get('/houses/:id', getHouseById);
 router.get('/featured', getFeaturedHouses);
 router.get('/avg', getAveragePricesByCity);
+router.get('/cityCount', getCityCount);
 router.delete('/houses/:id', deleteHouse);
 router.put('/houses/:id', updateHouse);
 

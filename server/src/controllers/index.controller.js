@@ -176,6 +176,32 @@ export const getAveragePricesByCity = async (req, res) => {
   }
 };
 
+export const getCityCount = async (req, res) => {
+  try {
+    const cities = ['viña', 'quilpue', 'valparaiso', 'villa alemana'];
+
+    const houseCountQueries = cities.map(city => ({
+      text: 'SELECT COUNT(*) AS house_count FROM house WHERE LOWER(city) = $1',
+      values: [city.toLowerCase()],
+    }));
+
+    const houseCountPromises = houseCountQueries.map(query => pool.query(query));
+    const houseCountResponses = await Promise.all(houseCountPromises);
+
+    const houseCounts = houseCountResponses.reduce((acc, response, index) => {
+      const city = cities[index];
+      const houseCount = parseInt(response.rows[0].house_count, 10) || 0;
+      acc[city] = houseCount;
+      return acc;
+    }, {});
+
+    res.json(houseCounts);
+  } catch (error) {
+    console.error('Error fetching house counts by city:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 
 export const getFeaturedHouses = async (req, res) => {
   try {

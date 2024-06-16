@@ -62,7 +62,7 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price, 
           valparaiso: Math.round(parseFloat(housesData.meta.avgPriceValparaíso) / 1000000),
         });
 
-        // Fetch average prices
+        // Fetch averages
         const avgPricesResponse = await fetch('http://localhost:3001/avg');
         const avgPrices = await avgPricesResponse.json();
         setCityAvgPrices(prevPrices => ({
