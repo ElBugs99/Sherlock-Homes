@@ -157,9 +157,8 @@ console.log('Beginning scraping...');
 
     const listingInfo = await page.evaluate((url, pmedia, lat) => {
       function extractNumericValue(str) {
-        const regex = /\d+/;
-        const match = str.match(regex);
-        return match ? match[0] : null;
+        const cleanedStr = str.replace(/\D/g, '');
+        return parseFloat(cleanedStr) || null;
       }
 
       function extractPriceValue(str) {

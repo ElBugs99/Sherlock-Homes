@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-//TODO change city
+
 console.log('Beginning scraping...');
 
 (async () => {
@@ -41,7 +41,7 @@ console.log('Beginning scraping...');
 
   const allListingInfo = [];
 
-  for (let pageNumber = 1; pageNumber <= lastpage; pageNumber++) {
+  for (let pageNumber = 1; pageNumber <= 2; pageNumber++) {
     await page.goto(`https://www.yapo.cl/paginas/valparaiso/vina-del-mar/comprar/casa?pagina=${pageNumber}`);
     await page.waitForSelector('listing-result-ad');
     const listingUrls = await page.evaluate(() => {
@@ -155,9 +155,8 @@ console.log('Beginning scraping...');
 
     const listingInfo = await page.evaluate((url, pmedia, lat) => {
       function extractNumericValue(str) {
-        const regex = /\d+/;
-        const match = str.match(regex);
-        return match ? match[0] : null;
+        const cleanedStr = str.replace(/\D/g, '');
+        return parseFloat(cleanedStr) || null;
       }
 
       function extractPriceValue(str) {
