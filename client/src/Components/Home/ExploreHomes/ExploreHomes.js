@@ -17,8 +17,6 @@ export default function ExploreHomes() {
     valparaiso: 0,
     'villa alemana': 0,
   });
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchCityCounts = async () => {
@@ -26,24 +24,13 @@ export default function ExploreHomes() {
         const response = await fetch('http://localhost:3001/cityCount');
         const data = await response.json();
         setCityCounts(data);
-        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching city counts:', error);
-        setError(true);
-        setIsLoading(false);
       }
     };
 
     fetchCityCounts();
   }, []);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error loading city counts</div>;
-  }
 
   return (
     <div className='explore-homes'>

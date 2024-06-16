@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaHeart } from 'react-icons/fa';
+/* import { FaHeart } from 'react-icons/fa'; */
 import { FaShare } from "react-icons/fa";
 import { PiToiletLight } from "react-icons/pi";
 import { IoBedOutline } from "react-icons/io5";
@@ -14,10 +14,9 @@ export default function FeaturedCard({ title, price, bathrooms, bedrooms, sqft, 
           <div className='Venta'>Publicación destacada</div>
 
           <div className='iconos'>
-            <FaHeart className='like' />
+            {/* <FaHeart className='like' /> */}
             <FaShare className='Compartir' />
           </div>
-
 
           <center>
             <img className='casas' src={ img } alt='Los Alemendros' />
