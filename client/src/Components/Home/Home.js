@@ -9,14 +9,9 @@ import Footer from '../UI/Footer/Footer';
 import ExploreHomes from './ExploreHomes/ExploreHomes';
 import MissionSection from '../MissionSection/MissionSection';
 import Asociates from '../Asociates/Asociates';
-import Chatbot from '../UI/ChatBot/Chatbot';
+/* import Chatbot from '../UI/ChatBot/Chatbot'; */
 
 export default function Home() {
-
-  //const navigate = useNavigate();
-  //<button onClick={() => navigate('/login')}>Iniciar Sesión</button>
-  //<button onClick={() => navigate('/search')}>search page</button>
-
 
   return (
     <div className='home'>
@@ -27,10 +22,9 @@ export default function Home() {
         <PromoSection />
         <Asociates />
         <InfoSection />
-        <Chatbot />
+{/*         <Chatbot /> */}
         <Footer />
     </div>
   )
 }
 
-//agregar valor promedio de vivienda en cada area
