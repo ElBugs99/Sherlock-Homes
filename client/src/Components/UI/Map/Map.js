@@ -4,8 +4,8 @@ import { FaMapPin, FaStreetView } from "react-icons/fa";
 
 const Marker= ({ text }) =>
    <div>
-    <FaMapPin style={{color:'green' ,fontSize:'27px'}}/>
-
+       
+    
     {text}
    
    </div>;
@@ -34,8 +34,19 @@ export default function SimpleMap({lat,lng}){
   };
 
   const handleApiLoaded = (map, maps) => {
-    // Use map and maps objects to add additional functionalities
-  };
+    const icon = {
+        url: 'https://img.icons8.com/?size=100&id=E6sztx71VMKQ&format=png&color=000000', // Aquí pones la URL de tu icono personalizado
+        scaledSize: new maps.Size(50, 50), // Ajusta el tamaño del icono si es necesario
+      };
+
+    new maps.Marker({
+        position: { lat: Number(lat), lng: Number(lng) },
+        map,
+        draggable: false,
+        icon: icon
+        
+      });
+    };
 
 
 
@@ -49,6 +60,7 @@ export default function SimpleMap({lat,lng}){
        
         defaultZoom={defaultProps.zoom}
         layerTypes={['TransitLayer']}
+        yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
         options={{
           streetViewControl:true,
