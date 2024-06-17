@@ -5,8 +5,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: transparent;
-    color: #264653;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #535A77;
 }
 .background{
     position: fixed;
@@ -16,18 +16,18 @@
     height: 100%;
     z-index: -1;
 }
-.titulo{
+.financiamineto-titulo{
+    font-size: 45px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 5px;
+}
+
+.financiamineto-subtitulo {
     font-size: 35px;
+    font-weight: 600;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 5px;
 }
-
-h3{
-    font-size: 30px;
-}
-
-h1{
-    font-size: 28px;
-}
-
 
 /* button {
     display: inline-block;

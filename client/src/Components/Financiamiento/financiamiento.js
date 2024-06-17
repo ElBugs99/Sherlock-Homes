@@ -13,11 +13,20 @@ export default function financiamiento() {
     return (
         <div className="financiamiento">
             <NavBar searchHidden={true} />
-            <div className='background' style={{ backgroundImage: `url(${Fondo})` }}></div>
+            <div
+                className='background'
+                style={{
+                    backgroundImage: `url(${Fondo})`,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                    backgroundBlendMode: 'overlay'
+                }}
+            ></div>
 
             <div className='header'>
                 <div className='financiamineto-info'>
-                    <h2 className="titulo">COMO COMENZAR TU AHORRO PARA LA VIVIENDA</h2>
+                    <div className="financiamineto-titulo">CÓMO COMENZAR TU AHORRO PARA LA VIVIENDA</div>
                     <hr></hr>
                 </div>
             </div>
@@ -29,9 +38,9 @@ export default function financiamiento() {
                     <div className='video'>
                         <YoutubeVideo videoId={"iThpiAwfMpw"} />
                     </div>
-                    <h3 className='sub-titulo-info'>
+                    <div className='financiamineto-subtitulo'>
                         ¿Qué es una cuenta de ahorro para la vivienda?
-                    </h3>
+                    </div>
                     <h1>
                         Una cuenta de ahorro para la vivienda es una cuenta unipersonal que se reajusta según la variación de la UF, por lo que el dinero no pierde valor con el aumento de la inflación. Además, permite ganar intereses y reajustes anualmente por los depósitos mantenidos por 90 días o más en la cuenta.
 
