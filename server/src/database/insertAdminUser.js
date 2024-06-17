@@ -2,9 +2,9 @@ import { pool } from '../controllers/index.controller.js';
 import bcrypt from 'bcrypt';
 
 async function insertAdminUser() {
-  const username = 'Sherlock1';
-  const email = 'sherlock1@sherlockhomes.com';
-  const password = 'Sherlock1';
+  const username = 'Sherlock99';
+  const email = 'sherlock99@gmail.com';
+  const password = 'Asdfg123';
   const role = 'admin';
 
   try {

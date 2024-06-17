@@ -1,4 +1,5 @@
 .profile-page-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
@@ -22,6 +23,12 @@
     padding: 30px;
     margin-top: 40px;
 }
+
+/* .profile-c-container {
+    position: fixed;
+    width: 19%;
+    top: 14vh;
+} */
 
 .profile-page-center {
     display: flex;
@@ -91,12 +98,11 @@
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    /* transition: transform 0.3s; */
 }
 
 .favorites {
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out; /* Ensure smooth transition */
+    transition: background-color 0.3s ease-in-out;
 }
 
 .favorites:hover {
@@ -105,7 +111,7 @@
 
 .comments {
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out; /* Ensure smooth transition */
+    transition: background-color 0.3s ease-in-out;
 }
 
 .comments:hover {
@@ -114,7 +120,7 @@
 
 .publications {
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out; /* Ensure smooth transition */
+    transition: background-color 0.3s ease-in-out;
 }
 
 .publications:hover {
@@ -159,18 +165,27 @@
     margin-top: 10px;
     text-align: center;
     font-size: 13px;
-    
-    
 }
 
 .publicidad1{
     display: flex;
     height: 295px;
-    border-radius: 10%;
-
-    
+    border-radius: 10%; 
 }
 .videoPublicidad1{
     text-align: center;
-    
+}
+
+.p-admin {
+    font-family: 'Bebas Neue', sans-serif;
+    color: #535A77;
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 3px;
+    align-items: center;
+    margin-top: 11vh;
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }

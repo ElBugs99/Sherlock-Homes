@@ -8,7 +8,7 @@ import { FaHouse } from "react-icons/fa6";
 import Lottie from 'react-lottie';
 import animationData from '../../assets/animation/Animation - chip.json';
 import HouseAnimation from '../../assets/animation/Animation - House.json';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import './profilePage.css';
 import TableRow from '../UI/Table/TableRow';
 import { addDotsToNumber } from '../../utils/numberUtils';
@@ -115,12 +115,21 @@ export default function ProfilePage() {
         <a className='profile-link' href={`/Property/${favorite.property_id}`}>Ver propiedad</a>
     ]));
 
+    console.log('user', user);
+
     return (
         <div className='profile-page-container'>
             <NavBar searchHidden={true} />
+            {
+                user?.role === 'admin'
+                &&
+                <div className='p-admin'>Bienvenido Administrador</div>
+            }
             <div className='profile-page'>
                 <div className='profile-page-left'>
-                    <UserCard />
+                    <div className='profile-c-container'>
+                        <UserCard />
+                    </div>
                 </div>
                 <div className='profile-page-center'>
                     <div className='profile-center-top'>
@@ -177,10 +186,10 @@ export default function ProfilePage() {
                     <div className='profile-page-side-info-box info-box2'>
                         <div className='videoPublicidad1'>
 
-                        <video className="publicidad1" autoPlay loop muted>
-                            <source src={Publicidad1} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
+                            <video className="publicidad1" autoPlay loop muted>
+                                <source src={Publicidad1} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
 
                         </div>
                     </div>
