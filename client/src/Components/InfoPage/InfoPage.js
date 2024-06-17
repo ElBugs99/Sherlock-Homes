@@ -39,7 +39,7 @@ export default function InfoPage() {
                         redireccionandolo a la página de origen del aviso que le interesa además de entregar fuentes de información en asuntos importantes del mercado inmobiliario
                 </h1>
 
-                <img className='imgKeys' src={houseKeys}  />
+                <img className='imgKeys' src={houseKeys} alt='img' />
 
                 <h1 className='h1vamos'>
                 Permitenos acompañarte y apoyarte mientras buscas en nuestro gran catalogo de recopilación tu próximo hogar
