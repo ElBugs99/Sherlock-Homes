@@ -17,7 +17,16 @@ export default function InfoPage() {
                     <h2 className="titulo">Sherlock Homes</h2>
                 </div>
             </div>
-            <div className='background' style={{ backgroundImage: `url(${Fondo})` }}></div>
+            <div
+                className='background'
+                style={{
+                    backgroundImage: `url(${Fondo})`,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    backgroundBlendMode: 'overlay'
+                }}
+            ></div>
             <div className='info-content'>
             <div className='info'>
                 <h3 className='sub-seccion'>
