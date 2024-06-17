@@ -159,7 +159,9 @@ export default function PropertyPage() {
                     <div className="property-modal-info">
                         <div className="property-modal-header">
                             <div className="property-modal-atribute property-modal-title">{property.title}</div>
-                            <div className="property-modal-price">$ {addDotsToNumber(property.price)}</div>
+                            <div className="property-modal-price">$ {addDotsToNumber(property.price)} / 
+                                <div className='property-uf'> UF {property.uf}</div>
+                            </div>
                             <div className="property-modal-atribute">
 
                                 <button className='button-PP'>

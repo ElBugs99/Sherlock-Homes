@@ -109,6 +109,7 @@
 }
 
 .property-modal-price {
+    display: flex;
     font-size: 30px;
     padding-bottom: 10px;
     font-weight: 600;
@@ -192,7 +193,6 @@
     display: flex;
     justify-content: center;;
     width: 100%;
-    /* min-height: 100vh; */
 }
 
 .property-calculations-title {
@@ -205,8 +205,12 @@
     width: 100%;
     background-color: #d4e4da;
     padding: 40px 0;
-    /* background-color: #e6e9e6 ; */
-    /* background-color: #d2e6dd; */
+
+}
+
+.property-uf {
+    margin-left: 5px;
+    color: rgb(56, 186, 186);
 }
 
 .property-left-info {
@@ -233,11 +237,6 @@
     align-items: start;
     position: relative;
     top: -90px;
-
-    
-    
-    
-   
 }
 
 .graficoIPV{
@@ -251,8 +250,6 @@
 .calculator-wrapper {
     height: 50%;
 }
-
-
 
 @keyframes squish {
     50% {
@@ -276,7 +273,6 @@
 .button-PP:hover{
     border-radius: 5px;
     background-color:#264653;
-    
 }
 
   

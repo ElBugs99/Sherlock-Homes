@@ -195,7 +195,6 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price, 
   }
 
   console.log('houses', houses);
-  console.log('avg', cityAvgPrices);
 
   return (
     <>
@@ -219,6 +218,7 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price, 
             bedrooms={x.bedrooms}
             bathrooms={x.bathrooms}
             sqft={x.sqft}
+            uf={x.uf}
             location={x.location}
             media={x.media[0] === null || undefined ? defaultImage : x.media[0]}
             property_id={x.id}

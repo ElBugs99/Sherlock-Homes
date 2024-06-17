@@ -17,6 +17,7 @@ export default function HomeCard({
   city,
   property_id,
   onClick,
+  uf,
   isFavorite: initialIsFavorite,
 }) {
   const { user } = useContext(appContext);
@@ -72,7 +73,7 @@ export default function HomeCard({
         </div>
         <div className="home-card-info">
           <div className="">{title}</div>
-          <div className="home-card-price">$ { addDotsToNumber(price) }</div>
+          <div className="home-card-price">$ { addDotsToNumber(price) } / UF {uf}</div>
           <div className=""><IoBedOutline /> {bedrooms} Dormitorios</div>
           <div className=""><PiToiletLight /> {bathrooms} Baños</div>
           { sqft ? <div className=""><TbMeterSquare /> {sqft}  Metros cuadrados</div> : ""}
