@@ -1,4 +1,6 @@
 .Explore-city-card {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
     position: relative;
     cursor: pointer;
     height: 90%;
@@ -21,28 +23,23 @@
 }
 
 .city-card-title {
-    font-weight: bold;
-    font-size: x-large;
-    color: white;
-/*     padding: 20px; */
-/*     position: absolute; */
+    font-size: 25px;
+    color: rgb(240, 240, 240);
+    font-weight: 600;
     top: 10%;
 }
 
 .city-card-info {
-    font-weight: 600;
+    font-size: 15px;
     color: white;
-/*     top: 25%; */
-    /* position: absolute; */
 }
 
 .city-card-letters {
     padding: 10px;
-    /* top: 160px; */
     bottom: 15px;
     left: 0;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 5px;
 }
 
