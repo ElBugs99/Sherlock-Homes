@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './home.css';
-//import { useNavigate } from 'react-router-dom';
 import TopSection from './TopSection/TopSection';
 import NavBar from '../UI/NavBar/NavBar';
 import PromoSection from './PromoSection/PromoSection';
@@ -15,15 +14,15 @@ export default function Home() {
 
   return (
     <div className='home'>
-        <NavBar searchHidden={true}/>
-        <TopSection />
-        <ExploreHomes />
-        <MissionSection />
-        <PromoSection />
-        <Asociates />
-        <InfoSection />
-{/*         <Chatbot /> */}
-        <Footer />
+      <NavBar searchHidden={true} />
+      <TopSection />
+      <ExploreHomes />
+      <MissionSection />
+      <PromoSection />
+      <Asociates />
+      <InfoSection />
+      {/*<Chatbot /> */}
+      <Footer />
     </div>
   )
 }
