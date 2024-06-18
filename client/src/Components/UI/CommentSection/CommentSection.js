@@ -14,6 +14,7 @@ export default function CommentSection({ propertyId }) {
   const token = localStorage.getItem('token');
   const decodedToken = token ? jwtDecode(token) : null;
   const userId = decodedToken ? decodedToken.id : null;
+  const username = decodedToken ? decodedToken.username : null;
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -58,7 +59,8 @@ export default function CommentSection({ propertyId }) {
 
       const data = await response.json();
       if (data.success) {
-        setComments((prevComments) => [...prevComments, data.comment]);
+        const newCommentData = { ...data.comment, username }; // Add the username to the new comment data
+        setComments((prevComments) => [...prevComments, newCommentData]);
         setNewComment('');
         setCommentError('');
       } else {
