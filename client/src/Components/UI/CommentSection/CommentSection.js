@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 import './commentSection.css';
 import Comment from './Comment';
 
@@ -21,13 +21,26 @@ export default function CommentSection({ propertyId }) {
       try {
         const response = await fetch(`http://localhost:3001/getCommentsByPublication/${propertyId}`);
         const data = await response.json();
-        setComments(data.data || []);
+        const formattedComments = data.data.map(comment => ({
+          ...comment,
+          date_created: formatDateToChileanTime(comment.date_created)
+        }));
+        setComments(formattedComments || []);
       } catch (error) {
         console.error('Error fetching comments:', error);
       }
     };
     fetchComments();
   }, [propertyId]);
+
+  const formatDateToChileanTime = (dateString) => {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('es-CL', {
+      dateStyle: 'short',
+      timeStyle: 'short',
+      timeZone: 'America/Santiago'
+    }).format(date);
+  };
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
@@ -59,7 +72,11 @@ export default function CommentSection({ propertyId }) {
 
       const data = await response.json();
       if (data.success) {
-        const newCommentData = { ...data.comment, username }; // Add the username to the new comment data
+        const newCommentData = {
+          ...data.comment,
+          username,
+          date_created: formatDateToChileanTime(data.comment.date_created)
+        };
         setComments((prevComments) => [...prevComments, newCommentData]);
         setNewComment('');
         setCommentError('');
@@ -166,7 +183,7 @@ export default function CommentSection({ propertyId }) {
               commentId={comment.comment_id}
               username={comment.username}
               content={comment.content}
-              date={comment.date_created}
+              /* date={comment.date_created} */
               edited={comment.edited}
               userId={comment.user_id}
               currentUserId={userId}
