@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import './commentSection.css';
 import Comment from './Comment';
 
@@ -15,14 +15,12 @@ export default function CommentSection({ propertyId }) {
   const decodedToken = token ? jwtDecode(token) : null;
   const userId = decodedToken ? decodedToken.id : null;
 
-  //TODO add comment deleted and edited confirmation message
-
   useEffect(() => {
     const fetchComments = async () => {
       try {
         const response = await fetch(`http://localhost:3001/getCommentsByPublication/${propertyId}`);
         const data = await response.json();
-        setComments(data.data);
+        setComments(data.data || []);
       } catch (error) {
         console.error('Error fetching comments:', error);
       }
@@ -60,7 +58,7 @@ export default function CommentSection({ propertyId }) {
 
       const data = await response.json();
       if (data.success) {
-        setComments([...comments, data.comment]);
+        setComments((prevComments) => [...prevComments, data.comment]);
         setNewComment('');
         setCommentError('');
       } else {
@@ -158,7 +156,7 @@ export default function CommentSection({ propertyId }) {
         </div>
       </form>
 
-      {comments?.length > 0 ? (
+      {comments.length > 0 ? (
         <div className="comments-list">
           {comments.map((comment) => (
             <Comment

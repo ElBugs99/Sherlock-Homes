@@ -24,11 +24,17 @@
     margin-top: 40px;
 }
 
-/* .profile-c-container {
-    position: fixed;
-    width: 19%;
-    top: 14vh;
-} */
+.profile-c-container {
+    position: sticky;
+    width: 100%;
+    top: 1vh;
+    height: 70vh;
+}
+
+.profile-page-content {
+    width: 100%;
+    display: flex;
+}
 
 .profile-page-center {
     display: flex;
