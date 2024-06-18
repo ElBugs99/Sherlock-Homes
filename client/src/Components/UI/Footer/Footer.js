@@ -39,7 +39,7 @@ export default function Footer() {
             </a>
           </div>
           <a className='botonTerminosCondiciones' href="/terminoscondiciones">
-                    <button>
+                    <button className='footerTyCButton'>
                     Terminos y Condiciones
                     </button>
                 </a>

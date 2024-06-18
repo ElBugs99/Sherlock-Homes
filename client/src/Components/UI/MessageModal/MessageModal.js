@@ -6,12 +6,12 @@ const MessageModal = ({ message, onClose, isButtonVisible }) => {
 
     return (
         <div className="modal-overlay">
-            <div className="modal-content">
+            <div className="messageModal-content">
                 <div className='checkIcon'>
                     <ImCheckmark />
                 </div>
-                <p>{message}</p>
-                { isButtonVisible ? <button onClick={onClose}>Close</button> : '' }
+                <p className='message'>{message}</p>
+                { isButtonVisible ? <button className='messageModalButton' onClick={onClose}>Close</button> : '' }
             </div>
         </div>
     );

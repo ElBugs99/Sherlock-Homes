@@ -29,7 +29,7 @@
     letter-spacing: 5px;
 }
 
-/* button {
+.finan-button {
     display: inline-block;
     padding: 10px 20px;
     font-size: 30px;
@@ -39,7 +39,7 @@
     text-decoration: none;
     border-radius: 4px;
     cursor: pointer;
-} */
+} 
 
 .button-link:hover {
     background-color: rgba(0, 0, 255, 0.1);  /* Azul claro con transparencia */

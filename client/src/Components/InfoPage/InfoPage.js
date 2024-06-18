@@ -41,7 +41,7 @@ export default function InfoPage() {
 
                         <img className='imgKeys' src={houseKeys} alt='img' />
 
-                        <h1 className='h1vamos'>
+                        <h1 className='InfoPage-text'>
                             Permitenos acompañarte y apoyarte mientras buscas en nuestro gran catalogo de recopilación tu próximo hogar
                         </h1>
                     </div>

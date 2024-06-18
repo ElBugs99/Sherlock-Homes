@@ -2,23 +2,29 @@ import React, { useState, useEffect } from 'react';
 import NavBar from '../UI/NavBar/NavBar';
 import UserCard from '../UI/UserCard/UserCard';
 import Footer from '../UI/Footer/Footer';
-import { MdFavorite } from "react-icons/md";
+import { MdCompareArrows, MdFavorite } from "react-icons/md";
 import { FaComment } from "react-icons/fa";
-import { FaHouse } from "react-icons/fa6";
 import Lottie from 'react-lottie';
+import CompareCarousel from '../UI/CompareCarousel/compareCarousel';
 import animationData from '../../assets/animation/Animation - chip.json';
 import HouseAnimation from '../../assets/animation/Animation - House.json';
 import { jwtDecode } from 'jwt-decode';
 import './profilePage.css';
 import TableRow from '../UI/Table/TableRow';
 import { addDotsToNumber } from '../../utils/numberUtils';
-import Publicidad1 from '../../assets/videos/publicidad1.mp4'
+import Publicidad1 from '../../assets/videos/publicidad1.mp4';
+import Fondo from '../../assets/images/Fondo.jpg';
+import House from '../../assets/images/Ciudad.jpg';
 
 export default function ProfilePage() {
     const [user, setUser] = useState(null);
     const [comments, setComments] = useState([]);
     const [favorites, setFavorites] = useState([]);
     const [selectedSection, setSelectedSection] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [checkedFavorites, setCheckedFavorites] = useState({});
+    const [selectedCount, setSelectedCount] = useState(0);
+    const [selectedFavorites, setSelectedFavorites] = useState([]);
 
     const token = localStorage.getItem('token');
     useEffect(() => {
@@ -29,6 +35,18 @@ export default function ProfilePage() {
             fetchFavorites(decodedToken.id);
         }
     }, [token]);
+
+    const openModal = () => {
+        const selectedFavs = favorites.filter(favorite => checkedFavorites[favorite.property_id]);
+        if (selectedFavs.length === 2) {
+            setSelectedFavorites(selectedFavs);
+            setIsModalOpen(true);
+        }
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     const fetchComments = async (userId) => {
         try {
@@ -85,6 +103,17 @@ export default function ProfilePage() {
         return str.slice(0, num) + '...';
     }
 
+    const handleCheckboxChange = (event, propertyId) => {
+        const newCheckedFavorites = {
+            ...checkedFavorites,
+            [propertyId]: event.target.checked
+        };
+        setCheckedFavorites(newCheckedFavorites);
+
+        const newSelectedCount = Object.values(newCheckedFavorites).filter(Boolean).length;
+        setSelectedCount(newSelectedCount);
+    };
+
     const commentsTitleRow = [
         'Id publicación',
         'Comentario',
@@ -100,31 +129,37 @@ export default function ProfilePage() {
     ]));
 
     const favoritesTitleRow = [
+        'Seleccionar',
         'Título',
         'Ciudad',
         'Tipo de propiedad',
         'Precio',
-        'Enlace'
+        'Enlace',
+        'Eliminar'
     ];
 
     const favoritesRows = favorites.map(favorite => ([
+        <div className='checkbox-container' key={`checkbox-${favorite.property_id}`}>
+            <input
+                className='checkbox-seleccionar-fav'
+                type='checkbox'
+                id={`checkbox-${favorite.property_id}`}
+                checked={checkedFavorites[favorite.property_id] || false}
+                onChange={(e) => handleCheckboxChange(e, favorite.property_id)}
+            />
+        </div>,
         truncateString(favorite.title, 20),
         favorite.city,
         favorite.property_type,
         `$ ${addDotsToNumber(favorite.price)}`,
-        <a className='profile-link' href={`/Property/${favorite.property_id}`}>Ver propiedad</a>
+        <a className='profile-link' href={`/Property/${favorite.property_id}`}>Ver propiedad</a>,
+        <button className="delete-button">X</button>
     ]));
-
-    console.log('user', user);
 
     return (
         <div className='profile-page-container'>
             <NavBar searchHidden={true} />
-            {
-                user?.role === 'admin'
-                &&
-                <div className='p-admin'>Bienvenido Administrador</div>
-            }
+            {user?.role === 'admin' && <div className='p-admin'>Bienvenido Administrador</div>}
             <div className='profile-page'>
                 <div className='profile-page-left'>
                     <div className='profile-c-container'>
@@ -136,34 +171,94 @@ export default function ProfilePage() {
                         <div className='profile-info-box favorites' onClick={() => setSelectedSection('favorites')}>
                             Favoritos <MdFavorite className='profile-icon' />
                         </div>
+                        <div
+                            className={`profile-info-box compare ${selectedCount !== 2 ? 'disabled' : ''}`}
+                            onClick={openModal}
+                            style={{ opacity: selectedCount !== 2 ? 0.5 : 1, pointerEvents: selectedCount !== 2 ? 'none' : 'auto' }}
+                        >
+                            Comparar <MdCompareArrows className='profile-icon' />
+                        </div>
+                        {isModalOpen && (
+                            <div className="modal">
+                                <div className="modal-content" style={{
+                                    backgroundImage: `url(${Fondo})`,
+                                    backgroundSize: 'cover',
+                                    backgroundRepeat: 'no-repeat',
+                                    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                                    backgroundBlendMode: 'overlay'
+                                }}>
+                                    <button className="close-button" onClick={closeModal}>&times;</button>
+                                    <div className='text-comparar'>
+                                        <h1 className='titulo-comparar'>COMPARAR PROPIEDADES</h1>
+                                    </div>
+                                    <br></br>
+                                    <div className="image-container">
+                                        {selectedFavorites.map((favorite, index) => (
+                                            <div className="image-info" key={favorite.property_id}>
+                                                <h2 className='opcion'>{`OPCIÓN ${index + 1}`}</h2>
+                                                <div className='responsive-image'>
+                                                    <CompareCarousel className='responsive-image' imageArray={favorite.media} />
+                                                </div>
+                                                <div className="info">
+                                                    <div className='campos-propiedad'>
+                                                        <h2 className='campo-nocomparar'>Nombre: </h2>
+                                                        <p className='campo-comparar'>{favorite.title}</p>
+                                                    </div>
+                                                    <div className='campos-propiedad'>
+                                                        <h2 className='campo-nocomparar'>Tipo Propiedad: </h2>
+                                                        <p className='campo-comparar'>{favorite.property_type}</p>
+                                                    </div>
+                                                    <div className='campos-propiedad'>
+                                                        <h2 className='campo-nocomparar'>Ciudad: </h2>
+                                                        <p className='campo-comparar'>{favorite.city}</p>
+                                                    </div>
+                                                    <br />
+                                                    <div className='campos-propiedad'>
+                                                        <h2 className='campo-nocomparar'>Precio: </h2>
+                                                        <p className='campo-comparar'>{`$ ${addDotsToNumber(favorite.price)}`}</p>
+                                                    </div>
+                                                    <div className='campos-propiedad'>
+                                                        <h2 className='campo-nocomparar'>m2: </h2>
+                                                        <p className='campo-comparar'>{favorite.sqft}</p>
+                                                    </div>
+                                                    <div className='campos-propiedad'>
+                                                        <h2 className='campo-nocomparar'>N° Baños: </h2>
+                                                        <p className='campo-comparar'>{favorite.bathrooms}</p>
+                                                    </div>
+                                                    <div className='campos-propiedad'>
+                                                        <h2 className='campo-nocomparar'>N° Dormitorios: </h2>
+                                                        <p className='campo-comparar'>{favorite.bedrooms}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                         <div className='profile-info-box comments' onClick={() => setSelectedSection('comments')}>
                             Comentarios <FaComment className='profile-icon' />
                         </div>
                     </div>
+                    {selectedCount !== 2 && (
+                        <p className="select-two-options-text">Seleccione solo 2 propiedades favoritas para compararlas</p>
+                    )}
                     <div className='profile-center-info-box'>
                         <div className='profile-center-info-box-content'>
-                            {selectedSection === 'favorites' && favorites.length > 0 ? (
+                            {selectedSection === 'favorites' && (
                                 <div className='favorites-list'>
                                     <TableRow row={favoritesTitleRow} isTitle={true} />
                                     {favoritesRows.map((row, index) => (
                                         <TableRow key={index} row={row} />
                                     ))}
                                 </div>
-                            ) : selectedSection === 'comments' && comments.length > 0 ? (
+                            )}
+                            {selectedSection === 'comments' && (
                                 <div className='comments-list-profile'>
                                     <TableRow row={commentsTitleRow} isTitle={true} />
                                     {commentsRows.map((row, index) => (
                                         <TableRow key={index} row={row} />
                                     ))}
-                                </div>
-                            ) : (
-                                <div className='profile-center-lottie'>
-                                    <Lottie
-                                        options={defaultOptions}
-                                        isClickToPauseDisabled={true}
-                                        height={200}
-                                        width={200}
-                                    />
                                 </div>
                             )}
                         </div>
@@ -185,12 +280,10 @@ export default function ProfilePage() {
                     </div>
                     <div className='profile-page-side-info-box info-box2'>
                         <div className='videoPublicidad1'>
-
                             <video className="publicidad1" autoPlay loop muted>
                                 <source src={Publicidad1} type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
-
                         </div>
                     </div>
                 </div>
@@ -199,3 +292,7 @@ export default function ProfilePage() {
         </div>
     );
 }
+
+
+
+

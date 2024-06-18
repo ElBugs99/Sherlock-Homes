@@ -108,7 +108,7 @@ export default function financiamiento() {
                     </h3>
                     <Bounce>
                         <a className='boton' href="https://www.chileatiende.gob.cl/instituciones/AP000">
-                            <button>
+                            <button className='finan-button'>
                                 MINVU
                             </button>
                         </a>
@@ -118,7 +118,7 @@ export default function financiamiento() {
                     </h3>
                     <Bounce>
                         <a className='boton' href="https://www.comparaonline.cl/credito-hipotecario">
-                            <button>
+                            <button className='finan-button'>
                                 Simula un Credito
                             </button>
                         </a>
@@ -128,7 +128,7 @@ export default function financiamiento() {
                     </h3>
                     <Bounce>
                         <a className='boton' href="https://www.bancoestado.cl/content/bancoestado-public/cl/es/home/home/productos-/creditos/creditos-hipotecarios.html#/">
-                            <button>
+                            <button className='finan-button'>
                                 Banco Estado
                             </button>
                         </a>
