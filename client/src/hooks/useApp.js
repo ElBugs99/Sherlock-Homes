@@ -15,7 +15,6 @@ export default function useApp() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      console.log('there is a token')
       const decodedToken = jwtDecode(token);
       setUser(decodedToken);
     }
