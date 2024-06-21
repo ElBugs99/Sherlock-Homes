@@ -114,6 +114,27 @@ export default function ProfilePage() {
         setSelectedCount(newSelectedCount);
     };
 
+    const handleDeleteFavorite = async (favoriteId) => {
+        try {
+            const response = await fetch('http://localhost:3001/deleteFavorite', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId: user.id, propertyId: favoriteId }),
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                setFavorites(favorites.filter(favorite => favorite.property_id !== favoriteId));
+            } else {
+                console.error(data.message);
+            }
+        } catch (error) {
+            console.error('Error deleting favorite:', error);
+        }
+    };
+
     const commentsTitleRow = [
         'Id publicación',
         'Comentario',
@@ -153,7 +174,7 @@ export default function ProfilePage() {
         favorite.property_type,
         `$ ${addDotsToNumber(favorite.price)}`,
         <a className='profile-link' href={`/Property/${favorite.property_id}`}>Ver propiedad</a>,
-        <button className="delete-button">X</button>
+        <button className="delete-button" onClick={() => handleDeleteFavorite(favorite.property_id)}>X</button>
     ]));
 
     return (
@@ -292,7 +313,3 @@ export default function ProfilePage() {
         </div>
     );
 }
-
-
-
-
