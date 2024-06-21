@@ -202,6 +202,39 @@ export const getCityCount = async (req, res) => {
   }
 };
 
+export const getCounts = async (req, res) => {
+  try {
+    const countQueries = [
+      {
+        text: 'SELECT COUNT(*) AS total_users FROM users',
+      },
+      {
+        text: 'SELECT COUNT(*) AS total_comments FROM comments',
+      },
+      {
+        text: 'SELECT COUNT(*) AS total_favorites FROM favorites',
+      },
+      {
+        text: 'SELECT COUNT(*) AS total_publications FROM house',
+      },
+    ];
+
+    const countPromises = countQueries.map(query => pool.query(query));
+    const countResponses = await Promise.all(countPromises);
+
+    const counts = {
+      total_users: parseInt(countResponses[0].rows[0].total_users, 10),
+      total_comments: parseInt(countResponses[1].rows[0].total_comments, 10),
+      total_favorites: parseInt(countResponses[2].rows[0].total_favorites, 10),
+      total_publications: parseInt(countResponses[3].rows[0].total_publications, 10),
+    };
+
+    res.json(counts);
+  } catch (error) {
+    console.error('Error fetching counts:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
 
 export const getFeaturedHouses = async (req, res) => {
   try {
