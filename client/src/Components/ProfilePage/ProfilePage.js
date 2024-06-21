@@ -135,18 +135,40 @@ export default function ProfilePage() {
         }
     };
 
+    const handleDeleteComment = async (commentId) => {
+        try {
+            const response = await fetch(`http://localhost:3001/deleteComment/${commentId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                setComments(comments.filter(comment => comment.comment_id !== commentId));
+            } else {
+                console.error(data.message);
+            }
+        } catch (error) {
+            console.error('Error deleting comment:', error);
+        }
+    };
+
     const commentsTitleRow = [
         'Id publicación',
         'Comentario',
         'Fecha',
-        'Publicación'
+        'Publicación',
+        'Eliminar' // Add this line
     ];
 
     const commentsRows = comments.map(comment => ([
         comment.publication_id,
         truncateString(comment.content, 20),
         new Date(comment.date_created).toLocaleDateString(),
-        <a className='profile-link' href={`/property/${comment.publication_id}`}>Ver publicación</a>
+        <a className='profile-link' href={`/property/${comment.publication_id}`}>Ver publicación</a>,
+        <button className="delete-button" onClick={() => handleDeleteComment(comment.comment_id)}>X</button> // Add this line
     ]));
 
     const favoritesTitleRow = [
