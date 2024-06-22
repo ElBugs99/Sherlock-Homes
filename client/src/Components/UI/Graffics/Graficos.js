@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./graficos.css";
 import { PieChart } from '@mui/x-charts/PieChart';
 
-export default function Graficos({ valor, ciudad }) {
+export default function Graficos({ valor, ciudad}) {
+
+
+
   const data = [
     { id: 0, value: Number(valor), label: 'Valor CLP Propiedad actual' },
     { id: 1, value: 284262254, label: `Promedio Valor CLP ${ciudad}`}

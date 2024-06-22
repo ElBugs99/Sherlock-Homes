@@ -31,7 +31,7 @@ export default function Registro() {
     if (!registerUser.username) {
       newErrors.username = 'Este campo no puede estar vacío';
     } else if (registerUser.username.length < 4 || registerUser.username.length > 10) {
-      newErrors.username = 'El nombre de usuario debe tener entre 4 y 10 caracteres';
+      newErrors.username = 'Debe tener entre 4 y 10 caracteres';
     } else if (!/^(?=.*[0-9])[a-zA-Z0-9]{4,}$/.test(registerUser.username)) {
       newErrors.username = 'Debe contener por lo menos un número';
     }
@@ -48,7 +48,7 @@ export default function Registro() {
       registerUser.password.length < 5 ||
       !/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/.test(registerUser.password)
     ) {
-      newErrors.password = 'La contraseña debe tener más de 5 caracteres, una mayúscula y un número';
+      newErrors.password = 'Debe tener más de 5 caracteres, una mayúscula y un número';
     }
 
     if (registerUser.password2 !== registerUser.password) {
@@ -133,17 +133,23 @@ export default function Registro() {
                 ))}
               </div>
             )}
-            <input
-              className="form-input-rg"
-              placeholder="Nombre Usuario"
-              type="text"
-              name="username"
-              value={registerUser.username}
-              onChange={handleOnChange}
-            />
-            <div className="validacion">
-              {errors.username && <p>{errors.username}</p>}
+            <div>
+
             </div>
+            <div >
+                <input
+                className="form-input-rg"
+                placeholder="Nombre Usuario"
+                type="text"
+                name="username"
+                value={registerUser.username}
+                onChange={handleOnChange}
+                />
+                <div className="validacion">
+                  {errors.username && <p>{errors.username}</p>}
+                </div>
+            </div>
+            
           </div>
           <div>
             <input

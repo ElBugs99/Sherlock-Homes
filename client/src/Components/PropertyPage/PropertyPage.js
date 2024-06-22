@@ -24,6 +24,32 @@ import GraficoIpv from '../UI/GraficoIPV/GraficoIPV';
 
 export default function PropertyPage() {
 
+
+    const [cityAvgPrices, setCityAvgPrices] = useState()
+
+    const fetchAvgPrice = async () =>{
+
+      try{
+        const avgPricesResponse = await fetch('http://localhost:3001/avg');
+        const avgPrices = await avgPricesResponse.json();
+        setCityAvgPrices(prevPrices => ({
+          ...prevPrices,
+          vina: Math.round(parseFloat(avgPrices.viña) / 1000000),
+          quilpue: Math.round(parseFloat(avgPrices.quilpue) / 1000000),
+          villaAlemana: Math.round(parseFloat(avgPrices['villa alemana']) / 1000000),
+          valparaiso: Math.round(parseFloat(avgPrices.valparaiso) / 1000000),
+        }));
+      }catch (error) {
+        
+        console.error('Error fetching data:', error);
+      }
+    }
+    
+  
+
+  
+    console.log("Precio Promedio:",cityAvgPrices);
+
     const { id } = useParams();
     const [property, setProperty] = useState();
     const [isLoading, setIsLoading] = useState(true);
@@ -48,6 +74,7 @@ export default function PropertyPage() {
 
     useEffect(() => {
         fetchHouses();
+        fetchAvgPrice();
     }, []);
 
     console.log("casa", property)
