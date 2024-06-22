@@ -12,7 +12,7 @@
 
 .profile-page {
     display: flex;
-    margin-top: 10vh;
+    margin-top: 5vh;
     width: 100%;
     min-height: 100vh;
     color: #000000;
@@ -227,17 +227,61 @@
 .admin-info-box {
     padding: 15px;
     display: flex;
+    flex-direction: column;
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
+.ac {
+    display: flex;
+}
+
 .admin-info-box-content {
     display: flex;
     flex-direction: column;
-    width: 33%;
+    width: 25%;
     align-items: center;
     justify-content: center;
+}
+
+.admin-info-box-value {
+    display: flex;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    align-items: center;
+}
+
+.admin-info-box-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 0 20px 0;
+    color: #535A77;
+}
+
+.admin-info-box-label {
+    color: #535A77;
+}
+
+.icon-p {
+    margin-right: 10px;
+}
+
+.l1 {
+    color: rgb(56, 186, 186);
+}
+
+.l2 {
+    color: rgb(186, 56, 60);
+}
+
+.l3 {
+    color: rgb(195, 177, 61);
+}
+
+.l4 {
+    color: rgb(56, 186, 140);
 }
 
 .select-two-options-text{

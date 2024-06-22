@@ -3,7 +3,10 @@ import NavBar from '../UI/NavBar/NavBar';
 import UserCard from '../UI/UserCard/UserCard';
 import Footer from '../UI/Footer/Footer';
 import { MdCompareArrows, MdFavorite } from "react-icons/md";
+import { FaHeart } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
+import { FaHouse } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa";
 import Lottie from 'react-lottie';
 import CompareCarousel from '../UI/CompareCarousel/compareCarousel';
 import animationData from '../../assets/animation/Animation - chip.json';
@@ -25,6 +28,12 @@ export default function ProfilePage() {
     const [checkedFavorites, setCheckedFavorites] = useState({});
     const [selectedCount, setSelectedCount] = useState(0);
     const [selectedFavorites, setSelectedFavorites] = useState([]);
+    const [counts, setCounts] = useState({
+        total_users: 0,
+        total_comments: 0,
+        total_favorites: 0,
+        total_publications: 0,
+    });
 
     const token = localStorage.getItem('token');
     useEffect(() => {
@@ -34,7 +43,18 @@ export default function ProfilePage() {
             fetchComments(decodedToken.id);
             fetchFavorites(decodedToken.id);
         }
+        fetchCounts();
     }, [token]);
+
+    const fetchCounts = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/counts');
+            const data = await response.json();
+            setCounts(data);
+        } catch (error) {
+            console.error('Error fetching counts:', error);
+        }
+    };
 
     const openModal = () => {
         const selectedFavs = favorites.filter(favorite => checkedFavorites[favorite.property_id]);
@@ -160,7 +180,7 @@ export default function ProfilePage() {
         'Comentario',
         'Fecha',
         'Publicación',
-        'Eliminar' // Add this line
+        'Eliminar'
     ];
 
     const commentsRows = comments.map(comment => ([
@@ -219,14 +239,38 @@ export default function ProfilePage() {
                                     Bienvenido Administrador
                                 </div>
                                 <div className='admin-info-box'>
-                                    <div className='admin-info-box-content'>
-                                        <div className='admin-info-box-label'>Usuarios</div>
+                                    <div className='admin-info-box-title'>
+                                        Datos totales:
                                     </div>
-                                    <div className='admin-info-box-content'>
-                                        <div className='admin-info-box-label'>Comentarios</div>
-                                    </div>
-                                    <div className='admin-info-box-content'>
-                                        <div className='admin-info-box-label'>Favoritos</div>
+                                    <div className='ac'>
+                                        <div className='admin-info-box-content'>
+                                            <div className='admin-info-box-label'>Usuarios</div>
+                                            <div className='admin-info-box-value l1'>
+                                                <FaUser />
+                                                {counts.total_users}
+                                            </div>
+                                        </div>
+                                        <div className='admin-info-box-content'>
+                                            <div className='admin-info-box-label'>Comentarios</div>
+                                            <div className='admin-info-box-value l3'>
+                                                <FaComment />
+                                                {counts.total_comments}
+                                            </div>
+                                        </div>
+                                        <div className='admin-info-box-content'>
+                                            <div className='admin-info-box-label'>Favoritos</div>
+                                            <div className='admin-info-box-value l2'>
+                                                <FaHeart className='icon-p' />
+                                                {counts.total_favorites}
+                                            </div>
+                                        </div>
+                                        <div className='admin-info-box-content'>
+                                            <div className='admin-info-box-label'>Publicaciones</div>
+                                            <div className='admin-info-box-value l4'>
+                                                <FaHouse className='icon-p' />
+                                                {counts.total_publications}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
