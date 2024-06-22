@@ -17,7 +17,6 @@ import TableRow from '../UI/Table/TableRow';
 import { addDotsToNumber } from '../../utils/numberUtils';
 import Publicidad1 from '../../assets/videos/publicidad1.mp4';
 import Fondo from '../../assets/images/Fondo.jpg';
-import House from '../../assets/images/Ciudad.jpg';
 
 export default function ProfilePage() {
     const [user, setUser] = useState(null);
@@ -34,6 +33,7 @@ export default function ProfilePage() {
         total_favorites: 0,
         total_publications: 0,
     });
+    const [users, setUsers] = useState([]);
 
     const token = localStorage.getItem('token');
     useEffect(() => {
@@ -44,6 +44,7 @@ export default function ProfilePage() {
             fetchFavorites(decodedToken.id);
         }
         fetchCounts();
+        fetchUsers();
     }, [token]);
 
     const fetchCounts = async () => {
@@ -53,6 +54,16 @@ export default function ProfilePage() {
             setCounts(data);
         } catch (error) {
             console.error('Error fetching counts:', error);
+        }
+    };
+
+    const fetchUsers = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/users');
+            const data = await response.json();
+            setUsers(data);
+        } catch (error) {
+            console.error('Error fetching users:', error);
         }
     };
 
@@ -188,7 +199,7 @@ export default function ProfilePage() {
         truncateString(comment.content, 20),
         new Date(comment.date_created).toLocaleDateString(),
         <a className='profile-link' href={`/property/${comment.publication_id}`}>Ver publicación</a>,
-        <button className="delete-button" onClick={() => handleDeleteComment(comment.comment_id)}>X</button> // Add this line
+        <button className="delete-button" onClick={() => handleDeleteComment(comment.comment_id)}>X</button>
     ]));
 
     const favoritesTitleRow = [
@@ -219,6 +230,20 @@ export default function ProfilePage() {
         <button className="delete-button" onClick={() => handleDeleteFavorite(favorite.property_id)}>X</button>
     ]));
 
+    const usersTitleRow = [
+        'ID',
+        'Nombre',
+        'Email',
+        'Rol'
+    ];
+
+    const usersRows = users.map(user => ([
+        user.id,
+        user.name,
+        user.email,
+        user.role
+    ]));
+
     return (
         <div className='profile-page-container'>
             <NavBar searchHidden={true} />
@@ -234,46 +259,59 @@ export default function ProfilePage() {
                     <div className='profile-page-center'>
                         {
                             user?.role === 'admin' &&
-                            <div className='admin-content'>
-                                <div className='p-admin'>
-                                    Bienvenido Administrador
-                                </div>
-                                <div className='admin-info-box'>
-                                    <div className='admin-info-box-title'>
-                                        Datos totales:
+                            <>
+                                <div className='admin-content'>
+                                    <div className='p-admin'>
+                                        Bienvenido Administrador
                                     </div>
-                                    <div className='ac'>
-                                        <div className='admin-info-box-content'>
-                                            <div className='admin-info-box-label'>Usuarios</div>
-                                            <div className='admin-info-box-value l1'>
-                                                <FaUser />
-                                                {counts.total_users}
-                                            </div>
+                                    <div className='admin-info-box'>
+                                        <div className='admin-info-box-title'>
+                                            Datos totales:
                                         </div>
-                                        <div className='admin-info-box-content'>
-                                            <div className='admin-info-box-label'>Comentarios</div>
-                                            <div className='admin-info-box-value l3'>
-                                                <FaComment />
-                                                {counts.total_comments}
+                                        <div className='ac'>
+                                            <div className='admin-info-box-content'>
+                                                <div className='admin-info-box-label'>Usuarios</div>
+                                                <div className='admin-info-box-value l1'>
+                                                    <FaUser />
+                                                    {counts.total_users}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className='admin-info-box-content'>
-                                            <div className='admin-info-box-label'>Favoritos</div>
-                                            <div className='admin-info-box-value l2'>
-                                                <FaHeart className='icon-p' />
-                                                {counts.total_favorites}
+                                            <div className='admin-info-box-content'>
+                                                <div className='admin-info-box-label'>Comentarios</div>
+                                                <div className='admin-info-box-value l3'>
+                                                    <FaComment />
+                                                    {counts.total_comments}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className='admin-info-box-content'>
-                                            <div className='admin-info-box-label'>Publicaciones</div>
-                                            <div className='admin-info-box-value l4'>
-                                                <FaHouse className='icon-p' />
-                                                {counts.total_publications}
+                                            <div className='admin-info-box-content'>
+                                                <div className='admin-info-box-label'>Favoritos</div>
+                                                <div className='admin-info-box-value l2'>
+                                                    <FaHeart className='icon-p' />
+                                                    {counts.total_favorites}
+                                                </div>
+                                            </div>
+                                            <div className='admin-info-box-content'>
+                                                <div className='admin-info-box-label'>Publicaciones</div>
+                                                <div className='admin-info-box-value l4'>
+                                                    <FaHouse className='icon-p' />
+                                                    {counts.total_publications}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div className='admin-table'>
+                                    <div className='admin-table-content'>
+
+                                        <TableRow row={usersTitleRow} isTitle={true} />
+
+                                        {usersRows.map((row, index) => (
+                                            <TableRow key={index} row={row} />
+                                        ))}
+
+                                    </div>
+                                </div>
+                            </>
                         }
                         <div className='profile-center-top'>
                             <div className='profile-info-box favorites' onClick={() => setSelectedSection('favorites')}>
@@ -348,9 +386,9 @@ export default function ProfilePage() {
                                 Comentarios <FaComment className='profile-icon' />
                             </div>
                         </div>
-                        {selectedCount !== 2 && (
-                            <p className="select-two-options-text">Seleccione solo 2 propiedades favoritas para compararlas</p>
-                        )}
+                        <p className="select-two-options-text">
+                            {selectedCount !== 2 && 'Seleccione solo 2 propiedades favoritas para compararlas'}
+                        </p>
                         <div className='profile-center-info-box'>
                             <div className='profile-center-info-box-content'>
                                 {selectedSection === 'favorites' && (
