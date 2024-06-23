@@ -8,7 +8,6 @@ const generateSecretKey = () => {
 };
 
 const secretKey = generateSecretKey();
-console.log('Generated Secret Key:', secretKey);
 
 //TODO add option to close session from another device, change token validity
 

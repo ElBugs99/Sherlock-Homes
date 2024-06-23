@@ -143,5 +143,62 @@
       "https://img.yapo.cl/images/52/5243929046.jpg",
       "https://img.yapo.cl/images/52/5271987119.jpg"
     ]
+  },
+  {
+    "title": "Terreno 240m2 con casa, Forestal Parada 6, Viña",
+    "price": 85000000,
+    "uf": 2263.91,
+    "property_type": "Casa",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sqft": 240,
+    "address": null,
+    "description": "Vendo Terreno plano con casa en Blanca Vergara, Parada 6 de Forestal, Viña del Mar\n\nSuperficie total 240 m2, casa nueva de 2 pisos con Superficie útil 53 m2, (la casa NO se encuentra regularizada).\n\nPrimer Piso material solido: Living y comedor luminosos, cocina amoblada estilo americano, 1 baño de visita, piso cerámico, logia con conexión para lavadora, calefón, lavadero y mueble, amplio patio con terreno plano, 2 entradas para vehículos, reja perimetral metálica, estacionamiento para más de 3 vehículos.\n\nSegundo Piso material liviano, recubierto exterior con fibrocemento Siding: 2 dormitorios, 1 baño completo, pequeña sala estar, piso flotante,\n\nMovilización a la puerta, a una cuadra de Cesfam, Colegio a 2 cuadras, a 5 minutos del plan de Viña, Hospital Gustavo Fricke, estación de metro, comercio en general.\n\nValor de venta: $85.000.000.- (Se aceptan Ofertas razonables)",
+    "region": "V",
+    "city": "Valparaiso",
+    "listing_url": "https://www.yapo.cl/inmuebles/terreno-240m2-con-casa-forestal-parada-6-vina_89087281",
+    "transaction": "sale",
+    "latitude": null,
+    "longitude": null,
+    "media": [
+      "https://img.yapo.cl/images/61/6108381217.jpg",
+      "https://img.yapo.cl/images/61/6133951174.jpg",
+      "https://img.yapo.cl/images/61/6142474493.jpg",
+      "https://img.yapo.cl/images/61/6185091088.jpg",
+      "https://img.yapo.cl/images/61/6127707683.jpg",
+      "https://img.yapo.cl/images/61/6144754321.jpg",
+      "https://img.yapo.cl/images/61/6161800959.jpg",
+      "https://img.yapo.cl/images/61/6104417554.jpg",
+      "https://img.yapo.cl/images/61/6112940873.jpg",
+      "https://img.yapo.cl/images/61/6188562902.jpg",
+      "https://img.yapo.cl/images/61/6197086221.jpg",
+      "https://img.yapo.cl/images/61/6122656178.jpg"
+    ]
+  },
+  {
+    "title": "Se Vende Casa Quilpué Sector El Retiro",
+    "price": 155000000,
+    "uf": 4128.31,
+    "property_type": "Casa",
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "sqft": 600,
+    "address": null,
+    "description": "Se vende amplio inmueble, lindo sector residencial, a dos cuadras de Plaza de El Retiro, Quilpué. Consta de living-comedor, 3 dormitorios, 1 baño completo, además de una habitación con baño anexa. Construcción total de 140 m2.  Hermoso terreno plano de 600 m2, con áreas verdes, cercano a locomoción, colegios, zonas deportivas. Estacionamiento para más de 6 vehículos. Muy buen precio por el lindo terreno del inmueble. Vende Exclusivamente Century21 Orión. Consulte y agende visitas.",
+    "region": "V",
+    "city": "Valparaiso",
+    "listing_url": "https://www.yapo.cl/inmuebles/se-vende-casa-quilpue-sector-el-retiro_89570476",
+    "transaction": "sale",
+    "latitude": -33.039434,
+    "longitude": -71.444245,
+    "media": [
+      "https://img.yapo.cl/images/54/5493847615.jpg",
+      "https://img.yapo.cl/images/54/5481360633.jpg",
+      "https://img.yapo.cl/images/54/5479676798.jpg",
+      "https://img.yapo.cl/images/54/5469469644.jpg",
+      "https://img.yapo.cl/images/54/5456982662.jpg",
+      "https://img.yapo.cl/images/54/5412682232.jpg",
+      "https://img.yapo.cl/images/54/5451335164.jpg"
+    ]
   }
 ]

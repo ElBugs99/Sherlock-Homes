@@ -8,7 +8,6 @@ const __dirname = path.dirname(__filename);
 
 console.log('Beginning scraping...');
 
-//TODO sqft bugs if theres more than 3 digits
 
 (async () => {
   const browser = await puppeteer.launch();
@@ -180,7 +179,7 @@ console.log('Beginning scraping...');
       const uf = cleanUFValue(ufStr);
 
       const region = 'V';
-      const city = 'Valparaiso';
+      const city = 'Quilpue';
       const transaction = 'sale';
 
       const description = document.querySelector('.description').innerText;
