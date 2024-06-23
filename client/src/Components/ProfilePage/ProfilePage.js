@@ -239,7 +239,7 @@ export default function ProfilePage() {
 
     const usersRows = users.map(user => ([
         user.id,
-        user.name,
+        user.username,
         user.email,
         user.role
     ]));
@@ -407,6 +407,15 @@ export default function ProfilePage() {
                                         ))}
                                     </div>
                                 )}
+                                {!selectedSection && (
+                                    <Lottie
+                                        options={defaultOptions}
+                                        isClickToPauseDisabled={true}
+                                        height={300}
+                                        width={300}
+                                    />
+                                )}
+
                             </div>
                         </div>
                     </div>
