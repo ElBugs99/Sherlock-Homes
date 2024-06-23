@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import './commentSection.css';
 import Comment from './Comment';
 
@@ -15,6 +15,7 @@ export default function CommentSection({ propertyId }) {
   const decodedToken = token ? jwtDecode(token) : null;
   const userId = decodedToken ? decodedToken.id : null;
   const username = decodedToken ? decodedToken.username : null;
+  const isAdmin = decodedToken ? decodedToken.role === 'admin' : false; // Check if the user is an admin
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -177,6 +178,7 @@ export default function CommentSection({ propertyId }) {
 
       {comments.length > 0 ? (
         <div className="comments-list">
+          {isAdmin ? <div className='ap'>Como administrador puedes eliminar comentarios de otros usuarios</div> : ''}
           {comments.map((comment) => (
             <Comment
               key={comment.comment_id}
@@ -187,6 +189,7 @@ export default function CommentSection({ propertyId }) {
               edited={comment.edited}
               userId={comment.user_id}
               currentUserId={userId}
+              isAdmin={isAdmin} // isAdmin flag
               onEdit={handleEditComment}
               onEditSubmit={handleEditSubmit}
               onDelete={handleDeleteComment}

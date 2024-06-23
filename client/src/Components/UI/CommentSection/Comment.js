@@ -9,6 +9,7 @@ export default function Comment({
   edited,
   userId,
   currentUserId,
+  isAdmin, // Add isAdmin prop
   onEdit,
   onEditSubmit,
   onDelete,
@@ -47,18 +48,18 @@ export default function Comment({
           )}
         </div>
       </div>
-      {currentUserId && (
+      {(currentUserId === userId || isAdmin) && (
         <div className='comment-actions'>
           {currentUserId === userId && editingCommentId !== commentId && (
             <>
               <button onClick={() => onEdit(commentId, content)} className="edit-comment-button">
                 Editar
               </button>
-              <button type="button" className="delete-comment-button" onClick={() => onDelete(commentId)}>
-                Borrar
-              </button>
             </>
           )}
+          <button type="button" className="delete-comment-button" onClick={() => onDelete(commentId)}>
+            Borrar
+          </button>
         </div>
       )}
     </div>
