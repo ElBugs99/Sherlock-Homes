@@ -15,7 +15,7 @@ export default function FeaturedCard({ title, price, bathrooms, bedrooms, sqft, 
 
           <div className='iconos'>
             {/* <FaHeart className='like' /> */}
-            <FaShare className='Compartir' />
+            {/* <FaShare className='Compartir' /> */}
           </div>
 
           <center>
