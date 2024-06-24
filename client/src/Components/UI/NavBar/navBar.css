@@ -146,12 +146,10 @@
     }
     .navBar {
         font-family: 'Roboto', sans-serif;
-        height: auto;
         background-color: #264653;
         color: white;
         display: flex;
         align-items: center;
-        width: 67%;
         position: grid;
         z-index: 99;
         font-size: small;

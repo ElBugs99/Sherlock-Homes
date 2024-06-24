@@ -99,10 +99,6 @@
 }
 
 @media screen and (max-width: 950px) {
-    .top-img{
-        display: none;
-        
-    }
     .topSection{
         background-color:aqua;
         margin-top: 0;
@@ -118,8 +114,5 @@
         text-align: center;
         margin-top: 2%;
         display: none;
-    }
-    .top-img-container{
-        padding-right: 700px;
     }
 }
