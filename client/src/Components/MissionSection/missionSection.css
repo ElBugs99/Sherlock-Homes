@@ -100,7 +100,11 @@
 
     .m-left {
         width: 90%;
-        margin: 20px;
+        margin: 30px;
+    }
+
+    .m-right {
+        width: 100%;
     }
 
     .m-left-subtitle {

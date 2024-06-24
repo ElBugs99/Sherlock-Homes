@@ -3,7 +3,7 @@
   height: 50vh;
   text-align: center;
   margin-bottom: 3%;
-  padding: 50px 0;
+  padding: 70px 0;
 }
 
 .inmobiliarias {
@@ -44,7 +44,8 @@
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  flex-basis: calc(33.33% - 20px);
+  width: 30%;
+  /* flex-basis: calc(33.33% - 20px); */
   margin: 0 10px;
   padding: 20px;
   text-align: left;
@@ -64,9 +65,10 @@
 
 @media screen and (max-width: 950px) {
   .inmobiliarias {
-    display: grid;
+    display: flex;
+    justify-content: center;
     padding: 5px;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    flex-wrap: wrap;
     margin: auto;
     justify-self: center;
   }
@@ -83,12 +85,11 @@
   }
 
   .card {
-    margin-bottom: 10px;
-    font-size: small;
+    margin-bottom: 25px;
+    width: 40%;
   }
 
   .promoSection {
-    margin-bottom: 10px;
-    margin-top: 850px;
+    margin-bottom: 50px;
   }
 }
