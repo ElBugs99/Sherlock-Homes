@@ -33,20 +33,21 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price, 
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const decodedToken = jwtDecode(token);
-        const userId = decodedToken.id;
+        const userId = token ? jwtDecode(token).id : null;
 
-        // Fetch favorites
-        const favoritesResponse = await fetch(`http://localhost:3001/favorites/${userId}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`
+        // Fetch favorites if user is logged in
+        if (userId) {
+          const favoritesResponse = await fetch(`http://localhost:3001/favorites/${userId}`, {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+          const favoritesData = await favoritesResponse.json();
+          if (favoritesData.success) {
+            setFavorites(favoritesData.data.map(fav => fav.property_id));
+          } else {
+            console.error(favoritesData.message);
           }
-        });
-        const favoritesData = await favoritesResponse.json();
-        if (favoritesData.success) {
-          setFavorites(favoritesData.data.map(fav => fav.property_id));
-        } else {
-          console.error(favoritesData.message);
         }
 
         // Fetch houses
@@ -82,7 +83,7 @@ export default function SearchResults({ city, bedrooms, bathrooms, sqft, price, 
     };
 
     fetchData();
-  }, [user, currentPage, city, bedrooms, bathrooms, sqft, price, q]);
+  }, [currentPage, city, bedrooms, bathrooms, sqft, price, q]);
 
   const handleFavoriteClick = async (propertyId) => {
     if (!user) {
