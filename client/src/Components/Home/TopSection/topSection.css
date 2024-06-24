@@ -99,20 +99,30 @@
 }
 
 @media screen and (max-width: 950px) {
-    .topSection{
-        background-color:aqua;
-        margin-top: 0;
+    .dropdowns {
+        flex-wrap: wrap;
+        width: 100%;
     }
-    .top-form{
-        display: block;
-        padding-bottom: 500px;
+
+    .top-form {
+        width: 50%;
+        top: 35% !important;
     }
-    .top-letters{
-        display:none;
+
+    .top-img-text {
+        font-size: 50px;
+        top: 17%;
     }
-    .top-img-text{
-        text-align: center;
-        margin-top: 2%;
-        display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .top-form {
+        width: 70% !important;
+        top: 22% !important;
+        left: 15% !important;
+    }
+
+    .top-img-text {
+        display: none !important;
     }
 }
