@@ -9,7 +9,6 @@ import './featuredCard.css'
 
 export default function FeaturedCard({ title, price, bathrooms, bedrooms, sqft, img, onClick }) {
   return (
-    <div>
       <div className='featured-card' onClick={ onClick }>
           <div className='Venta'>Publicación destacada</div>
 
@@ -39,6 +38,5 @@ export default function FeaturedCard({ title, price, bathrooms, bedrooms, sqft, 
           </div>
 
         </div>
-    </div>
   )
 }

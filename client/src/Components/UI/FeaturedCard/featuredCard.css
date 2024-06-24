@@ -86,3 +86,13 @@
 .btn-oferta {
   margin-right: 10px;
 }
+
+@media screen and (max-width:950px) {
+  .featured-card {
+    width: 70%;
+  }
+
+  .casas {
+    width: 100%;
+  }
+}
