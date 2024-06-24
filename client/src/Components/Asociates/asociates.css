@@ -37,7 +37,7 @@
     padding-right: 20px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
     .asociates {
         flex-direction: column;
         width: 100%;
