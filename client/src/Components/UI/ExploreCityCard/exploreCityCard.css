@@ -49,3 +49,10 @@
     }
 
 }
+
+@media screen and (max-width: 768px) {
+    .Explore-city-card {
+        width: 80%;
+        height: 280px;
+    }
+}
