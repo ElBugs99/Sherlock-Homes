@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 50vh;
+    min-height: 50vh;
     width: 100%;
     background-color: #ebf1ec;
     padding-bottom: 30px;
@@ -62,9 +62,10 @@
 
 @media screen and (max-width: 950px) {
     .explore-cities{
-        display: inline-block;
+        display: flex;
+        flex-wrap: wrap;
+        align-self: center;
         margin-top: 1%;
-        margin-left: 10%;
         grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
     }
     

@@ -88,3 +88,23 @@
     width: 60%;
     font-weight: 600;
 }
+
+@media screen and (max-width:950px) {
+    .m-section {
+        flex-direction: column-reverse;
+    }
+
+    .m-lottie-background {
+        width: 100%;
+    }
+
+    .m-left {
+        width: 90%;
+        margin: 20px;
+    }
+
+    .m-left-subtitle {
+        width: 80%;
+    }
+
+}
