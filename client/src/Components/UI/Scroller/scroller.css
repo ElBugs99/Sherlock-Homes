@@ -60,3 +60,10 @@
     width: 485px;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .logos {
+    position: static;
+    width: 250px;
+  }
+}

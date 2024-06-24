@@ -126,3 +126,19 @@
         display: none !important;
     }
 }
+
+@media screen and (max-width: 450px) {
+    .top-form {
+        width: 100% !important;
+        top: -15% !important;
+        left: 0% !important;
+    }
+
+    .top-input {
+        width: 80% !important;
+    }
+
+    .top-overlay {
+        background-color: #d4e4da;
+    }
+}

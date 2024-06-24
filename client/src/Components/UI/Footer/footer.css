@@ -73,11 +73,17 @@
   @media screen and (max-width:950px) {
 
     .pageFooter{
-        display:flexbox;
+        display: flexbox;
     }
     .pageFooter .grupo-1 .box figure img{
         width: 150px;
     }
+
+    .grupo-1 {
+        display: flex !important;
+        flex-direction: column;
+    }
+
     .box{
         font-size: smaller;
     }

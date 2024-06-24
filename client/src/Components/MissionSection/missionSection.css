@@ -113,3 +113,9 @@
     }
 
 }
+
+@media screen and (max-width:450px) {
+    .m-left {
+        display: none;
+    }
+}

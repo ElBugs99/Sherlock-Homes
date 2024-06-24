@@ -15,7 +15,6 @@ export default function SearchBar({ callback, setSearchQuery, searchQuery }) {
   };
 
   return (
-    <div>
       <form className="search-form">
         <input
           placeholder='Encuentra tu nuevo Hogar'
@@ -28,6 +27,5 @@ export default function SearchBar({ callback, setSearchQuery, searchQuery }) {
           <img src={search} className="search-icon" alt="search" />
         </button>
       </form>
-    </div>
   )
 }

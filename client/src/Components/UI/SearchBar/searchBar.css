@@ -56,3 +56,9 @@
     
     
 } */
+
+@media screen and (max-width:450px) {
+    .search-btn {
+        left: 76%;
+    }
+}
