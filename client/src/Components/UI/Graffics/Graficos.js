@@ -16,7 +16,7 @@ export default function Graficos({ valor, ciudad}) {
   return (
 
     <div className="grficoPie">
-        <h4 className="textoPie"> Grafico Comparativo de Precios</h4> 
+        <h4 className="textoPie"> Gráfico Comparativo de Precios</h4> 
 
         <PieChart
               series={[

@@ -44,7 +44,7 @@ export default function Tasacion(){
                             Completa tus datos personales
                         </li>
                         <li className="lista-tasacion">
-                            Listo. Ahora podras ver el precio de venta sugerido por ReV, Algoritmo de IA
+                            Listo. Ahora podrás ver el precio de venta sugerido por ReV, Algoritmo de IA
                         </li>
                     </ul>
                     <div className="boton-tasacion-aling">

@@ -54,7 +54,7 @@ export default function GraficoIpv(){
             />
             
                 <p className="textoGraficoIPV">
-                    Indice del Precio de las Viviendas (Base de Datos Estadísticos)
+                    Índice del Precio de las Viviendas (Base de Datos Estadísticos)
                 </p>
 
                 <bar datakey="IPVusadas" fill="#fefae0"/>

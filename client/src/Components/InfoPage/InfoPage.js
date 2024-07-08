@@ -33,16 +33,16 @@ export default function InfoPage() {
                             ¿QUIENES SOMOS?
                         </h3>
                         <h1>
-                            Somos una plataforma sin fines de lucro que quiere ayudar a quienes buscan un hogar, ante la problematica que significa
+                            Somos una plataforma sin fines de lucro que quiere ayudar a quienes buscan un hogar, ante la problemática que significa
                             la gran variedad de páginas de anuncios inmobiliarios que hay en el mercado
                             intentamos unificar los avisos de estas en una sola página, entregando datos relevantes al usuario
-                            redireccionandolo a la página de origen del aviso que le interesa además de entregar fuentes de información en asuntos importantes del mercado inmobiliario
+                            redireccionándolo a la página de origen del aviso que le interesa además de entregar fuentes de información en asuntos importantes del mercado inmobiliario
                         </h1>
 
                         <img className='imgKeys' src={houseKeys} alt='img' />
 
                         <h1 className='InfoPage-text'>
-                            Permitenos acompañarte y apoyarte mientras buscas en nuestro gran catalogo de recopilación tu próximo hogar
+                            Permítenos acompañarte y apoyarte mientras buscas en nuestro gran catálogo de recopilación tu próximo hogar
                         </h1>
                     </div>
                 </div>

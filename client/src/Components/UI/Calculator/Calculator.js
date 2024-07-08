@@ -54,7 +54,7 @@ export default function Calculator({ valor }) {
 
   return (
     <div className="calculadora">
-      <h3 className='titulo-calc'>Simula tu Credito Hipotecario</h3>
+      <h3 className='titulo-calc'>Simula tu Crédito Hipotecario</h3>
       <div className="form-group">
         <label className='label-calc' htmlFor="propertyPrice">Precio de la propiedad:</label>
         <div className='input-calc'>
